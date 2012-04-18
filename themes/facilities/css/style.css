@@ -243,6 +243,7 @@ div#searchbox{
     border-top: 0;
     width:380px;
     padding:0 0 10px 0;
+    margin-right: 20px;
     
 }
 
@@ -338,6 +339,7 @@ div#mainmenu{
     padding: 7px 10px;
     float: right;
     margin-top: 80px;
+    margin-right: 20px;
 }
 
 div#mainmenu ul{
@@ -369,6 +371,10 @@ div#mainmenu a{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 120%;
+    padding:6px 24px;
+    margin-bottom: 5px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
 }
 
 div#mainmenu a:hover, div#mainmenu a.active{
@@ -1617,6 +1623,7 @@ ul.pager li a.active {background:#f2f7fa;}
 /*-Search-*/
 .search_block{
     padding:30px;
+
 }
 .search_info{
     margin:0 0 15px 0;
