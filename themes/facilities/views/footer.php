@@ -14,7 +14,7 @@
 
         <!-- footer credits -->
         <div class="footer-credits">
-            <a href="http://www.ushahidi.com/"><img src="<?php echo url::file_loc('img'); ?>media/img/footer-logo.png" alt="Ushahidi" style="vertical-align:middle" /></a>
+            <a href="http://www.ushahidi.com" title="Ushahidi"><img src="../images/footer-logo.png" alt="Ushahidi" style="vertical-align:middle" /></a>
         </div>
         <!-- / footer credits -->
 

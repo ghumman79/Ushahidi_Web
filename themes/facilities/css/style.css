@@ -197,7 +197,7 @@ div#footer{
     width: auto;
     clear: both;
     color: #fff;
-    background-color: #A8A8A8;
+    background-color: #E6E6E6;
     padding-bottom: 20px;
 }
 
@@ -608,8 +608,8 @@ div.footermenu ul li{
 }
 
 div.footermenu ul li a{
-    color: #FFFDCC;
-    border-left: #FFFDCC 1px solid;
+    color: #000000;
+    border-left: #000000 1px solid;
     padding: 0 10px;
     text-decoration: underline;
 }
