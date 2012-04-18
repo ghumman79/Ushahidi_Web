@@ -99,7 +99,11 @@ div#header{
 /* logo */
 div#logo{
     border: 0;
-    background: #E2E2E2;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #524952), color-stop(1, #dfdfdf) );
+    background:-moz-linear-gradient( center top, #524952 5%, #dfdfdf 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#524952', endColorstr='#dfdfdf');
+    background-color:transparent;
     padding: 35px 24px;
     float: left;
     margin: 14px 0 0 0;
@@ -243,6 +247,7 @@ div#searchbox{
     border-top: 0;
     width:380px;
     padding:0 0 10px 0;
+    margin-right: 20px;
     
 }
 
@@ -338,6 +343,7 @@ div#mainmenu{
     padding: 7px 10px;
     float: right;
     margin-top: 80px;
+    margin-right: 20px;
 }
 
 div#mainmenu ul{
@@ -369,6 +375,10 @@ div#mainmenu a{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 120%;
+    padding:6px 24px;
+    margin-bottom: 5px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #ffffff;
 }
 
 div#mainmenu a:hover, div#mainmenu a.active{
@@ -1641,6 +1651,7 @@ ul.pager li a.active {background:#f2f7fa;}
 /*-Search-*/
 .search_block{
     padding:30px;
+
 }
 .search_info{
     margin:0 0 15px 0;

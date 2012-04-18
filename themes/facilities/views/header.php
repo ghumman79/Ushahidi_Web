@@ -32,7 +32,7 @@ elseif (count($uri_segments) >= 2)
 
 <body id="page" class="<?php echo $body_class; ?>" />
 
-<?php echo $header_nav; ?>
+<?php //echo $header_nav;?>
 
 <!-- wrapper -->
 <!--<div class="rapidxwpr floatholder">-->
