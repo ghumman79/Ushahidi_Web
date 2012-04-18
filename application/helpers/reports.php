@@ -32,6 +32,7 @@ class reports_Core {
 	 */
 	public static function validate(array & $post, $admin_section = FALSE)
 	{
+
 		// Exception handling
 		if ( ! isset($post) OR ! is_array($post))
 			return FALSE;
@@ -39,6 +40,16 @@ class reports_Core {
 		// Create validation object
 		$post = Validation::factory($post)
 				->pre_filter('trim', TRUE);
+		
+		// CSRF validation before proceeding with the rest of the validation
+		if (in_array(MODPATH.'csrf', Kohana::config('config.modules')))
+		{
+			if ( ! isset($post['form_auth_token']) OR  ! csrf::valid($post['form_auth_token']))
+			{
+				$post->add_error('incident_title','csrf');
+				return FALSE;
+			}
+		}
 		
 		$post->add_rules('incident_title','required', 'length[3,200]');
 		$post->add_rules('incident_description','required');
@@ -373,7 +384,9 @@ class reports_Core {
 					if ($geometry)
 					{
 						// 	Format the SQL string
-						$sql = sprintf($sql, $incident->id, $geometry, $label, $comment, $color, $strokewidth);
+						$sql = "INSERT INTO ".Kohana::config('database.default.table_prefix')."geometry "
+							. "(incident_id, geometry, geometry_label, geometry_comment, geometry_color, geometry_strokewidth)"
+							. "VALUES(".$incident->id.", GeomFromText('".$geometry."'), '".$label."', '".$comment."', '".$color."', ".$strokewidth.")";
 						Kohana::log('debug', $sql);
 						// Execute the query
 						$db->query($sql);
@@ -555,7 +568,6 @@ class reports_Core {
 		ORM::factory('incident_person')->where('incident_id',$incident->id)->delete_all();
 		
 		$person = new Incident_Person_Model();
-		$person->location_id = $incident->location_id;
 		$person->incident_id = $incident->id;
 		$person->person_first = $post->person_first;
 		$person->person_last = $post->person_last;

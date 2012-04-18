@@ -43,6 +43,8 @@ class Reports_Controller extends Main_Controller {
 		$this->template->content = new View('reports');
 		$this->themes->js = new View('reports_js');
 
+		$this->template->header->page_title .= Kohana::lang('ui_main.reports').Kohana::config('settings.title_delimiter');
+
 		// Store any exisitng URL parameters
 		$this->themes->js->url_params = json_encode($_GET);
 
@@ -111,7 +113,6 @@ class Reports_Controller extends Main_Controller {
 		{
 			$latest_timestamp = Incident_Model::get_latest_report_timestamp();
 		}
-
 
 		// Round the number of days up to the nearest full day
 		$days_since = ceil((time() - $oldest_timestamp) / 86400);
@@ -255,6 +256,8 @@ class Reports_Controller extends Main_Controller {
 
 		$this->template->header->this_page = 'reports_submit';
 		$this->template->content = new View('reports_submit');
+
+		$this->template->header->page_title .= Kohana::lang('ui_main.reports_submit_new').Kohana::config('settings.title_delimiter');
 
 		//Retrieve API URL
 		$this->template->api_url = Kohana::config('settings.api_url');
@@ -450,14 +453,14 @@ class Reports_Controller extends Main_Controller {
 		// Sanitize the report id before proceeding
 		$id = intval($id);
 
-		if ($id > 0 AND Incident_Model::is_valid_incident($id,FALSE))
+		if ($id > 0 AND Incident_Model::is_valid_incident($id,TRUE))
 		{
 			$incident = ORM::factory('incident')
 				->where('id',$id)
 				->where('incident_active',1)
 				->find();
 
-			if ( ! $incident->loaded)	// Not Found
+			if ( ! $incident->loaded) // Not Found
 			{
 				url::redirect('reports/view/');
 			}
@@ -632,6 +635,8 @@ class Reports_Controller extends Main_Controller {
 			Event::run('ushahidi_filter.report_title', $incident_title);
 			Event::run('ushahidi_filter.report_description', $incident_description);
 
+			$this->template->header->page_title .= $incident_title.Kohana::config('settings.title_delimiter');
+
 			// Add Features
 			$this->template->content->features_count = $incident->geometry->count();
 			$this->template->content->features = $incident->geometry;
@@ -646,9 +651,14 @@ class Reports_Controller extends Main_Controller {
 			$this->template->content->incident_category = $incident->incident_category;
 
 			// Incident rating
-			$this->template->content->incident_rating = ($incident->incident_rating == '')
+			$rating = ORM::factory('rating')
+					->join('incident','incident.id','rating.incident_id','INNER')
+					->where('rating.incident_id',$incident->id)
+					->find();
+					
+			$this->template->content->incident_rating = ($rating->rating == '')
 				? 0
-				: $incident->incident_rating;
+				: $rating->rating;
 
 			// Retrieve Media
 			$incident_news = array();
@@ -952,27 +962,7 @@ class Reports_Controller extends Main_Controller {
 			{
 				$total_rating += $rating->rating;
 			}
-
-			// Update Counts
-			if ($type == 'original')
-			{
-				$incident = ORM::factory('incident', $id);
-				if ($incident->loaded == TRUE)
-				{
-					$incident->incident_rating = $total_rating;
-					$incident->save();
-				}
-			}
-			elseif ($type == 'comment')
-			{
-				$comment = ORM::factory('comment', $id);
-				if ($comment->loaded == TRUE)
-				{
-					$comment->comment_rating = $total_rating;
-					$comment->save();
-				}
-			}
-
+			
 			return $total_rating;
 		}
 		else

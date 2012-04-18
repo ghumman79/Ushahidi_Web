@@ -104,7 +104,7 @@
 		//echo html::script(url::file_loc('js').'media/js/protochart/prototype', true);
 		echo html::script(url::file_loc('js').'media/js/raphael', true);
 		echo '<script type="text/javascript" charset="utf-8">';
-		echo 'var impact_json = { '.$impact_json .' };';
+		echo 'var impact_json = '.$impact_json .';';
 		echo '</script>';
 		echo html::script(url::file_loc('js').'media/js/raphael-ushahidi-impact', true);
 	}
@@ -204,7 +204,7 @@
 			<div class="info-nav">
 				<h3><?php echo Kohana::lang('ui_admin.get_help');?></h3>
 				<ul>
-					<li ><a href="http://wiki.ushahididev.com/"><?php echo Kohana::lang('ui_admin.wiki');?></a></li>
+					<li ><a href="http://wiki.ushahidi.com/"><?php echo Kohana::lang('ui_admin.wiki');?></a></li>
 					<li><a href="http://ushahidi.com/community_resources/"><?php echo Kohana::lang('ui_admin.faqs');?></a></li>
 					<li><a href="http://forums.ushahidi.com/"><?php echo Kohana::lang('ui_admin.forum');?></a></li>
 				</ul>

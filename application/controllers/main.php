@@ -61,19 +61,8 @@ class Main_Controller extends Template_Controller {
 	{
 		parent::__construct();
 
-		$this->auth = new Auth();
-		$this->auth->auto_login();
-
 		// Load Session
 		$this->session = Session::instance();
-
-		if(Kohana::config('settings.private_deployment'))
-		{
-			if ( ! $this->auth->logged_in('login'))
-			{
-				url::redirect('login');
-			}
-		}
 
 		// Load cache
 		$this->cache = new Cache;
@@ -88,6 +77,8 @@ class Main_Controller extends Template_Controller {
 		$this->template->header->submit_btn = $this->themes->submit_btn();
 		$this->template->header->languages = $this->themes->languages();
 		$this->template->header->search = $this->themes->search();
+		$this->template->header->header_block = $this->themes->header_block();
+		$this->template->footer->footer_block = $this->themes->footer_block();
 
 		// Set Table Prefix
 		$this->table_prefix = Kohana::config('database.default.table_prefix');
@@ -115,6 +106,10 @@ class Main_Controller extends Template_Controller {
 		$this->template->header->site_name = $site_name;
 		$this->template->header->site_name_style = $site_name_style;
 		$this->template->header->site_tagline = Kohana::config('settings.site_tagline');
+
+		// page_title is a special variable that will be overridden by other controllers to
+		//    change the title bar contents
+		$this->template->header->page_title = '';
 
 		//pass the URI to the header so we can dynamically add css classes to the "body" tag
 		$this->template->header->uri_segments = Router::$segments;
