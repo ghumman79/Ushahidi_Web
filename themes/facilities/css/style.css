@@ -550,6 +550,27 @@ div.additional-content ol {
     margin-left: 2em;
 }
 
+div.how-to-report {
+    padding:10px;
+    background-color:#F2F2F2;
+}
+
+div.how-to-report h3 {
+    display:inline;
+}
+
+div.how-to-report ul {
+    display:inline;
+}
+
+div.how-to-report ul li {
+    display: inline;
+    list-style-type: none;
+    padding-left: 20px;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
 /* content blocks */
 div.content-container{
     padding: 0 0 15px 15px;

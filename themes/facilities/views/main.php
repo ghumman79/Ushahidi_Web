@@ -1,88 +1,56 @@
 <!-- main body -->
 <div id="main" class="clearingfix">
 
-        <?php if($site_message != '') { ?>
+    <?php if($site_message != '') { ?>
         <div class="green-box">
             <h3><?php echo $site_message; ?></h3>
         </div>
-        <?php } ?>
+    <?php } ?>
 
-        <div id="content" class="clearingfix">
-
-               <?php
-                // Map and Timeline Blocks
-                echo $div_map;
-                echo $div_timeline;
-                ?>
-        </div>
+    <div id="content" class="clearingfix">
+        <?php
+        // Map and Timeline Blocks
+        echo $div_map;
+        echo $div_timeline;
+        ?>
+    </div>
 
         <div class="clearingfix">
 
-            <!-- additional content -->
-            <?php
-            if (Kohana::config('settings.allow_reports'))
-            {
-                ?>
-                <div class="additional-content">
-                    <h5><?php echo Kohana::lang('ui_main.how_to_report'); ?></h5>
-
-                    <div>
-
+            <!-- how to report -->
+            <?php if (Kohana::config('settings.allow_reports')) { ?>
+                <div class="how-to-report">
+                    <h3><?php echo Kohana::lang('ui_main.how_to_report'); ?></h3>
+                    <ul>
                         <!-- Phone -->
                         <?php if (!empty($phone_array)) { ?>
-                        <div style="margin-bottom:10px;">
-                            <?php echo Kohana::lang('ui_main.report_option_1'); ?>
                             <?php foreach ($phone_array as $phone) { ?>
-                            <strong><?php echo $phone; ?></strong>
-                            <?php if ($phone != end($phone_array)) { ?>
-                                <br/>
-                                <?php } ?>
+                                <li><?php echo $phone; ?></li>
                             <?php } ?>
-                        </div>
                         <?php } ?>
-
                         <!-- External Apps -->
                         <?php if (count($external_apps) > 0) { ?>
-                        <div style="margin-bottom:10px;">
-                            <strong><?php echo Kohana::lang('ui_main.report_option_external_apps'); ?>:</strong><br/>
                             <?php foreach ($external_apps as $app) { ?>
-                            <a href="<?php echo $app->url; ?>"><?php echo $app->name; ?></a><br/>
+                            <li><a href="<?php echo $app->url; ?>"><?php echo $app->name; ?></a></li>
                             <?php } ?>
-                        </div>
                         <?php } ?>
-
                         <!-- Email -->
                         <?php if (!empty($report_email)) { ?>
-                        <div style="margin-bottom:10px;">
-                            <strong><?php echo Kohana::lang('ui_main.report_option_2'); ?>:</strong><br/>
-                            <a href="mailto:<?php echo $report_email?>"><?php echo $report_email?></a>
-                        </div>
+                            <li><a href="mailto:<?php echo $report_email?>"><?php echo $report_email?></a></li>
                         <?php } ?>
-
                         <!-- Twitter -->
                         <?php if (!empty($twitter_hashtag_array)) { ?>
-                        <div style="margin-bottom:10px;">
-                            <strong><?php echo Kohana::lang('ui_main.report_option_3'); ?>:</strong><br/>
                             <?php foreach ($twitter_hashtag_array as $twitter_hashtag) { ?>
-                            <span>#<?php echo $twitter_hashtag; ?></span>
-                            <?php if ($twitter_hashtag != end($twitter_hashtag_array)) { ?>
-                                <br />
-                                <?php } ?>
+                                <li>#<?php echo $twitter_hashtag; ?></li>
                             <?php } ?>
-                        </div>
                         <?php } ?>
-
                         <!-- Web Form -->
-                        <div style="margin-bottom:10px;">
-                            <a href="<?php echo url::site() . 'reports/submit/'; ?>"><?php echo Kohana::lang('ui_main.report_option_4'); ?></a>
-                        </div>
-
-                    </div>
-
+                        <li><a href="<?php echo url::site() . 'reports/submit/'; ?>"><?php echo Kohana::lang('ui_main.web_form'); ?></a></li>
+                    </ul>
                 </div>
-                <?php } ?>
+            <?php } ?>
 
-            <!-- / additional content -->
+            <!-- / how to report -->
 
             <!-- category filters -->
 
