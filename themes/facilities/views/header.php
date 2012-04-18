@@ -35,7 +35,7 @@ elseif (count($uri_segments) >= 2)
 <?php echo $header_nav; ?>
 
 <!-- wrapper -->
-<div class="rapidxwpr floatholder">
+<!--<div class="rapidxwpr floatholder">-->
 
     <!-- header -->
     <div id="header">
@@ -54,6 +54,7 @@ elseif (count($uri_segments) >= 2)
         </div>
         <!-- / searchbox -->
 
+
         <!-- logo -->
         <?php if($banner == NULL){ ?>
         <div id="logo">
@@ -65,8 +66,22 @@ elseif (count($uri_segments) >= 2)
         <?php } ?>
         <!-- / logo -->
 
+
+        <!-- mainmenu -->
+        <div id="mainmenu" class="clearingfix">
+            <ul>
+                <?php nav::main_tabs($this_page); ?>
+            </ul>
+
+            <?php if ($allow_feed == 1) { ?>
+            <div style="display: none;"><a href="<?php echo url::site(); ?>feed/"><img src="<?php echo url::file_loc('img'); ?>media/img/icon-feed.png" style="vertical-align: middle;" border="0"></a></div>
+            <?php } ?>
+
+        </div>
+        <!-- / mainmenu -->
+
         <!-- submit incident -->
-        <?php echo $submit_btn; ?>
+<!--        --><?php //echo $submit_btn; ?>
         <!-- / submit incident -->
 
     </div>
@@ -81,15 +96,4 @@ elseif (count($uri_segments) >= 2)
     <div id="middle">
         <div class="background layoutleft">
 
-            <!-- mainmenu -->
-            <div id="mainmenu" class="clearingfix">
-                <ul>
-                    <?php nav::main_tabs($this_page); ?>
-                </ul>
 
-                <?php if ($allow_feed == 1) { ?>
-                <div style="float:right;"><a href="<?php echo url::site(); ?>feed/"><img src="<?php echo url::file_loc('img'); ?>media/img/icon-feed.png" style="vertical-align: middle;" border="0"></a></div>
-                <?php } ?>
-
-            </div>
-            <!-- / mainmenu -->
