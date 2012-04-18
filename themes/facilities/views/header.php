@@ -71,11 +71,12 @@ elseif (count($uri_segments) >= 2)
         <div id="mainmenu" class="clearingfix">
             <ul>
                 <?php nav::main_tabs($this_page); ?>
+                <?php if ($allow_feed == 1) { ?>
+                    <li><a href="<?php echo url::site(); ?>feed/">
+                            <img src="<?php echo url::file_loc('img'); ?>media/img/icon-feed.png" style="vertical-align: middle;" border="0"></a>
+                    </li>
+                <?php } ?>
             </ul>
-
-            <?php if ($allow_feed == 1) { ?>
-            <div style="display: inline;"><a href="<?php echo url::site(); ?>feed/"><img src="<?php echo url::file_loc('img'); ?>media/img/icon-feed.png" style="vertical-align: middle;" border="0"></a></div>
-            <?php } ?>
 
         </div>
         <!-- / mainmenu -->
