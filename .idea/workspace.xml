@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d53c4dc2-9e6c-4a4d-ae4c-d1f636b4b19f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/facilities/css/style.css" afterPath="$PROJECT_DIR$/themes/facilities/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/facilities/views/main.php" afterPath="$PROJECT_DIR$/themes/facilities/views/main.php" />
     </list>
     <ignored path="USaskHealthMap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +27,7 @@
       <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/facilities/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="570" column="20" selection-start="9381" selection-end="9381" vertical-scroll-proportion="0.93994415">
+            <state line="570" column="17" selection-start="9378" selection-end="9378" vertical-scroll-proportion="0.93994415">
               <folding />
             </state>
           </provider>
@@ -635,7 +633,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/facilities/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="570" column="20" selection-start="9381" selection-end="9381" vertical-scroll-proportion="0.93994415">
+        <state line="570" column="17" selection-start="9378" selection-end="9378" vertical-scroll-proportion="0.93994415">
           <folding />
         </state>
       </provider>
