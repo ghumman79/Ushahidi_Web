@@ -237,9 +237,9 @@ div#searchbox{
     position: absolute;
     top: 0px;
     right: 0px;
-    background: #BEBEBE;
-    border: #9F9F9F 2px solid;
-    border-top: 0;
+    background:transparent;
+    /*border: #9F9F9F 2px solid;*/
+    border: none;
     width:380px;
     padding:0 0 10px 0;
     margin-right: 20px;
@@ -355,26 +355,26 @@ div#mainmenu li{
 }
 
 div#mainmenu a{
-    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #524952), color-stop(1, #dfdfdf) );
-    background:-moz-linear-gradient( center top, #524952 5%, #dfdfdf 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#524952', endColorstr='#dfdfdf');
-    background-color:transparent;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    border-radius:6px;
-    border:1px solid #dcdcdc;
-    display:inline-block;
-    color:#777777;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 120%;
-    padding:6px 24px;
-    margin-bottom: 5px;
-    text-decoration:none;
-    text-shadow:1px 1px 0px #ffffff;
+    /*-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;*/
+    /*-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;*/
+    /*box-shadow:inset 0px 1px 0px 0px #ffffff;*/
+    /*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #524952), color-stop(1, #dfdfdf) );*/
+    /*background:-moz-linear-gradient( center top, #524952 5%, #dfdfdf 100% );*/
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#524952', endColorstr='#dfdfdf');*/
+    /*background-color:transparent;*/
+    /*-moz-border-radius:6px;*/
+    /*-webkit-border-radius:6px;*/
+    /*border-radius:6px;*/
+    /*border:1px solid #dcdcdc;*/
+    /*display:inline-block;*/
+    /*color:#777777;*/
+    /*text-transform: uppercase;*/
+    /*font-weight: bold;*/
+    /*font-size: 120%;*/
+    /*padding:6px 24px;*/
+    /*margin-bottom: 5px;*/
+    /*text-decoration:none;*/
+    /*text-shadow:1px 1px 0px #ffffff;*/
 }
 
 div#mainmenu a:hover, div#mainmenu a.active{
@@ -541,7 +541,7 @@ ul.category-filters li a:hover, ul.category-filters li a.active {
     color: #FFFFFF;
     background-color: #3484AC;
     border: #3484AC 1px solid;
-    
+
 }
 
 ul.category-filters li.child{
@@ -1002,7 +1002,10 @@ div.location{
 }
 
 div.report-map{
-        margin-bottom:10px;
+    margin-bottom:10px;
+    width: 300px;
+    150px;
+
 }
 div.incident-notation{
     margin: 0 0 5px 0;
