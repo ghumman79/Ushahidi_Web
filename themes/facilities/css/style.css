@@ -707,6 +707,13 @@ div.report-details{
 .report-when-where span { padding:3px 5px 3px 18px;  }
 
 #report-categories {
+    position:relative;
+    bottom:0px;
+    height:100px;
+    width:100%;
+    left:0px;
+    overflow:hidden;
+    background-color: #F2F2F2;
     padding:10px;
 }
 
