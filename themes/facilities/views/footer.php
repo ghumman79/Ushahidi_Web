@@ -1,7 +1,3 @@
-</div>
-</div>
-<!-- / main body -->
-
 <!-- footer -->
 <div id="footer" class="clearingfix">
     <!-- footer credits -->

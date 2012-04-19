@@ -87,8 +87,4 @@ elseif (count($uri_segments) >= 2)
     Event::run('ushahidi_action.header_item');
     ?>
 
-    <!-- main body -->
-    <div id="middle">
-        <div class="background layoutleft">
-
 

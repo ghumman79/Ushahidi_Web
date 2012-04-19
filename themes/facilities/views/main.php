@@ -1,3 +1,4 @@
+<div id="middle">
 <!-- main body -->
 <div id="main" class="clearingfix">
 
@@ -138,3 +139,5 @@
 
 </div>
 <!-- / main body -->
+
+</div>
