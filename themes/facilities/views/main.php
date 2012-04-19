@@ -53,56 +53,39 @@
             <!-- / how to report -->
 
             <!-- category filters -->
-
-            <ul id="category_switch" class="category-filters">
-                <li><a class="active" id="cat_0" href="#">
-                    <span class="swatch" style="background-color:<?php echo "#".$default_map_all;?>">
-
-                    </span><span class="category-title"><?php echo Kohana::lang('ui_main.all_categories');?>
-                </span></a>
-                </li>
-
+            <div id="report-category-filter" style="padding:10px;">
                 <?php
                 foreach ($categories as $category => $category_info)
                 {
                     $category_title = $category_info[0];
                     $category_color = $category_info[1];
                     $category_image = ($category_info[2] != NULL) ? url::convert_uploaded_to_abs($category_info[2]) : NULL;
-                    $color_css = 'class="swatch" style="background-color:#'.$category_color.'"';
                     if($category_info[2] != NULL) {
                         $category_image = html::image(array(
                             'src'=>$category_image,
-                            'style'=>'float:left;padding-right:5px;'
+                            'style'=>'padding-right:5px;'
                         ));
-                        $color_css = '';
                     }
-                    echo '<li><a href="#" id="cat_'. $category .'"><span '.$color_css.'>'.$category_image.'</span><span class="category-title">'.$category_title.'</span></a>';
-                    // Get Children
-                    echo '<div class="hide" id="child_'. $category .'">';
-                    if( sizeof($category_info[3]) != 0)
-                    {
-                        echo '<ul>';
-                        foreach ($category_info[3] as $child => $child_info)
-                        {
+                    echo '<ul style="margin:5px">';
+                    echo '<li style="display:inline;list-style-type:none;margin-right:10px;padding:5px;border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
+                    if( sizeof($category_info[3]) != 0) {
+                        foreach ($category_info[3] as $child => $child_info) {
                             $child_title = $child_info[0];
                             $child_color = $child_info[1];
                             $child_image = ($child_info[2] != NULL) ? url::convert_uploaded_to_abs($child_info[2]) : NULL;
-                            $color_css = 'class="swatch" style="background-color:#'.$child_color.'"';
                             if($child_info[2] != NULL) {
                                 $child_image = html::image(array(
                                     'src'=>$child_image,
-                                    'style'=>'float:left;padding-right:5px;'
+                                    'style'=>'padding-right:5px;'
                                 ));
-                                $color_css = '';
                             }
-                            echo '<li style="padding-left:20px;"><a href="#" id="cat_'. $child .'"><span '.$color_css.'>'.$child_image.'</span><span class="category-title">'.$child_title.'</span></a></li>';
+                            echo '<li style="display:inline;list-style-type:none;margin-right:10px;padding:5px;border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
                         }
-                        echo '</ul>';
                     }
-                    echo '</div></li>';
+                    echo '</ul><br/>';
                 }
                 ?>
-            </ul>
+            </div>
             <!-- / category filters -->
 
             <?php
@@ -130,12 +113,11 @@
                     }
                     ?>
                 </ul>
+                <br/>
                 <!-- /Layers -->
                 <?php
             }
             ?>
-
-            <br />
 
             <!-- Checkins -->
             <?php if ( Kohana::config('settings.checkins') ) { ?>
