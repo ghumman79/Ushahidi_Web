@@ -53,7 +53,7 @@
             <!-- / how to report -->
 
             <!-- category filters -->
-            <div id="report-category-filter" style="padding:10px;">
+            <div id="report-categories">
                 <?php
                 foreach ($categories as $category => $category_info)
                 {
@@ -66,8 +66,8 @@
                             'style'=>'padding-right:5px;'
                         ));
                     }
-                    echo '<ul style="margin:5px">';
-                    echo '<li style="display:inline;list-style-type:none;margin-right:10px;padding:5px;border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
+                    echo '<ul>';
+                    echo '<li style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
                     if( sizeof($category_info[3]) != 0) {
                         foreach ($category_info[3] as $child => $child_info) {
                             $child_title = $child_info[0];
@@ -79,7 +79,7 @@
                                     'style'=>'padding-right:5px;'
                                 ));
                             }
-                            echo '<li style="display:inline;list-style-type:none;margin-right:10px;padding:5px;border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
+                            echo '<li style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
                         }
                     }
                     echo '</ul><br/>';
