@@ -92,7 +92,7 @@ div#header{
     top:0;
     left:0;
     width:100%;
-    height:150px;
+    height:100px;
     background-color: rgba(239, 241, 242, 0.57);
 }
 
@@ -104,7 +104,7 @@ div#logo{
     /*background:-moz-linear-gradient( center top, #524952 5%, #dfdfdf 100% );*/
     /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#524952', endColorstr='#dfdfdf');*/
     background-color:transparent;
-    padding: 35px 24px;
+    padding: 15px 4px;
     float: left;
     margin: 14px 0 0 0;
     text-align: center;
@@ -337,8 +337,8 @@ div#mainmenu{
     /*border: #FFF 2px solid;*/
     padding: 7px 10px;
     float: right;
-    margin-top: 80px;
-    margin-right: 20px;
+    margin-top: 60px;
+    margin-right: 0px;
     border-style: none;
 }
 
@@ -512,7 +512,7 @@ ul.category-filters{
     background: #E7E3DA;
     border-top: #C7C2BC 7px solid;
     border-bottom: #C7C2BC 7px solid;
-    list-style: none;
+    list-style: armenian;
     padding: 12px 15px;
 }
 
@@ -520,10 +520,11 @@ ul.category-filters li{
     padding: 0;
     margin-bottom: 2px;
     list-style-type:none;
+    display: inline;
 }
 
 ul.category-filters li a{
-    display: block;
+    display: inline-block;
     padding: 8px 10px 8px 5px;
     font-size: 15px;
     text-transform: uppercase;
@@ -540,10 +541,13 @@ ul.category-filters li a:hover, ul.category-filters li a.active {
     color: #FFFFFF;
     background-color: #3484AC;
     border: #3484AC 1px solid;
+    
 }
 
 ul.category-filters li.child{
-    display:none;
+    display: none;
+    direction: ltr;
+
 }
 
 /* additional content */
@@ -1997,8 +2001,8 @@ version: 1
 */
 
 /* Reports/Filters Layout */
-#reports-box { float:left; width:600px; }
-#filters-box { float:left; width:280px; margin-left:20px; }
+#reports-box { float:left; width:600px; border: 2px #808080; }
+#filters-box { float:left; width:280px; margin-left:20px; border: 2px #808080; }
 
 
 /* Report Box Navigation Controls (pagination, view/map toggle...etc) */
@@ -2299,7 +2303,7 @@ ul.filter-list li a.btn-cancel {
 }
 
 /* For child categories because nested UL/LIs are difficult in this case */
-li.report-listing-category-child { padding-left:20px; }
+li.report-listing-category-child { padding-left:20px;}
 
 /* Filter Controls */    
 #filter-controls    { position:relative; padding:15px; margin-top:-2px; }
