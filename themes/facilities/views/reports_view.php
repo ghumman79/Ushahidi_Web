@@ -59,11 +59,7 @@
         ?>
     </div>
 
-    <!-- start report description -->
-    <div class="report-description-text">
-        <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
-        <?php echo $incident_description; ?>
-        <br/>
+
 
 
         <!-- start news source link -->
@@ -145,9 +141,6 @@
 <div class="right-col">
 
 
-    
-
-
     <div class="report-category-list">
         <p>
             <?php
@@ -181,6 +174,14 @@
         Event::run('ushahidi_action.report_meta', $incident_id);
         ?>
     </div>
+
+
+    <!-- start report description -->
+    <div class="report-description-text">
+        <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
+        <?php echo $incident_description; ?>
+        <br/>
+
 
     <div class="report-additional-reports">
         <h4><?php echo Kohana::lang('ui_main.additional_reports');?></h4>
