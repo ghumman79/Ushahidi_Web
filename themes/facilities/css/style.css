@@ -38,6 +38,7 @@ div#footer {
     left:0px;
     overflow:hidden;
     background-color: #E6E6E6;
+    border-top: 1px solid #848484;
 }
 
 fieldset,img {
@@ -633,6 +634,7 @@ div.site-footer{
 div.footermenu{
     margin: 0 10px;
     float: left;
+    padding:10px;
 }
 
 div.footermenu ul{
@@ -706,7 +708,7 @@ div.report-details{
 .report-when-where { color:#908B88; margin-bottom:10px; }
 .report-when-where span { padding:3px 5px 3px 18px;  }
 
-#report-categories {
+div#report-categories {
     position:relative;
     bottom:0px;
     height:100px;
@@ -715,6 +717,7 @@ div.report-details{
     overflow:hidden;
     background-color: #F2F2F2;
     padding:10px;
+    border-top: 1px solid #848484;
 }
 
 #report-categories ul {
