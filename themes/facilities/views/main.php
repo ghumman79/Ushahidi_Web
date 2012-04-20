@@ -1,4 +1,12 @@
-<div id="middle" style="overflow:hidden">
+<?php
+$bottom_height = count($categories)*45;
+if (Kohana::config('settings.allow_reports')) {
+    $bottom_height = $bottom_height+40;
+}
+$bottom_height=$bottom_height+10;
+?>
+
+<div id="middle" style="overflow:hidden;bottom:<?php echo $bottom_height + 15 ?>px;">
 <!-- main body -->
 
     <?php if($site_message != '') { ?>
@@ -60,7 +68,8 @@
 <!-- / main body -->
 </div>
 
-<div id="bottom">
+
+<div id="bottom" style="height:<?php echo $bottom_height?>px">
     <!-- how to report -->
     <?php if (Kohana::config('settings.allow_reports')) { ?>
     <div class="how-to-report">
@@ -96,7 +105,7 @@
     <!-- / how to report -->
 
 <!-- category filters -->
-<div Id="report-categories">
+<div id="report-categories">
     <?php
     foreach ($categories as $category => $category_info) {
         $category_title = $category_info[0];

@@ -210,37 +210,17 @@
 
 <div id="bottom">
 
-    <div Id="report-categories">
-        <?php
-        foreach ($categories as $category => $category_info) {
-            $category_title = $category_info[0];
-            $category_color = $category_info[1];
-            $category_image = ($category_info[2] != NULL) ? url::convert_uploaded_to_abs($category_info[2]) : NULL;
-            if($category_info[2] != NULL) {
-                $category_image = html::image(array(
-                    'src'=>$category_image,
-                    'style'=>'padding-right:5px;'
-                ));
-            }
-            echo '<ul>';
-            echo '<li class="top-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
-            if( sizeof($category_info[3]) != 0) {
-                foreach ($category_info[3] as $child => $child_info) {
-                    $child_title = $child_info[0];
-                    $child_color = $child_info[1];
-                    $child_image = ($child_info[2] != NULL) ? url::convert_uploaded_to_abs($child_info[2]) : NULL;
-                    if($child_info[2] != NULL) {
-                        $child_image = html::image(array(
-                            'src'=>$child_image,
-                            'style'=>'padding-right:5px;'
-                        ));
-                    }
-                    echo '<li class="sub-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
-                }
-            }
-            echo '</ul><br/>';
-        }
-        ?>
+    <div id="details-categories">
+        <ul class="filter-list fl-categories" id="category-filter-list">
+            <li>
+                <a href="#">
+                    <span class="item-swatch" style="background-color: #<?php echo Kohana::config('settings.default_map_all'); ?>">&nbsp;</span>
+                    <span class="item-title"><?php echo Kohana::lang('ui_main.all_categories'); ?></span>
+                    <span class="item-count" id="all_report_count"><?php echo $report_stats->total_reports; ?></span>
+                </a>
+            </li>
+            <?php echo $category_tree_view; ?>
+        </ul>
     </div>
 
 
