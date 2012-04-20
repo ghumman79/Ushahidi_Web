@@ -748,6 +748,20 @@ div#report-categories {
     font-weight:bold;
 }
 
+div#details-categories {
+    position:relative;
+    bottom:0px;
+    height:100px;
+    width:100%;
+    left:0px;
+    overflow:hidden;
+    background-color: #F2F2F2;
+    padding:10px;
+    border-top: 1px solid #848484;
+    font-size:1.1em;
+    font-weight:bold;
+}
+
 #report-categories ul {
     margin:5px;
 }
@@ -1416,7 +1430,7 @@ a.show-more {
 /*---big-block---*/
 .big-block {
     overflow:hidden;
-    padding:16px 25px 10px;
+    padding:170px 25px 10px;
 }
 /* Min-Height */
 .big-block{

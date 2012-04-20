@@ -99,7 +99,7 @@
     <!-- / how to report -->
 
 <!-- category filters -->
-<div id="report-categories">
+<div Id="report-categories">
     <?php
     foreach ($categories as $category => $category_info) {
         $category_title = $category_info[0];

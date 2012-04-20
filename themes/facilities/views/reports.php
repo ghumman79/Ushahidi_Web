@@ -2,7 +2,7 @@
 <div class="content-bg">
 <!-- start reports block -->
 <div class="big-block">
-<h1 class="heading">
+<h1 class="heading" style="display: none;">
     <?php $timeframe_title = date('M d, Y', $oldest_timestamp).' '.Kohana::lang('ui_main.through').' '.date('M d, Y', $latest_timestamp); ?>
     <?php echo Kohana::lang('ui_main.showing_reports_from'); ?>
     <span class="time-period"><?php echo $timeframe_title; ?></span>
@@ -34,7 +34,7 @@
         </li>
     </ul>
 
-    <p class="labeled-divider"><span><?php echo Kohana::lang('ui_main.choose_date_range'); ?>:</span></p>
+    <p class="labeled-divider" style="display: none;"><span><?php echo Kohana::lang('ui_main.choose_date_range'); ?>:</span></p>
     <form>
         <table>
             <tr>
@@ -60,7 +60,7 @@
     </div>
     <!-- end #reports-box -->
 
-    <div id="filters-box">
+    <div id="filters-box" style="display: none;">
         <h2><?php echo Kohana::lang('ui_main.filter_reports_by'); ?></h2>
         <div id="accordion">
 
@@ -206,6 +206,48 @@
 
 </div>
 
+<!--footer for categories-->
+
+<div id="bottom">
+
+    <div Id="report-categories">
+        <?php
+        foreach ($categories as $category => $category_info) {
+            $category_title = $category_info[0];
+            $category_color = $category_info[1];
+            $category_image = ($category_info[2] != NULL) ? url::convert_uploaded_to_abs($category_info[2]) : NULL;
+            if($category_info[2] != NULL) {
+                $category_image = html::image(array(
+                    'src'=>$category_image,
+                    'style'=>'padding-right:5px;'
+                ));
+            }
+            echo '<ul>';
+            echo '<li class="top-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
+            if( sizeof($category_info[3]) != 0) {
+                foreach ($category_info[3] as $child => $child_info) {
+                    $child_title = $child_info[0];
+                    $child_color = $child_info[1];
+                    $child_image = ($child_info[2] != NULL) ? url::convert_uploaded_to_abs($child_info[2]) : NULL;
+                    if($child_info[2] != NULL) {
+                        $child_image = html::image(array(
+                            'src'=>$child_image,
+                            'style'=>'padding-right:5px;'
+                        ));
+                    }
+                    echo '<li class="sub-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
+                }
+            }
+            echo '</ul><br/>';
+        }
+        ?>
+    </div>
+
+
+</div>
+<!-- /footer for categories-->
+
+
 <div style="display:none">
     <?php
     // Filter::report_stats - The block that contains reports list statistics
@@ -220,3 +262,4 @@
 </div>
 <!-- end content-bg -->
 </div>
+
