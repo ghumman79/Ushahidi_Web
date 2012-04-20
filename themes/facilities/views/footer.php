@@ -1,8 +1,9 @@
 <!-- footer -->
 <div id="footer">
+
     <!-- footer credits -->
     <div class="footer-credits">
-<!--        <a href="http://www.ushahidi.com" title="Ushahidi"><img src="../images/footer-logo.png" alt="Ushahidi" /></a>-->
+        <a href="http://www.ushahidi.com" title="Ushahidi"><img id="ushahidi" border="0" /></a>
     </div>
     <!-- / footer credits -->
 
