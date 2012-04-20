@@ -1,4 +1,4 @@
-<div id="middle">
+<div id="middle" style="overflow:hidden">
 <!-- main body -->
 
     <?php if($site_message != '') { ?>
@@ -7,13 +7,10 @@
         </div>
     <?php } ?>
 
-    <div id="content" class="clearingfix">
-        <?php
-        // Map and Timeline Blocks
+    <?php
         echo $div_map;
         echo $div_timeline;
-        ?>
-    </div>
+    ?>
 
     <?php
     if ($layers) {
