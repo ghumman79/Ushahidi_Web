@@ -2490,19 +2490,19 @@ div.ci_checkin {
 	border-bottom:1px solid #B3B3B3;
 }
 
-/*@media screen{*/
-    /*body>div#header{*/
-        /*position:fixed;*/
-    /*}*/
-    /*body>div#footer{*/
-        /*position:fixed;*/
-    /*}*/
-/*}*/
-/** html body{*/
-    /*overflow:hidden;*/
-/*}*/
-/** html div#content{*/
-    /*height:100%;*/
-    /*overflow:auto;*/
-/*}*/
+@media screen{
+    body>div#header{
+        position:fixed;
+    }
+    body>div#footer{
+        position:fixed;
+    }
+}
+* html body{
+    overflow:hidden;
+}
+* html div#content{
+    height:100%;
+    overflow:auto;
+}
 
