@@ -352,7 +352,6 @@ div.submit-incident a, div.submit-incident a:hover{
 /* mainmenu */
 div#mainmenu{
     background: transparent;
-    /*border: #FFF 2px solid;*/
     padding: 5px 7px;
     float: right;
     margin-top: 45px;
@@ -738,7 +737,6 @@ div.report-details{
 div#report-categories {
     position:relative;
     bottom:0px;
-
     width:100%;
     left:0px;
     overflow:hidden;
@@ -774,6 +772,14 @@ div#details-categories {
     list-style-type:none;
     margin-right:10px;
     padding:5px;
+}
+
+#report-categories a.active{
+
+    text-decoration: none;
+    background: #848484;
+    color:#FFFFFF;
+
 }
 
 div.report-media { padding:10px 0; border-bottom:1px dotted #C0C2B8;; }
@@ -1042,7 +1048,7 @@ div.location{
 div.report-map{
     margin-bottom:10px;
     width: 300px;
-    150px;
+
 
 }
 div.incident-notation{
@@ -1443,6 +1449,7 @@ a.show-more {
 * html .big-block {
     height:400px
 }
+
 /* View Reports / Help */
 .report_rowtitle, .org_rowtitle{
     margin: 0px 0 5px 0;
@@ -2480,5 +2487,21 @@ div.ci_colorfade {
 }
 div.ci_checkin {
 	border-bottom:1px solid #B3B3B3;
+}
+
+@media screen{
+    body>div#header{
+        position:fixed;
+    }
+    body>div#footer{
+        position:fixed;
+    }
+}
+* html body{
+    overflow:hidden;
+}
+* html div#content{
+    height:100%;
+    overflow:auto;
 }
 

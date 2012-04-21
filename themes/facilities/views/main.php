@@ -133,6 +133,7 @@ $bottom_height=$bottom_height+10;
                 echo '<li class="sub-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
             }
         }
+
         echo '</ul><br/>';
     }
     ?>

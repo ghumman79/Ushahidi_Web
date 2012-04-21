@@ -9,7 +9,7 @@
     <a href="#" class="btn-change-time ic-time"><?php echo Kohana::lang('ui_main.change_date_range'); ?></a>
 </h1>
 
-<div id="tooltip-box">
+<div id="tooltip-box" >
     <div class="tt-arrow"></div>
     <ul class="inline-links">
         <li>
