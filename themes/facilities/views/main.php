@@ -118,7 +118,7 @@ $bottom_height=$bottom_height+10;
             ));
         }
         echo '<ul>';
-        echo '<li class="top-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
+        echo '<li class="top-category" id="'.$category.'" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $category .'">'.$category_image.'<span>'.$category_title.'</span></a></li>';
         if( sizeof($category_info[3]) != 0) {
             foreach ($category_info[3] as $child => $child_info) {
                 $child_title = $child_info[0];
@@ -130,7 +130,7 @@ $bottom_height=$bottom_height+10;
                         'style'=>'padding-right:5px;'
                     ));
                 }
-                echo '<li class="sub-category" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
+                echo '<li class="sub-category" id="'.$child.'" parent-id="'.$category . '" style="border:2px solid #'. $category_color . ';"><a href="#" id="cat_'. $child .'">'.$child_image.'<span>'.$child_title.'</span></a></li>';
             }
         }
 
@@ -142,3 +142,30 @@ $bottom_height=$bottom_height+10;
 
 
 </div>
+
+<script type="text/javascript">$(document).ready(function(){
+    $topCategory = $(".top-category");
+    $topCategoryLink = $(".top-category > a");
+
+    $topCategoryLink.click(function(){
+        console.log("click");
+        $(this).parent().each(function(index, el){
+            if($(el).hasClass("sub-category")){
+                $link = $(el).find("a");
+                $link.toggleClass("active");
+            }
+        });
+    });
+
+
+//    $topCategory.each(function(index, $el){
+//        $subCategory = $("li[parent-id="+ $el.id +"]");
+//        $subCategory.each(function(subIndex, $subEl){
+//            console.log($el.id + "-" + subIndex);
+//        });
+//    });
+//    debugger;
+    console.log("d");
+
+});
+</script>
