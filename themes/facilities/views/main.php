@@ -1,5 +1,5 @@
 <?php
-$bottom_height = count($categories)*70;
+$bottom_height = count($categories)*60;
 if (Kohana::config('settings.allow_reports')) {
     $bottom_height = $bottom_height+40;
 }

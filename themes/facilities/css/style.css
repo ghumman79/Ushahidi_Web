@@ -747,7 +747,7 @@ div#report-categories {
     border-top: 1px solid #848484;
     font-size:1.1em;
     font-weight:bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /*div#details-categories {*/
@@ -766,7 +766,7 @@ div#report-categories {
 
 
 #report-categories ul {
-    margin:5px;
+    margin-bottom:1px;
 }
 
 #report-categories ul li {
