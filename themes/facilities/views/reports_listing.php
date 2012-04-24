@@ -14,32 +14,34 @@
 ?>
 		<!-- Top reportbox section-->
 		<div class="rb_nav-controls r-5">
-			<table border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td>
+			<div>
+				<dv>
+					<div>
 						<ul class="link-toggle report-list-toggle lt-icons-and-text">
 							<li class="active"><a href="#rb_list-view" class="list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
 							<li><a href="#rb_map-view" class="map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
 						</ul>
-					</td>
-					<td><?php echo $pagination; ?></td>
-					<td><?php echo $stats_breadcrumb; ?></td>
-					<td class="last">
+					</div>
+					<div><?php echo $pagination; ?></div>
+					<div><?php echo $stats_breadcrumb; ?></div>
+					<div class="last">
 						<ul class="link-toggle lt-icons-only">
 							<?php //@todo Toggle the status of these links depending on the current page ?>
 							<li><a href="#" class="prev" id="page_<?php echo $previous_page; ?>"><?php echo Kohana::lang('ui_main.previous'); ?></a></li>
 							<li><a href="#" class="next" id="page_<?php echo $next_page; ?>"><?php echo Kohana::lang('ui_main.next'); ?></a></li>
 						</ul>
-					</td>
-				</tr>
-			</table>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- /Top reportbox section-->
 		
 		<!-- Report listing -->
+
+
 		<div class="r_cat_tooltip"><a href="#" class="r-3"></a></div>
 		<div class="rb_list-and-map-box">
-			<div id="rb_list-view">
+        <div id="rb_list-view">
 			<?php
 				foreach ($incidents as $incident)
 				{
@@ -98,19 +100,19 @@
 						<div class="r_categories">
 							<h4><?php echo Kohana::lang('ui_main.categories'); ?></h4>
 							<?php foreach ($incident->category as $category): ?>
-								
+
 								<?php // Don't show hidden categories ?>
 								<?php if($category->category_visible == 0) continue; ?>
-						
+
 								<?php if ($category->category_image_thumb): ?>
 									<?php $category_image = url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>
 									<a class="r_category" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-										<span class="r_cat-box"><img src="<?php echo $category_image; ?>" height="16" width="16" /></span> 
+										<span class="r_cat-box"><img src="<?php echo $category_image; ?>" height="16" width="16" /></span>
 										<span class="r_cat-desc"><?php echo $localized_categories[(string)$category->category_title];?></span>
 									</a>
 								<?php else:	?>
 									<a class="r_category" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-										<span class="r_cat-box" style="background-color:#<?php echo $category->category_color;?>;"></span> 
+										<span class="r_cat-box" style="background-color:#<?php echo $category->category_color;?>;"></span>
 										<span class="r_cat-desc"><?php echo $localized_categories[(string)$category->category_title];?></span>
 									</a>
 								<?php endif; ?>
@@ -127,13 +129,13 @@
 								<?php echo $incident_title; ?>
 							</a>
 							<a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>#discussion" class="r_comments">
-								<?php echo $comment_count; ?></a> 
+								<?php echo $comment_count; ?></a>
 								<?php echo $incident_verified; ?>
 							</h3>
 						<p class="r_date r-3 bottom-cap"><?php echo $incident_date; ?></p>
-						<div class="r_description"> <?php echo $incident_description; ?>  
-						  <a class="btn-show btn-more" href="#<?php echo $incident_id ?>"><?php echo Kohana::lang('ui_main.more_information'); ?> &raquo;</a> 
-						  <a class="btn-show btn-less" href="#<?php echo $incident_id ?>">&laquo; <?php echo Kohana::lang('ui_main.less_information'); ?></a> 
+						<div class="r_description"> <?php echo $incident_description; ?>
+						  <a class="btn-show btn-more" href="#<?php echo $incident_id ?>"><?php echo Kohana::lang('ui_main.more_information'); ?> &raquo;</a>
+						  <a class="btn-show btn-less" href="#<?php echo $incident_id ?>">&laquo; <?php echo Kohana::lang('ui_main.less_information'); ?></a>
 						</div>
 						<p class="r_location"><a href="<?php echo url::site(); ?>reports/?l=<?php echo $location_id; ?>"><?php echo $location_name; ?></a></p>
 						<?php
@@ -147,29 +149,30 @@
 			<div id="rb_map-view" style="display:none; width: 590px; height: 384px; border:1px solid #CCCCCC; margin: 3px auto;">
 			</div>
 		</div>
+
 		<!-- /Report listing -->
 		
 		<!-- Bottom paginator -->
 		<div class="rb_nav-controls r-5">
-			<table border="0" cellspacing="0" cellpadding="0">
-				<tr>
-					<td>
+			<div>
+
+					<dv>
 						<ul class="link-toggle report-list-toggle lt-icons-and-text">
 							<li class="active"><a href="#rb_list-view" class="list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
 							<li><a href="#rb_map-view" class="map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
 						</ul>
-					</td>
-					<td><?php echo $pagination; ?></td>
-					<td><?php echo $stats_breadcrumb; ?></td>
-					<td class="last">
-						<ul class="link-toggle lt-icons-only">
+					</div>
+					<dv><?php echo $pagination; ?></div>
+					<div><?php echo $stats_breadcrumb; ?></div>
+					<div class="last" style="display:none;">
+						<ul class="link-toggle lt-icons-only" style="display: none;">
 							<?php //@todo Toggle the status of these links depending on the current page ?>
 							<li><a href="#" class="prev" id="page_<?php echo $previous_page; ?>"><?php echo Kohana::lang('ui_main.previous'); ?></a></li>
 							<li><a href="#" class="next" id="page_<?php echo $next_page; ?>"><?php echo Kohana::lang('ui_main.next'); ?></a></li>
 						</ul>
-					</td>
-				</tr>
-			</table>
+					</div>
+
+			</div>
 		</div>
 		<!-- /Bottom paginator -->
 	        

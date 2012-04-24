@@ -726,8 +726,9 @@ div.report-details{
     border-radius:3px;
 }
 
-.report_detail .r_verified { background:#368C00; }
-.report_detail .r_unverified { background:#A60003; }
+.report_detail .r_verified { background:#368C00; width: 45%; height: 130px;}
+#rb_list-view .unverified { border-left:6px solid #A60003; width:45%; height:130px;}
+
 
 .report_detail .r_location { background: transparent url(../images/icon_sprite.png) -5px -163px no-repeat; }
 .report_detail .r_date { background: transparent url(../images/icon_sprite.png) -4px -133px no-repeat; }
@@ -1932,10 +1933,10 @@ span.required {
 }
 
 /* Rounded Corners */
-.r-3 { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-.r-4 { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
-.r-5 { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
-.r-8 { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
+.r-3 { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; display: none;}
+.r-4 { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; display: none;}
+.r-5 { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; display: none;}
+.r-8 { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; display: none;}
 
 .top-cap {
     -webkit-border-bottom-left-radius: 0px;
@@ -2050,7 +2051,7 @@ version: 1
 */
 
 /* Reports/Filters Layout */
-#reports-box { float:left; width:600px; border: 2px #808080; }
+#reports-box { float:left; width:100%; border: 2px #808080; margin-top: 50px;}
 #filters-box { float:left; width:280px; margin-left:20px; border: 2px #808080; }
 
 
@@ -2111,13 +2112,14 @@ ul.link-toggle li a:hover.next { background-color:#6e6e6e; }
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+
 }
 .rb_nav-controls ul.pager li a:hover,
 .rb_nav-controls ul.pager li.current a { color:#fff; background:#6c6c6c; }
 
 
 /* Heading with tabs */
-.heading { border-bottom:3px solid #c2c2c2; position:relative; }
+.heading { border-bottom:1px solid #c2c2c2; position:relative; margin-top: 100px;}
 a.ic-time {
     font-size:12px;
     font-weight:normal;
@@ -2165,17 +2167,22 @@ p.labeled-divider span { position:relative; top:-8px; display:inline-block; back
 
 /* Report List View */
 .rb_report { position:relative; border-top:1px solid #c0c2b8; overflow:auto; padding-bottom:10px; }
-#rb_list-view { padding:18px 0 0 0; overflow:auto; }
+#rb_list-view { overflow:auto; width: 100%;
+    padding-top: 50px;}
+
 #rb_list-view .rb_report {
     position:relative;
     border:1px solid #c0c2b8;
     overflow:auto;
     margin-bottom:10px;
+    
     padding:0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border-left:6px solid #368C00;
+    width:45%; height:130px;
+    float: left;
 }
 #rb_list-view .verified { border-left:6px solid #368C00; }
 #rb_list-view .unverified { border-left:6px solid #A60003; }
@@ -2406,13 +2413,6 @@ a.filter-button:hover { text-decoration:none; background:#707070;  }
 #accordion .ui-accordion-header a.hide { display:none; }
 
 .ui-datepicker { display:none; } /* fixes bug where an empty datepicker div was showing up on the bottom of the reports page */
-
-
-/* Rounded Corners */
-.r-3 { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
-.r-4 { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
-.r-5 { -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
-.r-8 { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
 
 .top-cap {
     -webkit-border-bottom-left-radius: 0px;
