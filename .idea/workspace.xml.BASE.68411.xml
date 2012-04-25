@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d53c4dc2-9e6c-4a4d-ae4c-d1f636b4b19f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/krystiano.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webResources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/default/css/style.css" afterPath="$PROJECT_DIR$/themes/default/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/default/views/header.php" afterPath="$PROJECT_DIR$/themes/default/views/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/default/views/reports_comments.php" afterPath="$PROJECT_DIR$/themes/default/views/reports_comments.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/facilities/css/style.css" afterPath="$PROJECT_DIR$/themes/facilities/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/facilities/views/reports.php" afterPath="$PROJECT_DIR$/themes/facilities/views/reports.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/themes/facilities/views/reports_listing.php" afterPath="$PROJECT_DIR$/themes/facilities/views/reports_listing.php" />
     </list>
     <ignored path="USaskHealthMap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,19 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/facilities/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2521" column="14" selection-start="57360" selection-end="57364" vertical-scroll-proportion="-26.615385">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="32" selection-start="5297" selection-end="5297" vertical-scroll-proportion="-12.346154">
+            <state line="764" column="24" selection-start="13744" selection-end="13744" vertical-scroll-proportion="0.6715425">
               <folding />
             </state>
           </provider>
@@ -53,25 +37,7 @@
       <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/facilities/views/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="174" selection-end="190" vertical-scroll-proportion="-5.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_map.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/facilities/views/main_map.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reports.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/reports.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="45" selection-start="4879" selection-end="4903" vertical-scroll-proportion="20.384615">
+            <state line="158" column="0" selection-start="5802" selection-end="5802" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -80,25 +46,16 @@
       <file leaf-file-name="reports.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="43" selection-end="82" vertical-scroll-proportion="-1.875">
+            <state line="89" column="16" selection-start="3819" selection-end="3819" vertical-scroll-proportion="-15.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports_listing.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports_listing.php">
+      <file leaf-file-name="reports_listing.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/default/views/reports_listing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="22" selection-start="2747" selection-end="2747" vertical-scroll-proportion="1.1332418">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/helpers/category.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="49" selection-start="3217" selection-end="3239" vertical-scroll-proportion="0.0">
+            <state line="24" column="0" selection-start="957" selection-end="1044" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,21 +81,18 @@
         <option value="$PROJECT_DIR$/themes/facilities/views/header.php" />
         <option value="$PROJECT_DIR$/themes/facilities/views/footer.php" />
         <option value="$PROJECT_DIR$/themes/facilities/views/main_map.php" />
-        <option value="$PROJECT_DIR$/themes/facilities/css/style.css" />
         <option value="$PROJECT_DIR$/themes/facilities/views/main.php" />
         <option value="$PROJECT_DIR$/themes/default/views/reports_listing.php" />
         <option value="$PROJECT_DIR$/themes/facilities/views/reports.php" />
-        <option value="$PROJECT_DIR$/themes/facilities/views/reports_listing.php" />
         <option value="$PROJECT_DIR$/themes/facilities/css/style.css" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="14" />
-    <option name="y" value="39" />
-    <option name="width" value="1252" />
-    <option name="height" value="735" />
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="874" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -206,6 +160,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -220,11 +175,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="USaskHealthMap" />
-=======
-              <option name="myItemId" value="Ushahidi_Web" />
->>>>>>> parent of 18cef74... Added data
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -234,11 +185,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="USaskHealthMap" />
-=======
-              <option name="myItemId" value="Ushahidi_Web" />
->>>>>>> parent of 18cef74... Added data
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -252,11 +199,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-<<<<<<< HEAD
               <option name="myItemId" value="USaskHealthMap" />
-=======
-              <option name="myItemId" value="Ushahidi_Web" />
->>>>>>> parent of 18cef74... Added data
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -275,8 +218,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="USaskHealthMap" />
-=======
-              <option name="myItemId" value="Ushahidi_Web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -288,54 +229,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="USaskHealthMap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="USaskHealthMap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="USaskHealthMap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="USaskHealthMap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="web-ide.project.structure" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" scope="Directory">
@@ -379,15 +287,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="39" width="1252" height="735" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24663678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31840795" sideWeight="0.75336325" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -396,6 +303,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24663678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -453,11 +361,24 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sql/upgrade18-19.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/upgrade19-20.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/upgrade.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="262" column="0" selection-start="9151" selection-end="9151" vertical-scroll-proportion="0.2638037" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sql/upgrade13-14.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sql/upgrade12-13.sql">
@@ -475,9 +396,35 @@
         <state line="1424" column="10" selection-start="51238" selection-end="51238" vertical-scroll-proportion="2.1042945" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports_view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="188" column="20" selection-start="6706" selection-end="6706" vertical-scroll-proportion="0.4745223">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/reports_js.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="421" column="12" selection-start="11299" selection-end="11299" vertical-scroll-proportion="0.35" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/reports.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="36" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.073275864" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/facilities/views/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="0" selection-start="5802" selection-end="5802" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/default/views/reports_listing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="957" selection-end="1044" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/main_js.php">
@@ -487,72 +434,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/category.php">
+    <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="49" selection-start="3217" selection-end="3239" vertical-scroll-proportion="0.0">
+        <state line="89" column="16" selection-start="3819" selection-end="3819" vertical-scroll-proportion="-15.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/facilities/views/main_map.php">
+    <entry file="file://$PROJECT_DIR$/themes/facilities/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/facilities/views/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="174" selection-end="190" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="32" selection-start="5297" selection-end="5297" vertical-scroll-proportion="-12.346154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="13" selection-start="6459" selection-end="6459" vertical-scroll-proportion="3.6639676">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="18" selection-start="7105" selection-end="7105" vertical-scroll-proportion="-37.041668">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/reports.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="45" selection-start="4879" selection-end="4903" vertical-scroll-proportion="20.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/reports.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="43" selection-end="82" vertical-scroll-proportion="-1.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/default/views/reports_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2521" column="14" selection-start="57360" selection-end="57364" vertical-scroll-proportion="-26.615385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/facilities/views/reports_listing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="22" selection-start="2747" selection-end="2747" vertical-scroll-proportion="1.1332418">
+        <state line="764" column="24" selection-start="13744" selection-end="13744" vertical-scroll-proportion="0.6715425">
           <folding />
         </state>
       </provider>

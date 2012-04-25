@@ -274,6 +274,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="USaskHealthMap" />
 =======
               <option name="myItemId" value="Ushahidi_Web" />
