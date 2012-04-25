@@ -750,21 +750,6 @@ div#report-categories {
     margin-bottom: 20px;
 }
 
-/*div#details-categories {*/
-    /*position:absolute;*/
-    /*bottom:0px;*/
-
-    /*width:100%;*/
-    /*left:0px;*/
-    /*overflow:hidden;*/
-    /*background-color: #F2F2F2;*/
-    /*padding:10px;*/
-    /*border-top: 1px solid #848484;*/
-    /*font-size:1.1em;*/
-    /*font-weight:bold;*/
-    /*position: fixed;*/
-
-
 #report-categories ul {
     margin:5px;
 }
@@ -777,11 +762,13 @@ div#report-categories {
 }
 
 #report-categories a.active{
-
     text-decoration: none;
     background: #848484;
     color:#FFFFFF;
+}
 
+div#report-categories .item-count {
+    display:none;
 }
 
 div.report-media { padding:10px 0; border-bottom:1px dotted #C0C2B8;; }
@@ -2051,7 +2038,7 @@ version: 1
 */
 
 /* Reports/Filters Layout */
-#reports-box { float:left; width:100%; border: 2px #808080; margin-top: 50px;}
+#reports-box { float:left; width:100%; }
 #filters-box { float:left; width:280px; margin-left:20px; border: 2px #808080; }
 
 
@@ -2192,11 +2179,11 @@ p.labeled-divider span { position:relative; top:-8px; display:inline-block; back
 .r_video { }
 .r_video a { display:inline-block; font-size:11px; background:transparent url(../../default/images/icon_sprite.png) -3px -100px no-repeat; padding:4px 0 3px 23px; }
 
-.r_categories { position:relative; margin-top:10px; display:none; }
+.r_categories { position:relative; margin-top:10px; }
 .r_categories h4 { font-size:10px; padding:0; margin:0 0 4px 0; border-bottom:1px solid #c0c2b8; text-transform: uppercase; }
 a.r_category { display:block; position:relative; float:left; height:16px;    width:16px; margin:0 4px 4px 0; }
 a.r_category span.r_cat-box { display:block; height:16px;    width:16px; background:transparent; }
-span.r_cat-desc { display:none; }
+span.r_cat-desc {  }
 
 .r_cat_tooltip {
     display:none;
@@ -2504,3 +2491,34 @@ div.ci_checkin {
     overflow:auto;
 }
 
+div.report_card {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+    background-color:#F2F2F2;
+    float:left;
+    width:47%;
+    padding:10px;
+    margin-bottom:10px;
+    margin-right:10px;
+}
+
+div.report_card .report_thumbnail {
+    float:left;
+    margin-right:10px;
+}
+
+div.report_card .report_title {
+    font-size:1.5em;
+}
+
+div.report_card .report_location {
+    float:left;
+    margin-right:10px;
+}
+
+div.report_card .report_categories {
+    float:left;
+    margin-right:10px;
+}
