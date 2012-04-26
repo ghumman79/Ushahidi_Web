@@ -13,47 +13,132 @@ body {
     background-color:#FFFFFF;
 }
 
-div#header {
-    position:absolute;
-    top:0px;
-    left:0px;
-    height:90px;
-    width:100%;
-    overflow:hidden;
-    background-color: #FAFAFA;
+div.hidden {
+    display:none
 }
 
-div#middle {
+div#header {
     position:absolute;
-    top:90px;
-    bottom:165px;
-    left:0px;
+    top:0;
+    left:0;
+    height:70px;
     width:100%;
-    overflow:auto;
-    overflow-x: hidden;
+    overflow:hidden;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #BDBDBD;
 }
 
 div#footer {
     position:absolute;
-    bottom:0px;
+    bottom:0;
     height:15px;
     width:100%;
-    left:0px;
-    overflow:hidden;
-    background-color: #E6E6E6;
-    border-top: 1px solid #848484;
-}
-
-div#bottom {
-    position:absolute;
-    bottom:15px;
-    height:150px;
-    width:100%;
-    left:0px;
+    left:0;
     overflow:hidden;
     background-color: #F2F2F2;
-    border-top: 1px solid #848484;
+    border-top: 1px solid #BDBDBD;
+}
 
+div#middle {
+    position:absolute;
+    top:70px;
+    bottom:15px;
+    left:0;
+    width:100%;
+    overflow:hidden;
+    overflow-x:hidden;
+}
+
+div#categories {
+    position:absolute;
+    bottom:15px;
+    height:50px;
+    width:100%;
+    left:0;
+    overflow:hidden;
+    background-color: #FAFAFA;
+    border-top: 1px solid #BDBDBD;
+}
+
+div#navigation {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:40px;
+    background-color: #FAFAFA;
+}
+
+div#navigation .toggle {
+   float:right;
+    height:40px;
+    margin-top:13px;
+    margin-right:0px;
+}
+
+div#navigation .toggle .active {
+    background-color:#D8D8D8;
+}
+
+div#navigation .toggle li {
+    padding-left:50px;
+    padding-right:50px;
+    margin-right:8px;
+    font-weight:bold;
+}
+
+div#navigation .pagination {
+    float:left;
+}
+
+div#navigation .breadcrumb {
+    float:left;
+    color:#848484;
+    margin-top:14px;
+    font-size:12px;
+}
+
+div#navigation ul,
+div#categories ul {
+   margin-top:10px;
+   margin-left:0px;
+}
+
+div#navigation ul li,
+div#categories ul li {
+    display: inline;
+    list-style-type: none;
+    padding-right:20px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -khtml-border-radius:5px;
+    background-color: #F2F2F2;
+    border: 1px solid #BBB;
+    text-align:center;
+    padding:4px 5px 4px 5px;
+    color:#424242;
+}
+
+div#categories ul {
+    margin-left:10px;
+    margin-top:15px;
+}
+
+div#categories ul li {
+    margin-right:8px;
+}
+
+div#categories .item-count {
+    display:none;
+}
+
+div#reports {
+    position:absolute;
+    top:40px;
+    bottom:65px;
+    width:100%;
+    overflow:auto;
+    overflow-x:hidden;
 }
 
 div#footer img#ushahidi {
@@ -64,6 +149,41 @@ div#footer img#ushahidi {
     border-width: 0;
     background: url(../images/footer-logo.png) 0 0 no-repeat;
 }
+
+div.report_card {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+    background-color:#F2F2F2;
+    float:left;
+    width:47%;
+    padding:10px;
+    margin-bottom:10px;
+    margin-right:10px;
+}
+
+div.report_card .report_thumbnail {
+    float:left;
+    margin-right:10px;
+}
+
+div.report_card .report_title {
+    font-size:1.5em;
+}
+
+div.report_card .report_location {
+    float:left;
+    margin-right:10px;
+}
+
+div.report_card .report_categories {
+    float:left;
+    margin-right:10px;
+}
+
+/* ############################################ OLD CSS ############################################ */
+/* ############################################ OLD CSS ############################################ */
 
 fieldset,img {
     border: 0;
@@ -146,7 +266,7 @@ div#logo{
     background-color:transparent;
     padding: 10px 4px;
     float: left;
-    margin: 12px 0 0 12px;
+    margin: 0px 0 0 12px;
     text-align: left;
 }
 
@@ -162,6 +282,7 @@ div#logo a {
 
 div#logo span{
     font-size:14px;
+    color:#848484;
 }
 
 
@@ -253,7 +374,8 @@ div#searchbox{
     border: none;
     width:600px;
     padding:0 0 10px 0;
-    margin-right: 20px;
+    margin-top:10px;
+    margin-right: 10px;
 }
 
 div#searchbox input[type=text] {
@@ -311,7 +433,7 @@ div.search-form input.text{
     padding: 2px 0px 2px 0px;
     border: #9E9E9E 1px solid;
     margin: 0;
-    background: #EEEEEE;
+    background-color: #FAFAFA;
     width: 160px;
     font-size: 13px;
 }
@@ -679,8 +801,8 @@ div.footermenu ul li{
 }
 
 div.footermenu ul li a{
-    color: #000000;
-    border-left: #000000 1px solid;
+    color: #6E6E6E;
+    border-left: #A4A4A4 1px solid;
     padding: 0 10px;
     text-decoration: none;
     font-weight:bold;
@@ -2156,8 +2278,7 @@ p.labeled-divider span { position:relative; top:-8px; display:inline-block; back
 
 /* Report List View */
 .rb_report { position:relative; border-top:1px solid #c0c2b8; overflow:auto; padding-bottom:10px; }
-#rb_list-view { overflow:auto; width: 100%;
-    padding-top: 50px;}
+#rb_list-view { overflow:auto; width: 100%; padding-left:10px;padding-top:10px;}
 
 #rb_list-view .rb_report {
     position:relative;
@@ -2491,36 +2612,4 @@ div.ci_checkin {
 * html div#content{
     height:100%;
     overflow:auto;
-}
-
-div.report_card {
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px; /* future proofing */
-    -khtml-border-radius: 10px; /* for old Konqueror browsers */
-    background-color:#F2F2F2;
-    float:left;
-    width:47%;
-    padding:10px;
-    margin-bottom:10px;
-    margin-right:10px;
-}
-
-div.report_card .report_thumbnail {
-    float:left;
-    margin-right:10px;
-}
-
-div.report_card .report_title {
-    font-size:1.5em;
-}
-
-div.report_card .report_location {
-    float:left;
-    margin-right:10px;
-}
-
-div.report_card .report_categories {
-    float:left;
-    margin-right:10px;
 }

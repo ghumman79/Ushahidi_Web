@@ -66,15 +66,6 @@ elseif (count($uri_segments) >= 2)
         <?php } ?>
         <!-- / logo -->
 
-
-        <!-- mainmenu -->
-        <div id="mainmenu" class="clearingfix">
-            <ul>
-                <?php nav::main_tabs($this_page); ?>
-            </ul>
-        </div>
-        <!-- / mainmenu -->
-
         <!-- submit incident -->
 <!--        --><?php //echo $submit_btn; ?>
         <!-- / submit incident -->
