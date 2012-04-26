@@ -67,7 +67,7 @@ elseif (count($uri_segments) >= 2)
         <!-- / logo -->
 
         <!-- submit incident -->
-<!--        --><?php //echo $submit_btn; ?>
+        <?php echo $submit_btn; ?>
         <!-- / submit incident -->
 
     </div>

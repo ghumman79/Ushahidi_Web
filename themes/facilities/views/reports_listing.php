@@ -31,12 +31,10 @@
                 }
             ?>
             <div id="<?php echo $incident_id ?>" class="report_card">
-                <div class="report_thumbnail">
-                    <a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                        <img src="<?php echo $incident_thumb; ?>" style="max-width:89px;max-height:59px;" />
-                    </a>
-                </div>
-                <div style="float:left">
+                <a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                    <img src="<?php echo $incident_thumb; ?>" style="max-width:89px;max-height:59px;" />
+                </a>
+                <div class="report_details">
                     <div class="report_title">
                         <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                             <?php echo $incident_title; ?>
@@ -65,6 +63,7 @@
                         <?php endforeach; ?>
                     </div>
                     <div class="report_description"><?php echo $incident_description; ?></div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         <?php } ?>

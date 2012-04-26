@@ -16,6 +16,9 @@ body {
 div.hidden {
     display:none
 }
+div.clearfix {
+    clear: both;
+}
 
 div#header {
     position:absolute;
@@ -75,15 +78,23 @@ div#navigation .toggle {
     margin-right:0px;
 }
 
-div#navigation .toggle .active {
+div#navigation ul.toggle .active {
     background-color:#D8D8D8;
 }
 
-div#navigation .toggle li {
+div#navigation ul.toggle li {
     padding-left:50px;
     padding-right:50px;
     margin-right:8px;
     font-weight:bold;
+}
+
+div#navigation ul.toggle a.map {
+    background:transparent url("../images/icon_sprite-2.png") 2px -80px no-repeat;
+}
+
+div#navigation ul.toggle a.list {
+    background:transparent url("../images/icon_sprite-2.png") 2px -29px no-repeat;
 }
 
 div#navigation .pagination {
@@ -168,18 +179,32 @@ div.report_card .report_thumbnail {
     margin-right:10px;
 }
 
+div.report_card img {
+    float:left;
+    margin-right:10px;
+}
+
+div.report_card .report_details {
+    display: inline;
+}
+
 div.report_card .report_title {
     font-size:1.5em;
+    font-weight: bold;
 }
 
 div.report_card .report_location {
-    float:left;
+    display:inline;
     margin-right:10px;
 }
 
 div.report_card .report_categories {
-    float:left;
+    display:inline;
     margin-right:10px;
+}
+
+div.report_card .report_description {
+    display:block;
 }
 
 /* ############################################ OLD CSS ############################################ */
