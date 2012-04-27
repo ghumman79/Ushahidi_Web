@@ -8,12 +8,12 @@
     <!-- footer menu -->
     <div class="footermenu">
         <ul class="clearingfix">
-            <li><a class="item1" href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
-            <li><a href="/main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
+            <li><a class="item1" href="/main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
             <li><a href="/reports"><?php echo Kohana::lang('ui_main.reports'); ?></a></li>
             <?php
             Event::run('ushahidi_action.nav_main_bottom');
             ?>
+            <li><a href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
         </ul>
         <?php if($site_copyright_statement != '') { ?>
         <p><?php echo $site_copyright_statement; ?></p>
