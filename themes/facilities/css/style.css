@@ -10,6 +10,7 @@ html, body {
     height:100%
 }
 body {
+    background-image: none;
     background-color:#FFFFFF;
 }
 
@@ -978,6 +979,7 @@ div.report-comments h5 {
 div.report-comment-box {
     margin-bottom:15px;
     padding:5px 0 0 10px;
+    float: left;
 
 }
 
