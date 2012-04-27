@@ -418,6 +418,8 @@
 	 */
 	 function switchViews(view)
 	 {
+        //alert("switchViews");
+
 		 // Hide both divs
 		$("#rb_list-view, #rb_map-view").hide();
 		

@@ -1,5 +1,5 @@
 <div id="navigation">
-    <ul class="toggle">
+    <ul class="toggle report-list-toggle">
         <li class="active"><a href="#rb_list-view" class="list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
         <li><a href="#rb_map-view" class="map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
     </ul>
