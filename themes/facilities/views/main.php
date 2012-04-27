@@ -140,7 +140,6 @@ $bottom_height=$bottom_height+10;
 </div>
 <!-- / category filters -->
 
-
 </div>
 
 <script type="text/javascript">$(document).ready(function(){
@@ -156,16 +155,5 @@ $bottom_height=$bottom_height+10;
             }
         });
     });
-
-
-//    $topCategory.each(function(index, $el){
-//        $subCategory = $("li[parent-id="+ $el.id +"]");
-//        $subCategory.each(function(subIndex, $subEl){
-//            console.log($el.id + "-" + subIndex);
-//        });
-//    });
-//    debugger;
-    console.log("d");
-
 });
 </script>

@@ -50,6 +50,8 @@ div#middle {
     width:100%;
     overflow:hidden;
     overflow-x:hidden;
+    border-top: 1px solid #BDBDBD;
+    border-bottom: 1px solid #BDBDBD;
 }
 
 div#categories {
@@ -69,6 +71,7 @@ div#navigation {
     width:100%;
     height:40px;
     background-color: #FAFAFA;
+    border-bottom: 1px solid #BDBDBD;
 }
 
 div#navigation .toggle {
@@ -87,6 +90,10 @@ div#navigation ul.toggle li {
     padding-right:50px;
     margin-right:8px;
     font-weight:bold;
+}
+
+div#navigation ul.toggle a {
+    padding:3px 5px 3px 25px;
 }
 
 div#navigation ul.toggle a.map {
@@ -140,6 +147,10 @@ div#categories ul li {
 }
 
 div#categories .item-count {
+    display:none;
+}
+
+div#categories .item-swatch {
     display:none;
 }
 
