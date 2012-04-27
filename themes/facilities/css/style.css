@@ -184,6 +184,7 @@ div.report_card {
     padding:10px;
     margin-bottom:10px;
     margin-right:10px;
+
 }
 
 div.report_card .report_thumbnail {
@@ -990,7 +991,6 @@ div.report-comments h5 {
 div.report-comment-box {
     margin-bottom:15px;
     padding:5px 0 0 10px;
-    float: left;
 
 }
 

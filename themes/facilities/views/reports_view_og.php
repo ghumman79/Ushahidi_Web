@@ -132,13 +132,6 @@
     </div>
 
 
-
-    <?php
-    // Filter::comments_form_block - The block that contains the comments form
-    Event::run('ushahidi_filter.comment_form_block', $comments_form);
-    echo $comments_form;
-    ?>
-
 </div>
 
 <div class="right-col">
