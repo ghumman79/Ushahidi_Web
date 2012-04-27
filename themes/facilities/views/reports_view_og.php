@@ -119,7 +119,6 @@
                 </tr>
             </table>
         </div>
-    </div>
 
     <?php
     // Action::report_extra - Allows you to target an individual report right after the description
@@ -129,6 +128,10 @@
     Event::run('ushahidi_filter.comment_block', $comments);
     echo $comments;
     ?>
+
+    </div>
+
+
 
     <?php
     // Filter::comments_form_block - The block that contains the comments form
