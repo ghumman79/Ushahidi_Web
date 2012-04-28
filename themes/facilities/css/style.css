@@ -33,7 +33,7 @@ div#header {
 }
 
 div#footer {
-    position:absolute;
+    position:fixed;
     bottom:0;
     height:15px;
     width:100%;
@@ -910,11 +910,10 @@ div.footer-credits{
 /* Reports */
 
 #main .left-col { float:left; width:520px; margin-right:20px }
-#main .right-col { float:right;width:350px; }
+#main .right-col { float:right;width:45%; }
 
 div.report-details{
     width: 300px;
-    float: right;
     margin: 20px 0 0 0;
 }
 
@@ -1080,6 +1079,7 @@ div.report-media-box-tabs .report-tab-selected a:hover { text-decoration:none; }
 div.report-media-box-content {
     clear: both;
     padding:5px 0px;
+    width: 100%;
 }
 
 div.report-media-box {
@@ -1244,7 +1244,7 @@ div.location{
 
 div.report-map{
     margin-bottom:10px;
-    width: 650px;
+    width: 100%;
 
 
 
@@ -1271,7 +1271,7 @@ div.incident-notation ul li{
 /* media files */
 .report-map .map-holder {
     clear:both;
-    width:650px;
+    width:100%;
     height:350px;
     border: 1px solid #C0C2B8;
     border-bottom:2px solid #C0C2B8;
@@ -2697,4 +2697,17 @@ div.ci_checkin {
 * html div#content{
     height:100%;
     overflow:auto;
+}
+
+
+#right-column{
+    width: 45%;
+    height: 100%;
+    float: right;
+}
+
+#left-column{
+    width: 45%%;
+    height: 100%;
+    float: left;
 }
