@@ -31,7 +31,7 @@
                 }
             ?>
             <div id="<?php echo $incident_id ?>" class="report_card">
-                <a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                     <img src="<?php echo $incident_thumb; ?>" />
                 </a>
                 <div class="report_details">
