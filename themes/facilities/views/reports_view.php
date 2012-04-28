@@ -1,8 +1,9 @@
-<div id="main" class="report_detail">
+<div id="middle">
 
-<div id="left-col" style="float: left; width:45%; background: transparent" >
 
-    <div class="report-map" style="margin-top: 100px; margin-left: 20px; position: relative;">
+ <div id="left-col" style="float: left; width:45%; background: transparent" >
+
+   <div class="report-map" style="margin-top: 100px; margin-left: 20px; position: fixed;">
     <div class="map-holder" id="map">
         <div class="report-category-list">
             <p>
@@ -117,46 +118,42 @@
         }
     }?>
 
-        <div class="credibility">
-            <table class="rating-table" cellspacing="0" cellpadding="0" border="0">
-                <tr>
-                    <td><?php echo Kohana::lang('ui_main.credibility');?>:</td>
-                    <td><a href="javascript:rating('<?php echo $incident_id; ?>','add','original','oloader_<?php echo $incident_id; ?>')"><img id="oup_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/up.png" alt="UP" title="UP" border="0" /></a></td>
-                    <td><a href="javascript:rating('<?php echo $incident_id; ?>','subtract','original')"><img id="odown_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/down.png" alt="DOWN" title="DOWN" border="0" /></a></td>
-                    <td><a href="" class="rating_value" id="orating_<?php echo $incident_id; ?>"><?php echo $incident_rating; ?></a></td>
-                    <td><a href="" id="oloader_<?php echo $incident_id; ?>" class="rating_loading" ></a></td>
-                </tr>
-            </table>
-        </div>
 
+
+
+    <div style="margin-bottom: 40px">
         <?php
         // Action::report_extra - Allows you to target an individual report right after the description
         Event::run('ushahidi_action.report_extra', $incident_id);
-        ?>
-    <div style="margin-bottom: 40px">
-        <?php
+
         // Filter::comments_block - The block that contains posted comments
         Event::run('ushahidi_filter.comment_block', $comments);
         echo $comments;
         ?>
-
-        <?php
-        // Filter::comments_form_block - The block that contains the comments form
-        Event::run('ushahidi_filter.comment_form_block', $comments_form);
-        echo $comments_form;
-        ?>
     </div>
 
+    <div style="margin-bottom: 20px;>
+      <?php
+      // Filter::comments_form_block - The block that contains the comments form
+      Event::run('ushahidi_filter.comment_form_block', $comments_form);
+      echo $comments_form;
+      ?>
     </div>
 
+ </div>
 
-</div>
 
 
-</div>
+
+
 
 
     <div id="right-col" style="margin-top: 80px; float: right; padding-right: 20px; width:45%; background: transparent">
+        <div class="report-description-text" style="padding-top:2px " >
+            <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
+            <?php echo $incident_description; ?>
+            <br/>
+        </div>
 
 
         <div class="report-category-list">
@@ -193,11 +190,7 @@
             ?>
         </div>
 
-        <div class="report-description-text" style="padding-top:2px " >
-            <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
-            <?php echo $incident_description; ?>
-            <br/>
-        </div>
+
 
         <div class="report-additional-reports" style="margin-right: 40px">
             <h4><?php echo Kohana::lang('ui_main.additional_reports');?></h4>
@@ -208,9 +201,12 @@
                 <p class="r_location"><?php echo $neighbor->location_name.", ".round($neighbor->distance, 2); ?> Kms</p>
             </div>
             <?php } ?>
+
         </div>
 
-
+        </div>
     </div>
 
 </div>
+
+
