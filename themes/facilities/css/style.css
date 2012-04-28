@@ -76,10 +76,19 @@ div#navigation {
 }
 
 div#navigation .toggle {
-   float:right;
+    float:right;
     height:40px;
-    margin-top:13px;
+    margin-top:8px;
     margin-right:0px;
+}
+
+div#navigation ul.toggle a {
+    padding:3px 5px 3px 25px;
+    background-color:transparent;
+    background-position:0 2px;
+    background-repeat:no-repeat;
+    text-transform: uppercase;
+    text-align:center;
 }
 
 div#navigation ul.toggle .active {
@@ -87,22 +96,22 @@ div#navigation ul.toggle .active {
 }
 
 div#navigation ul.toggle li {
-    padding-left:50px;
-    padding-right:50px;
+    float:left;
     margin-right:8px;
     font-weight:bold;
+    width:150px;
 }
 
-div#navigation ul.toggle a {
-    padding:3px 5px 3px 25px;
+div#navigation ul.toggle a.navigation_list {
+    background-image:url("../images/list.png");
 }
 
-div#navigation ul.toggle a.map {
-    background:transparent url("../images/icon_sprite-2.png") 2px -80px no-repeat;
+div#navigation ul.toggle a.navigation_map {
+    background-image:url("../images/map.png");
 }
 
-div#navigation ul.toggle a.list {
-    background:transparent url("../images/icon_sprite-2.png") 2px -29px no-repeat;
+div#navigation ul.toggle a.navigation_gallery {
+    background-image:url("../images/gallery.png");
 }
 
 div#navigation .pagination {
@@ -176,9 +185,10 @@ div#footer img#ushahidi {
 div.report_card {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    border-radius: 10px; /* future proofing */
-    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+    border-radius: 10px;
+    -khtml-border-radius: 10px;
     background-color:#F2F2F2;
+    border: 1px solid #BDBDBD;
     float:left;
     width:47%;
     padding:10px;
@@ -195,6 +205,8 @@ div.report_card .report_thumbnail {
 div.report_card img {
     float:left;
     margin-right:10px;
+    max-width:89px;
+    max-height:59px;
 }
 
 div.report_card .report_details {
@@ -218,6 +230,24 @@ div.report_card .report_categories {
 
 div.report_card .report_description {
     display:block;
+}
+
+div.report_thumbnail {
+    float:left;
+    width:200px;
+    height:133px;
+    margin-left:5px;
+    margin-top:5px;
+    margin-right:5px;
+    margin-bottom:5px;
+    background-image:url(../images/report-thumb-gallery.jpg);
+}
+div.report_thumbnail img {
+    width:200px;
+    height:133px;
+    max-width:200px;
+    max-height:133px;
+    border: 1px solid #BDBDBD;
 }
 
 ul.column {
@@ -495,7 +525,7 @@ div.search-form input.text{
 
 div.search-form input.searchbtn{
     border: #868686 1px solid;
-    background: #EEEEEE url(../images/search-button.png) 3px 3px no-repeat;
+    background: #EEEEEE url(../images/search.png) 3px 3px no-repeat;
     width: 28px;
     height: 28px;
     margin: 0 0 0 2px;
