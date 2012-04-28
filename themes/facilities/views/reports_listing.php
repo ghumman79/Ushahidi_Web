@@ -1,7 +1,8 @@
 <div id="navigation">
     <ul class="toggle report-list-toggle">
-        <li class="active"><a href="#rb_list-view" class="list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
-        <li><a href="#rb_map-view" class="map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
+        <li class="active"><a href="#rb_list-view" class="navigation_list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
+        <li><a href="#rb_map-view" class="navigation_map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
+        <li><a href="#rb_gallery-view" class="navigation_gallery">Gallery</a></li>
     </ul>
     <div class="pagination"><?php echo $pagination; ?></div>
     <div class="breadcrumb"><?php echo $stats_breadcrumb; ?></div>
@@ -18,7 +19,6 @@
                 $incident_description = $incident->incident_description;
                 $location_id = $incident->location_id;
                 $location_name = $incident->location->location_name;
-                $comment_count = $incident->comment->count();
                 $incident_thumb = url::file_loc('img')."media/img/report-thumb-default.jpg";
                 $media = $incident->media;
                 if ($media->count()) {
@@ -32,7 +32,7 @@
             ?>
             <div id="<?php echo $incident_id ?>" class="report_card">
                 <a href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                    <img src="<?php echo $incident_thumb; ?>" style="max-width:89px;max-height:59px;" />
+                    <img src="<?php echo $incident_thumb; ?>" />
                 </a>
                 <div class="report_details">
                     <div class="report_title">
@@ -69,5 +69,31 @@
         <?php } ?>
         </div>
         <div id="rb_map-view" style="display:none;width:100%;height:900px;margin:0;"></div>
+        <div id="rb_gallery-view" style="display:none;">
+            <?php
+            foreach ($incidents as $incident) {
+                $incident = ORM::factory('incident', $incident->incident_id);
+                $incident_id = $incident->id;
+                $incident_title = $incident->incident_title;
+                $incident_description = $incident->incident_description;
+                $location_id = $incident->location_id;
+                $incident_thumb = url::site() . "/themes/facilities/images/report-gallery.jpg";
+                $media = $incident->media;
+                if ($media->count()) {
+                    foreach ($media as $photo) {
+                        if ($photo->media_thumb) { // Get the first thumb
+                            $incident_thumb = url::convert_uploaded_to_abs($photo->media_medium);
+                            break;
+                        }
+                    }
+                }
+                ?>
+                <div class="report_thumbnail">
+                    <a title="<?php echo $incident_title . ' - ' . $incident_description; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                        <img src="<?php echo $incident_thumb; ?>" />
+                    </a>
+                </div>
+                <?php } ?>
+        </div>
     </div>
 </div>
