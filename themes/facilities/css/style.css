@@ -55,17 +55,6 @@ div#middle {
     border-bottom: 1px solid #BDBDBD;
 }
 
-div#categories {
-    position:absolute;
-    bottom:15px;
-    height:50px;
-    width:100%;
-    left:0;
-    overflow:hidden;
-    background-color: #FAFAFA;
-    border-top: 1px solid #BDBDBD;
-}
-
 div#navigation {
     position:absolute;
     top:0;
@@ -147,6 +136,17 @@ div#categories ul li {
     color:#424242;
 }
 
+div#categories {
+    position:absolute;
+    bottom:15px;
+    height:50px;
+    width:100%;
+    left:0;
+    overflow:hidden;
+    background-color: #FAFAFA;
+    border-top: 1px solid #BDBDBD;
+}
+
 div#categories ul {
     margin-left:10px;
     margin-top:15px;
@@ -154,6 +154,11 @@ div#categories ul {
 
 div#categories ul li {
     margin-right:8px;
+}
+
+div#categories ul li.selected,
+div#categories ul a.selected {
+    background-color:#D8D8D8;
 }
 
 div#categories .item-count {
@@ -194,7 +199,6 @@ div.report_card {
     padding:10px;
     margin-bottom:10px;
     margin-right:10px;
-
 }
 
 div.report_card .report_thumbnail {
@@ -238,8 +242,8 @@ div.report_thumbnail {
     height:133px;
     margin-left:10px;
     margin-top:10px;
-    margin-right:2px;
-    margin-bottom:2px;
+    margin-right:3px;
+    margin-bottom:3px;
     background-image:url(../images/report-thumb-gallery.jpg);
 }
 div.report_thumbnail img {
