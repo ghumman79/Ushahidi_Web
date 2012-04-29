@@ -1,75 +1,96 @@
-<div id="middle">
+<div id="middle"  style="overflow: scroll;">
 
+<!--    left column starts-->
 
- <div id="left-col" style="float: left; width:45%; background: transparent" >
+    <div id="left-column" style="margin-left:20px; margin-top: 20px">
 
-   <div class="report-map" style="margin-top: 100px; margin-left: 20px; position: fixed;">
-    <div class="map-holder" id="map">
-        <div class="report-category-list">
-            <p>
+        <!-- map display starts-->
+        <div id="report-map" class="report-map">
+            <div class="map-holder" id="map">
+
+            </div>
+        </div>
+        <!-- /map display ends-->
+
+        <!-- report media box starts-->
+        <div class="report-media-box-content">
+            <?php
+            // Action::report_display_media - Add content just above media section
+            Event::run('ushahidi_action.report_display_media', $incident_id);
+            ?>
+
+            <!-- start report media with photos and videos-->
+            <div class="<?php if( count($incident_photos) > 0 || count($incident_videos) > 0){ echo "report-media";}?>">
                 <?php
-                foreach($incident_category as $category)
+                // if there are images, show them
+                if( count($incident_photos) > 0 )
                 {
-
-                    // don't show hidden categoies
-                    if($category->category->category_visible == 0)
+                    echo '<div id="report-images">';
+                    foreach ($incident_photos as $photo)
                     {
-                        continue;
-                    }
+                        echo '<a class="photothumb" rel="lightbox-group1" href="'.$photo['large'].'"><img src="'.$photo['thumb'].'"/></a> ';
+                    };
+                    echo '</div>';
+                }
 
-                    if ($category->category->category_image_thumb)
-                    {
-                        ?>
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>"><span class="r_cat-box" style="background:transparent url(<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>) 0 0 no-repeat;">&nbsp;</span> <?php echo $category->category->category_title; ?></a>
+                // if there are videos, show those too
+                if( count($incident_videos) > 0 )
+                {
+                    echo '<div id="report-video"><ol>';
 
-                        <?php
-                    }
-                    else
+                    // embed the video codes
+                    foreach( $incident_videos as $incident_video)
                     {
-                        ?>
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>"><span class="r_cat-box" style="background-color:#<?php echo $category->category->category_color; ?>">&nbsp;</span> <?php echo $category->category->category_title; ?></a>
-                        <?php
-                    }
+                        echo '<li>';
+                        $videos_embed->embed($incident_video,'');
+                        echo '</li>';
+                    };
+                    echo '</ol></div>';
+
                 }
                 ?>
-            </p>
+            </div>
+
+            <!-- report media with photos and videos ends-->
+
+
             <?php
-            // Action::report_meta - Add Items to the Report Meta (Location/Date/Time etc.)
-            Event::run('ushahidi_action.report_meta', $incident_id);
+            // Action::report_extra - Allows you to target an individual report right after the description
+            Event::run('ushahidi_action.report_extra', $incident_id);
+
+            // Filter::comments_block - The block that contains posted comments
+            Event::run('ushahidi_filter.comment_block', $comments);
+            echo $comments;
             ?>
+
+            <?php
+            // Filter::comments_form_block - The block that contains the comments form
+            Event::run('ushahidi_filter.comment_form_block', $comments_form);
+            echo $comments_form;
+            ?>
+
         </div>
+        <!-- /report media box ends-->
+
     </div>
 
-        <div class="<?php if( count($incident_photos) > 0 || count($incident_videos) > 0){ echo "report-media";}?>" style="margin-top: 50px">
-        <?php
-        // if there are images, show them
-        if( count($incident_photos) > 0 )
-        {
-            echo '<div id="report-images">';
-            foreach ($incident_photos as $photo)
-            {
-                echo '<a class="photothumb" rel="lightbox-group1" href="'.$photo['large'].'"><img src="'.$photo['thumb'].'"/></a> ';
-            };
-            echo '</div>';
-        }
+<!--  / left column ends -->
 
-        // if there are videos, show those too
-        if( count($incident_videos) > 0 )
-        {
-            echo '<div id="report-video"><ol>';
 
-            // embed the video codes
-            foreach( $incident_videos as $incident_video)
-            {
-                echo '<li>';
-                $videos_embed->embed($incident_video,'');
-                echo '</li>';
-            };
-            echo '</ol></div>';
+<!--    right column starts-->
 
-        }
-        ?>
-    </div>
+    <div id="right-column">
+
+
+    <!--  DESCRIPTION(DETAILS)-->
+
+    <!-- start report descrition-->
+
+    <div class="report-description-text">
+        <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
+        <?php echo $incident_description; ?>
+        <br/>
+    <!--/  end reports description-->
 
 
         <!-- start news source link -->
@@ -90,109 +111,13 @@
         <?php } ?>
         <!-- end news source link -->
 
-        <!-- start additional fields -->
-        <?php if(strlen($custom_forms) > 0) { ?>
-        <div class="credibility">
-            <h5><?php echo Kohana::lang('ui_main.additional_data');?></h5>
-            <?php
 
-            echo $custom_forms;
-
-            ?>
-            <br/>
-        </div>
-        <?php } ?>
-        <!-- end additional fields -->
-
-        <?php if ($features_count)
-    {
-        ?>
-        <br /><br /><h5><?php echo Kohana::lang('ui_main.reports_features');?></h5>
         <?php
-        foreach ($features as $feature)
-        {
-            echo ($feature->geometry_label) ?
-                "<div class=\"feature_label\"><a href=\"javascript:getFeature($feature->id)\">$feature->geometry_label</a></div>" : "";
-            echo ($feature->geometry_comment) ?
-                "<div class=\"feature_comment\">$feature->geometry_comment</div>" : "";
-        }
-    }?>
-
-
-
-
-    <div style="margin-bottom: 40px">
-        <?php
-        // Action::report_extra - Allows you to target an individual report right after the description
-        Event::run('ushahidi_action.report_extra', $incident_id);
-
-        // Filter::comments_block - The block that contains posted comments
-        Event::run('ushahidi_filter.comment_block', $comments);
-        echo $comments;
+        // Action::report_view_sidebar - This gives plugins the ability to insert into the sidebar (below the map and above additional reports)
+        Event::run('ushahidi_action.report_view_sidebar', $incident_id);
         ?>
-    </div>
 
-    <div style="margin-bottom: 20px;>
-      <?php
-      // Filter::comments_form_block - The block that contains the comments form
-      Event::run('ushahidi_filter.comment_form_block', $comments_form);
-      echo $comments_form;
-      ?>
-    </div>
-
- </div>
-
-
-
-
-
-
-
-    <div id="right-col" style="margin-top: 80px; float: right; padding-right: 20px; width:45%; background: transparent">
-        <div class="report-description-text" style="padding-top:2px " >
-            <h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
-            <?php echo $incident_description; ?>
-            <br/>
-        </div>
-
-
-        <div class="report-category-list">
-            <p>
-                <?php
-                foreach($incident_category as $category)
-                {
-
-                    // don't show hidden categoies
-                    if($category->category->category_visible == 0)
-                    {
-                        continue;
-                    }
-
-                    if ($category->category->category_image_thumb)
-                    {
-                        ?>
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>"><span class="r_cat-box" style="background:transparent url(<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>) 0 0 no-repeat;">&nbsp;</span> <?php echo $category->category->category_title; ?></a>
-
-                        <?php
-                    }
-                    else
-                    {
-                        ?>
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>"><span class="r_cat-box" style="background-color:#<?php echo $category->category->category_color; ?>">&nbsp;</span> <?php echo $category->category->category_title; ?></a>
-                        <?php
-                    }
-                }
-                ?>
-            </p>
-            <?php
-            // Action::report_meta - Add Items to the Report Meta (Location/Date/Time etc.)
-            Event::run('ushahidi_action.report_meta', $incident_id);
-            ?>
-        </div>
-
-
-
-        <div class="report-additional-reports" style="margin-right: 40px">
+        <div class="report-additional-reports">
             <h4><?php echo Kohana::lang('ui_main.additional_reports');?></h4>
             <?php foreach($incident_neighbors as $neighbor) { ?>
             <div class="rb_report">
@@ -202,11 +127,12 @@
             </div>
             <?php } ?>
 
-        </div>
-
-        </div>
     </div>
 
+
+    <!-- / end DESCRIPTION(DETAILS)-->
+
+
+<!-- /   right column ends-->
+
 </div>
-
-

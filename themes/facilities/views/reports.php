@@ -21,8 +21,26 @@
     </div>
 
     <script type="text/javascript">
+        function resizeListItems() {
+            var min_height = 999;
+            $(".report_card").each(function (index) {
+                var element_height = $(this).height();
+                if (element_height < min_height) {
+                    min_height = element_height;
+                }
+            });
+            $(".report_card").each(function (index) {
+                var element_height = $(this).height();
+                if (element_height > min_height) {
+                    $(this).css("height", ((min_height + 20) * 2 ) + 12);
+                }
+            });
+        }
         $(function(){
             var active;
+            if($(".report-list-toggle .active a").hasClass("navigation_list")){
+                resizeListItems();
+            }
             $(".cat_selected").click(function(){
                 $.each($(".report-list-toggle .active a"), function(i, item){
                     active = item.href;
@@ -76,9 +94,9 @@
                                 attachPagingEvents();
                                 addReportHoverEvents();
                                 deSelectedFilters = [];
-                                debugger;
                                 if (active.search('#rb_list-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_list"));
+                                    resizeListItems();
                                 }
                                 else if (active.search('#rb_map-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_map"));
