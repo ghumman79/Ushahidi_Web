@@ -3,7 +3,15 @@
 <!--    left column starts-->
 
     <div id="left-column" style="margin-left:20px; margin-top: 20px">
+        <h1 class="report-title"><?php
+            echo $incident_title;
 
+            // If Admin is Logged In - Allow For Edit Link
+            if ($logged_in)
+            {
+                echo " [&nbsp;<a href=\"".url::site()."admin/reports/edit/".$incident_id."\">".Kohana::lang('ui_main.edit')."</a>&nbsp;]";
+            }
+            ?></h1>
         <!-- map display starts-->
         <div id="report-map" class="report-map">
             <div class="map-holder" id="map">
@@ -79,7 +87,53 @@
 
 <!--    right column starts-->
 
-    <div id="right-column">
+    <div id="right-column" style="margin-top: 20px">
+
+
+        <div class="report-category-list">
+            <p>
+                <?php
+                foreach($incident_category as $category)
+                {
+
+                    // don't show hidden categoies
+                    if($category->category->category_visible == 0)
+                    {
+                        continue;
+                    }
+
+                    if ($category->category->category_image_thumb)
+                    {
+                        ?>
+                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <span class="r_cat-box" style="background:transparent url(<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>) 0 0 no-repeat;">&nbsp;</span>
+                            <?php echo $category->category->category_title; ?>
+                        </a>
+
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <span class="r_cat-box" style="background-color:#<?php echo $category->category->category_color; ?>">&nbsp;</span>
+                            <?php echo $category->category->category_title; ?>
+                        </a>
+                        <?php
+                    }
+                }
+                ?>
+            </p>
+            <?php
+            // Action::report_meta - Add Items to the Report Meta (Location/Date/Time etc.)
+            Event::run('ushahidi_action.report_meta', $incident_id);
+            ?>
+        </div>
+
+        <?php
+        // Action::report_display_media - Add content just above media section
+        Event::run('ushahidi_action.report_display_media', $incident_id);
+        ?>
 
 
     <!--  DESCRIPTION(DETAILS)-->
@@ -93,23 +147,33 @@
     <!--/  end reports description-->
 
 
-        <!-- start news source link -->
-        <?php if( count($incident_news) > 0 ) { ?>
+        <!-- start additional fields -->
+        <?php if(strlen($custom_forms) > 0) { ?>
         <div class="credibility">
-            <h5><?php echo Kohana::lang('ui_main.reports_news');?></h5>
+            <h5><?php echo Kohana::lang('ui_main.additional_data');?></h5>
             <?php
-            foreach( $incident_news as $incident_new)
-            {
-                ?>
-                <a href="<?php echo $incident_new; ?> " target="_blank"><?php
-                    echo $incident_new;?></a>
-                <br/>
-                <?php
-            }
+
+            echo $custom_forms;
+
             ?>
+            <br/>
         </div>
         <?php } ?>
-        <!-- end news source link -->
+        <!-- end additional fields -->
+
+        <?php if ($features_count)
+    {
+        ?>
+        <br /><br /><h5><?php echo Kohana::lang('ui_main.reports_features');?></h5>
+        <?php
+        foreach ($features as $feature)
+        {
+            echo ($feature->geometry_label) ?
+                "<div class=\"feature_label\"><a href=\"javascript:getFeature($feature->id)\">$feature->geometry_label</a></div>" : "";
+            echo ($feature->geometry_comment) ?
+                "<div class=\"feature_comment\">$feature->geometry_comment</div>" : "";
+        }
+    }?>
 
 
         <?php
