@@ -255,25 +255,48 @@ div.report_thumbnail img {
     border: 1px solid #BDBDBD;
 }
 
-ul.column {
-    float:left;
-    margin:40px 50px 0 50px;
+div#container {
+   margin:30px;
 }
 
-ul.column li {
+ul.column_reports,
+ul.column_news {
+    float:left;
+    margin-top:20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -khtml-border-radius: 10px;
+    background-color:#F2F2F2;
+    border: 1px solid #BDBDBD;
+    padding:20px;
+}
+
+ul.column_reports {
+    width:30%;
+    margin-right:30px;
+}
+
+ul.column_news {
+    width:60%;
+}
+
+ul.column_reports li,
+ul.column_news li{
     list-style: none;
     margin-bottom:10px;
     font-size:16px;
 }
 
-ul.column li.title {
+ul.column_reports li.title,
+ul.column_news li.title{
    font-weight:bold;
    font-size:20px;
    color:#A4A4A4;
 }
 
 ul.row {
-    margin:40px 50px 0 50px;
+    margin-bottom: 20px;
 }
 
 ul.row li {
@@ -322,6 +345,10 @@ div#popup #popup_description {
     color:#848484;
     max-width:400px;
     text-align:justify;
+}
+
+div.search_date {
+    display:none;
 }
 
 /* ############################################ OLD CSS ############################################ */

@@ -1,4 +1,5 @@
 <div id="middle">
+    <div id="container">
     <?php
     foreach ($categories as $category => $category_info) {
         $category_title = $category_info[0];
@@ -14,4 +15,5 @@
     }
     ?>
     <?php blocks::render(); ?>
+    </div>
 </div>

@@ -1,5 +1,4 @@
-<div></div>
-<ul class="column">
+<ul class="column_reports">
     <li class="title">Facilities</li>
     <?php
     if ($total_items == 0) {
