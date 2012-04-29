@@ -34,11 +34,29 @@
             });
             $categoryList.remove();
         }
-        
+
+        function splitListView() {
+            var $listView = $("div#rb_list-view");
+            var $leftPane = $("<div class='left-pane'>");
+            var $rightPane = $("<div class='right-pane'>");
+
+            $('.left-pane-item').each(function (item) {
+                $(this).appendTo($leftPane);
+            });
+            $('.right-pane-item').each(function (item) {
+                $(this).appendTo($rightPane);
+            });
+            $leftPane.appendTo($listView);
+            $rightPane.appendTo($listView);
+        }
         $(function(){
             var active;
 
             splitParentCategories();
+
+            if($(".report-list-toggle .active a").hasClass("navigation_list")){
+                splitListView();
+            }
 
             $(".cat_selected").click(function(){
                 $.each($(".report-list-toggle .active a"), function(i, item){

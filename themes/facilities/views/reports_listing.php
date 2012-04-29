@@ -12,7 +12,11 @@
     <div class="rb_list-and-map-box">
         <div id="rb_list-view">
         <?php
+            $incidentsCount = count($incidents);
+            $incidentIndex = 0;
             foreach ($incidents as $incident) {
+                $incidentIndex += 1;
+                $incidentPane = ($incidentIndex <= $incidentsCount/2) ? "left-pane-item" : "right-pane-item";
                 $incident = ORM::factory('incident', $incident->incident_id);
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
@@ -30,7 +34,9 @@
                     }
                 }
             ?>
-            <div id="<?php echo $incident_id ?>" class="report_card">
+
+
+            <div id="<?php echo $incident_id ?>" class="report_card <?php echo $incidentPane ?>">
                 <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                     <img src="<?php echo $incident_thumb; ?>" />
                 </a>
