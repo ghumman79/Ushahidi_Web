@@ -111,6 +111,35 @@
             });
         });
 
+        function switchViews(view) {
+            // Hide navigation divs
+            $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
+
+            // Show the appropriate div
+            $($(view).attr("href")).show();
+
+            // Remove the class "selected" from all parent li's
+            $("#reports-box .report-list-toggle a").parent().removeClass("active");
+
+            // Add class "selected" to both instances of the clicked link toggle
+            $("."+$(view).attr("class")).parent().addClass("active");
+
+            // Check if the map view is active
+            if ($("#rb_map-view").css("display") == "block") {
+                // Check if the map has already been created
+                if (mapLoaded == 0) {
+                    createIncidentMap();
+                }
+
+                // Set the current page
+                urlParameters["page"] = $(".pager li a.active").html();
+
+                // Load the map
+                setTimeout(function(){ showIncidentMap() }, 400);
+            }
+            return false;
+        }
+
         function onFeatureSelect(event) {
             selectedFeature = event.feature;
             zoom_point = event.feature.geometry.getBounds().getCenterLonLat();

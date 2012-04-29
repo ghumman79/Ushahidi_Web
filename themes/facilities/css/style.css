@@ -263,13 +263,30 @@ ul.column {
 ul.column li {
     list-style: none;
     margin-bottom:10px;
-    font-size:15px;
+    font-size:16px;
 }
 
 ul.column li.title {
    font-weight:bold;
    font-size:20px;
    color:#A4A4A4;
+}
+
+ul.row {
+    margin:40px 50px 0 50px;
+}
+
+ul.row li {
+    list-style: none;
+    display:inline;
+    font-size:16px;
+    margin-right:10px;
+}
+
+ul.row li.title {
+    font-weight:bold;
+    font-size:20px;
+    color:#A4A4A4;
 }
 
 div#popup {
