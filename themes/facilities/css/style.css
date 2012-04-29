@@ -122,7 +122,7 @@ div#categories ul {
 
 div#navigation ul li,
 div#categories ul li {
-    display: inline;
+    display: inline-block;
     list-style-type: none;
     padding-right:20px;
     -moz-border-radius:5px;
@@ -138,8 +138,8 @@ div#categories ul li {
 
 div#categories {
     position:absolute;
-    bottom:15px;
-    height:50px;
+    bottom:18px;
+    /*height:50px;*/
     width:100%;
     left:0;
     overflow:hidden;
@@ -154,6 +154,7 @@ div#categories ul {
 
 div#categories ul li {
     margin-right:8px;
+    margin-bottom:8px;
 }
 
 div#categories ul li.selected,
