@@ -1,11 +1,12 @@
 <div id="middle">
-    <div id="reports-box">
-        <?php echo $report_listing_view; ?>
-    </div>
     <div id="categories">
         <ul>
             <?php echo $category_tree_view; ?>
         </ul>
+    </div>
+
+    <div id="reports-box">
+        <?php echo $report_listing_view; ?>
     </div>
 
     <?php

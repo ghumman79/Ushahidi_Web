@@ -28,7 +28,7 @@ div#header {
     height:70px;
     width:100%;
     overflow:hidden;
-    background-color: #F2F2F2;
+    background-color:#F2F2F2;
     border-bottom: 1px solid #BDBDBD;
 }
 
@@ -39,29 +39,28 @@ div#footer {
     width:100%;
     left:0;
     overflow:hidden;
-    background-color: #F2F2F2;
+    background-color:#F2F2F2;
     border-top: 1px solid #BDBDBD;
 }
 
 div#middle {
     position:absolute;
     top:70px;
-    bottom:15px;
+    bottom:36px;
     left:0;
     width:100%;
     overflow:hidden;
     overflow-x:hidden;
     border-top: 1px solid #BDBDBD;
-    border-bottom: 1px solid #BDBDBD;
 }
 
 div#navigation {
     position:absolute;
-    top:0;
+    bottom:0;
     width:100%;
     height:40px;
-    background-color: #FAFAFA;
-    border-bottom: 1px solid #BDBDBD;
+    background-color:#FAFAFA;
+    border-top: 1px solid #BDBDBD;
 }
 
 div#navigation .toggle {
@@ -88,7 +87,7 @@ div#navigation ul.toggle li {
     float:left;
     margin-right:8px;
     font-weight:bold;
-    width:150px;
+    width:140px;
 }
 
 div#navigation ul.toggle a.navigation_list {
@@ -138,18 +137,17 @@ div#categories ul li {
 
 div#categories {
     position:absolute;
-    bottom:18px;
-    /*height:50px;*/
+    top:0;
     width:100%;
     left:0;
     overflow:hidden;
-    background-color: #FAFAFA;
-    border-top: 1px solid #BDBDBD;
+    background-color:#FAFAFA;
+    border-bottom: 1px solid #BDBDBD;
 }
 
 div#categories ul {
     margin-left:10px;
-    margin-top:15px;
+    margin-top:10px;
 }
 
 div#categories ul li {
@@ -172,11 +170,13 @@ div#categories .item-swatch {
 
 div#reports {
     position:absolute;
-    top:40px;
-    bottom:65px;
+    top:42px;
+    bottom:40px;
     width:100%;
     overflow:auto;
     overflow-x:hidden;
+    border-top: 1px solid #BDBDBD;
+    border-bottom: 1px solid #BDBDBD;
 }
 
 div#footer img#ushahidi {
