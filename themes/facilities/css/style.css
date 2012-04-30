@@ -25,7 +25,7 @@ div#header {
     position:absolute;
     top:0;
     left:0;
-    height:70px;
+    height:120px;
     width:100%;
     overflow:hidden;
     background-color:#F2F2F2;
@@ -1548,6 +1548,7 @@ label.error {
 .textarea {
     padding:7px 7px 3px 7px;
     border:1px #ccc solid;
+    height: 120px;
 }
 .select{
     overflow:hidden;
@@ -1584,7 +1585,7 @@ label.error {
 
 .hide { display:none; }
 
-.report_left{ float:left; width:450px; margin:20px 0 0; padding:0 0 10px; }
+.report_left{ float:left; width:45%px; margin:20px 0 0; padding:0 0 10px; }
 .report_left table { width: 100%; }
 .report_left table tr th { text-align: left; }
 
@@ -1967,6 +1968,7 @@ ul.pager li a.active {background:#f2f7fa;}
 .feedback_forms textarea, .feedback_forms textarea input{
     color : #000;
     border : 1px solid #996;
+    height: 200px;
 }
 
 .feedback_forms button {
@@ -2817,5 +2819,5 @@ div.ci_checkin {
     height: 100%;
     float: left;
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 120px;
 }
