@@ -1,4 +1,4 @@
-<ul class="column_reports">
+<ul class="column_reports box_light">
     <li class="title">Facilities</li>
     <?php
     if ($total_items == 0) {

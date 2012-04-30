@@ -34,7 +34,7 @@
                     }
                 }
             ?>
-            <div id="<?php echo $incident_id ?>" class="report_card <?php echo $incidentPane ?>">
+            <div id="<?php echo $incident_id ?>" class="report_card box_medium <?php echo $incidentPane ?>">
                 <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                     <img src="<?php echo $incident_thumb; ?>" />
                 </a>
