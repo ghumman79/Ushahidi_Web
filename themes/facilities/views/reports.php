@@ -52,6 +52,12 @@
             $rightPane.appendTo($listView);
         }
         $(function(){
+            $(window).resize(function() {
+                var _top = $("#categories").css('height');
+                $("#reports").css('top', _top);
+            });
+        });
+        $(function(){
             var active;
 
             splitParentCategories();
