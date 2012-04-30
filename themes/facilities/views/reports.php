@@ -122,6 +122,7 @@
                                 else if (active.search('#rb_gallery-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_gallery"));
                                 }
+                                splitListView();
                             }, 400);
                         }
                     }

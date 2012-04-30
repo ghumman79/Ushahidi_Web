@@ -72,7 +72,7 @@
             </div>
         <?php } ?>
         </div>
-        <div id="rb_map-view" style="display:none;width:100%;height:900px;margin:0;"></div>
+        <div id="rb_map-view" style="display:none;width:100%;height:900px;"></div>
         <div id="rb_gallery-view" style="display:none;">
             <?php
             foreach ($incidents as $incident) {
