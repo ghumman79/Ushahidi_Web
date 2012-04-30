@@ -21,26 +21,44 @@
     </div>
 
     <script type="text/javascript">
-        function resizeListItems() {
-            var min_height = 999;
-            $(".report_card").each(function (index) {
-                var element_height = $(this).height();
-                if (element_height < min_height) {
-                    min_height = element_height;
+        function splitParentCategories() {
+            var $categoryDiv = $("div#categories");
+            var $categoryList = $categoryDiv.find("ul");
+            var $ul;
+            $categoryList.children().each(function (item) {
+                if (!($(this).hasClass("report-listing-category-child"))) {
+                    $ul = $("<ul>");
+                    $ul.appendTo($categoryDiv);
                 }
+                $(this).appendTo($ul);
             });
-            $(".report_card").each(function (index) {
-                var element_height = $(this).height();
-                if (element_height > min_height) {
-                    $(this).css("height", ((min_height + 20) * 2 ) + 12);
-                }
+            $categoryList.remove();
+        }
+
+        function splitListView() {
+            var $listView = $("div#rb_list-view");
+            var $leftPane = $("<div class='left-pane'>");
+            var $rightPane = $("<div class='right-pane'>");
+
+            $('.right-pane-item').each(function (item) {
+                $(this).appendTo($rightPane);
             });
+            $('.left-pane-item').each(function (item) {
+                $(this).appendTo($leftPane);
+            });
+
+            $leftPane.appendTo($listView);
+            $rightPane.appendTo($listView);
         }
         $(function(){
             var active;
+
+            splitParentCategories();
+
             if($(".report-list-toggle .active a").hasClass("navigation_list")){
-                resizeListItems();
+                splitListView();
             }
+
             $(".cat_selected").click(function(){
                 $.each($(".report-list-toggle .active a"), function(i, item){
                     active = item.href;
@@ -96,7 +114,6 @@
                                 deSelectedFilters = [];
                                 if (active.search('#rb_list-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_list"));
-                                    resizeListItems();
                                 }
                                 else if (active.search('#rb_map-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_map"));
@@ -110,6 +127,35 @@
                 );
             });
         });
+
+        function switchViews(view) {
+            // Hide navigation divs
+            $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
+
+            // Show the appropriate div
+            $($(view).attr("href")).show();
+
+            // Remove the class "selected" from all parent li's
+            $("#reports-box .report-list-toggle a").parent().removeClass("active");
+
+            // Add class "selected" to both instances of the clicked link toggle
+            $("."+$(view).attr("class")).parent().addClass("active");
+
+            // Check if the map view is active
+            if ($("#rb_map-view").css("display") == "block") {
+                // Check if the map has already been created
+                if (mapLoaded == 0) {
+                    createIncidentMap();
+                }
+
+                // Set the current page
+                urlParameters["page"] = $(".pager li a.active").html();
+
+                // Load the map
+                setTimeout(function(){ showIncidentMap() }, 400);
+            }
+            return false;
+        }
 
         function onFeatureSelect(event) {
             selectedFeature = event.feature;
