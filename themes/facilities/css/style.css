@@ -25,7 +25,7 @@ div#header {
     position:absolute;
     top:0;
     left:0;
-    height:70px;
+    height:120px;
     width:100%;
     overflow:hidden;
     background-color: #F2F2F2;
@@ -2763,5 +2763,5 @@ div.ci_checkin {
     height: 100%;
     float: left;
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 120px;
 }

@@ -1,4 +1,5 @@
 <div id="middle">
+
     <?php
     foreach ($categories as $category => $category_info) {
         $category_title = $category_info[0];

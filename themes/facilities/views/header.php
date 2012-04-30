@@ -37,41 +37,40 @@ elseif (count($uri_segments) >= 2)
 <!-- wrapper -->
 <!--<div class="rapidxwpr floatholder">-->
 
-    <!-- header -->
-    <div id="header">
+<!-- header -->
+<div id="header">
 
-        <!-- searchbox -->
-        <div id="searchbox">
+    <!-- searchbox -->
+    <div id="searchbox">
 
-            <!-- languages -->
-            <?php echo $languages;?>
-            <!-- / languages -->
+        <!-- languages -->
+        <?php echo $languages;?>
+        <!-- / languages -->
 
-            <!-- searchform -->
-            <?php echo $search; ?>
-            <!-- / searchform -->
-
-        </div>
-        <!-- / searchbox -->
-
-
-        <!-- logo -->
-        <?php if($banner == NULL){ ?>
-        <div id="logo">
-            <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
-            <span><?php echo $site_tagline; ?></span>
-        </div>
-        <?php }else{ ?>
-        <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
-        <?php } ?>
-        <!-- / logo -->
-
-        <!-- submit incident -->
-        <?php echo $submit_btn; ?>
-        <!-- / submit incident -->
+        <!-- searchform -->
+        <?php echo $search; ?>
+        <!-- / searchform -->
 
     </div>
-    <!-- / header -->
+    <!-- / searchbox -->
+
+    <!-- logo -->
+    <?php if($banner == NULL){ ?>
+    <div id="logo">
+        <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
+        <span><?php echo $site_tagline; ?></span>
+    </div>
+    <?php }else{ ?>
+    <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
+    <?php } ?>
+    <!-- / logo -->
+
+    <!-- submit incident -->
+    <?php echo $submit_btn; ?>
+    <!-- / submit incident -->
+
+</div>
+<!-- / header -->
     <!-- / header item for plugins -->
     <?php
     // Action::header_item - Additional items to be added by plugins

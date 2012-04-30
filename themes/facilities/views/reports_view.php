@@ -191,6 +191,11 @@
             </div>
             <?php } ?>
 
+
+            <?php
+            echo $category->category->category_title;
+            ?>
+
     </div>
 
 
