@@ -40,12 +40,13 @@
             var $leftPane = $("<div class='left-pane'>");
             var $rightPane = $("<div class='right-pane'>");
 
-            $('.left-pane-item').each(function (item) {
-                $(this).appendTo($leftPane);
-            });
             $('.right-pane-item').each(function (item) {
                 $(this).appendTo($rightPane);
             });
+            $('.left-pane-item').each(function (item) {
+                $(this).appendTo($leftPane);
+            });
+
             $leftPane.appendTo($listView);
             $rightPane.appendTo($listView);
         }
