@@ -1,7 +1,10 @@
 <div id="middle">
-    <table id="titlebar" width="100%">
+    <table id="titlebar">
         <tr>
-            <td class="titlebar_previous"><a class="previous box_medium">Previous</a></td>
+            <td class="titlebar_previous">
+                // TODO disable PREVIOUS button if report does not exist
+                <a class="previous box_medium" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a>
+            </td>
             <td class="titlebar_title">
                 <span class="report_title">
                     <?php echo $incident_title;
@@ -42,16 +45,21 @@
                     ?>
                 </span>
             </td>
-            <td class="titlebar_next"><a class="next box_medium">Next</a></td>
+            <td class="titlebar_next">
+                // TODO disable NEXT button if report does not exist
+                <a class="next box_medium" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a>
+            </td>
         </tr>
     </table>
 
     <div id="details">
     <!--    left column starts-->
         <div id="left-column">
-            <div class="report_description box_light">
-                <?php echo $incident_description; ?>
-            </div>
+            <?php if (empty($incident_description) == false) { ?>
+                <div class="report_description box_light">
+                    <?php echo $incident_description; ?>
+                </div>
+            <?php } ?>
 
             <!-- report media with photos and videos ends-->
 
@@ -116,9 +124,6 @@
 
         <!--  DESCRIPTION(DETAILS)-->
 
-
-        <div class="report-description-text">
-
         <?php
         // Action::report_view_sidebar - This gives plugins the ability to insert into the sidebar (below the map and above additional reports)
         Event::run('ushahidi_action.report_view_sidebar', $incident_id);
@@ -142,8 +147,6 @@
             <?php } ?>
         </div>
 
-        <!-- / end DESCRIPTION(DETAILS)-->
-
     <!-- /   right column ends-->
-    </div>
+
 </div>
