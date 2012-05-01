@@ -167,6 +167,66 @@ div#categories ul li {
     color:#424242;
 }
 
+#titlebar {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:40px;
+    left:0;
+    overflow:hidden;
+    background-color:#FAFAFA;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+#titlebar {
+    padding-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#titlebar .previous,
+#titlebar .next {
+    background-color:transparent;
+    background-repeat:no-repeat;
+}
+
+#titlebar .previous {
+    padding:3px 5px 3px 25px;
+    background-position:5px 2px;
+    background-image:url("../images/previous.png");
+}
+
+#titlebar .next {
+    padding:3px 25px 3px 5px;
+    background-position:35px 2px;
+    background-image:url("../images/next.png");
+}
+
+#titlebar .report_title {
+    font-size:18px;
+    font-weight:bold;
+}
+
+#titlebar .report_categories {
+
+}
+
+#titlebar .titlebar_previous {
+   text-align:left;
+}
+
+#titlebar .titlebar_title {
+    text-align:left;
+}
+
+#titlebar .titlebar_categories {
+    text-align:left;
+}
+
+#titlebar .titlebar_next {
+    text-align:right;
+}
+
 div#categories {
     position:absolute;
     top:0;
@@ -213,7 +273,28 @@ div#reports {
 
 div#details {
     overflow:auto;
-    padding:20px;
+    padding:0;
+    margin:0;
+    top:40px;
+    left:0;
+    position:absolute;
+    width:100%;
+}
+
+div#details #left-column,
+div#details #right-column{
+    float: left;
+    width: 48%;
+    height: 100%;
+    margin-top: 20px;
+    margin-left:1%;
+    margin-right:1%;
+}
+
+div#details #left-column{
+}
+
+div#details #right-column{
 }
 
 div#footer img#ushahidi {
@@ -387,7 +468,6 @@ div.search_date {
 }
 
 .report_description,
-.report_categories,
 .report_comments,
 .report_comment_form,
 .report_extras,
@@ -2897,19 +2977,4 @@ div.ci_checkin {
 * html div#content{
     height:100%;
     overflow:auto;
-}
-
-
-#right-column{
-    width: 49%;
-    height: 100%;
-    float: right;
-}
-
-#left-column{
-    width: 49%;
-    height: 100%;
-    float: left;
-    margin-bottom: 20px;
-    padding-bottom: 120px;
 }

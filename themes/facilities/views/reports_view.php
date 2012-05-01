@@ -1,55 +1,66 @@
-<div id="middle" style="overflow:auto;">
+<div id="middle">
+    <table id="titlebar" width="100%">
+        <tr>
+            <td class="titlebar_previous"><a class="previous box_medium">Previous</a></td>
+            <td class="titlebar_title">
+                <span class="report_title">
+                    <?php echo $incident_title;
+                    if ($logged_in) {
+                        echo " [&nbsp;<a href=\"".url::site()."admin/reports/edit/".$incident_id."\">".Kohana::lang('ui_main.edit')."</a>&nbsp;]";
+                    }
+                    ?>
+                </span>
+            </td>
+            <td class="titlebar_categories">
+                <span class="report_categories">
+                    <?php
+                    foreach($incident_category as $category){
+                        // don't show hidden categoies
+                        if($category->category->category_visible == 0) {
+                            continue;
+                        }
+                        if ($category->category->category_image_thumb) {
+                            ?>
+                            <span class="box_light">
+                    <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                        <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
+                        <?php echo $category->category->category_title; ?>
+                    </a>
+                    </span>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <span class="box_medium">
+                    <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                        <?php echo $category->category->category_title; ?>
+                    </a>
+                    </span>
+                            <?php
+                        }
+                    }
+                    ?>
+                </span>
+            </td>
+            <td class="titlebar_next"><a class="next box_medium">Next</a></td>
+        </tr>
+    </table>
+
     <div id="details">
     <!--    left column starts-->
         <div id="left-column">
-            <h1 class="report-title"><?php
-                echo $incident_title;
-                // If Admin is Logged In - Allow For Edit Link
-                if ($logged_in) {
-                    echo " [&nbsp;<a href=\"".url::site()."admin/reports/edit/".$incident_id."\">".Kohana::lang('ui_main.edit')."</a>&nbsp;]";
-                }
-                ?>
-            </h1>
-
-            <div class="report_categories">
-                <?php
-                foreach($incident_category as $category){
-                    // don't show hidden categoies
-                    if($category->category->category_visible == 0) {
-                        continue;
-                    }
-                    if ($category->category->category_image_thumb) {
-                        ?>
-                        <span class="box_light">
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
-                            <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
-                            <?php echo $category->category->category_title; ?>
-                        </a>
-                        </span>
-                        <?php
-                    }
-                    else {
-                        ?>
-                        <span class="box_light">
-                        <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
-                            <?php echo $category->category->category_title; ?>
-                        </a>
-                        </span>
-                        <?php
-                    }
-                }
-                ?>
-            </div>
-
             <div class="report_description box_light">
                 <?php echo $incident_description; ?>
             </div>
 
             <!-- report media with photos and videos ends-->
 
-           <div class="report_extras box_light">
-                <?php Event::run('ushahidi_action.report_extra', $incident_id); ?>
-           </div>
+            <?php if(strlen($custom_forms) > 0) { ?>
+                <div class="report_extras">
+                    <?php Event::run('ushahidi_action.report_extra', $incident_id); ?>
+                    <?php echo $custom_forms; ?>
+                </div>
+            <?php } ?>
 
             <?php Event::run('ushahidi_action.report_display_media', $incident_id); ?>
 
@@ -83,11 +94,8 @@
             </div>
 
             <div class="report_comment_form box_light">
-                <?php
-                // Filter::comments_form_block - The block that contains the comments form
-                Event::run('ushahidi_filter.comment_form_block', $comments_form);
-                echo $comments_form;
-                ?>
+                <?php Event::run('ushahidi_filter.comment_form_block', $comments_form); ?>
+                <?php echo $comments_form; ?>
             </div>
 
         </div>
@@ -110,16 +118,6 @@
 
 
         <div class="report-description-text">
-            <?php if ($features_count) { ?>
-            <br /><br /><h5><?php echo Kohana::lang('ui_main.reports_features');?></h5>
-            <?php
-            foreach ($features as $feature) {
-                echo ($feature->geometry_label) ?
-                    "<div class=\"feature_label\"><a href=\"javascript:getFeature($feature->id)\">$feature->geometry_label</a></div>" : "";
-                echo ($feature->geometry_comment) ?
-                    "<div class=\"feature_comment\">$feature->geometry_comment</div>" : "";
-            }
-        }?>
 
         <?php
         // Action::report_view_sidebar - This gives plugins the ability to insert into the sidebar (below the map and above additional reports)
