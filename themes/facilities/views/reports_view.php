@@ -97,7 +97,7 @@
             </div>
 
            <?php Event::run('ushahidi_filter.comment_block', $comments); ?>
-           <div class="report_comments box_light <?php if(count($comments) == 0){ echo "hidden";}?>">
+           <div class="report_comments box_light <?php if(count($comments) == 0 || !isset($comments) || trim($comments)===''){ echo "hidden";}?>">
                <?php echo $comments; ?>
             </div>
 
