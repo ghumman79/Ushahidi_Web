@@ -50,7 +50,6 @@ div#middle {
     left:0;
     width:100%;
     overflow:hidden;
-    overflow-x:hidden;
     border-top: 1px solid #BDBDBD;
     border-bottom: 1px solid #BDBDBD;
 }
@@ -1585,14 +1584,14 @@ label.error {
 
 .hide { display:none; }
 
-.report_left{ float:left; width:45%px; margin:20px 0 0; padding:0 0 10px; }
+.report_left{ float:left; width:45%; margin:20px 0 0; padding:0 0 10px; }
 .report_left table { width: 100%; }
 .report_left table tr th { text-align: left; }
 
 .report_block{ margin: 20px 0 20px 25px; }
 .report_block table tr th { text-align: left; }
 
-.report_right{ overflow:hidden; width:455px; margin:20px 0 0 25px; padding:0 0 10px; }
+.report_right{ float:right; width:45%; margin:20px 0 0; padding:0 0 10px; overflow: hidden;}
 .report_right table { width: 100%; }
 .report_right table tr th { text-align: left; }
 
@@ -1643,6 +1642,7 @@ td.w-03 { border-bottom:1px dotted #E8E4DB; text-transform:capitalize; }
 .report_category ul li input.check-box { margin: 0 3px 0 0; }
 .report_category ul li.hover,
 .report_category ul li li:hover { background-color: #efefef; }
+
 
 ul.treeview li.lastCollapsable,
 ul.treeview li.lastExpandable { width:155px; }
@@ -1703,7 +1703,6 @@ a.rem { background:url(../images/icon-minus.gif) no-repeat;}
     overflow:hidden;
     width:100%;
     border:2px solid #ccc;
-    width:450px;
     height:350px;
     position:relative;
 }
@@ -1721,10 +1720,10 @@ a.rem { background:url(../images/icon-minus.gif) no-repeat;}
     padding:5px 3px 0 3px;
     height:24px;
     float:left;
-    font-size:14px;
+    font-size:12px;
     font-weight:bold;
     color:#666;
-    width:250px;
+    width:100%;
     border:1px #ccc solid;
 }
 .report-find-loading{
@@ -1744,7 +1743,7 @@ a.show-more {
 /*---big-block---*/
 .big-block {
     overflow:hidden;
-    padding:170px 25px 10px;
+    padding:10px 25px 10px;
 }
 /* Min-Height */
 .big-block{
