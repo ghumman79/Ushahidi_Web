@@ -2,7 +2,7 @@
     <table id="titlebar">
         <tr>
             <td class="titlebar_previous">
-                // TODO disable PREVIOUS button if report does not exist
+                <?php // TODO disable PREVIOUS button if report does not exist ?>
                 <a class="previous box_medium" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a>
             </td>
             <td class="titlebar_title">
@@ -46,7 +46,7 @@
                 </span>
             </td>
             <td class="titlebar_next">
-                // TODO disable NEXT button if report does not exist
+                <?php // TODO disable NEXT button if report does not exist ?>
                 <a class="next box_medium" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a>
             </td>
         </tr>
