@@ -35,7 +35,6 @@
             });
             $categoryList.remove();
         }
-
         function splitListView() {
             var $listView = $("div#rb_list-view");
             var $leftPane = $("<div class='left-pane'>");
@@ -51,16 +50,19 @@
             $leftPane.appendTo($listView);
             $rightPane.appendTo($listView);
         }
-        $(function(){
-            $(window).resize(function() {
-                var _top = $("#categories").css('height');
-                $("#reports").css('top', _top);
-            });
-        });
+        function adjustCategories() {
+            var $top = $("#categories").css('height');
+            $("#reports").css('top', $top);
+        }
         $(function(){
             var active;
 
             splitParentCategories();
+
+            $(window).resize(function() {
+                adjustCategories();
+            });
+            adjustCategories();
 
             if($(".report-list-toggle .active a").hasClass("navigation_list")){
                 splitListView();

@@ -171,24 +171,21 @@
     function adjustThumbnails() {
         $('.report_media_image').each(function() {
             var width = $(this).width();
-            var height = $(this).height();
-            $(this).height(width);
+            $(this).height(width*0.65);
             $(this).css("height", width*0.65);
             $(this).css("minHeight", width*0.65);
             $(this).css("maxHeight", width*0.65);
         });
         $('.report_media object').each(function() {
             var width = $(this).width();
-            var height = $(this).height();
-            $(this).height(width);
+            $(this).height(width*0.65);
             $(this).css("height", width*0.65);
             $(this).css("minHeight", width*0.65);
             $(this).css("maxHeight", width*0.65);
         });
         $('.report_media object embed').each(function() {
             var width = $(this).width();
-            var height = $(this).height();
-            $(this).height(width);
+            $(this).height(width*0.65);
             $(this).css("height", width*0.65);
             $(this).css("minHeight", width*0.65);
             $(this).css("maxHeight", width*0.65);
