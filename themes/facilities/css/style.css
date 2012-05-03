@@ -47,12 +47,6 @@ div.clearfix {
     border: 1px solid #BBB;
 }
 
-.welcome_message {
-    font-size:16px;
-    color:#848484;
-    margin-bottom: 20px;
-}
-
 div#header {
     position:absolute;
     top:0;
@@ -144,8 +138,7 @@ div#navigation .breadcrumb {
     font-size:12px;
 }
 
-div#navigation ul,
-div#categories ul {
+div#navigation ul {
    margin-top:10px;
    margin-left:0px;
 }
@@ -166,19 +159,82 @@ div#categories ul li {
     color:#424242;
 }
 
-div#categories {
+#titlebar {
     position:absolute;
     top:0;
     width:100%;
+    height:40px;
     left:0;
     overflow:hidden;
     background-color:#FAFAFA;
     border-bottom: 1px solid #BDBDBD;
 }
 
+#titlebar {
+    padding-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#titlebar .previous,
+#titlebar .next {
+    background-color:transparent;
+    background-repeat:no-repeat;
+}
+
+#titlebar .previous {
+    padding:3px 5px 3px 25px;
+    background-position:5px 4px;
+    background-image:url("../images/previous.png");
+}
+
+#titlebar .next {
+    padding:3px 20px 3px 5px;
+    background-position:35px 4px;
+    background-image:url("../images/next.png");
+}
+
+#titlebar .report_title {
+    font-size:18px;
+    font-weight:bold;
+}
+
+#titlebar .report_categories {
+
+}
+
+#titlebar .report_categories span {
+     margin-right:10px;
+}
+
+#titlebar .titlebar_previous {
+   text-align:left;
+}
+
+#titlebar .titlebar_title {
+    text-align:center;
+}
+
+#titlebar .titlebar_categories {
+    text-align:center;
+}
+
+#titlebar .titlebar_next {
+    text-align:right;
+}
+
+div#categories {
+    position:absolute;
+    top:0;
+    width:100%;
+    left:0;
+    background-color:#FAFAFA;
+    border-bottom: 1px solid #BDBDBD;
+}
+
 div#categories ul {
     margin-left:10px;
-    margin-top:10px;
+    margin-top:0px;
 }
 
 div#categories ul li {
@@ -212,7 +268,24 @@ div#reports {
 
 div#details {
     overflow:auto;
-    padding:20px;
+    padding:0;
+    margin:0;
+    top:40px;
+    left:0;
+    bottom:0;
+    position:absolute;
+    width:100%;
+}
+
+#left-column,
+#right-column{
+    float: left;
+    width: 48%;
+    height: 100%;
+    margin-top: 20px;
+    margin-left:1%;
+    margin-right:1%;
+    margin-bottom:10px;
 }
 
 div#footer img#ushahidi {
@@ -295,52 +368,72 @@ div.report_thumbnail img {
     border: 1px solid #BDBDBD;
 }
 
-div#container {
-   margin:30px;
+div#main {
+   margin-top:20px;
+   margin-bottom: 10px;
+    margin-left:0;
+    margin-right:0;
 }
 
-ul.column_reports,
-ul.column_news {
+.column_welcome,
+.column_categories,
+.column_reports,
+.column_news {
     float:left;
-    margin-top:20px;
     padding:20px;
 }
 
-ul.column_reports {
+.column_welcome,
+.column_reports {
     width:30%;
-    margin-right:30px;
 }
 
-ul.column_news {
+.column_categories,
+.column_news {
     width:60%;
 }
 
-ul.column_reports li,
-ul.column_news li{
+.column_reports li,
+.column_news li{
     list-style: none;
     margin-bottom:10px;
     font-size:16px;
 }
 
-ul.column_reports li.title,
-ul.column_news li.title{
+.column_reports li.title,
+.column_news li.title{
    font-weight:bold;
    font-size:20px;
    color:#A4A4A4;
 }
 
-ul.row {
+.column_reports li.view_more,
+.column_news li.view_more{
+    text-align:right;
+}
+
+.column_welcome div {
+    font-size:16px;
+    color:#848484;
     margin-bottom: 20px;
 }
 
-ul.row li {
+.column_welcome div p {
+    margin-bottom:10px;
+}
+
+.column_categories ul {
+    margin-bottom: 20px;
+}
+
+.column_categories ul li {
     list-style: none;
     display:inline;
     font-size:16px;
     margin-right:10px;
 }
 
-ul.row li.title {
+.column_categories ul li.title {
     font-weight:bold;
     font-size:20px;
     color:#A4A4A4;
@@ -386,12 +479,12 @@ div.search_date {
 }
 
 .report_description,
-.report_categories,
 .report_comments,
 .report_comment_form,
 .report_extras,
 .report_media,
 .report_nearby,
+.report_custom,
 .report_comments{
     margin-bottom:10px;
 }
@@ -400,21 +493,37 @@ div.search_date {
     font-size:15px;
 }
 
-.report_nearby_title {
+.report_nearby_title,
+.report_custom_name {
     font-size:15px;
     float:left;
 }
-.report_nearby_location {
+.report_nearby_location,
+.report_custom_value {
     font-size:15px;
     float:right;
 }
 
 .report_media {
     vertical-align: top;
+    text-align: center;
 }
-.report_media img {
-    width:32%;
-    vertical-align: top;
+.report_media object,
+.report_media object embed{
+    width:32% !important;
+    margin-right:0;
+    margin-left:0;
+}
+
+.report_media_image {
+    width:32% !important;
+    overflow:hidden;
+    float:left;
+    margin-left:1%;
+}
+
+.report_media_image img {
+    width:100%;
 }
 
 .report_comment_form label {
@@ -449,16 +558,71 @@ div.search_date {
 
 .report_comment_form form input {
     width: 95%;
-    padding:8px;
+    padding:5px;
 }
+
+.report_comment_form form input.input_captcha {
+    width:70%;
+    float:left;
+}
+
 .report_comment_form form span {
     display: block;
     overflow: hidden;
     padding: 0 0 0 0;
 }​
-.report_comment_form img {
-
+.report_comment_form form span img {
+    width:20%;
+    height:15px;
+    display:inline;
+    float:left;
  }
+
+ div#search  {
+    padding:20px
+ }
+
+div#search .search_info {
+    -moz-border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -khtml-border-radius:5px;
+    background-color: #F2F2F2;
+    border: 1px solid #D8D8D8;
+    padding:5px;
+}
+
+div#search .search_result {
+     -moz-border-radius:5px;
+     -moz-border-radius:5px;
+     -webkit-border-radius:5px;
+     border-radius:5px;
+     -khtml-border-radius:5px;
+     background-color: #FAFAFA;
+     border: 1px solid #F2F2F2;
+     padding:5px;
+}
+
+div#search ul.pager  {
+    margin-left:0;
+    padding-left:0;
+}
+
+div#search ul.pager li  {
+    -moz-border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -khtml-border-radius:5px;
+    background-color: #F2F2F2;
+    border: 1px solid #D8D8D8;
+    padding:5px;
+}
+
+#footer .copyright {
+    float:left;
+}
 
 /* ############################################ OLD CSS ############################################ */
 /* ############################################ OLD CSS ############################################ */
@@ -592,33 +756,33 @@ div#equalright{
 /* content column */
 div#main{
     width: 100%;
+    height:100%;
     margin: 0px;
     padding: 0px;
+    overflow: auto;
 }
 
-div#mainmiddle{
-    margin: 0px 0px 0px 0px;
-}
+/*div#mainmiddle{*/
+    /*margin: 0px 0px 0px 0px;*/
+/*}*/
 
-div#main .withoutright{
-    background: transparent;
-}
+/*div#main .withoutright{*/
+    /*background: transparent;*/
+/*}*/
 
-div#content{
-    width: auto;
-}
+/*div#content{*/
+    /*width: auto;*/
+/*}*/
 
-div#main .withright div#content{
-    margin: 0px 325px 0px 0px;
-    padding: 0px;
-}
+/*div#main .withright div#content{*/
+    /*margin: 0px 325px 0px 0px;*/
+    /*padding: 0px;*/
+/*}*/
 
-div#main .withoutright div#content{
-    margin: 0px;
-    padding: 0px;
-}
-
-
+/*div#main .withoutright div#content{*/
+    /*margin: 0px;*/
+    /*padding: 0px;*/
+/*}*/
 
 div#footer .footer-credits img {
     vertical-align: middle;
@@ -2896,6 +3060,7 @@ div.ci_checkin {
 * html div#content{
     height:100%;
     overflow:auto;
+<<<<<<< HEAD
 }
 
 
@@ -2912,3 +3077,6 @@ div.ci_checkin {
     margin-bottom: 20px;
     padding-bottom: 120px;
 }
+=======
+}
+>>>>>>> 045d6a9cc5d78c605fa80509c28f51e864b60c16

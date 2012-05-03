@@ -19,11 +19,11 @@ if ($form_error) { ?>
 <?php
 if (!$user) { ?>
         <label for="comment_author"><?php echo Kohana::lang('ui_main.name');?></label>
-        <span><?php print form::input('comment_author', $form['comment_author'], ' class="text"'); ?></span>
+        <span><?php print form::input('comment_author', $form['comment_author'], ' class="text input_name"'); ?></span>
         <br/>
 
         <label for="comment_email"><?php echo Kohana::lang('ui_main.email'); ?></label>
-        <span><?php print form::input('comment_email', $form['comment_email'], ' class="text"'); ?></span>
+        <span><?php print form::input('comment_email', $form['comment_email'], ' class="text input_email"'); ?></span>
         <br/>
     <?php
 }
@@ -35,12 +35,12 @@ else {
 <?php } ?>
 
     <label for="comment_description"><?php echo Kohana::lang('ui_main.comment'); ?></label>
-    <span><?php print form::input('comment_description', $form['comment_description'], ' class="text" ') ?></span>
+    <span><?php print form::input('comment_description', $form['comment_description'], ' class="text input_comment" ') ?></span>
     <br/>
 
     <label for="captcha"><?php echo Kohana::lang('ui_main.security_code'); ?></label>
 
-    <span><?php print $captcha->render(); ?><?php print form::input('captcha', $form['captcha'], ' class="text"'); ?></span>
+    <span><?php print $captcha->render(); ?><?php print form::input('captcha', $form['captcha'], ' class="text input_captcha"'); ?></span>
     <br/>
 
 
