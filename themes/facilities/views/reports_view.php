@@ -61,37 +61,47 @@
                 </div>
             <?php } ?>
 
-            <!-- report media with photos and videos ends-->
+            <?php foreach( $incident_news as $incident_new) { ?>
+                <div class="report_custom box_light">
+                    <div class="report_custom_name">
+                        <?php echo Kohana::lang('ui_main.url');?>
+                    </div>
+                    <div class="report_custom_value">
+                        <a href="<?php echo $incident_new; ?> " target="_blank">
+                            <?php echo $incident_new;?>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            <?php } ?>
 
             <?php if(strlen($custom_forms) > 0) { ?>
-                <div class="report_extras">
-                    <?php Event::run('ushahidi_action.report_extra', $incident_id); ?>
-                    <?php echo $custom_forms; ?>
-                </div>
+            <div class="report_extras">
+                <?php Event::run('ushahidi_action.report_extra', $incident_id); ?>
+                <?php echo $custom_forms; ?>
+            </div>
             <?php } ?>
 
             <?php Event::run('ushahidi_action.report_display_media', $incident_id); ?>
 
             <!-- start report media with photos and videos-->
-            <div class="report_media box_light <?php if( count($incident_photos) == 0 && count($incident_videos) == 0){ echo "hidden";}?>">
+            <div class="report_media box_light <?php if(count($incident_photos) == 0){ echo "hidden";}?>">
                 <?php
-                // if there are images, show them
                 if(count($incident_photos) > 0) {
                     foreach ($incident_photos as $photo) {
-                        echo '<a class="photothumb" rel="lightbox-group1" href="'.$photo['large'].'"><img width="200" src="'.$photo['large'].'"/></a> ';
+                        echo '<div class="report_media_image"><a class="photothumb" rel="lightbox-group1" href="'.$photo['large'].'"><img src="'.$photo['thumb'].'"/></a></div>';
                     };
                 }
-                // if there are videos, show those too
-                if( count($incident_videos) > 0 ){
-                    echo '<div id="report-video"><ol>';
-                    // embed the video codes
-                    foreach( $incident_videos as $incident_video) {
-                        echo '<li>';
-                        $videos_embed->embed($incident_video,'');
-                        echo '</li>';
-                    };
-                    echo '</ol></div>';
+                ?>
+                <div class="clearfix"></div>
+            </div>
 
+            <div class="report_media box_light <?php if(count($incident_videos) == 0){ echo "hidden";}?>">
+                <?php
+                if(count($incident_videos) > 0 ){
+                    foreach( $incident_videos as $incident_video) {
+                        $videos_embed->embed($incident_video,'');
+                    };
                 }
                 ?>
             </div>
@@ -150,3 +160,38 @@
     <!-- /   right column ends-->
 
 </div>
+
+<script type="text/javascript">
+    $(function(){
+        $(window).resize(function() {
+            adjustThumbnails();
+        });
+        adjustThumbnails();
+    });
+    function adjustThumbnails() {
+        $('.report_media_image').each(function() {
+            var width = $(this).width();
+            var height = $(this).height();
+            $(this).height(width);
+            $(this).css("height", width*0.65);
+            $(this).css("minHeight", width*0.65);
+            $(this).css("maxHeight", width*0.65);
+        });
+        $('.report_media object').each(function() {
+            var width = $(this).width();
+            var height = $(this).height();
+            $(this).height(width);
+            $(this).css("height", width*0.65);
+            $(this).css("minHeight", width*0.65);
+            $(this).css("maxHeight", width*0.65);
+        });
+        $('.report_media object embed').each(function() {
+            var width = $(this).width();
+            var height = $(this).height();
+            $(this).height(width);
+            $(this).css("height", width*0.65);
+            $(this).css("minHeight", width*0.65);
+            $(this).css("maxHeight", width*0.65);
+        });
+    }
+</script>

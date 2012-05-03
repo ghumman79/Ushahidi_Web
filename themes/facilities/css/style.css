@@ -497,10 +497,27 @@ div.search_date {
 
 .report_media {
     vertical-align: top;
+    text-align: center;
 }
-.report_media img {
-    width:32%;
+.report_media object,
+.report_media object embed{
+    width:32% !important;
     vertical-align: top;
+    margin-right:0;
+    margin-left:0;
+}
+
+.report_media_image {
+    width:32% !important;
+    vertical-align: top;
+    text-align: center;
+    overflow:hidden;
+    float:left;
+    margin-right:1%;
+}
+
+.report_media_image img {
+    width:100%;
 }
 
 .report_comment_form label {
@@ -595,6 +612,10 @@ div#search ul.pager li  {
     background-color: #F2F2F2;
     border: 1px solid #D8D8D8;
     padding:5px;
+}
+
+#footer .copyright {
+    float:left;
 }
 
 /* ############################################ OLD CSS ############################################ */
