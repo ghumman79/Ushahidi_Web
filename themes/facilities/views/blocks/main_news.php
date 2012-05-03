@@ -1,4 +1,4 @@
-<ul class="column_news">
+<ul class="column_news box_light">
  <li class="title">News</li>
  <?php
     if ($feeds->count() == 0) {

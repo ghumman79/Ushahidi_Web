@@ -1,7 +1,18 @@
 <div id="middle">
+<<<<<<< HEAD
 
     <div id="container">
 
+=======
+    <div id="container">
+
+    <?php if($site_message != '') { ?>
+    <div class="welcome_message box_light">
+        <?php echo $site_message; ?>
+    </div>
+    <?php } ?>
+
+>>>>>>> ab830528036d64fbd40ea6a2153312256d063fbb
     <?php
     foreach ($categories as $category => $category_info) {
         $category_title = $category_info[0];

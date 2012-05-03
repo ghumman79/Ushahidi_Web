@@ -1,11 +1,12 @@
 <div id="middle">
-    <div id="reports-box">
-        <?php echo $report_listing_view; ?>
-    </div>
     <div id="categories">
         <ul>
             <?php echo $category_tree_view; ?>
         </ul>
+    </div>
+
+    <div id="reports-box">
+        <?php echo $report_listing_view; ?>
     </div>
 
     <?php
@@ -50,6 +51,12 @@
             $leftPane.appendTo($listView);
             $rightPane.appendTo($listView);
         }
+        $(function(){
+            $(window).resize(function() {
+                var _top = $("#categories").css('height');
+                $("#reports").css('top', _top);
+            });
+        });
         $(function(){
             var active;
 
@@ -121,6 +128,7 @@
                                 else if (active.search('#rb_gallery-view') > 0) {
                                     switchViews($("#navigation .report-list-toggle .navigation_gallery"));
                                 }
+                                splitListView();
                             }, 400);
                         }
                     }

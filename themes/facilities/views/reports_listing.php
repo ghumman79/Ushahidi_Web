@@ -34,7 +34,7 @@
                     }
                 }
             ?>
-            <div id="<?php echo $incident_id ?>" class="report_card <?php echo $incidentPane ?>">
+            <div id="<?php echo $incident_id ?>" class="report_card box_medium <?php echo $incidentPane ?>">
                 <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                     <img src="<?php echo $incident_thumb; ?>" />
                 </a>
@@ -72,7 +72,7 @@
             </div>
         <?php } ?>
         </div>
-        <div id="rb_map-view" style="display:none;width:100%;height:900px;margin:0;"></div>
+        <div id="rb_map-view" style="display:none;width:100%;height:900px;"></div>
         <div id="rb_gallery-view" style="display:none;">
             <?php
             foreach ($incidents as $incident) {
