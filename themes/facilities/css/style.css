@@ -230,6 +230,7 @@ div#categories {
     left:0;
     background-color:#FAFAFA;
     border-bottom: 1px solid #BDBDBD;
+    margin-top: 4px;
 }
 
 div#categories ul {
@@ -3060,7 +3061,6 @@ div.ci_checkin {
 * html div#content{
     height:100%;
     overflow:auto;
-<<<<<<< HEAD
 }
 
 
@@ -3077,6 +3077,4 @@ div.ci_checkin {
     margin-bottom: 20px;
     padding-bottom: 120px;
 }
-=======
-}
->>>>>>> 045d6a9cc5d78c605fa80509c28f51e864b60c16
+
