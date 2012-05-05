@@ -247,11 +247,6 @@ div#categories ul li {
     margin-bottom:8px;
 }
 
-div#categories ul li.selected,
-div#categories ul a.selected {
-    background-color:#D8D8D8;
-}
-
 div#categories .item-count {
     display:none;
 }

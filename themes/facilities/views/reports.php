@@ -82,10 +82,24 @@
                 if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                     $(this).parent().removeClass("selected");
+
+                    if(! ($(this).parent().hasClass('report-listing-category-child'))){
+                        $(this).parent().parent().children().each(function(){
+                            $(this).removeClass("selected");
+                            $(this).find("a").removeClass("selected");
+                        });
+                    }
                 }
                 else {
                     $(this).addClass("selected");
                     $(this).parent().addClass("selected");
+
+                    if(! ($(this).parent().hasClass('report-listing-category-child'))){
+                        $(this).parent().parent().children().each(function(){
+                            $(this).addClass("selected");
+                            $(this).find("a").addClass("selected");
+                        });
+                    }
                 }
                 var category_ids = [];
                 $.each($("#categories li a.selected"), function(i, item){
