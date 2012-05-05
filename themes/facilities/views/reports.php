@@ -22,9 +22,6 @@
     </div>
 
     <script type="text/javascript">
-        var checkinMap = null;
-        var markers = null;
-
         function splitParentCategories() {
             var $categoryDiv = $("div#categories");
             var $categoryList = $categoryDiv.find("ul");
@@ -107,14 +104,9 @@
                     "</div>";
 
                 $("#reports-box").html(statusHtml);
-
-                // Check if there are any parameters
-                if ($.isEmptyObject(urlParameters))
-                {
+                if ($.isEmptyObject(urlParameters)) {
                     urlParameters = {show: "all"}
                 }
-
-                // Get the content for the new page
                 $.get('<?php echo url::site().'reports/fetch_reports'?>',
                     urlParameters,
                     function(data) {
@@ -134,6 +126,7 @@
                                     switchViews($("#navigation .report-list-toggle .navigation_gallery"));
                                 }
                                 splitListView();
+                                adjustCategories();
                             }, 400);
                         }
                     }
@@ -142,47 +135,30 @@
         });
 
         function switchViews(view) {
-            $("#rb_list-view, #rb_map-view, #rb_gallery-view, #rb_checkin-view").hide();
+            $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
             $($(view).attr("href")).show();
             $("#reports-box .report-list-toggle a").parent().removeClass("active");
             $("."+$(view).attr("class")).parent().addClass("active");
             if ($("#rb_map-view").css("display") == "block") {
                 $("#reports").css("overflow-y", "hidden");
-                $(".pagination").css("display", "block");
-                $(".breadcrumb").css("display", "block");
                 urlParameters["page"] = $(".pager li a.active").html();
                 if ($('#rb_map-view').children().length == 0) {
                     createIncidentMap();
                 }
                 setTimeout(function(){ showIncidentMap() }, 400);
-            }
-            else if ($("#rb_checkin-view").css("display") == "block") {
-                $("#reports").css("overflow-y", "hidden");
-                $(".pagination").css("display", "none");
-                $(".breadcrumb").css("display", "none");
-                if ($('#rb_checkin-view').children().length == 0) {
-                    createCheckinMap();
-                }
                 setTimeout(function(){ showCheckins() }, 400);
             }
             else {
                 $("#reports").css("overflow-y", "auto");
-                $(".pagination").css("display", "block");
-                $(".breadcrumb").css("display", "block");
             }
             return false;
-        }
-
-        function createCheckinMap() {
-            checkinMap = createMap('rb_checkin-view', latitude, longitude, defaultZoom);
-            checkinMap.addControl(new OpenLayers.Control.LoadingPanel({minSize: new OpenLayers.Size(573, 366)}) );
         }
 
         function showCheckins() {
             $(document).ready(function(){
                 var ci_styles = new OpenLayers.StyleMap({
                     "default": new OpenLayers.Style({
-                        pointRadius: "5", // sized according to type attribute
+                        pointRadius: "5",
                         fillColor: "${fillcolor}",
                         strokeColor: "${strokecolor}",
                         fillOpacity: "${fillopacity}",
@@ -191,24 +167,38 @@
                     })
                 });
 
-                var checkinLayer = new OpenLayers.Layer.Vector('Checkins', {styleMap: ci_styles});
-                checkinMap.addLayers([checkinLayer]);
+                var checkinLayer = new OpenLayers.Layer.Vector('<?php echo Kohana::lang('ui_admin.checkins')?>', {styleMap: ci_styles});
+                map.addLayers([checkinLayer]);
 
-                highlightCtrl = new OpenLayers.Control.SelectFeature(checkinLayer, {
+                var highlightControl = new OpenLayers.Control.SelectFeature(checkinLayer, {
                     hover: true,
                     highlightOnly: true,
                     renderIntent: "temporary"
                 });
-                checkinMap.addControl(highlightCtrl);
-                highlightCtrl.activate();
+                map.addControl(highlightControl);
+                highlightControl.activate();
 
-//                selectControl = new OpenLayers.Control.SelectFeature([checkinLayer,markers]);
-//                checkinMap.addControl(selectControl);
-//                selectControl.activate();
-                checkinLayer.events.on({
-                    "featureselected": showCheckinData,
-                    "featureunselected": onFeatureUnselect
+                var selectControls = [];
+                $.each(map.layers, function(i, layer) {
+                    if (layer.name  == '<?php echo Kohana::lang('ui_main.reports')?>') {
+                        selectControls.push(layer);
+                        layer.events.on({
+                            "featureselected": showReportData,
+                            "featureunselected": onFeatureUnselect
+                        });
+                    }
+                    else if (layer.name == '<?php echo Kohana::lang('ui_admin.checkins')?>') {
+                        selectControls.push(layer);
+                        layer.events.on({
+                            "featureselected": showCheckinData,
+                            "featureunselected": onFeatureUnselect
+                        });
+                    }
                 });
+
+                var selectControl = new OpenLayers.Control.SelectFeature(selectControls);
+                map.addControl(selectControl);
+                selectControl.activate();
 
                 $.getJSON("<?php echo url::site()."api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC"?>", function(data) {
                     var user_colors = new Array();
@@ -218,11 +208,9 @@
                     $.each(data["payload"]["checkins"], function(key, ci) {
                         var cipoint = new OpenLayers.Geometry.Point(parseFloat(ci.lon), parseFloat(ci.lat));
                         cipoint.transform(proj_4326, proj_900913);
-
                         var media_link = '';
                         var media_medium = '';
                         var media_thumb = '';
-
                         if(ci.media === undefined) {
                             // No image
                         }
@@ -248,7 +236,7 @@
             });
         }
 
-        function onFeatureSelect(event) {
+        function showReportData(event) {
             selectedFeature = event.feature;
             zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
             lon = zoom_point.lon;
@@ -256,8 +244,7 @@
             if (event.feature.popup != null) {
                 map.removePopup(event.feature.popup);
             }
-            $.get('<?php echo url::site().'api?task=incidents&by=incidentid&id='?>' + event.feature.attributes.id,
-                null, function(json) {
+            $.get('<?php echo url::site().'api?task=incidents&by=incidentid&id='?>' + event.feature.attributes.id, null, function(json) {
                     if (json.payload.incidents.length > 0) {
                         var incidents = json.payload.incidents;
                         var incident = incidents[0].incident;
@@ -303,14 +290,12 @@
         }
 
         function showCheckinData(event) {
-            debugger;
             selectedFeature = event.feature;
             zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
             lon = zoom_point.lon;
             lat = zoom_point.lat;
 
             var content = "<div class=\"infowindow\" style=\"color:#000000\"><div class=\"infowindow_list\">";
-
             if(event.feature.attributes.ci_media_medium !== "") {
                 content += "<a href=\""+event.feature.attributes.ci_media_link+"\" rel=\"lightbox-group1\" title=\""+event.feature.attributes.ci_msg+"\">";
                 content += "<img src=\""+event.feature.attributes.ci_media_medium+"\" /><br/>";
@@ -329,10 +314,8 @@
                 new OpenLayers.Size(100,100),
                 content,
                 null, true, onPopupClose);
-
-            debugger;
             event.feature.popup = popup;
-            checkinMap.addPopup(popup);
+            map.addPopup(popup);
         }
     </script>
 </div>

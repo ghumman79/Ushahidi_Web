@@ -39,10 +39,7 @@
     <?php if (Kohana::config('settings.checkins')) { ?>
 
     function cilisting(sqllimit,sqloffset) {
-        jsonurl = "<?php echo url::site(); ?>api/?task=checkin&action=get_ci&sqllimit="+sqllimit+"&sqloffset="+sqloffset+"&orderby=checkin.checkin_date&sort=DESC";
-
-        var showncount = 0;
-        $.getJSON(jsonurl, function(data) {
+        $.getJSON("<?php echo url::site(); ?>api/?task=checkin&action=get_ci&sqllimit="+sqllimit+"&sqloffset="+sqloffset+"&orderby=checkin.checkin_date&sort=DESC", function(data) {
             if(data.payload.checkins == undefined) {
                 if (sqloffset != 0) {
                     var newoffset = sqloffset - sqllimit;
@@ -53,15 +50,23 @@
                 }
                 return;
             }
-
             var user_colors = new Array();
             $.each(data.payload.users, function(i, payl) {
                 user_colors[payl.id] = payl.color;
             });
-
             var ul = $('.column_reports ul');
             $.each(data.payload.checkins, function(i,item){
                 var li = $('<li>');
+                if (item.media !== undefined) {
+                    var ahref = $('<a class="ci_link">');
+                    ahref.href(item.media[0].link);
+                    ahref.rel('lightbox-group1');
+                    ahref.title(item.msg);
+                    var image = $('<img class="ci_image">');
+                    image.src(item.media[0].thumb);
+                    image.appendTo(ahref);
+                    ahref.appendTo(li);
+                }
                 if (item.msg !== undefined) {
                     var message = $('<span class="ci_message">').text("\"" + item.msg + "\"");
                     message.appendTo(li);
@@ -74,14 +79,30 @@
                     }
                 });
                 var utcDate = item.date.replace(" ","T")+"Z";
-                var time = $('<span class="ci_date">').text(", " + $.timeago(utcDate));
-                time.appendTo(li);
+                var date = $('<span class="ci_date">').text(", " + $.timeago(utcDate));
+                date.appendTo(li);
+                if (item.comments !== undefined) {
+                    $.each(item.comments, function(j,comment){
+                        var comment = $('<div class="ci_comment">');
+                        var description = $('<span class="ci_message">').text("\"" + comment.description + "\"");
+                        description.appendTo(comment);
+                        var user = $('<span class="ci_user">');
+                        if (item.user_id != 0){
+                            user.html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+comment.username+"\">"+comment.author+"</a>");
+                        }
+                        else {
+                            user.html(" - "+comment.author);
+                        }
+                        user.appendTo(comment);
+                        var commentDate = comment.date.replace(" ","T")+"Z";
+                        var date = $('<span class="ci_date">').text(", " + $.timeago(commentDate));
+                        date.appendTo(comment);
+                        comment.appendTo(li);
+                    });
+                }
                 li.appendTo(ul);
             });
-
-
         });
-
     }
 
     cilisting(3,0);
