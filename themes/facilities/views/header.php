@@ -8,6 +8,7 @@
     // Action::header_scripts - Additional Inline Scripts from Plugins
     Event::run('ushahidi_action.header_scripts');
     ?>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8888/themes/facilities/css/uofs.css">
 </head>
 
 <?php
