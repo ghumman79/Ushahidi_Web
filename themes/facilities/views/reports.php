@@ -54,6 +54,12 @@
             var $top = $("#categories").css('height');
             $("#reports").css('top', $top);
         }
+        function removeListStrFromBreadcrumb() {
+            var $el = $("div.breadcrumb");
+            var strBreadcrumb = $el.html();
+            $("div.breadcrumb").html(strBreadcrumb.replace(" List", ""));
+        }
+
         $(function(){
             var active;
 
@@ -63,6 +69,7 @@
                 adjustCategories();
             });
             adjustCategories();
+            removeListStrFromBreadcrumb();
 
             if($(".report-list-toggle .active a").hasClass("navigation_list")){
                 splitListView();
