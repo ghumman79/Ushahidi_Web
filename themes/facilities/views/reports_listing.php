@@ -3,6 +3,9 @@
         <li class="active"><a href="#rb_list-view" class="navigation_list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
         <li><a href="#rb_map-view" class="navigation_map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
         <li><a href="#rb_gallery-view" class="navigation_gallery">Gallery</a></li>
+        <?php if ( Kohana::config('settings.checkins') ) { ?>
+            <li><a href="#rb_checkin-view" class="navigation_checkin"><?php echo Kohana::lang('ui_admin.checkins'); ?></a></li>
+        <?php } ?>
     </ul>
     <div class="pagination"><?php echo $pagination; ?></div>
     <div class="breadcrumb"><?php echo $stats_breadcrumb; ?></div>
@@ -73,6 +76,7 @@
         <?php } ?>
         </div>
         <div id="rb_map-view" style="display:none;width:100%;height:900px;"></div>
+        <div id="rb_checkin-view" style="display:none;width:100%;height:900px;"></div>
         <div id="rb_gallery-view" style="display:none;">
             <?php
             foreach ($incidents as $incident) {

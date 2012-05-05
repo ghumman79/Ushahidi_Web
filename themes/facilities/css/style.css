@@ -113,7 +113,7 @@ div#navigation ul.toggle li {
     float:left;
     margin-right:8px;
     font-weight:bold;
-    width:120px;
+    width:100px;
 }
 
 div#navigation ul.toggle a.navigation_list {
@@ -126,6 +126,10 @@ div#navigation ul.toggle a.navigation_map {
 
 div#navigation ul.toggle a.navigation_gallery {
     background-image:url("../images/gallery.png");
+}
+
+div#navigation ul.toggle a.navigation_checkin {
+    background-image:url("../images/checkin.png");
 }
 
 div#navigation .pagination {
@@ -235,7 +239,7 @@ div#categories {
 
 div#categories ul {
     margin-left:10px;
-    margin-top:0px;
+    margin-top:5px;
 }
 
 div#categories ul li {
@@ -370,10 +374,14 @@ div.report_thumbnail img {
 }
 
 div#main {
-   margin-top:20px;
-   margin-bottom: 10px;
+    overflow: auto;
+    width: 100%;
+    height:100%;
+    margin-top:20px;
+    margin-bottom: 10px;
     margin-left:0;
     margin-right:0;
+    padding:0;
 }
 
 .column_welcome,
@@ -381,17 +389,14 @@ div#main {
 .column_reports,
 .column_news {
     float:left;
-    padding:20px;
 }
 
 .column_welcome,
-.column_reports {
-    width:30%;
-}
-
+.column_reports,
 .column_categories,
-.column_news {
-    width:60%;
+.column_news{
+    width:48.5%;
+    margin-left:1%;
 }
 
 .column_reports li,
@@ -625,6 +630,10 @@ div#search ul.pager li  {
     float:left;
 }
 
+#cilist {
+    font-size: 14px;
+}
+
 /* ############################################ OLD CSS ############################################ */
 /* ############################################ OLD CSS ############################################ */
 
@@ -754,14 +763,6 @@ div#equalright{
     float: right;
 }
 
-/* content column */
-div#main{
-    width: 100%;
-    height:100%;
-    margin: 0px;
-    padding: 0px;
-    overflow: auto;
-}
 
 /*div#mainmiddle{*/
     /*margin: 0px 0px 0px 0px;*/
@@ -1262,8 +1263,8 @@ div.footer-credits{
 
 /* Reports */
 
-#main .left-col { float:left; width:520px; margin-right:20px }
-#main .right-col { float:right;width:45%; }
+/*#main .left-col { float:left; width:520px; margin-right:20px }*/
+/*#main .right-col { float:right;width:45%; }*/
 
 div.report-details{
     width: 300px;

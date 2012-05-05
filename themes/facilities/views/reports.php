@@ -22,6 +22,9 @@
     </div>
 
     <script type="text/javascript">
+        var checkinMap = null;
+        var markers = null;
+
         function splitParentCategories() {
             var $categoryDiv = $("div#categories");
             var $categoryList = $categoryDiv.find("ul");
@@ -139,32 +142,110 @@
         });
 
         function switchViews(view) {
-            // Hide navigation divs
-            $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
-
-            // Show the appropriate div
+            $("#rb_list-view, #rb_map-view, #rb_gallery-view, #rb_checkin-view").hide();
             $($(view).attr("href")).show();
-
-            // Remove the class "selected" from all parent li's
             $("#reports-box .report-list-toggle a").parent().removeClass("active");
-
-            // Add class "selected" to both instances of the clicked link toggle
             $("."+$(view).attr("class")).parent().addClass("active");
-
-            // Check if the map view is active
             if ($("#rb_map-view").css("display") == "block") {
-                // Check if the map has already been created
-                if (mapLoaded == 0) {
+                $("#reports").css("overflow-y", "hidden");
+                $(".pagination").css("display", "block");
+                $(".breadcrumb").css("display", "block");
+                urlParameters["page"] = $(".pager li a.active").html();
+                if ($('#rb_map-view').children().length == 0) {
                     createIncidentMap();
                 }
-
-                // Set the current page
-                urlParameters["page"] = $(".pager li a.active").html();
-
-                // Load the map
                 setTimeout(function(){ showIncidentMap() }, 400);
             }
+            else if ($("#rb_checkin-view").css("display") == "block") {
+                $("#reports").css("overflow-y", "hidden");
+                $(".pagination").css("display", "none");
+                $(".breadcrumb").css("display", "none");
+                if ($('#rb_checkin-view').children().length == 0) {
+                    createCheckinMap();
+                }
+                setTimeout(function(){ showCheckins() }, 400);
+            }
+            else {
+                $("#reports").css("overflow-y", "auto");
+                $(".pagination").css("display", "block");
+                $(".breadcrumb").css("display", "block");
+            }
             return false;
+        }
+
+        function createCheckinMap() {
+            checkinMap = createMap('rb_checkin-view', latitude, longitude, defaultZoom);
+            checkinMap.addControl(new OpenLayers.Control.LoadingPanel({minSize: new OpenLayers.Size(573, 366)}) );
+        }
+
+        function showCheckins() {
+            $(document).ready(function(){
+                var ci_styles = new OpenLayers.StyleMap({
+                    "default": new OpenLayers.Style({
+                        pointRadius: "5", // sized according to type attribute
+                        fillColor: "${fillcolor}",
+                        strokeColor: "${strokecolor}",
+                        fillOpacity: "${fillopacity}",
+                        strokeOpacity: 0.75,
+                        strokeWidth: 1.5
+                    })
+                });
+
+                var checkinLayer = new OpenLayers.Layer.Vector('Checkins', {styleMap: ci_styles});
+                checkinMap.addLayers([checkinLayer]);
+
+                highlightCtrl = new OpenLayers.Control.SelectFeature(checkinLayer, {
+                    hover: true,
+                    highlightOnly: true,
+                    renderIntent: "temporary"
+                });
+                checkinMap.addControl(highlightCtrl);
+                highlightCtrl.activate();
+
+//                selectControl = new OpenLayers.Control.SelectFeature([checkinLayer,markers]);
+//                checkinMap.addControl(selectControl);
+//                selectControl.activate();
+                checkinLayer.events.on({
+                    "featureselected": showCheckinData,
+                    "featureunselected": onFeatureUnselect
+                });
+
+                $.getJSON("<?php echo url::site()."api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC"?>", function(data) {
+                    var user_colors = new Array();
+                    $.each(data["payload"]["users"], function(i, payl) {
+                        user_colors[payl.id] = payl.color;
+                    });
+                    $.each(data["payload"]["checkins"], function(key, ci) {
+                        var cipoint = new OpenLayers.Geometry.Point(parseFloat(ci.lon), parseFloat(ci.lat));
+                        cipoint.transform(proj_4326, proj_900913);
+
+                        var media_link = '';
+                        var media_medium = '';
+                        var media_thumb = '';
+
+                        if(ci.media === undefined) {
+                            // No image
+                        }
+                        else {
+                            // Image!
+                            media_link = ci.media[0].link;
+                            media_medium = ci.media[0].medium;
+                            media_thumb = ci.media[0].thumb;
+                        }
+                        var checkinPoint = new OpenLayers.Feature.Vector(cipoint, {
+                            fillcolor: "#"+user_colors[ci.user],
+                            strokecolor: "#FFFFFF",
+                            fillopacity: ci.opacity,
+                            ci_id: ci.id,
+                            ci_msg: ci.msg,
+                            ci_media_link: media_link,
+                            ci_media_medium: media_medium,
+                            ci_media_thumb: media_thumb
+                        });
+                        checkinLayer.addFeatures([checkinPoint]);
+                    });
+                });
+            });
         }
 
         function onFeatureSelect(event) {
@@ -219,6 +300,39 @@
                     }
                 }
             );
+        }
+
+        function showCheckinData(event) {
+            debugger;
+            selectedFeature = event.feature;
+            zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
+            lon = zoom_point.lon;
+            lat = zoom_point.lat;
+
+            var content = "<div class=\"infowindow\" style=\"color:#000000\"><div class=\"infowindow_list\">";
+
+            if(event.feature.attributes.ci_media_medium !== "") {
+                content += "<a href=\""+event.feature.attributes.ci_media_link+"\" rel=\"lightbox-group1\" title=\""+event.feature.attributes.ci_msg+"\">";
+                content += "<img src=\""+event.feature.attributes.ci_media_medium+"\" /><br/>";
+            }
+
+            content += event.feature.attributes.ci_msg+"</div><div style=\"clear:both;\"></div>";
+            content += "<div class=\"infowindow_meta\">";
+            content += "</div>";
+
+            if (content.search("<?php echo '<'; ?>script") != -1) {
+                //content = "Content contained Javascript! Escaped content below.<br />" + content.replace(/<?php echo '<'; ?>/g, "&lt;");
+            }
+
+            popup = new OpenLayers.Popup.FramedCloud("chicken",
+                event.feature.geometry.getBounds().getCenterLonLat(),
+                new OpenLayers.Size(100,100),
+                content,
+                null, true, onPopupClose);
+
+            debugger;
+            event.feature.popup = popup;
+            checkinMap.addPopup(popup);
         }
     </script>
 </div>
