@@ -626,8 +626,14 @@ div#search ul.pager li  {
     float:left;
 }
 
-#cilist {
-    font-size: 14px;
+.ci_message {
+    font-style: italic;
+}
+.ci_user {
+
+}
+.ci_date {
+    font-size:12px;
 }
 
 /* ############################################ OLD CSS ############################################ */
