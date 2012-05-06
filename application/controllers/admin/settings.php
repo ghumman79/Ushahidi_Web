@@ -104,7 +104,7 @@ class Settings_Controller extends Admin_Controller
 			$post->add_rules('site_language','required', 'length[5, 5]');
 			//$post->add_rules('site_timezone','required', 'between[10,50]');
 			$post->add_rules('site_contact_page','required','between[0,1]');
-			$post->add_rules('items_per_page','required','between[5,50]');
+			$post->add_rules('items_per_page','required','between[5,2000]');
 			$post->add_rules('items_per_page_admin','required','between[5,50]');
 			$post->add_rules('blocks_per_row','required','numeric');
 			$post->add_rules('allow_alerts','required','between[0,1]');
@@ -328,7 +328,9 @@ class Settings_Controller extends Admin_Controller
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
-		$this->template->content->items_per_page_array = array('5'=>'5 Items','10'=>'10 Items','20'=>'20 Items','30'=>'30 Items','50'=>'50 Items');
+		$this->template->content->items_per_page_array =
+            array('5'=>'5 Items','10'=>'10 Items','20'=>'20 Items','30'=>'30 Items','50'=>'50 Items',
+                  '100'=>'100 Items','250'=>'250 Items','500'=>'500 Items','1000'=>'1000 Items','2000'=>'2000 Items');
 		$blocks_per_row_array = array();
 		for ($i=1; $i <= 21; $i++)
 		{

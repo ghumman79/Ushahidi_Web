@@ -143,8 +143,8 @@ div#navigation .breadcrumb {
 }
 
 div#navigation ul {
-   margin-top:10px;
-   margin-left:0px;
+    margin-top:10px;
+    margin-left:0px;
 }
 
 div#navigation ul li,
@@ -240,6 +240,7 @@ div#categories {
 div#categories ul {
     margin-left:10px;
     margin-top:5px;
+    float:left;
 }
 
 div#categories ul li {
