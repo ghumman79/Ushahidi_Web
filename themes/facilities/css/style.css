@@ -529,7 +529,7 @@ div.search_date {
 }
 
 .report_comment_form label {
-    display: block;
+    display: inline-block;
     width: 150px;
     float: left;
     margin: 2px 4px 6px 4px;
@@ -1807,7 +1807,7 @@ label.error {
 .textarea {
     padding:7px 7px 3px 7px;
     border:1px #ccc solid;
-    height: 120px;
+    height: 20px;
 }
 .select{
     overflow:hidden;
@@ -1825,9 +1825,9 @@ label.error {
 }
 .btn_submit {
     margin: 20px 20px 0 0;
-    padding: 8px 10px;
+    /*padding: 8px 10px;*/
     color: white;
-    background-color:#368c00;
+    /*background-color:#368c00;*/
     font-size:14px;
     cursor:pointer;
     border: 0;
@@ -1874,6 +1874,19 @@ td.w-03 { border-bottom:1px dotted #E8E4DB; text-transform:capitalize; }
     margin:0 0 15px 0;
     clear:both;
     display:inline-block;
+    padding: 5px 10px 0 10px;
+    font-size: 15px;
+    line-height: 1.2em;
+    width: 40%;
+    color: #848484;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+div#report_row1 {
+    margin:0 0 15px 0;
+    clear:both;
+    /*display:inline;*/
     padding: 5px 10px 0 10px;
     font-size: 15px;
     line-height: 1.2em;
