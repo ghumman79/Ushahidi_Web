@@ -1,4 +1,4 @@
-<div id="content">
+<div id="middle" >
     <div class="content-bg">
         <!-- start contacts block -->
         <div class="big-block">
@@ -55,8 +55,8 @@
                     <?php print form::textarea('contact_message', $form['contact_message'], ' rows="4" cols="40" class="textarea long" ') ?>
                 </div>
                 <div class="report_row">
-                    <strong><?php echo Kohana::lang('ui_main.contact_code'); ?>:</strong><br />
-                    <?php print $captcha->render(); ?><br />
+                    <strong><?php echo Kohana::lang('ui_main.contact_code'); ?>:</strong><br/>
+                    <?php print $captcha->render(); ?><br/>
                     <?php print form::input('captcha', $form['captcha'], ' class="text"'); ?>
                 </div>
                 <div class="report_row">
