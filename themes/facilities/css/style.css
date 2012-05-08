@@ -528,59 +528,59 @@ div.search_date {
     width:100%;
 }
 
-.report_comment_form label {
+form {
+    margin:0 0 0 0;
+}
+
+form legend {
+    font-size: 1.125em;
+    font-weight: bold;
+}
+
+form fieldset {
+    margin: 0 0 32px 0;
+    padding: 8px;
+}
+
+form label {
     display: inline-block;
     width: 150px;
     float: left;
     margin: 2px 4px 6px 4px;
     text-align: right;
     font-size:14px;
-}
-
-.report_comment_form form {
-    margin: 0 0 0 0;
-}
-
-.report_comment_form form legend {
-    font-size: 1.125em;
-    font-weight: bold;
-}
-
-.report_comment_form form fieldset {
-    margin: 0 0 32px 0;
-    padding: 8px;
-}
-
-.report_comment_form form label {
-    float: left;
-    width: 100px;
-    padding-top:3px;
     margin-right:10px;
 }
 
-.report_comment_form form input {
+#alerts form label {
+    text-align: left;
+}
+
+form input[type=text] {
     width: 95%;
     padding:5px;
 }
+form input[type=checkbox] {
+    text-align:left;
+}
 
-.report_comment_form form input.input_captcha {
-    width:70%;
+form input.input_captcha {
     float:left;
 }
 
-.report_comment_form form span {
+form span {
     display: block;
     overflow: hidden;
     padding: 0 0 0 0;
 }​
-.report_comment_form form span img {
+form span img {
     width:20%;
     height:15px;
     display:inline;
     float:left;
  }
 
- div#search  {
+div#search  {
     padding:20px
  }
 
@@ -636,6 +636,124 @@ div#search ul.pager li  {
     font-size:12px;
 }
 
+div#alerts {
+    overflow: auto;
+    width: 100%;
+    height:100%;
+    margin-top:0;
+    margin-bottom:10px;
+    margin-left:0;
+    margin-right:0;
+    padding:0;
+}
+
+#alerts h1 {
+    margin-left:20px;
+    margin-top:10px;
+    margin-bottom:0;
+}
+
+#alerts div.map,
+#alerts #divMap {
+    height:250px;
+    overflow: hidden;
+}
+
+#alerts div.map p {
+    display: none;
+}
+
+#alerts .alerts_step {
+    margin-bottom:20px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#alerts .alerts_step h2 {
+    padding-bottom:10px;
+}
+
+#alerts ul {
+    display: block;
+    float:none;
+    clear:both;
+}
+
+#alerts ul li {
+    list-style: none;
+    float:left;
+    margin-right:10px;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+#alerts ul li.parent {
+    font-weight: bold;
+}
+
+.baseLayersDiv .labelSpan {
+    width:auto;
+    display:inline;
+}
+
+#alert_radius span.ui-slider-label {
+}
+
+.alert_slider {
+    height:45px;
+    margin-top:10px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+#alerts span.ui-slider-label,
+#alerts span.ui-slider-label-show {
+    width:50px;
+    font-size:11px;
+    text-align: center;
+}
+
+#alerts ol.ui-slider-scale {
+    margin-left:0px;
+    margin-right:0px;
+}
+
+#alerts #find_loading {
+    width:20px;
+    height:35px;
+}
+
+#alerts div.alert_location {
+    height:35px;
+}
+
+#alerts div.alert_location_left {
+    float:left;
+    width:100%;
+}
+
+#alerts div.alert_location_left div {
+    margin-right:140px;
+    height:35px;
+}
+#alerts div.alert_location_right {
+    float:right;
+    width:140px;
+    margin-left:-140px;
+    height:35px;
+}
+
+.contact_form {
+    padding-top:20px;
+    width:75%;
+}
+
+.alerts_confirm_mobile,
+.alerts_confirm_email,
+.alerts_confirm_return {
+    margin-bottom:20px;
+    padding:10px;
+}
 /* ############################################ OLD CSS ############################################ */
 /* ############################################ OLD CSS ############################################ */
 
@@ -1824,10 +1942,10 @@ label.error {
     width:100px;
 }
 .btn_submit {
-    margin: 20px 20px 0 0;
+    margin: 0px 20px 0 0;
     /*padding: 8px 10px;*/
     color: white;
-    /*background-color:#368c00;*/
+    background-color:#999;
     font-size:14px;
     cursor:pointer;
     border: 0;
@@ -3081,13 +3199,13 @@ div.ci_checkin {
 
 
 #right-column{
-    width: 49%;
+    width: 48%;
     height: 100%;
     float: right;
 }
 
 #left-column{
-    width: 49%;
+    width: 48%;
     height: 100%;
     float: left;
     margin-bottom: 20px;

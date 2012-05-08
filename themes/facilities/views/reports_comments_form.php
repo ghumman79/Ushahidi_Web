@@ -39,8 +39,10 @@ else {
     <br/>
 
     <label for="captcha"><?php echo Kohana::lang('ui_main.security_code'); ?></label>
+    <span><?php print form::input('captcha', $form['captcha'], ' class="text input_captcha"'); ?></span>
 
-    <span><?php print $captcha->render(); ?><?php print form::input('captcha', $form['captcha'], ' class="text input_captcha"'); ?></span>
+    <label></label>
+    <span><?php print $captcha->render(); ?></span>
     <br/>
 
 

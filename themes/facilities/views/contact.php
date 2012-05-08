@@ -5,8 +5,7 @@
             <h1><?php echo Kohana::lang('ui_main.contact'); ?></h1>
             <div id="contact_us">
                 <?php
-                if ($form_error)
-                {
+                if ($form_error) {
                     ?>
                     <!-- red-box -->
                     <div class="red-box">
@@ -23,8 +22,7 @@
                     <?php
                 }
 
-                if ($form_sent)
-                {
+                if ($form_sent) {
                     ?>
                     <!-- green-box -->
                     <div class="green-box">
@@ -33,42 +31,34 @@
                     <?php
                 }
                 ?>
-                <?php print form::open(NULL, array('id' => 'contactForm', 'name' => 'contactForm')); ?>
+                <div class="contact_form box_light">
+                    <?php print form::open(NULL, array('id' => 'contactForm', 'name' => 'contactForm')); ?>
 
-                <div class="box_light" style="text-align: right; width: 60%">
+                    <label><?php echo Kohana::lang('ui_main.contact_name'); ?></label>
+                    <span><?php print form::input('contact_name', $form['contact_name'], ' size="50%" class="text"'); ?></span><br/>
 
-                <div id="report_row1" style="text-align: right; width: 80%">
-                    <?php echo Kohana::lang('ui_main.contact_name'); ?>
-                    <?php print form::input('contact_name', $form['contact_name'], ' size="50%" class="text"'); ?><br/>
+                    <label><?php echo Kohana::lang('ui_main.contact_email'); ?></label>
+                    <span><?php print form::input('contact_email', $form['contact_email'], ' size="50%" class="text"'); ?></span><br/>
 
-                </div>
-                <div id="report_row1" style=" text-align: right;right; width: 80%"">
-                    <?php echo Kohana::lang('ui_main.contact_email'); ?>
-                    <?php print form::input('contact_email', $form['contact_email'], ' size="50%" class="text"'); ?>
-                </div>
-                <div id="report_row1" style=" text-align: right; right; width: 80%"">
-                    <?php echo Kohana::lang('ui_main.contact_phone'); ?>
-                    <?php print form::input('contact_phone', $form['contact_phone'], ' size="50%" class="text"'); ?>
-                </div>
-                <div id="report_row1" style=" text-align: right; right; width: 80%"">
-                    <?php echo Kohana::lang('ui_main.contact_subject'); ?>
-                    <?php print form::input('contact_subject', $form['contact_subject'], ' size="50%" class="text"'); ?>
-                </div>
-                <div id="report_row1" style=" text-align: right; right; width: 80%"">
-                    <?php echo Kohana::lang('ui_main.contact_message'); ?>
-                    <?php print form::input('contact_message', $form['contact_message'], ' size="50%"  class="text" ') ?>
-                </div>
-                <div id="report_row1" style=" text-align: right; right; width: 80%"">
-                    <?php print $captcha->render(); ?><br/>
-                    <?php echo Kohana::lang('ui_main.contact_code'); ?>
-                    <?php print form::input('captcha', $form['captcha'], ' size="50%" class="text"'); ?>
+                    <label><?php echo Kohana::lang('ui_main.contact_phone'); ?></label>
+                    <span><?php print form::input('contact_phone', $form['contact_phone'], ' size="50%" class="text"'); ?></span><br/>
 
-                </div>
-                <div id="report_row1" style=" text-align: right; right; width: 80%">
-                    <input name="submit" type=button value="<?php echo Kohana::lang('ui_main.contact_send'); ?>" />
-                </div>
-                <?php print form::close(); ?>
+                    <label><?php echo Kohana::lang('ui_main.contact_subject'); ?></label>
+                    <span><?php print form::input('contact_subject', $form['contact_subject'], ' size="50%" class="text"'); ?></span><br/>
 
+                    <label><?php echo Kohana::lang('ui_main.contact_message'); ?></label>
+                    <span><?php print form::input('contact_message', $form['contact_message'], ' size="50%"  class="text" ') ?></span><br/>
+
+                    <label><?php echo Kohana::lang('ui_main.contact_code'); ?></label>
+                    <span><?php print form::input('captcha', $form['captcha'], ' size="50%" class="text"'); ?></span>
+
+                    <label> </label>
+                    <span><?php print $captcha->render(); ?></span><br/>
+
+                    <label> </label>
+                    <span><input  name="submit" type="submit" type=button value="<?php echo Kohana::lang('ui_main.contact_send'); ?>" /></span>
+
+                    <?php print form::close(); ?>
                 </div>
 
             </div>
