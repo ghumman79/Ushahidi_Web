@@ -423,6 +423,10 @@ div#details {
 
 /* ############################### PAGINATION ############################### */
 
+div#pagination .pager {
+   margin-left:10px;
+}
+
 div#pagination ul li {
     -moz-border-radius:5px;
     -moz-border-radius:5px;
