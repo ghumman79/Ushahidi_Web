@@ -5,7 +5,7 @@
             <ul></ul>
         <?php } else { ?>
             <h3><?php echo Kohana::lang('ui_admin.reports'); ?></h3>
-            <ul class="box-light">
+            <ul class="box">
             <?php
             if ($total_items == 0) {
                 ?>
@@ -35,6 +35,7 @@
             </li>
             </ul>
         <?php } ?>
+        <div class="clear"></div>
     </div>
 </div>
 <script type="text/javascript">
@@ -80,7 +81,7 @@
                     }
                 });
                 var utcDate = item.date.replace(" ","T")+"Z";
-                var date = $('<span class="checkin-date">').text(", " + $.timeago(utcDate));
+                var date = $('<span class="checkin-date">').text(" (" + $.timeago(utcDate) + ")");
                 date.appendTo(li);
                 if (item.comments !== undefined) {
                     $.each(item.comments, function(j,comment){
@@ -96,7 +97,7 @@
                         }
                         user.appendTo(comment);
                         var commentDate = comment.date.replace(" ","T")+"Z";
-                        var date = $('<span class="checkin-date">').text(", " + $.timeago(commentDate));
+                        var date = $('<span class="checkin-date">').text(" (" + $.timeago(commentDate) + ")");
                         date.appendTo(comment);
                         comment.appendTo(li);
                     });

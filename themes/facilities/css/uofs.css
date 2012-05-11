@@ -1,9 +1,7 @@
-a {
-    color:#238800;
-}
+a,
 #pagination a,
-#titlebar a {
-    color:#848484;
+#titlebar a{
+    color:#238800;
 }
 
 h1, h2,
@@ -29,7 +27,6 @@ h5, h6 {
     background: transparent url("../images/uofs/boxes-sml.png") no-repeat 2px 2px;
 }
 
-
 div#main-categories ul li.title {
     padding-left:15px;
     background: transparent url("../images/uofs/boxes-sml.png") no-repeat 2px 2px;
@@ -37,12 +34,6 @@ div#main-categories ul li.title {
 
 div#header {
     background: transparent url("../images/uofs/header.jpg") no-repeat right top;
-}
-
-div#filters {
-    /*background: #FAFAFA url("../images/uofs/gradient.gif") repeat-x left top;*/
-    /*background-size: 0 97%;*/
-    background-color: #F2F2F2;
 }
 
 div#filters ul li {
@@ -77,54 +68,16 @@ span.item-title {
     color: #FFF;
 }
 
-div#footer {
-    background: #FAFAFA url("../images/uofs/gradient.gif") repeat-x left top;
-    background-size: 0 99%;
+div.search-form input.searchbtn {
+    background: #EEE url(../images/uofs/search.png) 1px 0px no-repeat;
+
 }
 
 div#pagination {
     background: #F2F2F2;
-    /*background: -moz-linear-gradient(top, #d5e8af 0%, #b4d672 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d5e8af), color-stop(100%, #b4d672));*/
-    /*background: #FAFAFA url("../images/uofs/gradient-tab4.gif") repeat-x left top;*/
-    /*background-size: 0 100%;*/
 }
 
-.box-medium {
-    background: #F3F3F3;
-    background: -moz-linear-gradient(white, #F1F1F1) fixed no-repeat;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #F1F1F1), color-stop(100%, white)) fixed no-repeat;
-
-    /*background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));*/
+#titlebar a,
+#pagination ul li a{
+    color:#848484;
 }
-
-.box-light {
-    background: #F3F3F3;
-    background: -moz-linear-gradient(white, #F1F1F1) fixed no-repeat;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #F1F1F1), color-stop(100%, white)) fixed no-repeat;
-
-    /*background: #f2f2f2;*/
-    /*background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));*/
-    /*border: 1px solid #D8D8D8;*/
-    /*-webkit-border-radius: 5px;*/
-    /*border-radius: 5px;*/
-    /*-khtml-border-radius: 5px;*/
-}
-
-#rb_list-view {
-    /*background: #c4df91;*/
-    /*background: -moz-linear-gradient(top, #e5f1cd 0%, #c4df91 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e5f1cd), color-stop(100%, #c4df91));*/
-}
-
-/*div#pagination ul.toggle li {*/
-    /*background: #65AD18;*/
-    /*background: -moz-linear-gradient(top, #8CCC48 0%, #65AD18 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8CCC48), color-stop(100%, #65AD18));*/
-    /*-moz-transition: all .1s ease-in-out;*/
-    /*-webkit-transition: all .1s ease-in-out;*/
-    /*transition: all .1s ease-in-out;*/
-    /*color:#FFF;*/
-/*}*/

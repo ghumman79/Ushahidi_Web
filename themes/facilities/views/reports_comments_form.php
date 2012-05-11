@@ -51,7 +51,7 @@ else {
 Event::run('ushahidi_action.comment_form');
 ?>
     <label> </label>
-    <span><input name="submit" type="submit" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?> <?php echo Kohana::lang('ui_main.comment'); ?>"  /></span>
+    <span><input name="submit" type="submit" class="button" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?> <?php echo Kohana::lang('ui_main.comment'); ?>"  /></span>
 
 </fieldset>
 

@@ -11,7 +11,7 @@
                     $feed_link = $feed->item_link;
                     $feed_date = date('M j Y', strtotime($feed->item_date));
                     $feed_source = text::limit_chars($feed->feed->feed_name, 15, "...");
-                    print "<div class=\"box-light feed-item\">";
+                    print "<div class=\"box feed-item\">";
                     print " <div class=\"feed-title\"><a target=\"_blank\" title=\"" . $feed_title . "\" href=\"$feed_link\">" . $feed_title . "</a></div>";
                     print " <div class=\"feed-source\">" . $feed_source . "</div>";
                     print " <div class=\"feed-description\">" . $feed_description . "</div>";

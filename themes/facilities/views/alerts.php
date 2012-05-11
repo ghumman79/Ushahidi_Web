@@ -1,16 +1,15 @@
-<div id="middle">
-    <div id="alerts">
+<div id="middle" class="scroll">
+    <div id="content">
         <h1><?php echo Kohana::lang('ui_main.alerts_get'); ?></h1>
         <?php print form::open() ?>
         <div class="column">
-            <div class="alerts_step box-light">
+            <div class="alerts-step box-light">
                 <?php if ($form_error): ?>
                     <div class="red-box">
-                        <h3>Error!</h3>
+                        <h3><?php echo Kohana::lang('ui_main.error'); ?></h3>
                         <ul>
                             <?php
                             foreach ($errors as $error_item => $error_description) {
-                                // print "<li>" . $error_description . "</li>";
                                 print (!$error_description) ? '' : "<li>" . $error_description . "</li>";
                             }
                             ?>
@@ -28,7 +27,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="alerts_step box-light">
+            <div class="alerts-step box-light">
                 <h3><?php echo Kohana::lang('ui_main.alerts_step2_send_alerts'); ?></h3>
                 <?php if ($show_mobile == TRUE): ?>
                     <label for="alert_mobile">
@@ -46,12 +45,12 @@
                 </label>
                 <span><?php print form::input('alert_email', $form['alert_email'], ' class="text"'); ?></span>
             </div>
-            <div class="alerts_step box-light">
+            <div class="alerts-step box-light">
                 <h3><?php echo Kohana::lang('ui_main.alerts_step3_select_catgories'); ?></h3>
                 <div class="holder">
                     <?php foreach ($categories as $category): ?>
                         <?php if($category->category_visible == 1) { ?>
-                            <ul>
+                            <ul class="horizontal">
                                 <li class="parent">
                                     <?php print form::checkbox('alert_category[]', $category->id, false); ?>
                                     <?php echo $category->category_title; ?>
@@ -65,15 +64,14 @@
                             </ul>
                         <?php } ?>
                     <?php endforeach; ?>
-                    <div class="clearfix"></div>
+                    <div class="clear"></div>
                 </div>
             </div>
-            <div class="alerts_step box-light">
+            <div class="alerts-step box-light">
                 <input id="btn-send-alerts" class="button" type="submit" value="<?php echo Kohana::lang('ui_main.alerts_btn_send'); ?>" />
-                <a class="confirm_link" href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
+                <a class="confirm-link" href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
             </div>
         </div>
-
         <?php print form::close(); ?>
     </div>
 </div>

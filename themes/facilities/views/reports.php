@@ -7,10 +7,7 @@
 
     <?php echo $report_listing_view; ?>
 
-    <?php
-    // Action, allows plugins to add custom filters
-    Event::run('ushahidi_action.report_filters_ui');
-    ?>
+    <?php Event::run('ushahidi_action.report_filters_ui'); ?>
 
     <div class="hidden">
         <?php
@@ -67,7 +64,7 @@
             adjustCategories();
             removeListStrFromBreadcrumb();
 
-            if($(".report-list-toggle .active a").hasClass("navigation_list")){
+            if($(".report-list-toggle .active a").hasClass("pagination_list")){
                 splitListView();
             }
 
@@ -134,13 +131,13 @@
                                 addReportHoverEvents();
                                 deSelectedFilters = [];
                                 if (active.search('#rb_list-view') > 0) {
-                                    switchViews($("#navigation .report-list-toggle .navigation_list"));
+                                    switchViews($("#pagination .report-list-toggle .pagination_list"));
                                 }
                                 else if (active.search('#rb_map-view') > 0) {
-                                    switchViews($("#navigation .report-list-toggle .navigation_map"));
+                                    switchViews($("#pagination .report-list-toggle .pagination_map"));
                                 }
                                 else if (active.search('#rb_gallery-view') > 0) {
-                                    switchViews($("#navigation .report-list-toggle .navigation_gallery"));
+                                    switchViews($("#pagination .report-list-toggle .pagination_gallery"));
                                 }
                                 splitListView();
                                 adjustCategories();

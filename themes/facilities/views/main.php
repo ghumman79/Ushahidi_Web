@@ -1,6 +1,6 @@
 <div id="middle" class="scroll">
-    <div id="main">
-        <div id="main-welcome" class="column">
+    <div id="content">
+       <div id="main-welcome" class="column">
              <?php if($site_message != '') { ?>
             <div class="box-light">
                 <?php echo $site_message; ?>
@@ -21,7 +21,7 @@
                 echo '</ul>';
             } ?>
         </div>
-        <div class="clearfix"></div>
+        <div class="clear"></div>
         <?php blocks::render(); ?>
     </div>
 </div>
