@@ -1,13 +1,11 @@
 <div id="middle">
-    <div id="categories">
+    <div id="filters">
         <ul>
             <?php echo $category_tree_view; ?>
         </ul>
     </div>
 
-    <div id="reports-box">
-        <?php echo $report_listing_view; ?>
-    </div>
+    <?php echo $report_listing_view; ?>
 
     <?php
     // Action, allows plugins to add custom filters
@@ -23,7 +21,7 @@
 
     <script type="text/javascript">
         function splitParentCategories() {
-            var $categoryDiv = $("div#categories");
+            var $categoryDiv = $("div#filters");
             var $categoryList = $categoryDiv.find("ul");
             var $ul;
             $categoryList.children().each(function (item) {
@@ -37,21 +35,19 @@
         }
         function splitListView() {
             var $listView = $("div#rb_list-view");
-            var $leftPane = $("<div class='left-pane'>");
-            var $rightPane = $("<div class='right-pane'>");
-
-            $('.right-pane-item').each(function (item) {
+            var $leftPane = $("<div id='column-left' class='column'>");
+            var $rightPane = $("<div id='column-right' class='column'>");
+            $('.column-left').each(function (item) {
                 $(this).appendTo($rightPane);
             });
-            $('.left-pane-item').each(function (item) {
+            $('.column-right').each(function (item) {
                 $(this).appendTo($leftPane);
             });
-
             $leftPane.appendTo($listView);
             $rightPane.appendTo($listView);
         }
         function adjustCategories() {
-            var $top = $("#categories").css('height');
+            var $top = $("#filters").css('height');
             $("#reports").css('top', $top);
         }
         function removeListStrFromBreadcrumb() {
@@ -102,7 +98,7 @@
                     }
                 }
                 var category_ids = [];
-                $.each($("#categories li a.selected"), function(i, item){
+                $.each($("#filters li a.selected"), function(i, item){
                     itemId = item.id.substring("filter_link_cat_".length);
                     category_ids.push(itemId);
                 });

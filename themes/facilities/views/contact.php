@@ -3,7 +3,7 @@
         <!-- start contacts block -->
         <div class="big-block">
             <h1><?php echo Kohana::lang('ui_main.contact'); ?></h1>
-            <div id="contact_us">
+            <div class="column">
                 <?php
                 if ($form_error) {
                     ?>
@@ -21,9 +21,7 @@
                     </div>
                     <?php
                 }
-
-                if ($form_sent) {
-                    ?>
+                if ($form_sent) {  ?>
                     <!-- green-box -->
                     <div class="green-box">
                         <h3><?php echo Kohana::lang('ui_main.contact_message_has_send'); ?></h3>
@@ -31,7 +29,7 @@
                     <?php
                 }
                 ?>
-                <div class="contact_form box_light">
+                <div class="box-light">
                     <?php print form::open(NULL, array('id' => 'contactForm', 'name' => 'contactForm')); ?>
 
                     <label><?php echo Kohana::lang('ui_main.contact_name'); ?></label>
@@ -56,7 +54,7 @@
                     <span><?php print $captcha->render(); ?></span><br/>
 
                     <label> </label>
-                    <span><input  name="submit" type="submit" type=button value="<?php echo Kohana::lang('ui_main.contact_send'); ?>" /></span>
+                    <span><input  name="submit" type="submit" class="button" type=button value="<?php echo Kohana::lang('ui_main.contact_send'); ?>" /></span>
 
                     <?php print form::close(); ?>
                 </div>

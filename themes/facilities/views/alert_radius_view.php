@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="alert_location_right">
-        <input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn_find" />
+        <input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn_find button" />
         <div id="find_loading" class="report-find-loading"></div>
     </div>
 </div>

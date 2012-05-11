@@ -2,8 +2,8 @@
     <div id="alerts">
         <h1><?php echo Kohana::lang('ui_main.alerts_get'); ?></h1>
         <?php print form::open() ?>
-        <div id="left-column">
-            <div class="alerts_step box_light">
+        <div class="column">
+            <div class="alerts_step box-light">
                 <?php if ($form_error): ?>
                     <div class="red-box">
                         <h3>Error!</h3>
@@ -18,7 +18,7 @@
                     </div>
                 <?php endif; ?>
                 <div>
-                    <h2><?php echo Kohana::lang('ui_main.alerts_step1_select_city'); ?></h2>
+                    <h3><?php echo Kohana::lang('ui_main.alerts_step1_select_city'); ?></h3>
                     <?php echo $alert_radius_view; ?>
                 </div>
                 <input type="hidden" id="alert_lat" name="alert_lat" value="<?php echo $form['alert_lat']; ?>">
@@ -27,9 +27,9 @@
                 <input type="hidden" id="alert_confirmed" name="alert_confirmed" value="<?php echo $form['alert_confirmed']; ?>" />
             </div>
         </div>
-        <div id="right-column">
-            <div class="alerts_step box_light">
-                <h2><?php echo Kohana::lang('ui_main.alerts_step2_send_alerts'); ?></h2>
+        <div class="column">
+            <div class="alerts_step box-light">
+                <h3><?php echo Kohana::lang('ui_main.alerts_step2_send_alerts'); ?></h3>
                 <?php if ($show_mobile == TRUE): ?>
                     <label for="alert_mobile">
                         <?php $checked = ($form['alert_mobile_yes'] == 1); ?>
@@ -46,8 +46,8 @@
                 </label>
                 <span><?php print form::input('alert_email', $form['alert_email'], ' class="text"'); ?></span>
             </div>
-            <div class="alerts_step box_light">
-                <h2><?php echo Kohana::lang('ui_main.alerts_step3_select_catgories'); ?></h2>
+            <div class="alerts_step box-light">
+                <h3><?php echo Kohana::lang('ui_main.alerts_step3_select_catgories'); ?></h3>
                 <div class="holder">
                     <?php foreach ($categories as $category): ?>
                         <?php if($category->category_visible == 1) { ?>
@@ -68,9 +68,9 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="alerts_step box_light">
-                <input id="btn-send-alerts" class="btn_submit" type="submit" value="<?php echo Kohana::lang('ui_main.alerts_btn_send'); ?>" />
-                <a href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
+            <div class="alerts_step box-light">
+                <input id="btn-send-alerts" class="button" type="submit" value="<?php echo Kohana::lang('ui_main.alerts_btn_send'); ?>" />
+                <a class="confirm_link" href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
             </div>
         </div>
 

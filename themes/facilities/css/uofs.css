@@ -1,14 +1,51 @@
+a {
+    color:#238800;
+}
+#pagination a,
+#titlebar a {
+    color:#848484;
+}
+
+h1, h2,
+div#header-logo h1 {
+    padding-top:5px;
+    padding-left:25px;
+    padding-bottom:5px;
+    background: transparent url("../images/uofs/boxes-lrg.png") no-repeat left top;
+}
+
+h3, h4,
+div#search-results h3 {
+    padding-top:1px;
+    padding-left:20px;
+    padding-bottom:1px;
+    background: transparent url("../images/uofs/boxes-med.png") no-repeat left top;
+}
+
+h5, h6 {
+    padding-top:1px;
+    padding-left:15px;
+    padding-bottom:1px;
+    background: transparent url("../images/uofs/boxes-sml.png") no-repeat 2px 2px;
+}
+
+
+div#main-categories ul li.title {
+    padding-left:15px;
+    background: transparent url("../images/uofs/boxes-sml.png") no-repeat 2px 2px;
+}
+
 div#header {
-    background-color: #FFF;
-    background: white url("../images/uofs/head1.jpg") no-repeat right top;
+    background: transparent url("../images/uofs/header.jpg") no-repeat right top;
 }
 
-div#categories {
-    background: #FAFAFA url("../images/uofs/gradient-tab4.gif") repeat-x left top;
-    background-size: 0 99%;
+div#filters {
+    /*background: #FAFAFA url("../images/uofs/gradient.gif") repeat-x left top;*/
+    /*background-size: 0 97%;*/
+    background-color: #F2F2F2;
 }
 
-div#categories ul li {
+div#filters ul li {
     background: #65AD18;
     border: none;
     background: -moz-linear-gradient(top, #8CCC48 0%, #65AD18 100%);
@@ -20,19 +57,19 @@ div#categories ul li {
     opacity: 0.6;
 }
 
-div#categories ul li a {
+div#filters ul li a {
     text-decoration: none;
 }
 
-div#categories ul li.report-listing-category-child {
+div#filters ul li.report-listing-category-child {
     background: #93C238;
     background: -moz-linear-gradient(top, #B3D855 0%, #8FBD35 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B3D855), color-stop(100%, #8FBD35));
     opacity: 0.6;
 }
 
-div#categories ul li.selected,
-div#categories ul li.report-listing-category-child.selected {
+div#filters ul li.selected,
+div#filters ul li.report-listing-category-child.selected {
     opacity: 1;
 }
 
@@ -41,11 +78,11 @@ span.item-title {
 }
 
 div#footer {
-    background: #FAFAFA url("../images/uofs/gradient-tab4.gif") repeat-x left top;
+    background: #FAFAFA url("../images/uofs/gradient.gif") repeat-x left top;
     background-size: 0 99%;
 }
 
-div#navigation {
+div#pagination {
     background: #F2F2F2;
     /*background: -moz-linear-gradient(top, #d5e8af 0%, #b4d672 100%);*/
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d5e8af), color-stop(100%, #b4d672));*/
@@ -53,21 +90,27 @@ div#navigation {
     /*background-size: 0 100%;*/
 }
 
-.box_medium {
-    background: #f2f2f2;
-    background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));
+.box-medium {
+    background: #F3F3F3;
+    background: -moz-linear-gradient(white, #F1F1F1) fixed no-repeat;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #F1F1F1), color-stop(100%, white)) fixed no-repeat;
+
+    /*background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));*/
 }
 
+.box-light {
+    background: #F3F3F3;
+    background: -moz-linear-gradient(white, #F1F1F1) fixed no-repeat;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #F1F1F1), color-stop(100%, white)) fixed no-repeat;
 
-.box_light {
-    background: #f2f2f2;
-    background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));
-    border: 1px solid #D8D8D8;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -khtml-border-radius: 5px;
+    /*background: #f2f2f2;*/
+    /*background: -moz-linear-gradient(top, #f2f2f2 0%, #e4e4e4 100%);*/
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2f2f2), color-stop(100%, #e4e4e4));*/
+    /*border: 1px solid #D8D8D8;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*-khtml-border-radius: 5px;*/
 }
 
 #rb_list-view {
@@ -76,7 +119,7 @@ div#navigation {
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e5f1cd), color-stop(100%, #c4df91));*/
 }
 
-/*div#navigation ul.toggle li {*/
+/*div#pagination ul.toggle li {*/
     /*background: #65AD18;*/
     /*background: -moz-linear-gradient(top, #8CCC48 0%, #65AD18 100%);*/
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8CCC48), color-stop(100%, #65AD18));*/

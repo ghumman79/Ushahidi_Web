@@ -1,14 +1,10 @@
 <div id="footer">
-    <!-- footer credits -->
-    <div class="footer-credits">
-        <a href="http://www.ushahidi.com" title="Ushahidi"><img id="ushahidi" border="0" /></a>
+    <div id="footer-credits">
+        <a href="http://www.ushahidi.com" title="Ushahidi"><img id="ushahidi" /></a>
     </div>
-    <!-- / footer credits -->
-
-    <!-- footer menu -->
-    <div class="footermenu">
-        <ul class="clearingfix">
-            <li><a class="item1" title="<?php echo Kohana::lang('ui_main.home'); ?>" href="/main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
+    <div id="footer-links">
+        <ul>
+            <li class="first"><a title="<?php echo Kohana::lang('ui_main.home'); ?>" href="/main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
             <li><a title="<?php echo Kohana::lang('ui_main.reports'); ?>" href="/reports"><?php echo Kohana::lang('ui_main.reports'); ?></a></li>
             <?php if(Kohana::config('settings.allow_reports')) { ?>
                 <li><a title="<?php echo Kohana::lang('ui_main.submit'); ?>" href="<?php echo url::site()."reports/submit"; ?>"><?php echo Kohana::lang('ui_main.submit'); ?></a></li>
@@ -24,17 +20,12 @@
             <?php }?>
             <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
         </ul>
-        <?php if($site_copyright_statement != '') { ?>
-            <span class="copyright"><?php echo $site_copyright_statement; ?></span>
-        <?php } ?>
     </div>
-    <!-- / footer menu -->
-    <!-- / footer content -->
+    <?php if($site_copyright_statement != '') { ?>
+        <div id="footer-copyright"><?php echo $site_copyright_statement; ?></div>
+    <?php } ?>
 </div>
-
-<?php
-echo $footer_block;
-Event::run('ushahidi_action.main_footer');
-?>
+<?php echo $footer_block; ?>
+<?php Event::run('ushahidi_action.main_footer'); ?>
 </body>
 </html>

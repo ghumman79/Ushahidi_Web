@@ -1,9 +1,11 @@
-<div class="column_reports">
-        <ul class="box_light">
+<div id="main-reports" class="column">
+    <div class="box-light">
         <?php if ( Kohana::config('settings.checkins') ) { ?>
-            <li class="title"><?php echo Kohana::lang('ui_admin.checkins'); ?></li>
+            <h3><?php echo Kohana::lang('ui_admin.checkins'); ?></h3>
+            <ul></ul>
         <?php } else { ?>
-            <li class="title">Facilities</li>
+            <h3><?php echo Kohana::lang('ui_admin.reports'); ?></h3>
+            <ul class="box-light">
             <?php
             if ($total_items == 0) {
                 ?>
@@ -28,16 +30,15 @@
                 <?php
             }
             ?>
-            <li class="view_more">
+            <li class="more">
                 <a href="<?php echo url::site() . 'reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
             </li>
+            </ul>
         <?php } ?>
-    </ul>
+    </div>
 </div>
-
 <script type="text/javascript">
     <?php if (Kohana::config('settings.checkins')) { ?>
-
     function cilisting(sqllimit,sqloffset) {
         $.getJSON("<?php echo url::site(); ?>api/?task=checkin&action=get_ci&sqllimit="+sqllimit+"&sqloffset="+sqloffset+"&orderby=checkin.checkin_date&sort=DESC", function(data) {
             if(data.payload.checkins == undefined) {
@@ -54,39 +55,39 @@
             $.each(data.payload.users, function(i, payl) {
                 user_colors[payl.id] = payl.color;
             });
-            var ul = $('.column_reports ul');
+            var ul = $('#main-reports ul');
             $.each(data.payload.checkins, function(i,item){
                 var li = $('<li>');
                 if (item.media !== undefined) {
-                    var ahref = $('<a class="ci_link">');
+                    var ahref = $('<a class="checkin-link">');
                     ahref.href(item.media[0].link);
                     ahref.rel('lightbox-group1');
                     ahref.title(item.msg);
-                    var image = $('<img class="ci_image">');
+                    var image = $('<img class="checkin-image">');
                     image.src(item.media[0].thumb);
                     image.appendTo(ahref);
                     ahref.appendTo(li);
                 }
                 if (item.msg !== undefined) {
-                    var message = $('<span class="ci_message">').text("\"" + item.msg + "\"");
+                    var message = $('<span class="checkin-message">').text("\"" + item.msg + "\"");
                     message.appendTo(li);
                 }
                 $.each(data.payload.users, function(j,useritem){
                     if(useritem.id == item.user){
-                        var user = $('<span class="ci_user">').html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+useritem.username+"\">"+useritem.name+"</a>");
+                        var user = $('<span class="checkin-suser">').html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+useritem.username+"\">"+useritem.name+"</a>");
                         user.appendTo(li);
                         return false;
                     }
                 });
                 var utcDate = item.date.replace(" ","T")+"Z";
-                var date = $('<span class="ci_date">').text(", " + $.timeago(utcDate));
+                var date = $('<span class="checkin-date">').text(", " + $.timeago(utcDate));
                 date.appendTo(li);
                 if (item.comments !== undefined) {
                     $.each(item.comments, function(j,comment){
-                        var comment = $('<div class="ci_comment">');
-                        var description = $('<span class="ci_message">').text("\"" + comment.description + "\"");
+                        var comment = $('<div class="checkin-comment">');
+                        var description = $('<span class="checkin-message">').text("\"" + comment.description + "\"");
                         description.appendTo(comment);
-                        var user = $('<span class="ci_user">');
+                        var user = $('<span class="checkin-user">');
                         if (item.user_id != 0){
                             user.html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+comment.username+"\">"+comment.author+"</a>");
                         }
@@ -95,7 +96,7 @@
                         }
                         user.appendTo(comment);
                         var commentDate = comment.date.replace(" ","T")+"Z";
-                        var date = $('<span class="ci_date">').text(", " + $.timeago(commentDate));
+                        var date = $('<span class="checkin-date">').text(", " + $.timeago(commentDate));
                         date.appendTo(comment);
                         comment.appendTo(li);
                     });
@@ -104,9 +105,7 @@
             });
         });
     }
-
     cilisting(3,0);
     showCheckins();
-
     <?php } ?>
 </script>

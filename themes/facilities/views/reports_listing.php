@@ -1,13 +1,3 @@
-<div id="navigation">
-    <ul class="toggle report-list-toggle">
-        <li class="active"><a href="#rb_list-view" class="navigation_list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
-        <li><a href="#rb_map-view" class="navigation_map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
-        <li><a href="#rb_gallery-view" class="navigation_gallery">Gallery</a></li>
-    </ul>
-    <div class="pagination"><?php echo $pagination; ?></div>
-    <div class="breadcrumb"><?php echo $stats_breadcrumb; ?></div>
-</div>
-
 <div id="reports">
     <div class="rb_list-and-map-box">
         <div id="rb_list-view">
@@ -16,7 +6,7 @@
             $incidentIndex = 0;
             foreach ($incidents as $incident) {
                 $incidentIndex += 1;
-                $incidentPane = ($incidentIndex % 2 == 0) ? "right-pane-item" : "left-pane-item";
+                $incidentPane = ($incidentIndex % 2 == 0) ? "column-right" : "column-left";
                 $incident = ORM::factory('incident', $incident->incident_id);
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
@@ -27,48 +17,46 @@
                 $media = $incident->media;
                 if ($media->count()) {
                     foreach ($media as $photo) {
-                        if ($photo->media_thumb) { // Get the first thumb
+                        if ($photo->media_thumb) {
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_thumb);
                             break;
                         }
                     }
                 }
             ?>
-            <div id="<?php echo $incident_id ?>" class="report_card box_medium <?php echo $incidentPane ?>">
+            <div class="report-item box-medium <?php echo $incidentPane ?>">
                 <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                    <img src="<?php echo $incident_thumb; ?>" />
+                    <img class="report-image" src="<?php echo $incident_thumb; ?>" />
                 </a>
-                <div class="report_details">
-                    <div class="report_title">
-                        <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                            <?php echo $incident_title; ?>
-                        </a>
-                    </div>
-                    <div class="report_location">
-                        <a title="<?php echo $location_name; ?>" href="<?php echo url::site(); ?>reports/?l=<?php echo $location_id; ?>">
-                            <?php echo $location_name; ?>
-                        </a>
-                    </div>
-                    <div class="report_categories">
-                        <?php foreach ($incident->category as $category): ?>
-                        <?php if($category->category_visible == 0) continue; ?>
-                        <?php if ($category->category_image_thumb): ?>
-                            <?php $category_image = url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>
-                            <a href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-                                <span><img src="<?php echo $category_image; ?>" height="16" width="16" /></span>
-                                <span><?php echo $localized_categories[(string)$category->category_title];?></span>
-                            </a>
-                            <?php else:	?>
-                            <a href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-                                <span style="background-color:#<?php echo $category->category_color;?>;"></span>
-                                <span><?php echo $localized_categories[(string)$category->category_title];?></span>
-                            </a>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="report_description"><?php echo $incident_description; ?></div>
-                    <div class="clearfix"></div>
+                <div class="report-title">
+                    <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                        <?php echo $incident_title; ?>
+                    </a>
                 </div>
+                <div class="report-location">
+                    <a title="<?php echo $location_name; ?>" href="<?php echo url::site(); ?>reports/?l=<?php echo $location_id; ?>">
+                        <?php echo $location_name; ?>
+                    </a>
+                </div>
+                <div class="report-categories">
+                    <?php foreach ($incident->category as $category): ?>
+                    <?php if($category->category_visible == 0) continue; ?>
+                    <?php if ($category->category_image_thumb): ?>
+                        <?php $category_image = url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>
+                        <a href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
+                            <span><img src="<?php echo $category_image; ?>" height="16" width="16" /></span>
+                            <span><?php echo $localized_categories[(string)$category->category_title];?></span>
+                        </a>
+                        <?php else:	?>
+                        <a href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
+                            <span><?php echo $localized_categories[(string)$category->category_title];?></span>
+                        </a>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="report-description"><?php echo $incident_description; ?></div>
+                <div class="clearfix"></div>
+
             </div>
         <?php } ?>
         </div>
@@ -85,7 +73,7 @@
                 $media = $incident->media;
                 if ($media->count()) {
                     foreach ($media as $photo) {
-                        if ($photo->media_thumb) { // Get the first thumb
+                        if ($photo->media_thumb) {
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_medium);
                             break;
                         }
@@ -100,4 +88,13 @@
                 <?php } ?>
         </div>
     </div>
+</div>
+<div id="pagination">
+    <ul class="toggle report-list-toggle">
+        <li class="active"><a href="#rb_list-view" class="navigation_list"><?php echo Kohana::lang('ui_main.list'); ?></a></li>
+        <li><a href="#rb_map-view" class="navigation_map"><?php echo Kohana::lang('ui_main.map'); ?></a></li>
+        <li><a href="#rb_gallery-view" class="navigation_gallery">Gallery</a></li>
+    </ul>
+    <div class="pagination"><?php echo $pagination; ?></div>
+    <div class="breadcrumb"><?php echo $stats_breadcrumb; ?></div>
 </div>

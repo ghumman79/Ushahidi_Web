@@ -4,78 +4,32 @@
     <title><?php echo $page_title.$site_name; ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <?php echo $header_block; ?>
-    <?php
-    // Action::header_scripts - Additional Inline Scripts from Plugins
-    Event::run('ushahidi_action.header_scripts');
-    ?>
-    <link rel="stylesheet" type="text/css" href="http://localhost:8888/themes/facilities/css/uofs.css">
+    <?php Event::run('ushahidi_action.header_scripts'); ?>
+    <link rel="stylesheet" type="text/css" href="/themes/facilities/css/uofs.css">
+    <link rel="icon" type="image/png" href="/themes/facilities/images/uofs/favicon.ico">
 </head>
-
-<?php
-// Add a class to the body tag according to the page URI
-
-// we're on the home page
-if (count($uri_segments) == 0)
-{
-    $body_class = "page-main";
-}
-// 1st tier pages
-elseif (count($uri_segments) == 1)
-{
-    $body_class = "page-".$uri_segments[0];
-}
-// 2nd tier pages... ie "/reports/submit"
-elseif (count($uri_segments) >= 2)
-{
-    $body_class = "page-".$uri_segments[0]."-".$uri_segments[1];
-};
-?>
-
-<body id="page" class="<?php echo $body_class; ?>" />
-
-<?php //echo $header_nav;?>
-
-<!-- wrapper -->
-<!--<div class="rapidxwpr floatholder">-->
-
-<!-- header -->
-<div id="header">
-
-    <!-- searchbox -->
-    <div id="searchbox">
-
-        <!-- languages -->
-        <?php echo $languages;?>
-        <!-- / languages -->
-
-        <!-- searchform -->
-        <?php echo $search; ?>
-        <!-- / searchform -->
-
+<body id="page">
+    <div id="header">
+        <div id="header-language">
+           <?php echo $languages;?>
+        </div>
+        <div id="header-search">
+           <?php echo $search; ?>
+        </div>
+        <?php if(Kohana::config('settings.allow_reports')) { ?>
+        <div id="header-submit">
+            <?php echo $submit_btn; ?>
+        </div>
+        <? } ?>
+        <div id="header-logo">
+            <?php if($banner == NULL){ ?>
+                <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
+                <span><?php echo $site_tagline; ?></span>
+            <?php } else { ?>
+                <a title="<?php echo $site_name; ?>" href="<?php echo url::site();?>">
+                    <img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" />
+                </a>
+            <?php } ?>
+        </div>
     </div>
-    <!-- / searchbox -->
-
-    <!-- logo -->
-    <?php if($banner == NULL){ ?>
-    <div id="logo">
-        <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
-        <span><?php echo $site_tagline; ?></span>
-    </div>
-    <?php }else{ ?>
-    <a href="<?php echo url::site();?>"><img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" /></a>
-    <?php } ?>
-    <!-- / logo -->
-
-    <!-- submit incident -->
-    <?php echo $submit_btn; ?>
-    <!-- / submit incident -->
-
-</div>
-<!-- / header -->
-    <!-- / header item for plugins -->
-    <?php
-    // Action::header_item - Additional items to be added by plugins
-    Event::run('ushahidi_action.header_item');
-    ?>
-
-
+    <?php Event::run('ushahidi_action.header_item'); ?>
