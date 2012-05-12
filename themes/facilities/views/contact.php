@@ -27,7 +27,7 @@
                 <?php
             }
             ?>
-            <div class="box-light">
+            <div class="box">
                 <?php print form::open(NULL, array('id' => 'contactForm', 'name' => 'contactForm')); ?>
 
                 <label><?php echo Kohana::lang('ui_main.contact_name'); ?></label>

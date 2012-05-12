@@ -5,7 +5,7 @@ foreach ($form_field_names as $field_id => $field_property) {
     if ($value == "")
         continue;
 
-    echo '<div class="report-custom box-light">';
+    echo '<div class="report-custom box">';
     if ($field_property['field_type'] == 1 OR $field_property['field_type'] == 1 OR $field_property['field_type'] > 3) {
         // Text Field
         echo '<div class="report-custom-name">'.html::specialchars($field_property['field_name']).'</div>';

@@ -30,27 +30,27 @@
 
         <div class="column">
             <?php if(count($forms) > 1){ ?>
-               <div class="box-light">
+               <div class="box">
                    <label><?php echo Kohana::lang('ui_main.select_form_type');?></label>
                    <span><?php print form::dropdown('form_id', $forms, $form['form_id'],
                        ' onchange="formSwitch(this.options[this.selectedIndex].value, \''.$id.'\')"') ?></span>
                </div>
             <?php } ?>
-            <div class="box-light">
+            <div class="box">
                 <label><b class="required">*</b>&nbsp;<?php echo Kohana::lang('ui_main.reports_title'); ?></label>
                 <span><?php print form::input('incident_title', $form['incident_title'], ' class="text long"'); ?></span>
             </div>
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
                 <label><b class="required">*</b>&nbsp;<?php echo Kohana::lang('ui_main.reports_description'); ?></label>
                 <span><?php print form::textarea('incident_description', $form['incident_description'], ' rows="10" class="textarea long" ') ?></span>
             </div>
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
                 <label><?php echo Kohana::lang('ui_main.reports_date'); ?></label>
                 <span>
                     <?php print form::input('incident_date', $form['incident_date'], ' class="text short"'); ?>
@@ -68,7 +68,7 @@
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
                 <label><?php echo Kohana::lang('ui_main.reports_time'); ?></label>
                 <span>
                   <?php
@@ -93,7 +93,7 @@
 
             <br/>
 
-            <div id="submit-categories" class="box-light">
+            <div id="submit-categories" class="box">
                 <label><b class="required">*</b>&nbsp;<?php echo Kohana::lang('ui_main.reports_categories'); ?></label>
                 <span>
                     <?php foreach ($categories as $category): ?>
@@ -121,13 +121,13 @@
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
                 <?php echo $custom_forms ?>
             </div>
 
             <br/>
 
-            <div class="box-light" >
+            <div class="box" >
                 <h3><?php echo Kohana::lang('ui_main.reports_optional'); ?></h3>
 
                 <label><?php echo Kohana::lang('ui_main.reports_first'); ?></label>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="column">
-            <div class="box-light">
+            <div class="box">
                 <?php if ( ! $multi_country AND count($cities) > 1): ?>
                     <label><?php echo Kohana::lang('ui_main.location'); ?></label>
                     <span> <?php print form::dropdown('select_city',$cities,'', ' class="select" '); ?></span><br/>
@@ -163,7 +163,7 @@
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
 
                 <label><?php echo Kohana::lang('ui_main.reports_location_name'); ?></label>
                 <span><?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?></span>
@@ -174,7 +174,7 @@
 
             <br/>
 
-            <div id="divNews" class="box-light">
+            <div id="divNews" class="box">
                 <label><?php echo Kohana::lang('ui_main.reports_news'); ?></label>
                 <?php
                 $this_div = "divNews";
@@ -209,7 +209,7 @@
 
             <br/>
 
-            <div id="divVideo" class="box-light">
+            <div id="divVideo" class="box">
                 <label><?php echo Kohana::lang('ui_main.external_video_link'); ?></label>
                 <?php
                 $this_div = "divVideo";
@@ -247,7 +247,7 @@
 
             <br/>
 
-            <div id="divPhoto" class="box-light">
+            <div id="divPhoto" class="box">
                 <label><?php echo Kohana::lang('ui_main.reports_photos'); ?></label>
                 <?php
                 $this_div = "divPhoto";
@@ -285,7 +285,7 @@
 
             <br/>
 
-            <div class="box-light">
+            <div class="box">
                 <input name="submit" type="submit" class="button" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?>" class="btn_submit" />
             </div>
 

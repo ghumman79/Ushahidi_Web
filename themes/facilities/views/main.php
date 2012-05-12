@@ -2,7 +2,7 @@
     <div id="content">
        <div id="main-welcome" class="column">
              <?php if($site_message != '') { ?>
-            <div class="box-light">
+            <div class="box">
                 <?php echo $site_message; ?>
             </div>
             <?php } ?>
@@ -10,7 +10,7 @@
         <div id="main-categories" class="column">
             <?php foreach ($categories as $category => $category_info) {
                 $category_title = $category_info[0];
-                echo '<ul class="box-light">';
+                echo '<ul class="box">';
                 echo '<li class="title"><a title="'. $category_title . '" href="' . url::site() . 'reports/?c=' . $category . '">' . $category_title . '</a></li>';
                 if(sizeof($category_info[3]) != 0) {
                     foreach ($category_info[3] as $child => $child_info) {

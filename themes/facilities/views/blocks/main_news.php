@@ -1,5 +1,5 @@
 <div id="main-news" class="column">
-    <div class="box-light">
+    <div class="box">
         <h3>News</h3>
         <ul>
          <?php

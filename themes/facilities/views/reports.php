@@ -5,7 +5,9 @@
         </ul>
     </div>
 
-    <?php echo $report_listing_view; ?>
+    <div id="reports-container">
+        <?php echo $report_listing_view; ?>
+    </div>
 
     <?php Event::run('ushahidi_action.report_filters_ui'); ?>
 
@@ -52,7 +54,11 @@
             var strBreadcrumb = $el.html();
             $("div.breadcrumb").html(strBreadcrumb.replace(" List", ""));
         }
-
+        function addReportViewOptionsEvents() {
+            $("#pagination .report-list-toggle a").click(function(){
+                return switchViews($(this));
+            });
+        }
         $(function(){
             var active;
 
@@ -105,19 +111,14 @@
                 else {
                     urlParameters = [];
                 }
-                $.each($(".report-list-toggle .active a"), function(i, item){
-                    //alert(item.href);
-                });
-
-                mapLoaded = 0;
 
                 var loadingURL = "<?php echo url::file_loc('img').'media/img/loading_g.gif'; ?>";
                 var statusHtml = "<div style=\"width: 100%; margin-top: 100px;\" align=\"center\">" +
                     "<div><img src=\""+loadingURL+"\" border=\"0\"></div>" +
-                    "<p style=\"padding: 10px 2px;\"><h3><?php echo Kohana::lang('ui_main.loading_reports'); ?>...</h3></p>" +
+                    "<?php echo Kohana::lang('ui_main.loading_reports'); ?>..." +
                     "</div>";
 
-                $("#reports-box").html(statusHtml);
+                $("#reports-container").html(statusHtml);
                 if ($.isEmptyObject(urlParameters)) {
                     urlParameters = {show: "all"}
                 }
@@ -126,18 +127,18 @@
                     function(data) {
                         if (data != null && data != "" && data.length > 0) {
                             setTimeout(function(){
-                                $("#reports-box").html(data);
+                                $("#reports-container").html(data);
                                 attachPagingEvents();
                                 addReportHoverEvents();
                                 deSelectedFilters = [];
                                 if (active.search('#rb_list-view') > 0) {
-                                    switchViews($("#pagination .report-list-toggle .pagination_list"));
+                                    switchViews($("#pagination .pagination_list"));
                                 }
                                 else if (active.search('#rb_map-view') > 0) {
-                                    switchViews($("#pagination .report-list-toggle .pagination_map"));
+                                    switchViews($("#pagination .pagination_map"));
                                 }
                                 else if (active.search('#rb_gallery-view') > 0) {
-                                    switchViews($("#pagination .report-list-toggle .pagination_gallery"));
+                                    switchViews($("#pagination .pagination_gallery"));
                                 }
                                 splitListView();
                                 adjustCategories();
@@ -151,7 +152,7 @@
         function switchViews(view) {
             $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
             $($(view).attr("href")).show();
-            $("#reports-box .report-list-toggle a").parent().removeClass("active");
+            $("#pagination .report-list-toggle a").parent().removeClass("active");
             $("."+$(view).attr("class")).parent().addClass("active");
             if ($("#rb_map-view").css("display") == "block") {
                 $("#reports").css("overflow-y", "hidden");

@@ -3,7 +3,7 @@
         <h1><?php echo Kohana::lang('ui_main.alerts_get'); ?></h1>
         <?php print form::open() ?>
         <div class="column">
-            <div class="alerts-step box-light">
+            <div class="alerts-step box">
                 <?php if ($form_error): ?>
                     <div class="red-box">
                         <h3><?php echo Kohana::lang('ui_main.error'); ?></h3>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="alerts-step box-light">
+            <div class="alerts-step box">
                 <h3><?php echo Kohana::lang('ui_main.alerts_step2_send_alerts'); ?></h3>
                 <?php if ($show_mobile == TRUE): ?>
                     <label for="alert_mobile">
@@ -45,7 +45,7 @@
                 </label>
                 <span><?php print form::input('alert_email', $form['alert_email'], ' class="text"'); ?></span>
             </div>
-            <div class="alerts-step box-light">
+            <div class="alerts-step box">
                 <h3><?php echo Kohana::lang('ui_main.alerts_step3_select_catgories'); ?></h3>
                 <div class="holder">
                     <?php foreach ($categories as $category): ?>
@@ -67,7 +67,7 @@
                     <div class="clear"></div>
                 </div>
             </div>
-            <div class="alerts-step box-light">
+            <div class="alerts-step box">
                 <input id="btn-send-alerts" class="button" type="submit" value="<?php echo Kohana::lang('ui_main.alerts_btn_send'); ?>" />
                 <a class="confirm-link" href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
             </div>

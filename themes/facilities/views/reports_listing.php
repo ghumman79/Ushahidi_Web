@@ -1,7 +1,6 @@
 <div id="reports" class="scroll">
-    <div id="content">
-        <div class="rb_list-and-map-box">
-            <div id="rb_list-view">
+    <div class="rb_list-and-map-box">
+        <div id="rb_list-view">
             <?php
                 $incidentsCount = count($incidents);
                 $incidentIndex = 0;
@@ -25,7 +24,7 @@
                         }
                     }
                 ?>
-                <div class="report-item box-light <?php echo $incidentPane ?>">
+                <div class="report-item box <?php echo $incidentPane ?>">
                     <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                         <img class="report-image" src="<?php echo $incident_thumb; ?>" />
                     </a>
@@ -60,9 +59,10 @@
 
                 </div>
             <?php } ?>
-            </div>
-            <div id="rb_map-view" style="display:none;width:100%;height:900px;"></div>
-            <div id="rb_gallery-view" style="display:none;">
+        </div>
+        <div id="rb_map-view" style="display:none;width:100%;height:900px;"></div>
+        <div id="rb_gallery-view" style="display:none;">
+            <div id="content">
                 <?php
                 foreach ($incidents as $incident) {
                     $incident = ORM::factory('incident', $incident->incident_id);
@@ -81,12 +81,13 @@
                         }
                     }
                     ?>
-                    <div class="report_thumbnail">
-                        <a title="<?php echo $incident_title . ' - ' . $incident_description; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                    <div class="report-thumbnail">
+                        <a title="<?php echo $incident_title . ' - ' . $incident_description; ?>"
+                           href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                             <img src="<?php echo $incident_thumb; ?>" />
                         </a>
                     </div>
-                    <?php } ?>
+                <?php } ?>
             </div>
         </div>
     </div>

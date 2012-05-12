@@ -3,7 +3,7 @@
         <tr>
             <td class="titlebar-previous">
                 <?php // TODO disable PREVIOUS button if report does not exist ?>
-                <span class="box-dark"><a class="previous" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a></span>
+                <span class="box"><a class="previous" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a></span>
             </td>
             <td class="titlebar-title">
                 <span class="report-title">
@@ -25,7 +25,7 @@
                             continue;
                         }
                         if ($category->category->category_image_thumb) { ?>
-                            <span class="box-dark">
+                            <span class="box">
                     <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
                         <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
                         <?php echo $category->category->category_title; ?>
@@ -35,7 +35,7 @@
                         }
                         else {
                             ?>
-                            <span class="box-dark">
+                            <span class="box">
                     <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
                         <?php echo $category->category->category_title; ?>
                     </a>
@@ -48,7 +48,7 @@
             </td>
             <td class="titlebar-next">
                 <?php // TODO disable NEXT button if report does not exist ?>
-                <span class="box-dark"><a class="next" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a></span>
+                <span class="box"><a class="next" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a></span>
             </td>
         </tr>
     </table>
@@ -57,13 +57,13 @@
         <div id="content">
             <div class="column">
                 <?php if (empty($incident_description) == false) { ?>
-                    <div class="report-desc box-light">
+                    <div class="report-desc box">
                         <?php echo $incident_description; ?>
                     </div>
                 <?php } ?>
 
                 <?php foreach( $incident_news as $incident_new) { ?>
-                    <div class="report-custom box-light">
+                    <div class="report-custom box">
                         <div class="report-custom-name">
                             <?php echo Kohana::lang('ui_main.url');?>
                         </div>
@@ -85,7 +85,7 @@
 
                 <?php Event::run('ushahidi_action.report-display-media', $incident_id); ?>
 
-                <div class="report-media box-light <?php if(count($incident_photos) == 0){ echo "hidden";}?>">
+                <div class="report-media box <?php if(count($incident_photos) == 0){ echo "hidden";}?>">
                     <?php
                     if(count($incident_photos) > 0) {
                         foreach ($incident_photos as $photo) {
@@ -96,7 +96,7 @@
                     <div class="clear"></div>
                 </div>
 
-                <div class="report-media box-light <?php if(count($incident_videos) == 0){ echo "hidden";}?>">
+                <div class="report-media box <?php if(count($incident_videos) == 0){ echo "hidden";}?>">
                     <?php
                     if(count($incident_videos) > 0 ){
                         foreach( $incident_videos as $incident_video) {
@@ -107,11 +107,11 @@
                 </div>
 
                <?php Event::run('ushahidi_filter.comment_block', $comments); ?>
-               <div class="report-comments box-light <?php if(count($comments) == 0 || !isset($comments) || trim($comments)===''){ echo "hidden";}?>">
+               <div class="report-comments box <?php if(count($comments) == 0 || !isset($comments) || trim($comments)===''){ echo "hidden";}?>">
                    <?php echo $comments; ?>
                 </div>
 
-                <div class="report-comment-form box-light">
+                <div class="report-comment-form box">
                     <?php Event::run('ushahidi_filter.comment_form_block', $comments_form); ?>
                     <?php echo $comments_form; ?>
                 </div>
@@ -125,7 +125,7 @@
 
                 <div class="report-nearbys">
                     <?php foreach($incident_neighbors as $neighbor) { ?>
-                    <div class="report-nearby box-light">
+                    <div class="report-nearby box">
                         <div class="report-nearby-title">
                             <a title="<?php echo $neighbor->incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $neighbor->id; ?>">
                                 <?php echo $neighbor->incident_title; ?>

@@ -120,8 +120,8 @@ h6{
 
 /* ############################### BOXES ############################### */
 
-.box-light,
-.box-dark {
+p,
+.box {
     padding:5px 5px 5px 5px;
     border-radius:5px;
     -moz-border-radius:5px;
@@ -132,20 +132,13 @@ h6{
     -webkit-transition: all .1s ease-in-out;
 }
 
-.box-light {
+p,
+.box {
     border: 1px solid #E6E6E6;
     background: #F2F2F2;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#F2F2F2');
     background: -webkit-gradient(linear, left top, left bottom, from(#FAFAFA), to(#F2F2F2));
     background: -moz-linear-gradient(top, #FAFAFA, #F2F2F2);
-}
-
-.box-dark {
-    border: 1px solid #D8D8D8;
-    background: #E6E6E6;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
-    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#E6E6E6));
-    background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
 }
 
 div.green-box,
@@ -833,6 +826,28 @@ div.report-item .report-image {
     margin-right:10px;
     margin-bottom:5px;
     background-image:url(../images/report-thumb-gallery.jpg);
+}
+
+.report-thumbnail {
+    float:left;
+    max-width:200px;
+    min-width:200px;
+    height:125px;
+    min-height:125px;
+    max-height:125px;
+    overflow: hidden;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+
+.report-thumbnail img {
+    width:200px;
+    margin:0;
+    background-image:url(../images/report-thumb-gallery.jpg);
+}
+
+div#rb_list-view {
+    padding:15px 0 0 0;
 }
 
 /* ############################### REPORT DETAILS ############################### */

@@ -1,5 +1,5 @@
 <div id="main-reports" class="column">
-    <div class="box-light">
+    <div class="box">
         <?php if ( Kohana::config('settings.checkins') ) { ?>
             <h3><?php echo Kohana::lang('ui_admin.checkins'); ?></h3>
             <ul></ul>
