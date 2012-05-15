@@ -36,30 +36,41 @@ div#header {
     background: transparent url("../images/uofs/header.jpg") no-repeat right top;
 }
 
-div#filters ul li,
-div#filters ul li.selected {
-    background: #65AD18;
-    border: 1px solid #65AD18;
-    background: -moz-linear-gradient(top, #8CCC48 0%, #65AD18 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8CCC48), color-stop(100%, #65AD18));
-    -moz-transition: all .1s ease-in-out;
-    -webkit-transition: all .1s ease-in-out;
-    transition: all .1s ease-in-out;
-    color:#FFF;
-    opacity: 0.6;
+div#filters ul li {
+    border: 1px solid #7abb68;
+    background: #4aa11e;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9d487', endColorstr='#92c778');
+    background: -webkit-gradient(linear, left top, left bottom, from(#a9d487), to(#92c778));
+    background: -moz-linear-gradient(top, #a9d487, #92c778);
 }
 
-div#filters ul li.report-listing-category-child,
+div#filters ul li.selected {
+    border: 1px solid #228d03;
+    background: #4aa11e;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fb737', endColorstr='#4aa11e');
+    background: -webkit-gradient(linear, left top, left bottom, from(#6fb737), to(#4aa11e));
+    background: -moz-linear-gradient(top, #6fb737, #4aa11e);
+}
+
+div#filters ul li.report-listing-category-child {
+    border: 1px solid #b3da7f;
+    background: #bcdf89;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6eba5', endColorstr='#bcdf89');
+    background: -webkit-gradient(linear, left top, left bottom, from(#d6eba5), to(#bcdf89));
+    background: -moz-linear-gradient(top, #d6eba5, #bcdf89);
+}
+
 div#filters ul li.report-listing-category-child.selected {
-    background: #93C238;
-    border: 1px solid #8FBD35;
-    background: -moz-linear-gradient(top, #B3D855 0%, #8FBD35 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #B3D855), color-stop(100%, #8FBD35));
-    opacity: 0.6;
+    border: 1px solid #80c22a;
+    background: #8fca3a;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#badd69', endColorstr='#8fca3a');
+    background: -webkit-gradient(linear, left top, left bottom, from(#badd69), to(#8fca3a));
+    background: -moz-linear-gradient(top, #badd69, #8fca3a);
 }
 
 div#filters ul li a {
-     text-decoration: none;
+    color:#FFF;
+    text-decoration: none;
 }
 
 div#filters ul li a:hover {
@@ -67,21 +78,12 @@ div#filters ul li a:hover {
     text-decoration: underline;
 }
 
-div#filters ul li.selected {
-    opacity: 1;
-}
-
-div#filters ul li.selected,
-div#filters ul li.report-listing-category-child.selected {
-    opacity: 1;
-}
-
 span.item-title {
     color: #FFF;
 }
 
 div.search-form input.searchbtn {
-    background: #EEE url(../images/uofs/search.png) 1px 0px no-repeat;
+    background: #EEE url(../images/uofs/search.png) 1px 0 no-repeat;
 }
 
 div#pagination {

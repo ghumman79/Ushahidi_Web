@@ -71,6 +71,9 @@
         }
         function fetchReports() {
             var activeView;
+            $.each($(".report-list-toggle .active a"), function(i, item){
+                activeView = item.href;
+            });
             var categoryIDs = [];
             $.each($("#filters li a.selected"), function(i, item){
                 var itemId = item.id.substring("filter_link_cat_".length);
@@ -79,14 +82,14 @@
             if (categoryIDs.length > 0) {
                 urlParameters["c"] = categoryIDs.join();
             }
-            $.each($(".report-list-toggle .active a"), function(i, item){
-                activeView = item.href;
-            });
-            $("#reports-box").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
+            else {
+                delete urlParameters["c"];
+            }
             if ($.isEmptyObject(urlParameters)) {
                 urlParameters = {show: "all"}
             }
             //alert(JSON.stringify(urlParameters));
+            $("#reports-box").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
             $.get('<?php echo url::site().'reports/fetch_reports'?>',
                 urlParameters,
                 function(data) {
@@ -111,7 +114,7 @@
             );
         }
         function attachCategorySelected() {
-            $(".cat_selected").click(function(){
+            $("#filters li a").click(function(){
                 if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                     $(this).parent().removeClass("selected");

@@ -62,38 +62,37 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     margin-top: 0;
     padding: 0;
+    color: #6E6E6E;
 }
 
 h1{
     font-size: 200%;
-    color: #6E6E6E;
+    margin-bottom:10px;
 }
 
 h2{
-    font-size: 125%;
-    color: #6E6E6E;
-    margin-bottom: .2em;
+    font-size: 175%;
+    margin-bottom:10px;
 }
 
 h3{
     font-size: 150%;
-    color: #6E6E6E;
+    margin-bottom:10px;
 }
 
 h4{
-    font-size: 175%;
-    color: #6E6E6E;
+    font-size: 125%;
+    margin-bottom:10px;
 }
 
 h5{
-    font-size: 150%;
-    color: #6E6E6E;
-    margin-bottom: 10px;
+    font-size: 115%;
+    margin-bottom:10px;
 }
 
 h6{
-    font-size: 125%;
-    color: #6E6E6E;
+    font-size: 110%;
+    margin-bottom:10px;
 }
 
 .clear{
@@ -1186,6 +1185,27 @@ ul.horizontal li.parent {
     font-weight:bold;
 }
 
+/* ############################### PROFILE ############################### */
+
+.profile-picture {
+    float:left;
+    height:250px;
+    width:160px;
+    text-align:center;
+}
+
+.profile-details {
+    float:left;
+    padding-left:25px;
+    width:400px;
+}
+
+.profile-badges {
+    float:left;
+    padding-left:25px;
+    width:275px;
+}
+
 /* ############################### MISC ############################### */
 
 #loading {
@@ -1198,8 +1218,12 @@ ul.horizontal li.parent {
     border:0;
 }
 
-/* ############################### MISC ############################### */
-
 div#schedulerholder img {
     visibility: hidden;
+}
+
+div.report-additional-reports {
+    border:none;
+    margin:0;
+    padding:0;
 }
