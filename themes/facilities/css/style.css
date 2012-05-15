@@ -488,6 +488,7 @@ div#pagination ul.toggle a {
     background-repeat:no-repeat;
     text-transform: uppercase;
     text-align:center;
+    color:#848484;
 }
 
 div#pagination ul.toggle li {
@@ -536,27 +537,32 @@ div#pagination li.active {
 
 /* ############################### FILTERS ############################### */
 
-div#filters ul li {
-    -moz-border-radius:5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-    -khtml-border-radius:5px;
-    background-color: #F2F2F2;
-    display: inline-block;
-    list-style-type: none;
-    border: 1px solid #BBB;
-    text-align:center;
-    padding:4px 5px 4px 5px;
-    color:#424242;
-}
-
 div#filters {
     position:absolute;
     top:0;
     width:100%;
     left:0;
     background-color:#FAFAFA;
+    border-bottom: 1px solid #BDBDBD;
+}
+
+div#filters ul li {
+    -moz-border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    -khtml-border-radius:5px;
+    background: #E6E6E6;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
+    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#E6E6E6));
+    background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
+
+    display: inline-block;
+    list-style-type: none;
+    border: 1px solid #BBB;
+    text-align:center;
+    padding:4px 5px 4px 5px;
+    color:#424242;
 }
 
 div#filters ul {
@@ -571,6 +577,10 @@ div#filters ul li {
     text-transform: uppercase;
 }
 
+div#filters ul li a {
+    color:#848484;
+}
+
 div#filters ul li.report-listing-category-child {
     text-transform: capitalize;
 }
@@ -581,6 +591,16 @@ div#filters .item-count {
 
 div#filters .item-swatch {
     display:none;
+}
+
+div#filters ul li.selected,
+div#filters ul li.report-listing-category-child.selected {
+    border: 1px solid #A4A4A4;
+    background: #BDBDBD;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#BDBDBD');
+    background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E6), to(#BDBDBD));
+    background: -moz-linear-gradient(top, #E6E6E6, #BDBDBD);
+
 }
 
 /* ############################### TITLE BAR ############################### */
@@ -651,6 +671,10 @@ div#filters .item-swatch {
 
 #titlebar .titlebar-next {
     text-align:right;
+}
+
+#titlebar a {
+color:#848484;
 }
 
 /* ############################### SEARCH RESULTS ############################### */
@@ -1135,7 +1159,13 @@ ul.pager li.first {
 
 ul.pager li a.active,
 ul.pager li.first a.active{
-    background-color: #F2F2F2;
+    background-color: transparent;
+}
+
+ul.pager li a.active:hover,
+ul.pager li.first a.active:hover {
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 /* ############################### LISTS ############################### */
@@ -1154,6 +1184,18 @@ ul.horizontal li {
 
 ul.horizontal li.parent {
     font-weight:bold;
+}
+
+/* ############################### MISC ############################### */
+
+#loading {
+    width:300px;
+    height:300px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-150px 0 0 -150px;
+    border:0;
 }
 
 /* ############################### MISC ############################### */

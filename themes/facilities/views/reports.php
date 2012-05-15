@@ -5,7 +5,7 @@
         </ul>
     </div>
 
-    <div id="reports-container">
+    <div id="reports-box">
         <?php echo $report_listing_view; ?>
     </div>
 
@@ -19,6 +19,16 @@
     </div>
 
     <script type="text/javascript">
+        $(function(){
+            splitParentCategories();
+            $(window).resize(function() {
+                adjustCategories();
+            });
+            adjustCategories();
+            attachCategorySelected();
+            removeListStrFromBreadcrumb();
+            splitListView();
+        });
         function splitParentCategories() {
             var $categoryDiv = $("div#filters");
             var $categoryList = $categoryDiv.find("ul");
@@ -50,8 +60,8 @@
             $("#reports").css('top', $top);
         }
         function removeListStrFromBreadcrumb() {
-            var $el = $("div.breadcrumb");
-            var strBreadcrumb = $el.html();
+            var $divBreadcrumb = $("div.breadcrumb");
+            var strBreadcrumb = $divBreadcrumb.html();
             $("div.breadcrumb").html(strBreadcrumb.replace(" List", ""));
         }
         function addReportViewOptionsEvents() {
@@ -59,29 +69,52 @@
                 return switchViews($(this));
             });
         }
-        $(function(){
-            var active;
-
-            splitParentCategories();
-
-            $(window).resize(function() {
-                adjustCategories();
+        function fetchReports() {
+            var activeView;
+            var categoryIDs = [];
+            $.each($("#filters li a.selected"), function(i, item){
+                var itemId = item.id.substring("filter_link_cat_".length);
+                categoryIDs.push(itemId);
             });
-            adjustCategories();
-            removeListStrFromBreadcrumb();
-
-            if($(".report-list-toggle .active a").hasClass("pagination_list")){
-                splitListView();
+            if (categoryIDs.length > 0) {
+                urlParameters["c"] = categoryIDs.join();
             }
-
+            $.each($(".report-list-toggle .active a"), function(i, item){
+                activeView = item.href;
+            });
+            $("#reports-box").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
+            if ($.isEmptyObject(urlParameters)) {
+                urlParameters = {show: "all"}
+            }
+            //alert(JSON.stringify(urlParameters));
+            $.get('<?php echo url::site().'reports/fetch_reports'?>',
+                urlParameters,
+                function(data) {
+                    if (data != null && data != "" && data.length > 0) {
+                        setTimeout(function(){
+                            $("#reports-box").html(data);
+                            attachPagingEvents();
+                            adjustCategories();
+                            if (activeView.search('#rb_list-view') > 0) {
+                                switchViews($("#pagination .pagination_list"));
+                            }
+                            else if (activeView.search('#rb_map-view') > 0) {
+                                switchViews($("#pagination .pagination_map"));
+                            }
+                            else if (activeView.search('#rb_gallery-view') > 0) {
+                                switchViews($("#pagination .pagination_gallery"));
+                            }
+                            splitListView();
+                        }, 400);
+                    }
+                }
+            );
+        }
+        function attachCategorySelected() {
             $(".cat_selected").click(function(){
-                $.each($(".report-list-toggle .active a"), function(i, item){
-                    active = item.href;
-                });
                 if ($(this).hasClass("selected")) {
                     $(this).removeClass("selected");
                     $(this).parent().removeClass("selected");
-
                     if(! ($(this).parent().hasClass('report-listing-category-child'))){
                         $(this).parent().parent().children().each(function(){
                             $(this).removeClass("selected");
@@ -92,7 +125,6 @@
                 else {
                     $(this).addClass("selected");
                     $(this).parent().addClass("selected");
-
                     if(! ($(this).parent().hasClass('report-listing-category-child'))){
                         $(this).parent().parent().children().each(function(){
                             $(this).addClass("selected");
@@ -100,75 +132,49 @@
                         });
                     }
                 }
-                var category_ids = [];
-                $.each($("#filters li a.selected"), function(i, item){
-                    itemId = item.id.substring("filter_link_cat_".length);
-                    category_ids.push(itemId);
-                });
-                if (category_ids.length > 0) {
-                    urlParameters["c"] = category_ids.join();
-                }
-                else {
-                    urlParameters = [];
-                }
-
-                var loadingURL = "<?php echo url::file_loc('img').'media/img/loading_g.gif'; ?>";
-                var statusHtml = "<div style=\"width: 100%; margin-top: 100px;\" align=\"center\">" +
-                    "<div><img src=\""+loadingURL+"\" border=\"0\"></div>" +
-                    "<?php echo Kohana::lang('ui_main.loading_reports'); ?>..." +
-                    "</div>";
-
-                $("#reports-container").html(statusHtml);
-                if ($.isEmptyObject(urlParameters)) {
-                    urlParameters = {show: "all"}
-                }
-                $.get('<?php echo url::site().'reports/fetch_reports'?>',
-                    urlParameters,
-                    function(data) {
-                        if (data != null && data != "" && data.length > 0) {
-                            setTimeout(function(){
-                                $("#reports-container").html(data);
-                                attachPagingEvents();
-                                addReportHoverEvents();
-                                deSelectedFilters = [];
-                                if (active.search('#rb_list-view') > 0) {
-                                    switchViews($("#pagination .pagination_list"));
-                                }
-                                else if (active.search('#rb_map-view') > 0) {
-                                    switchViews($("#pagination .pagination_map"));
-                                }
-                                else if (active.search('#rb_gallery-view') > 0) {
-                                    switchViews($("#pagination .pagination_gallery"));
-                                }
-                                splitListView();
-                                adjustCategories();
-                            }, 400);
-                        }
-                    }
-                );
+                fetchReports();
             });
-        });
+        }
+        function attachPagingEvents() {
+            addReportViewOptionsEvents();
+            $("ul.pager a").attr("href", "#");
+            $("ul.pager a").click(function() {
+                urlParameters["page"] = $(this).html();
+                fetchReports();
+                return false;
 
+            });
+            $("td.last li a").click(function(){
+                pageNumber = $(this).attr("id").substr("page_".length);
+                if (Number(pageNumber) > 0) {
+                    urlParameters["page"] = Number(pageNumber);
+                    fetchReports();
+                }
+                return false;
+            });
+            return false;
+        }
         function switchViews(view) {
             $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
             $($(view).attr("href")).show();
             $("#pagination .report-list-toggle a").parent().removeClass("active");
             $("."+$(view).attr("class")).parent().addClass("active");
             if ($("#rb_map-view").css("display") == "block") {
-                $("#reports").css("overflow-y", "hidden");
+                $("#reports").removeClass("scroll");
+                $("#reports").css("overflow-y","hidden");
                 urlParameters["page"] = $(".pager li a.active").html();
                 if ($('#rb_map-view').children().length == 0) {
                     createIncidentMap();
                 }
-                setTimeout(function(){ showIncidentMap() }, 400);
-                setTimeout(function(){ showCheckins() }, 400);
+                setTimeout(function(){showIncidentMap();}, 400);
+                setTimeout(function(){showCheckins();}, 400);
             }
             else {
-                $("#reports").css("overflow-y", "auto");
+                $("#reports").addClass("scroll");
+                $("#reports").css("overflow-y","auto");
             }
             return false;
         }
-
         function showCheckins() {
             $(document).ready(function(){
                 var ci_styles = new OpenLayers.StyleMap({
