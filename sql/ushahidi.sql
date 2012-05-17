@@ -1,5 +1,5 @@
-﻿-- Ushahidi Engine
--- version 81
+-- Ushahidi Engine
+-- version 88
 -- http://www.ushahidi.com
 
 
@@ -201,7 +201,7 @@ INSERT INTO `category` (`id`,`category_title`, `category_description`, `category
 (2, 'Category 2', 'Category 2', '3300FF', 1, 0),
 (3, 'Category 3', 'Category 3', '663300', 1, 0),
 (4, 'Trusted Reports', 'Reports from trusted reporters', '339900', 1, 1),
-(5, 'NONE', 'Holds orphaned reports', '009887', 1, 1);
+(5, 'NONE', 'Holds uncategorized reports', '009887', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -998,6 +998,8 @@ CREATE TABLE IF NOT EXISTS `message` (
   `message_type` tinyint(4) DEFAULT '1' COMMENT '1 - INBOX, 2 - OUTBOX (From Admin), 3 - DELETED',
   `message_date` datetime DEFAULT NULL,
   `message_level` tinyint(4) DEFAULT '0' COMMENT '0 - UNREAD, 1 - READ, 99 - SPAM',
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `incident_id` (`incident_id`),
@@ -1270,7 +1272,7 @@ INSERT INTO `service` (`id`, `service_name`, `service_description`, `service_url
  */
 
 CREATE TABLE IF NOT EXISTS `sessions` (
-  `session_id` varchar(40) NOT NULL,
+  `session_id` varchar(127) NOT NULL,
   `last_activity` int(10) unsigned NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`session_id`)
@@ -1308,8 +1310,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `private_deployment` tinyint(4) NOT NULL DEFAULT '0',
   `default_map` varchar(100) NOT NULL DEFAULT 'osm_mapnik',
   `default_map_all` varchar(20) NOT NULL DEFAULT 'CC0000',
+  `default_map_all_icon_id` int(11) DEFAULT NULL,
   `api_google` varchar(200) DEFAULT NULL,
-  `api_yahoo` varchar(200) DEFAULT NULL,
   `api_live` varchar(200) DEFAULT NULL,
   `api_akismet` varchar(200) DEFAULT NULL,
   `default_country` int(11) DEFAULT NULL,
@@ -1354,8 +1356,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 -- Dumping data for table `settings`
 --
-INSERT INTO `settings` (`id`, `site_name`, `api_google`, `api_yahoo`, `api_live`, `default_country`, `default_city`, `default_lat`, `default_lon`, `default_zoom`, `items_per_page`, `items_per_page_admin`, `blocks`, `date_modify`) VALUES
-(1, 'Ushahidi', 'ABQIAAAAjsEM5UsvCPCIHp80spK1kBQKW7L4j6gYznY0oMkScAbKwifzxxRhJ3SP_ijydkmJpN3jX8kn5r5fEQ', '5CYeWbfV34E21JOW1a4.54Mf6e9jLNkD0HVzaKoQmJZi2qzmSZd5mD8X49x7', NULL, 115, 'nairobi', '-1.2873000707050097', '36.821451182008204', 13, 5, 20, 'reports_block|news_block', '2008-08-25 10:25:18');
+INSERT INTO `settings` (`id`, `site_name`, `api_google`, `api_live`, `default_country`, `default_city`, `default_lat`, `default_lon`, `default_zoom`, `items_per_page`, `items_per_page_admin`, `blocks`, `date_modify`) VALUES
+(1, 'Ushahidi', 'ABQIAAAAjsEM5UsvCPCIHp80spK1kBQKW7L4j6gYznY0oMkScAbKwifzxxRhJ3SP_ijydkmJpN3jX8kn5r5fEQ', 'Apumcka0uPOF2lKLorq8aeo4nuqfVVeNRqJjqOcLMJ9iMCTsnMsNd9_OvpA8gR0i', 115, 'nairobi', '-1.2873000707050097', '36.821451182008204', 13, 5, 20, 'reports_block|news_block', '2008-08-25 10:25:18');
 -- --------------------------------------------------------
 
 /**
@@ -1446,5 +1448,5 @@ CREATE TABLE IF NOT EXISTS `verified` (
  * Version information for table `settings`
  *
  */
-UPDATE `settings` SET `ushahidi_version` = '2.2.1' WHERE `id`=1 LIMIT 1;
-UPDATE `settings` SET `db_version` = '81' WHERE `id` = 1 LIMIT 1;
+UPDATE `settings` SET `ushahidi_version` = '2.3.2' WHERE `id`=1 LIMIT 1;
+UPDATE `settings` SET `db_version` = '88' WHERE `id` = 1 LIMIT 1;

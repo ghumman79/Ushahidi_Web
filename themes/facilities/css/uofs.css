@@ -37,49 +37,34 @@ div#header {
 }
 
 div#filters ul li {
-    border: 1px solid #7abb68;
-    background: #4aa11e;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9d487', endColorstr='#92c778');
-    background: -webkit-gradient(linear, left top, left bottom, from(#a9d487), to(#92c778));
-    background: -moz-linear-gradient(top, #a9d487, #92c778);
+
 }
 
 div#filters ul li.selected {
-    border: 1px solid #228d03;
-    background: #4aa11e;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fb737', endColorstr='#4aa11e');
-    background: -webkit-gradient(linear, left top, left bottom, from(#6fb737), to(#4aa11e));
-    background: -moz-linear-gradient(top, #6fb737, #4aa11e);
+    color:white;
+    border: 1px solid #65AD18;
+    background: #90D04D;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#90D04D', endColorstr='#65AD18');
+    background: -webkit-gradient(linear, left top, left bottom, from(#90D04D), to(#65AD18));
+    background: -moz-linear-gradient(top, #90D04D, #65AD18);
 }
 
 div#filters ul li.report-listing-category-child {
-    border: 1px solid #b3da7f;
-    background: #bcdf89;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6eba5', endColorstr='#bcdf89');
-    background: -webkit-gradient(linear, left top, left bottom, from(#d6eba5), to(#bcdf89));
-    background: -moz-linear-gradient(top, #d6eba5, #bcdf89);
+
 }
 
 div#filters ul li.report-listing-category-child.selected {
-    border: 1px solid #80c22a;
-    background: #8fca3a;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#badd69', endColorstr='#8fca3a');
-    background: -webkit-gradient(linear, left top, left bottom, from(#badd69), to(#8fca3a));
-    background: -moz-linear-gradient(top, #badd69, #8fca3a);
+    color:white;
+    border: 1px solid #8FBD35;
+    background: #BDE15F;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#BDE15F', endColorstr='#8FBD35');
+    background: -webkit-gradient(linear, left top, left bottom, from(#BDE15F), to(#8FBD35));
+    background: -moz-linear-gradient(top, #BDE15F, #8FBD35);
 }
 
-div#filters ul li a {
-    color:#FFF;
-    text-decoration: none;
-}
-
-div#filters ul li a:hover {
-    color:#FFF;
-    text-decoration: underline;
-}
-
-span.item-title {
-    color: #FFF;
+div#filters ul li.selected a,
+div#filters ul li.report-listing-category-child.selected a {
+    color:#FFFFFF;
 }
 
 div.search-form input.searchbtn {

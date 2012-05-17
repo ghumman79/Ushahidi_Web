@@ -1,11 +1,13 @@
 <?php if(count($incident_comments) > 0): ?>
-<div class="report-comments">
     <?php foreach($incident_comments as $comment): ?>
     <div class="report-comment box">
-        <div>"<?php echo $comment->comment_description; ?>"</div>
-        -
-        <span><strong><?php echo $comment->comment_author; ?></strong>&nbsp;(<?php echo date('M j Y', strtotime($comment->comment_date)); ?>)</span>
+        <div class="report-label">
+            <i>"<?php echo $comment->comment_description; ?>"</i>
+            -
+            <span><strong><?php echo $comment->comment_author; ?></strong>&nbsp;
+        </div>
+        <div class="report-value"><?php echo date('M j Y', strtotime($comment->comment_date)); ?></div>
+        <div class="clear"></div>
     </div>
     <?php endforeach; ?>
-</div>
 <?php endif; ?>

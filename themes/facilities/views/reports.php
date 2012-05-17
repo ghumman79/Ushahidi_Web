@@ -88,8 +88,9 @@
             if ($.isEmptyObject(urlParameters)) {
                 urlParameters = {show: "all"}
             }
-            //alert(JSON.stringify(urlParameters));
-            $("#reports-box").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
+            $("#pagination").css("display", "none");
+            $("#reports").css("bottom", "0px");
+            $("#reports").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
             $.get('<?php echo url::site().'reports/fetch_reports'?>',
                 urlParameters,
                 function(data) {
@@ -191,7 +192,13 @@
                     })
                 });
 
-                var checkinLayer = new OpenLayers.Layer.Vector('<?php echo Kohana::lang('ui_admin.checkins')?>', {styleMap: ci_styles});
+                var checkLayer = '<?php echo Kohana::lang('ui_admin.checkins')?>';
+                currentLayers = map.getLayersByName(checkLayer);
+                for (var i = 0; i < currentLayers.length; i++){
+                    map.removeLayer(currentLayers[i]);
+                }
+
+                var checkinLayer = new OpenLayers.Layer.Vector(checkLayer, {styleMap: ci_styles});
                 map.addLayers([checkinLayer]);
 
                 var highlightControl = new OpenLayers.Control.SelectFeature(checkinLayer, {
@@ -272,32 +279,34 @@
                     if (json.payload.incidents.length > 0) {
                         var incidents = json.payload.incidents;
                         var incident = incidents[0].incident;
-
                         var content = "<div id=\"popup\">";
                         if (incidents[0].media.length > 0) {
                             var media = incidents[0].media[0];
-                            content += "<div id=\"popup_image\">";
+                            content += "<div id=\"popup-image\">";
                             content += "<a title=\"" + incident.incidenttitle + "\" href=\"/reports/view/" + incident.incidentid + "\">";
                             content += "<img src=\"/media/uploads/" + media.thumb + "\" height=\"59\" width=\"89\" />";
                             content += "</a></div>";
                         }
-                        content += "<div id=\"popup_title\">" + event.feature.attributes.name + "</div>";
+                        content += "<div id=\"popup-title\">";
+                        content += "<a title=\"" + incident.incidenttitle + "\" href=\"/reports/view/" + incident.incidentid + "\">" + incident.incidenttitle + "</div>";
                         if (incidents[0].categories.length > 0) {
-                            content += "<div id=\"popup_category\">";
+                            content += "<div id=\"popup-category\">";
                             var categories = incidents[0].categories;
                             for (var i = 0; i < categories.length; i++) {
                                 if (i > 0) {
                                     content += ", ";
                                 }
-                                content += categories[0].category.title;
+                                var category = categories[i].category;
+                                content += "<a title=\"" + category.title + "\" href=\"/reports/?c=" + category.id + "\">";
+                                content += category.title + "</a>";
                             }
                             content += "</div>";
                         }
                         if (incident.locationname && incident.locationname!='') {
-                            content += "<div id=\"popup_location\">" + incident.locationname + "</div>";
+                            content += "<div id=\"popup-location\">" + incident.locationname + "</div>";
                         }
                         if (incident.incidentdescription && incident.incidentdescription!='') {
-                            content += "<div id=\"popup_description\">" + incident.incidentdescription + "</div>";
+                            content += "<div id=\"popup-description\">" + incident.incidentdescription + "</div>";
                         }
                         content += "<div style=\"clear:both;\"></div></div>";
 

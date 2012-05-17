@@ -5,11 +5,11 @@
             <ul></ul>
         <?php } else { ?>
             <h3><?php echo Kohana::lang('ui_admin.reports'); ?></h3>
-            <ul class="box">
+            <ul>
             <?php
             if ($total_items == 0) {
                 ?>
-                <li>No facilities</li>
+                <li><?php echo Kohana::lang('ui_main.no_reports'); ?></li>
                 <?php
             }
             foreach ($incidents as $incident) {
@@ -45,10 +45,10 @@
             if(data.payload.checkins == undefined) {
                 if (sqloffset != 0) {
                     var newoffset = sqloffset - sqllimit;
-                    $('.column_reports ul').html("<li><?php echo Kohana::lang('ui_main.no_checkins'); ?><br/><br/><a href=\"javascript:cilisting("+sqllimit+","+newoffset+");\">&lt;&lt; <?php echo Kohana::lang('ui_main.previous'); ?></a></li>");
+                    $('#main-reports ul').html("<li><?php echo Kohana::lang('ui_main.no_checkins'); ?><br/><br/><a href=\"javascript:cilisting("+sqllimit+","+newoffset+");\">&lt;&lt; <?php echo Kohana::lang('ui_main.previous'); ?></a></li>");
                 }
                 else{
-                    $('.column_reports ul').html("<li><?php echo Kohana::lang('ui_main.no_checkins'); ?></li>");
+                    $('#main-reports ul').html("<li><?php echo Kohana::lang('ui_main.no_checkins'); ?></li>");
                 }
                 return;
             }
@@ -56,39 +56,48 @@
             $.each(data.payload.users, function(i, payl) {
                 user_colors[payl.id] = payl.color;
             });
-            var ul = $('#main-reports ul');
+            var $ul = $('#main-reports ul');
             $.each(data.payload.checkins, function(i,item){
-                var li = $('<li>');
+                var $li = $('<li class="checkin">');
                 if (item.media !== undefined) {
-                    var ahref = $('<a class="checkin-link">');
-                    ahref.href(item.media[0].link);
-                    ahref.rel('lightbox-group1');
-                    ahref.title(item.msg);
-                    var image = $('<img class="checkin-image">');
-                    image.src(item.media[0].thumb);
-                    image.appendTo(ahref);
-                    ahref.appendTo(li);
+                    $.each(item.media, function(j,media){
+                        var $div = $('<div class="checkin-image">');
+                        var $href = $('<a rel="lightbox-group1">');
+                        $href.attr("href", media.link);
+                        $href.attr("title", item.msg);
+                        var $img = $('<img>');
+                        $img.attr("src", media.thumb);
+                        $img.appendTo($href);
+                        $href.appendTo($div);
+                        $div.appendTo($li);
+                    });
+                }
+                else {
+                    var $div = $('<div class="checkin-image">');
+                    var $img = $('<img src="/themes/facilities/images/checkin.png">');
+                    $img.appendTo($div);
+                    $div.appendTo($li);
                 }
                 if (item.msg !== undefined) {
-                    var message = $('<span class="checkin-message">').text("\"" + item.msg + "\"");
-                    message.appendTo(li);
+                    var message = $('<div class="checkin-message">').text("\"" + item.msg + "\"");
+                    message.appendTo($li);
                 }
                 $.each(data.payload.users, function(j,useritem){
                     if(useritem.id == item.user){
-                        var user = $('<span class="checkin-suser">').html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+useritem.username+"\">"+useritem.name+"</a>");
-                        user.appendTo(li);
+                        var user = $('<div class="checkin-user">').html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+useritem.username+"\">"+useritem.name+"</a>");
+                        user.appendTo($li);
                         return false;
                     }
                 });
                 var utcDate = item.date.replace(" ","T")+"Z";
-                var date = $('<span class="checkin-date">').text(" (" + $.timeago(utcDate) + ")");
-                date.appendTo(li);
+                var date = $('<div class="checkin-date">').text(" (" + $.timeago(utcDate) + ")");
+                date.appendTo($li);
                 if (item.comments !== undefined) {
                     $.each(item.comments, function(j,comment){
                         var comment = $('<div class="checkin-comment">');
-                        var description = $('<span class="checkin-message">').text("\"" + comment.description + "\"");
+                        var description = $('<div class="checkin-message">').text("\"" + comment.description + "\"");
                         description.appendTo(comment);
-                        var user = $('<span class="checkin-user">');
+                        var user = $('<div class="checkin-user">');
                         if (item.user_id != 0){
                             user.html(" - <a href=\"<?php echo url::site(); ?>profile/user/"+comment.username+"\">"+comment.author+"</a>");
                         }
@@ -97,16 +106,16 @@
                         }
                         user.appendTo(comment);
                         var commentDate = comment.date.replace(" ","T")+"Z";
-                        var date = $('<span class="checkin-date">').text(" (" + $.timeago(commentDate) + ")");
+                        var date = $('<div class="checkin-date">').text(" (" + $.timeago(commentDate) + ")");
                         date.appendTo(comment);
-                        comment.appendTo(li);
+                        comment.appendTo($li);
                     });
                 }
-                li.appendTo(ul);
+                $li.appendTo($ul);
             });
         });
     }
-    cilisting(3,0);
+    cilisting(10,0);
     showCheckins();
     <?php } ?>
 </script>

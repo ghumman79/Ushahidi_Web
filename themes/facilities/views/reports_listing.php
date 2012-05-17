@@ -33,26 +33,21 @@
                             <?php echo $incident_title; ?>
                         </a>
                     </div>
-                    <div class="report-location">
-                        <a title="<?php echo $location_name; ?>" href="<?php echo url::site(); ?>reports/?l=<?php echo $location_id; ?>">
-                            <?php echo $location_name; ?>
-                        </a>
-                    </div>
                     <div class="report-categories">
                         <?php foreach ($incident->category as $category): ?>
-                        <?php if($category->category_visible == 0) continue; ?>
-                        <?php if ($category->category_image_thumb): ?>
-                            <?php $category_image = url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>
-                            <a title="<?php echo $category->category_description;?>" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-                                <span><img src="<?php echo $category_image; ?>" height="16" width="16" /></span>
-                                <span><?php echo $localized_categories[(string)$category->category_title];?></span>
-                            </a>
-                            <?php else:	?>
-                            <a title="<?php echo $category->category_description;?>" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
-                                <span><?php echo $localized_categories[(string)$category->category_title];?></span>
-                            </a>
-                            <?php endif; ?>
+                            <?php if($category->category_visible == 0) continue; ?>
+                            <span class="report-category">
+                                <a title="<?php echo $category->category_description;?>" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
+                                    <?php if ($category->category_image_thumb): ?>
+                                        <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>" />
+                                    <?php endif; ?>
+                                    <span><?php echo $localized_categories[(string)$category->category_title];?></span>
+                                </a>
+                            </span>
                         <?php endforeach; ?>
+                    </div>
+                    <div class="report-location">
+                        <?php echo $location_name; ?>
                     </div>
                     <div class="report-description"><?php echo $incident_description; ?></div>
                     <div class="clear"></div>

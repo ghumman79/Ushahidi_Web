@@ -3,7 +3,7 @@
         <tr>
             <td class="titlebar-previous">
                 <?php // TODO disable PREVIOUS button if report does not exist ?>
-                <span class="box"><a class="previous" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a></span>
+                <span><a class="previous" href="<?php echo url::site().'reports/view/'.($incident_id - 1)?>">Previous</a></span>
             </td>
             <td class="titlebar-title">
                 <span class="report-title">
@@ -25,8 +25,8 @@
                             continue;
                         }
                         if ($category->category->category_image_thumb) { ?>
-                            <span class="box">
-                    <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <span>
+                    <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
                         <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
                         <?php echo $category->category->category_title; ?>
                     </a>
@@ -35,8 +35,8 @@
                         }
                         else {
                             ?>
-                            <span class="box">
-                    <a href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <span>
+                    <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
                         <?php echo $category->category->category_title; ?>
                     </a>
                     </span>
@@ -48,7 +48,7 @@
             </td>
             <td class="titlebar-next">
                 <?php // TODO disable NEXT button if report does not exist ?>
-                <span class="box"><a class="next" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a></span>
+                <span><a class="next" href="<?php echo url::site().'reports/view/'.($incident_id + 1)?>">Next</a></span>
             </td>
         </tr>
     </table>
@@ -64,10 +64,10 @@
 
                 <?php foreach( $incident_news as $incident_new) { ?>
                     <div class="report-custom box">
-                        <div class="report-custom-name">
+                        <div class="report-label">
                             <?php echo Kohana::lang('ui_main.url');?>
                         </div>
-                        <div class="report-custom-value">
+                        <div class="report-value">
                             <a href="<?php echo $incident_new; ?> " target="_blank">
                                 <?php echo $incident_new;?>
                             </a>
@@ -106,15 +106,19 @@
                     ?>
                 </div>
 
-               <?php Event::run('ushahidi_filter.comment_block', $comments); ?>
-               <div class="report-comments box <?php if(count($comments) == 0 || !isset($comments) || trim($comments)===''){ echo "hidden";}?>">
-                   <?php echo $comments; ?>
-                </div>
+                <?php Event::run('ushahidi_filter.comment_block', $comments); ?>
+                <?php if(isset($comments) && count($comments) > 0 && trim($comments) !== ''){ ?>
+                   <div class="report-comments">
+                       <?php echo $comments; ?>
+                    </div>
+                <?php } ?>
 
+                <?php if (Kohana::config('settings.allow_comments') ) { ?>
                 <div class="report-comment-form box">
                     <?php Event::run('ushahidi_filter.comment_form_block', $comments_form); ?>
                     <?php echo $comments_form; ?>
                 </div>
+                <?php } ?>
             </div>
             <div class="column">
                     <div id="report-map" class="report-map">
@@ -126,12 +130,12 @@
                 <div class="report-nearbys">
                     <?php foreach($incident_neighbors as $neighbor) { ?>
                     <div class="report-nearby box">
-                        <div class="report-nearby-title">
+                        <div class="report-label">
                             <a title="<?php echo $neighbor->incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $neighbor->id; ?>">
                                 <?php echo $neighbor->incident_title; ?>
                             </a>
                         </div>
-                        <div class="report-nearby-location">
+                        <div class="report-value">
                             <a title="<?php echo $neighbor->incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $neighbor->id; ?>">
                                 <?php echo $neighbor->location_name.", ".round($neighbor->distance, 2); ?> kms
                             </a>

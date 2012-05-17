@@ -104,7 +104,7 @@ class Settings_Controller extends Admin_Controller
 			$post->add_rules('site_language','required', 'length[5, 5]');
 			//$post->add_rules('site_timezone','required', 'between[10,50]');
 			$post->add_rules('site_contact_page','required','between[0,1]');
-			$post->add_rules('items_per_page','required','between[5,2000]');
+			$post->add_rules('items_per_page','required','between[5,1000]');
 			$post->add_rules('items_per_page_admin','required','between[5,50]');
 			$post->add_rules('blocks_per_row','required','numeric');
 			$post->add_rules('allow_alerts','required','between[0,1]');
@@ -127,7 +127,7 @@ class Settings_Controller extends Admin_Controller
 			$files->add_rules('banner_image', 'upload::valid', 'upload::type[gif,jpg,png]', 'upload::size[250K]');
 
 			// Test to see if things passed the rule checks
-			if ($post->validate() AND $files->validate())
+			if ($post->validate() AND $files->validate(FALSE))
 			{
 				// Yes! everything is valid
 				$settings = new Settings_Model(1);
@@ -328,9 +328,8 @@ class Settings_Controller extends Admin_Controller
 		$this->template->content->errors = $errors;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
-		$this->template->content->items_per_page_array =
-            array('5'=>'5 Items','10'=>'10 Items','20'=>'20 Items','30'=>'30 Items','50'=>'50 Items',
-                  '100'=>'100 Items','250'=>'250 Items','500'=>'500 Items','1000'=>'1000 Items','2000'=>'2000 Items');
+		$this->template->content->items_per_page_array = array('5'=>'5 Items','10'=>'10 Items','20'=>'20 Items','30'=>'30 Items','50'=>'50 Items',
+            '100'=>'100 Items','250'=>'250 Items','500'=>'500 Items','1000'=>'1000 Items');
 		$blocks_per_row_array = array();
 		for ($i=1; $i <= 21; $i++)
 		{
@@ -364,7 +363,7 @@ class Settings_Controller extends Admin_Controller
 
 
 		// Generate Available Locales
-		$locales = locale::get_i18n();
+		$locales = ush_locale::get_i18n();
 		$this->template->content->locales_array = $locales;
 		$this->cache->set('locales', $locales, array('locales'), 604800);
 	}
@@ -387,6 +386,7 @@ class Settings_Controller extends Admin_Controller
 		$form = array(
 			'default_map' => '',
 			'api_google' => '',
+			'api_live' => '',
 			'default_country' => '',
 			'multi_country' => '',
 			'default_lat' => '',
@@ -394,6 +394,8 @@ class Settings_Controller extends Admin_Controller
 			'default_zoom' => '',
 			'default_map_all' => '',
 			'allow_clustering' => '',
+			'default_map_all_icon' => '',
+			'delete_default_map_all_icon' => ''
 		);
 		//	Copy the form as errors, so the errors will be stored with keys
 		//	corresponding to the form field names
@@ -406,25 +408,26 @@ class Settings_Controller extends Admin_Controller
 		{
 			// Instantiate Validation, use $post, so we don't overwrite $_POST
 			// fields with our own things
-			$post = new Validation($_POST);
+			$post = Validation::factory($_POST)
+			    ->pre_filter('trim', TRUE)
+			    ->add_rules('default_country', 'required', 'numeric', 'length[1,4]')
+			    ->add_rules('multi_country', 'numeric', 'length[1,1]')
+			    ->add_rules('default_map', 'required', 'length[0,100]')
+			    ->add_rules('default_zoom','required','between[0,21]')		// Validate for maximum and minimum zoom values
+			    ->add_rules('default_lat','required','between[-85,85]')		// Validate for maximum and minimum latitude values
+			    ->add_rules('default_lon','required','between[-180,180]')		// Validate for maximum and minimum longitude values
+			    ->add_rules('allow_clustering','required','between[0,1]')
+			    ->add_rules('default_map_all','required', 'alpha_numeric', 'length[6,6]')
+			    ->add_rules('api_google', 'length[0,200]')
+			    ->add_rules('api_live', 'length[0,200]');
+			
 
-			// Add some filters
-			$post->pre_filter('trim', TRUE);
-
-			// Add some rules, the input field, followed by a list of checks, carried out in order
-
-			$post->add_rules('default_country', 'required', 'numeric', 'length[1,4]');
-			$post->add_rules('multi_country', 'numeric', 'length[1,1]');
-			$post->add_rules('default_map', 'required', 'length[0,100]');
-			$post->add_rules('api_google','required', 'length[0,200]');
-			$post->add_rules('default_zoom','required','between[0,21]');		// Validate for maximum and minimum zoom values
-			$post->add_rules('default_lat','required','between[-85,85]');		// Validate for maximum and minimum latitude values
-			$post->add_rules('default_lon','required','between[-180,180]');		// Validate for maximum and minimum longitude values
-			$post->add_rules('allow_clustering','required','between[0,1]');
-			$post->add_rules('default_map_all','required', 'alpha_numeric', 'length[6,6]');
+			// Add rules for file upload
+			$files = Validation::factory($_FILES);
+			$files->add_rules('default_map_all_icon', 'upload::valid', 'upload::type[gif,jpg,png]', 'upload::size[250K]');
 
 			// Test to see if things passed the rule checks
-			if ($post->validate())
+			if ($post->validate() AND $files->validate(FALSE))
 			{
 				// Yes! everything is valid
 				$settings = new Settings_Model(1);
@@ -432,6 +435,15 @@ class Settings_Controller extends Admin_Controller
 				$settings->multi_country = $post->multi_country;
 				$settings->default_map = $post->default_map;
 				$settings->api_google = $post->api_google;
+				
+				// E.Kala 20th April 2012
+				// Gangsta workaround prevent resetting og Bing Maps API Key
+				// Soon to be addressed conclusively
+				if (isset($post['api_live']) AND ! empty($post['api_live']))
+				{
+					$settings->api_live = $post->api_live;
+				}
+
 				$settings->default_zoom = $post->default_zoom;
 				$settings->default_lat = $post->default_lat;
 				$settings->default_lon = $post->default_lon;
@@ -439,6 +451,82 @@ class Settings_Controller extends Admin_Controller
 				$settings->default_map_all = $post->default_map_all;
 				$settings->date_modify = date("Y-m-d H:i:s",time());
 				$settings->save();
+				
+				// Deal with default category icon now
+
+				// Check if deleting or updating a new image (or doing nothing)
+				if( isset($post->delete_default_map_all_icon) AND $post->delete_default_map_all_icon == 1)
+				{
+					// Delete old badge image
+					ORM::factory('media')->delete($settings->default_map_all_icon_id);
+
+					// Remove from DB table
+					$settings = new Settings_Model(1);
+					$settings->default_map_all_icon_id = NULL;
+					$settings->save();
+
+				}else{
+					// We aren't deleting, so try to upload if we are uploading an image
+					$filename = upload::save('default_map_all_icon');
+					if ($filename)
+					{
+						$new_filename = "default_map_all_".time();
+						$file_type = strrev(substr(strrev($filename),0,4));
+
+						// Large size
+						$l_name = $new_filename.$file_type;
+						Image::factory($filename)->save(Kohana::config('upload.directory', TRUE).$l_name);
+
+						// Medium size
+						$m_name = $new_filename."_m".$file_type;
+						Image::factory($filename)->resize(32,32,Image::HEIGHT)
+							->save(Kohana::config('upload.directory', TRUE).$m_name);
+
+						// Thumbnail
+						$t_name = $new_filename."_t".$file_type;
+						Image::factory($filename)->resize(16,16,Image::HEIGHT)
+							->save(Kohana::config('upload.directory', TRUE).$t_name);
+
+						// Name the files for the DB
+						$media_link = $l_name;
+						$media_medium = $m_name;
+						$media_thumb = $t_name;
+
+						// Okay, now we have these three different files on the server, now check to see
+						//   if we should be dropping them on the CDN
+
+						if (Kohana::config("cdn.cdn_store_dynamic_content"))
+						{
+							$media_link = cdn::upload($media_link);
+							$media_medium = cdn::upload($media_medium);
+							$media_thumb = cdn::upload($media_thumb);
+
+							// We no longer need the files we created on the server. Remove them.
+							$local_directory = rtrim(Kohana::config('upload.directory', TRUE), '/').'/';
+							unlink($local_directory.$l_name);
+							unlink($local_directory.$m_name);
+							unlink($local_directory.$t_name);
+						}
+
+						// Remove the temporary file
+						unlink($filename);
+
+						// Save image in the media table
+						$media = new Media_Model();
+						$media->media_type = 1; // Image
+						$media->media_link = $media_link;
+						$media->media_medium = $media_medium;
+						$media->media_thumb = $media_thumb;
+						$media->media_date = date("Y-m-d H:i:s",time());
+						$media->save();
+
+						// Save new image in settings
+						$settings = new Settings_Model(1);
+						$settings->default_map_all_icon_id = $media->id;
+						$settings->save();
+					}
+				}
+				
 
 				// Delete Settings Cache
 				$this->cache->delete('settings');
@@ -475,16 +563,32 @@ class Settings_Controller extends Admin_Controller
 			$form = array(
 				'default_map' => $settings->default_map,
 				'api_google' => $settings->api_google,
+				'api_live' => $settings->api_live,
 				'default_country' => $settings->default_country,
 				'multi_country' => $settings->multi_country,
 				'default_lat' => $settings->default_lat,
 				'default_lon' => $settings->default_lon,
 				'default_zoom' => $settings->default_zoom,
 				'allow_clustering' => $settings->allow_clustering,
-				'default_map_all' => $settings->default_map_all
+				'default_map_all' => $settings->default_map_all,
+				'default_map_all_icon_id' => $settings->default_map_all_icon_id,
 			);
 		}
 
+		// Get default category image
+		if ($settings->default_map_all_icon_id != NULL)
+		{
+			$icon = ORM::factory('media')->find($settings->default_map_all_icon_id);
+			$this->template->content->default_map_all_icon = url::convert_uploaded_to_abs($icon->media_link);
+			$this->template->content->default_map_all_icon_m = url::convert_uploaded_to_abs($icon->media_medium);
+			$this->template->content->default_map_all_icon_t = url::convert_uploaded_to_abs($icon->media_thumb);
+		}
+		else
+		{
+			$this->template->content->default_map_all_icon = NULL;
+			$this->template->content->default_map_all_icon_m = NULL;
+			$this->template->content->default_map_all_icon_t = NULL;
+		}
 
 		$this->template->content->form = $form;
 		$this->template->content->errors = $errors;
