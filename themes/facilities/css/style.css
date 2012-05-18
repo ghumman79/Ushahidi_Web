@@ -186,15 +186,20 @@ div.red-box h3 {
     -webkit-border-radius:5px;
     -khtml-border-radius:5px;
     padding:5px 5px 5px 5px;
-    background-color: #D8D8D8;
-    border: 1px solid #BBB;
     font-weight: bold;
-    font-size:16px;
+    font-size:14px;
+    border: 1px solid #BDBDBD;
     color:#585858;
+    background-color: #BDBDBD;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#D8D8D8');
+    background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E6), to(#D8D8D8));
+    background: -moz-linear-gradient(top, #E6E6E6, #D8D8D8);
 }
 .button:hover {
-    background-color: #BDBDBD;
     cursor:pointer;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D8D8D8', endColorstr='#E6E6E6');
+    background: -webkit-gradient(linear, left top, left bottom, from(#D8D8D8), to(#E6E6E6));
+    background: -moz-linear-gradient(top, #D8D8D8, #E6E6E6);
 }
 
 /* ############################### HEADER ############################### */
@@ -404,9 +409,6 @@ div#details {
 #main-reports li span,
 #main-news li span{
     color:#A4A4A4;
-}
-
-#main-news span.main-news-source  {
     font-size: 12px;
 }
 
@@ -641,9 +643,6 @@ div#filters .item-swatch img {
     overflow:hidden;
     background-color:#FAFAFA;
     border-bottom: 1px solid #BDBDBD;
-}
-
-#titlebar {
     padding-top: 0;
     padding-left: 5px;
     padding-right: 5px;
@@ -797,16 +796,30 @@ form label {
     margin-right:10px;
 }
 
-form input[type=text] {
+form input[type=text]{
     width: 95%;
     padding:5px;
 }
+
+form input[type=submit]{
+    width:100%;
+    padding:5px;
+}
+
+form span input[type=submit]{
+    width:97%;
+    padding:5px;
+}
+
 form input[type=checkbox] {
     text-align:left;
 }
 
-form input.input_captcha {
-    float:left;
+form .text,
+form .textarea,
+form .select,
+form .file {
+    color:#585858;
 }
 
 form span {
@@ -815,15 +828,16 @@ form span {
     padding: 0 0 0 0;
 }​
 
-form span img {
-     width:20%;
-     height:15px;
-     display:inline;
+form #captcha,
+form span.captcha input[type=text] {
+     width:70%;
      float:left;
- }
+}
 
-.text, .textarea, .select, .file {
-    color:#585858;
+form span.captcha img {
+    width:25%;
+    height:29px;
+    float:left;
 }
 
 /* ############################### REPORTS ############################### */
@@ -1101,8 +1115,8 @@ div.alert-location-right {
     padding:10px;
 }
 
-.confirm-link {
-    margin-left:20px;
+.confirm {
+    text-align:center;
 }
 
 /* ############################### FEED RESULTS ############################### */
@@ -1311,4 +1325,7 @@ div.report-additional-reports {
     border:none;
     margin:0;
     padding:0;
+}
+.olLayerGooglePoweredBy.olLayerGoogleV3.gmnoprint {
+    visibility:hidden !important;
 }

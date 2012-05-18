@@ -35,7 +35,7 @@
                         <?php print form::checkbox('alert_mobile_yes', '1', $checked); ?>
                         <?php echo Kohana::lang('ui_main.alerts_mobile_phone'); ?>
                     </label>
-                    <span><?php print form::input('alert_mobile', $form['alert_mobile'], ' class="text"'); ?></span>
+                    <span><?php print form::input('alert_mobile', $form['alert_mobile'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.alerts_mobile_phone')) . '" '); ?></span>
                     <br/>
                 <?php endif; ?>
                 <label for="alert_email">
@@ -43,7 +43,7 @@
                     <?php print form::checkbox('alert_email_yes', '1', $checked); ?>
                     <?php echo Kohana::lang('ui_main.alerts_email'); ?>
                 </label>
-                <span><?php print form::input('alert_email', $form['alert_email'], ' class="text"'); ?></span>
+                <span><?php print form::input('alert_email', $form['alert_email'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.alerts_email')) . '" '); ?></span>
             </div>
             <div class="alerts-step box">
                 <h3><?php echo Kohana::lang('ui_main.alerts_step3_select_catgories'); ?></h3>
@@ -69,7 +69,10 @@
             </div>
             <div class="alerts-step box">
                 <input id="btn-send-alerts" class="button" type="submit" value="<?php echo Kohana::lang('ui_main.alerts_btn_send'); ?>" />
-                <a class="confirm-link" href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
+            </div>
+
+            <div class="alerts-step box confirm">
+                <a href="<?php echo url::site()."alerts/confirm";?>"><?php echo Kohana::lang('ui_main.alert_confirm_previous'); ?></a>
             </div>
         </div>
         <?php print form::close(); ?>

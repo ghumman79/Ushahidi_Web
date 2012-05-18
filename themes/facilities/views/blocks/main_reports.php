@@ -15,21 +15,17 @@
             foreach ($incidents as $incident) {
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
+                $incident_description = strip_tags($incident->incident_description);
                 $location_id = $incident->location->id;
                 $location_name = $incident->location->location_name;
                 ?>
                 <li>
-                    <a href="<?php echo url::site() . 'reports/view/' . $incident_id; ?>">
+                    <a title="<?php echo $incident_description; ?>" href="<?php echo url::site() . 'reports/view/' . $incident_id; ?>">
                         <?php echo $incident_title ?>
                     </a>
-                    -
-                    <a href="<?php echo url::site() . 'reports/?l=' . $location_id; ?>">
-                        <?php echo $location_name ?>
-                    </a>
+                    <span>(<?php echo $location_name; ?>)</span>
                 </li>
-                <?php
-            }
-            ?>
+            <?php } ?>
             <li class="more">
                 <a href="<?php echo url::site() . 'reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
             </li>

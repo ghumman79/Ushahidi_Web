@@ -20,10 +20,10 @@
 
     <script type="text/javascript">
         $(function(){
-            splitParentCategories();
             $(window).resize(function() {
                 adjustCategories();
             });
+            splitParentCategories();
             adjustCategories();
             attachCategorySelected();
             removeListStrFromBreadcrumb();

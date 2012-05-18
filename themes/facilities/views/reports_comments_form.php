@@ -1,8 +1,6 @@
-<!-- start submit comments block -->
 <?php
 if ($form_error) { ?>
     <fieldset>
-    <!-- red-box -->
     <div class="red-box">
         <h3><?php echo Kohana::lang('ui_main.error');?></h3>
         <ul>
@@ -19,11 +17,11 @@ if ($form_error) { ?>
 <?php
 if (!$user) { ?>
         <label for="comment_author"><?php echo Kohana::lang('ui_main.name');?></label>
-        <span><?php print form::input('comment_author', $form['comment_author'], ' class="text input_name"'); ?></span>
+        <span><?php print form::input('comment_author', $form['comment_author'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.name')) . '" '); ?></span>
         <br/>
 
         <label for="comment_email"><?php echo Kohana::lang('ui_main.email'); ?></label>
-        <span><?php print form::input('comment_email', $form['comment_email'], ' class="text input_email"'); ?></span>
+        <span><?php print form::input('comment_email', $form['comment_email'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.email')) . '" '); ?></span>
         <br/>
     <?php
 }
@@ -35,26 +33,18 @@ else {
 <?php } ?>
 
     <label for="comment_description"><?php echo Kohana::lang('ui_main.comment'); ?></label>
-    <span><?php print form::input('comment_description', $form['comment_description'], ' class="text input_comment" ') ?></span>
+    <span><?php print form::input('comment_description', $form['comment_description'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.comment')) . '" ') ?></span>
     <br/>
 
     <label for="captcha"><?php echo Kohana::lang('ui_main.security_code'); ?></label>
-    <span><?php print form::input('captcha', $form['captcha'], ' class="text input_captcha"'); ?></span>
+    <span class="captcha"><?php print form::input('captcha', $form['captcha'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.security_code')) . '" '); ?><?php print $captcha->render(); ?></span>
 
-    <label></label>
-    <span><?php print $captcha->render(); ?></span>
     <br/>
 
-
-<?php
-// Action::comments_form - Runs right before the end of the comment submit form
-Event::run('ushahidi_action.comment_form');
-?>
+    <?php Event::run('ushahidi_action.comment_form'); ?>
     <label> </label>
     <span><input name="submit" type="submit" class="button" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?> <?php echo Kohana::lang('ui_main.comment'); ?>"  /></span>
 
 </fieldset>
 
 <?php print form::close(); ?>
-
-<!-- end submit comments block -->

@@ -31,25 +31,34 @@
                 <?php print form::open(NULL, array('id' => 'contactForm', 'name' => 'contactForm')); ?>
 
                 <label><?php echo Kohana::lang('ui_main.contact_name'); ?></label>
-                <span><?php print form::input('contact_name', $form['contact_name'], ' size="50%" class="text"'); ?></span><br/>
+                <span><?php print form::input('contact_name', $form['contact_name'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_name')) . '" '); ?></span>
+
+                <br/>
 
                 <label><?php echo Kohana::lang('ui_main.contact_email'); ?></label>
-                <span><?php print form::input('contact_email', $form['contact_email'], ' size="50%" class="text"'); ?></span><br/>
+                <span><?php print form::input('contact_email', $form['contact_email'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_email')) . '" '); ?></span>
+
+                <br/>
 
                 <label><?php echo Kohana::lang('ui_main.contact_phone'); ?></label>
-                <span><?php print form::input('contact_phone', $form['contact_phone'], ' size="50%" class="text"'); ?></span><br/>
+                <span><?php print form::input('contact_phone', $form['contact_phone'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_phone')) . '" '); ?></span>
+
+                <br/>
 
                 <label><?php echo Kohana::lang('ui_main.contact_subject'); ?></label>
-                <span><?php print form::input('contact_subject', $form['contact_subject'], ' size="50%" class="text"'); ?></span><br/>
+                <span><?php print form::input('contact_subject', $form['contact_subject'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_subject')) . '" '); ?></span>
+
+                <br/>
 
                 <label><?php echo Kohana::lang('ui_main.contact_message'); ?></label>
-                <span><?php print form::input('contact_message', $form['contact_message'], ' size="50%"  class="text" ') ?></span><br/>
+                <span><?php print form::input('contact_message', $form['contact_message'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_message')) . '" ') ?></span>
+
+                <br/>
 
                 <label><?php echo Kohana::lang('ui_main.contact_code'); ?></label>
-                <span><?php print form::input('captcha', $form['captcha'], ' size="50%" class="text"'); ?></span>
+                <span class="captcha"><?php print form::input('captcha', $form['captcha'], ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.contact_code')) . '" '); ?><?php print $captcha->render(); ?></span>
 
-                <label> </label>
-                <span><?php print $captcha->render(); ?></span><br/>
+                <br/>
 
                 <label> </label>
                 <span><input  name="submit" type="submit" class="button" type=button value="<?php echo Kohana::lang('ui_main.contact_send'); ?>" /></span>

@@ -16,7 +16,7 @@
 <div class="alert-location">
     <div class="alert-location-left">
         <div>
-            <?php print form::input('location_find', '', ' title="City, State and/or Country" class="findtext"'); ?>
+            <?php print form::input('location_find', '', ' class="text" placeholder="' . strtolower(Kohana::lang('ui_main.find_location')) . '" '); ?>
         </div>
     </div>
     <div class="alert-location-right">
