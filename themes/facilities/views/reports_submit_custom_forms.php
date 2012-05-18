@@ -6,6 +6,7 @@ $show_permission_message = FALSE;
 
 foreach ($disp_custom_fields as $field_id => $field_property)
 {
+    echo "<div class=\"box\">";
     // Is the field required
     $isrequired = ($field_property['field_required'])
         ? "<font color=red> *</font>"
@@ -52,9 +53,6 @@ foreach ($disp_custom_fields as $field_id => $field_property)
 
     if ($field_property['field_type'] == 1)
     {
-        // Text Field
-        //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
-
         $field_options = customforms::get_custom_field_options($field_id);
 
         if (isset($field_options['field_hidden']) AND !isset($editor))
@@ -66,13 +64,13 @@ foreach ($disp_custom_fields as $field_id => $field_property)
             else
             {
                 echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-                echo "<span>" . form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"') . "</span><br/>";
+                echo "<span>" . form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text" placeholder="' . strtolower($field_property['field_name']) . '" ') . "</span>";
             }
         }
         else
         {
             echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-            echo "<span>" . form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text custom_text"') . "</span><br/>";
+            echo "<span>" . form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text" placeholder="' . strtolower($field_property['field_name']) . '" ') . "</span>";
         }
         //echo "</div>";
     }
@@ -86,28 +84,22 @@ foreach ($disp_custom_fields as $field_id => $field_property)
 
             if ($field_options['field_datatype'] == 'text')
             {
-                //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
                 echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-                echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields) ."</span><br/>";
-                //echo "</div>";
+                echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields) ."</span>";
             }
 
             if ($field_options['field_datatype'] == 'markup')
             {
-                //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
                 echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-                echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false)."</span><br/>";
-                //echo "</div>";
+                echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false)."</span>";
             }
 
             if ($field_options['field_datatype'] == 'javascript')
             {
                 if(isset($editor))
                 {
-                    //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
                     echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-                    echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false)."</span><br/>";
-                    //echo "</div>";
+                    echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $extra_fields, false)."</span>";
                 }
                 else
                 {
@@ -117,15 +109,12 @@ foreach ($disp_custom_fields as $field_id => $field_property)
         }
         else
         {
-            //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
             echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
-            echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $id_name .' class="textarea custom_text" rows="3"')."</span><br/>";
-            //echo "</div>";
+            echo "<span>".form::textarea('custom_field['.$field_id.']', $field_value, $id_name .' class="textarea custom_text" rows="3"')."</span>";
         }
     }
     elseif ($field_property['field_type'] == 3)
     { // Date Field
-        //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
         echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
         echo "<span>".form::input('custom_field['.$field_id.']', $field_value, ' id="custom_field_'.$field_id.'" class="text"');
         echo "<script type=\"text/javascript\">
@@ -137,13 +126,11 @@ foreach ($disp_custom_fields as $field_id => $field_property)
 				});
 				});
 			</script>";
-        echo "</div>";
-        //echo "</div>";
+        echo "</span>";
     }
     elseif ($field_property['field_type'] >=5 AND $field_property['field_type'] <=7)
     {
         // Multiple-selector Fields
-        //echo "<div class=\"report_row\" id=\"custom_field_row_" . $field_id ."\">";
         echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
         $defaults = explode('::',$field_property['field_default']);
 
@@ -243,7 +230,6 @@ foreach ($disp_custom_fields as $field_id => $field_property)
         }
 
         echo $html;
-        echo "</div>";
     }
     elseif ($field_property['field_type'] == 8 )
     {
@@ -335,6 +321,7 @@ foreach ($disp_custom_fields as $field_id => $field_property)
         //if we're doing custom divs we don't want these div's to get in the way.
         //echo "</div>";
     }
+    echo "</div><br/>";
 }
 ?>
 </div>

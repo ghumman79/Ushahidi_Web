@@ -121,10 +121,10 @@
                 <?php } ?>
             </div>
             <div class="column">
-                    <div id="report-map" class="report-map">
-                        <div class="map-holder" id="map"></div>
-                    </div>
-                    <?php Event::run('ushahidi_action.report-meta', $incident_id); ?>
+                <div class="map-holder" id="map"></div>
+
+                <br/>
+                <?php Event::run('ushahidi_action.report-meta', $incident_id); ?>
                 <?php Event::run('ushahidi_action.report-view_sidebar', $incident_id); ?>
 
                 <div class="report-nearbys">

@@ -27,8 +27,22 @@
             adjustCategories();
             attachCategorySelected();
             removeListStrFromBreadcrumb();
-            splitListView();
+            loadSelectedViewFromHashTag();
         });
+        function loadSelectedViewFromHashTag() {
+            if (window.location.hash == "#map") {
+                switchViews($("#pagination .pagination_map"));
+            }
+            else if (window.location.hash == "#list") {
+                switchViews($("#pagination .pagination_list"));
+            }
+            else if (window.location.hash == "#gallery") {
+                switchViews($("#pagination .pagination_gallery"));
+            }
+            else {
+                splitListView();
+            }
+        }
         function splitParentCategories() {
             var $categoryDiv = $("div#filters");
             var $categoryList = $categoryDiv.find("ul");
@@ -43,17 +57,20 @@
             $categoryList.remove();
         }
         function splitListView() {
-            var $listView = $("div#rb_list-view");
-            var $leftPane = $("<div id='column-left' class='column'>");
-            var $rightPane = $("<div id='column-right' class='column'>");
-            $('.column-left').each(function (item) {
-                $(this).appendTo($rightPane);
-            });
-            $('.column-right').each(function (item) {
-                $(this).appendTo($leftPane);
-            });
-            $leftPane.appendTo($listView);
-            $rightPane.appendTo($listView);
+            if ($("#column-left").length == 0 &&
+                $("#column-right").length == 0) {
+                var $listView = $("div#list");
+                var $leftPane = $("<div id='column-left' class='column'>");
+                var $rightPane = $("<div id='column-right' class='column'>");
+                $('.column-left').each(function (item) {
+                    $(this).appendTo($rightPane);
+                });
+                $('.column-right').each(function (item) {
+                    $(this).appendTo($leftPane);
+                });
+                $leftPane.appendTo($listView);
+                $rightPane.appendTo($listView);
+            }
         }
         function adjustCategories() {
             var $top = $("#filters").css('height');
@@ -99,16 +116,15 @@
                             $("#reports-box").html(data);
                             attachPagingEvents();
                             adjustCategories();
-                            if (activeView.search('#rb_list-view') > 0) {
+                            if (activeView.search('#list') > 0) {
                                 switchViews($("#pagination .pagination_list"));
                             }
-                            else if (activeView.search('#rb_map-view') > 0) {
+                            else if (activeView.search('#map') > 0) {
                                 switchViews($("#pagination .pagination_map"));
                             }
-                            else if (activeView.search('#rb_gallery-view') > 0) {
+                            else if (activeView.search('#gallery') > 0) {
                                 switchViews($("#pagination .pagination_gallery"));
                             }
-                            splitListView();
                         }, 400);
                     }
                 }
@@ -159,19 +175,24 @@
             return false;
         }
         function switchViews(view) {
-            $("#rb_list-view, #rb_map-view, #rb_gallery-view").hide();
+            $("#list, #map, #gallery").hide();
             $($(view).attr("href")).show();
             $("#pagination .report-list-toggle a").parent().removeClass("active");
             $("."+$(view).attr("class")).parent().addClass("active");
-            if ($("#rb_map-view").css("display") == "block") {
+            if ($("#map").css("display") == "block") {
                 $("#reports").removeClass("scroll");
                 $("#reports").css("overflow-y","hidden");
                 urlParameters["page"] = $(".pager li a.active").html();
-                if ($('#rb_map-view').children().length == 0) {
+                if ($('#map').children().length == 0) {
                     createIncidentMap();
                 }
                 setTimeout(function(){showIncidentMap();}, 400);
                 setTimeout(function(){showCheckins();}, 400);
+            }
+            else if ($("#list").css("display") == "block") {
+                $("#reports").addClass("scroll");
+                $("#reports").css("overflow-y","auto");
+                splitListView();
             }
             else {
                 $("#reports").addClass("scroll");
@@ -266,7 +287,6 @@
                 });
             });
         }
-
         function showReportData(event) {
             selectedFeature = event.feature;
             zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
@@ -321,7 +341,6 @@
                 }
             );
         }
-
         function showCheckinData(event) {
             selectedFeature = event.feature;
             zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
@@ -349,6 +368,10 @@
                 null, true, onPopupClose);
             event.feature.popup = popup;
             map.addPopup(popup);
+        }
+        function createIncidentMap() {
+            map = createMap('map', latitude, longitude, defaultZoom);
+            map.addControl(new OpenLayers.Control.LoadingPanel({minSize: new OpenLayers.Size(573, 366)}) );
         }
     </script>
 </div>

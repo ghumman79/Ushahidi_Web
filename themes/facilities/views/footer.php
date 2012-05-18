@@ -1,6 +1,6 @@
 <div id="footer">
     <div id="footer-credits">
-        <a href="http://www.ushahidi.com" title="Ushahidi"><img id="ushahidi" /></a>
+        <a href="http://www.ushahidi.com" title="Powered by Ushahidi"><img id="ushahidi" src="/themes/facilities/images/footer-logo.png"/></a>
     </div>
     <div id="footer-links">
         <ul>
@@ -18,7 +18,9 @@
             <?php foreach (ORM::factory('page')->where('page_active', '1')->find_all() as $page) { ?>
                 <li><a title="<?php echo $page->page_tab; ?>" href="<?php echo url::site()."page/index/".$page->id; ?>"><?php echo $page->page_tab; ?></a></li>
             <?php }?>
-            <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
+            <?php if(Kohana::config('settings.allow_feed')) { ?>
+                <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
+            <?php }?>
         </ul>
     </div>
     <?php if($site_copyright_statement != '') { ?>

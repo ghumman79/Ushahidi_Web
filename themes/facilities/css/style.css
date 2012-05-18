@@ -333,12 +333,8 @@ div#footer #footer-credits {
 }
 
 div#footer #footer-credits img {
-    vertical-align: middle;
-    margin-top:4px;
-    height:35px;
-    width:110px;
-    border:none;
-    background: url(../images/footer-logo.png) 0 0 no-repeat;
+    margin-top:5px;
+    margin-right:15px;
 }
 
 /* ############################### MIDDLE ############################### */
@@ -592,9 +588,12 @@ div#filters ul li.report-listing-category-child.selected {
     background: -moz-linear-gradient(top, #E6E6E6, #BDBDBD);
 }
 
-div#filters ul li a,
-div#filters ul li.report-listing-category-child a {
+div#filters ul li a {
     font-weight:bold;
+}
+
+div#filters ul li.report-listing-category-child a {
+    font-weight:normal;
 }
 
 div#filters ul {
@@ -796,9 +795,12 @@ form label {
     margin-right:10px;
 }
 
-form input[type=text]{
+form input[type=text],
+form input[type=file],
+form textarea {
     width: 95%;
     padding:5px;
+    margin-bottom:1px;
 }
 
 form input[type=submit]{
@@ -840,11 +842,68 @@ form span.captcha img {
     float:left;
 }
 
-/* ############################### REPORTS ############################### */
-
-#rb_list-view {
-    padding-top:0;
+form span.date img {
+    display: none;
 }
+
+form span.time select {
+    width:30%;
+    font-size:14px;
+}
+
+form span.time b {
+    padding:0.5%;
+}
+
+form span.dynamic {
+    position: relative;
+}
+
+form span.dynamic input {
+    width:80%;
+}
+
+form span.dynamic a.dynamic-add {
+    text-align:center;
+    position: absolute;
+    top:0;
+    right:0;
+    width:10px;
+}
+
+form span.dynamic a.dynamic-remove {
+    text-align:center;
+    position: absolute;
+    top:0;
+    right:25px;
+    width:10px;
+}
+
+#find_loading {
+    width:20px;
+    height:30px;
+}
+
+.location-left {
+    margin-top:10px;
+    float:left;
+    width:100%;
+}
+
+.location-left div {
+    margin-right:150px;
+    height:35px;
+}
+
+.location-right {
+    margin-top:10px;
+    float:right;
+    width:150px;
+    margin-left:-150px;
+    height:35px;
+}
+
+/* ############################### REPORTS ############################### */
 
 div.report-item {
     padding:10px;
@@ -942,7 +1001,7 @@ div.report-item .report-image {
     background-image:url(../images/report-thumb-gallery.jpg);
 }
 
-div#rb_list-view {
+div#list {
     padding:15px 0 0 0;
 }
 
@@ -1082,32 +1141,6 @@ ol.ui-slider-scale {
     margin-right:0;
 }
 
-#find_loading {
-    width:20px;
-    height:30px;
-}
-
-div.alert_location {
-    height:35px;
-}
-
-div.alert-location-left {
-    float:left;
-    width:100%;
-}
-
-div.alert-location-left div {
-    margin-right:150px;
-    height:35px;
-}
-
-div.alert-location-right {
-    float:right;
-    width:150px;
-    margin-left:-150px;
-    height:35px;
-}
-
 .alerts-confirm-mobile,
 .alerts-confirm-email,
 .alerts-confirm-return {
@@ -1153,50 +1186,27 @@ div.feed-item .feed-description {
 
 /* ############################### MAP ############################### */
 
-div.map {
-    border: #999 1px solid;
-    width: 100%;
-    height: 900px;
-    position:relative;
-}
+div#map,
 div#report-map,
 div.report-map,
 div.map-holder,
-div#map {
+div.alert-map {
     border: #999 1px solid;
     width: 100%;
     height: 250px;
     position:relative;
 }
 
-div.map-holder,
-div#map {
+div#reports div#map {
+    height:900px;
     border:none;
 }
 
-#mapStatus {
+div.olControlNavigationItemActive,
+div.olControlDrawFeaturePointItemInactive,
+div.olControlDrawFeaturePathItemInactive,
+div.olControlDrawFeaturePolygonItemInactive {
     display:none;
-    float: left;
-    background-color: #e1e1e1;
-    border-left: solid 1px #999;
-    border-right: solid 1px #999;
-    border-bottom: solid 1px #999;
-    font-size: 10px;
-    width: 100%;
-}
-
-#mapStatus div {
-    float: left;
-    display: inline-block;
-    padding: 4px 6px 4px 6px;
-}
-
-#mapOutput sup {
-    height: 0;
-    line-height: 1;
-    vertical-align: text-top;
-    position: relative;
-    font-size: 8px;
 }
 
 /* ############################### POPUP ############################### */
