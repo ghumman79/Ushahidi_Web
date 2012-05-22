@@ -34,8 +34,9 @@
         <div class="clear"></div>
     </div>
 </div>
+<?php
+if (Kohana::config('settings.checkins')) { ?>
 <script type="text/javascript">
-    <?php if (Kohana::config('settings.checkins')) { ?>
     function cilisting(sqllimit,sqloffset) {
         $.getJSON("<?php echo url::site(); ?>api/?task=checkin&action=get_ci&sqllimit="+sqllimit+"&sqloffset="+sqloffset+"&orderby=checkin.checkin_date&sort=DESC", function(data) {
             if(data.payload.checkins == undefined) {
@@ -48,10 +49,6 @@
                 }
                 return;
             }
-            var user_colors = new Array();
-            $.each(data.payload.users, function(i, payl) {
-                user_colors[payl.id] = payl.color;
-            });
             var $ul = $('#main-reports ul');
             $.each(data.payload.checkins, function(i,item){
                 var $li = $('<li class="checkin">');
@@ -109,9 +106,10 @@
                 }
                 $li.appendTo($ul);
             });
+            $("div.checkin-image a").picbox();
         });
     }
     cilisting(10,0);
     showCheckins();
-    <?php } ?>
 </script>
+<?php } ?>

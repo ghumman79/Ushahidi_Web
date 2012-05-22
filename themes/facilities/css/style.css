@@ -1007,8 +1007,8 @@ div#list {
 
 /* ############################### REPORT DETAILS ############################### */
 
-div.report-comments,
 div.report-comment-form,
+div.report-comment,
 div.report-extras,
 div.report-media,
 div.report-nearby,
@@ -1236,6 +1236,25 @@ div#popup #popup-category {
     margin-top:5px;
     font-size:14px;
     color:#848484;
+    margin-bottom:5px;
+}
+
+div#popup #popup-category span {
+    margin-right:5px;
+    padding:2px 4px 2px 4px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -khtml-border-radius:5px;
+    border: 1px solid #E6E6E6;
+    background: #F2F2F2;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#F2F2F2');
+    background: -webkit-gradient(linear, left top, left bottom, from(#FAFAFA), to(#F2F2F2));
+    background: -moz-linear-gradient(top, #FAFAFA, #F2F2F2);
+}
+
+div#popup #popup-category img {
+    margin-right:3px;
 }
 
 div#popup #popup-description {

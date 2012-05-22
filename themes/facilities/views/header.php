@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <?php echo $header_block; ?>
     <?php Event::run('ushahidi_action.header_scripts'); ?>
+    <?php if (Router::$controller == 'main') { ?>
+    <script type="text/javascript" src="/media/js/picbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="/media/css/picbox/picbox.css">
+    <?php } ?>
     <link rel="stylesheet" type="text/css" href="/themes/facilities/css/uofs.css">
     <link rel="icon" type="image/png" href="/themes/facilities/images/uofs/favicon.ico">
 </head>

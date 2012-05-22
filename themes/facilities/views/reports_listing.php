@@ -1,5 +1,5 @@
 <div id="reports" class="scroll">
-    <div id="list">
+    <div id="list" style="visibility:hidden;">
         <?php
             $incidentsCount = count($incidents);
             $incidentIndex = 0;
@@ -10,12 +10,11 @@
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;
-                $location_id = $incident->location_id;
+                $incident_tooltip = $incident_title . '&#13;' . strip_tags(str_replace('<br/>', '&#13;', $incident_description));
                 $location_name = $incident->location->location_name;
-                $incident_thumb = url::file_loc('img')."media/img/report-thumb-default.jpg";
-                $media = $incident->media;
-                if ($media->count()) {
-                    foreach ($media as $photo) {
+                $incident_thumb = null;
+                if ($incident->media->count()) {
+                    foreach ($incident->media as $photo) {
                         if ($photo->media_thumb) {
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_thumb);
                             break;
@@ -24,11 +23,13 @@
                 }
             ?>
             <div class="report-item box <?php echo $incidentPane ?>">
-                <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                    <img class="report-image" src="<?php echo $incident_thumb; ?>" />
-                </a>
+                <?php if (!empty($incident_thumb)) { ?>
+                    <a title="<?php echo $incident_tooltip; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                        <img class="report-image" src="<?php echo $incident_thumb; ?>" />
+                    </a>
+                <?php } ?>
                 <div class="report-title">
-                    <a title="<?php echo $incident_title; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                    <a title="<?php echo $incident_tooltip; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                         <?php echo $incident_title; ?>
                     </a>
                 </div>
@@ -63,11 +64,10 @@
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;
-                $location_id = $incident->location_id;
+                $incident_tooltip = $incident_title . '&#13;' . strip_tags(str_replace('<br/>', '&#13;', $incident_description));
                 $incident_thumb = url::site() . "/themes/facilities/images/report-gallery.jpg";
-                $media = $incident->media;
-                if ($media->count()) {
-                    foreach ($media as $photo) {
+                if ($incident->media->count()) {
+                    foreach ($incident->media as $photo) {
                         if ($photo->media_thumb) {
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_medium);
                             break;
@@ -76,7 +76,7 @@
                 }
                 ?>
                 <div class="report-thumbnail">
-                    <a title="<?php echo $incident_title . ' - ' . $incident_description; ?>"
+                    <a title="<?php echo $incident_tooltip; ?>"
                        href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                         <img src="<?php echo $incident_thumb; ?>" />
                     </a>
@@ -94,3 +94,58 @@
     <div class="pagination"><?php echo $pagination; ?></div>
     <div class="breadcrumb"><?php echo $stats_breadcrumb; ?></div>
 </div>
+<script type="text/javascript">
+<?php
+    $json = array();
+    foreach ($incidents as $incident) {
+        $incident = ORM::factory('incident', $incident->incident_id);
+        $item = array();
+        $item['id'] = $incident->id;
+        $item['date'] = date('H:ia F j, Y', strtotime($incident->incident_date));
+        $item['link'] = url::site().'reports/view/'.$incident->id;
+        $item['title'] = $incident->incident_title;
+        $item['description'] = $incident->incident_description;
+        $item['location'] = $incident->location->location_name;
+        $item['latitude'] = $incident->location->latitude;
+        $item['longitude'] = $incident->location->longitude;
+        if ($incident->media->count()) {
+            foreach ($incident->media as $media) {
+                if ($media->media_thumb) {
+                    $item['thumb'] = url::convert_uploaded_to_abs($media->media_thumb);
+                    break;
+                }
+            }
+            $photos = array();
+            foreach ($incident->media as $media) {
+                $photo = array();
+                if ($media->media_thumb) {
+                    $photo['thumb'] = $media->media_thumb;
+                }
+                if ($media->media_link) {
+                    $photo['large'] = $media->media_link;
+                }
+                array_push($photos, $photo);
+            }
+            $item['photos'] = $photos;
+        }
+        $categories = array();
+        foreach ($incident->category as $category) {
+            $cat = array();
+            $cat['id'] = $category->id;
+            $cat['title'] = $category->category_title;
+            $cat['color'] = "#".$category->category_color;
+            $cat['description'] = $category->category_description;
+            if ($category->category_image_thumb) {
+                $cat['thumb'] = url::convert_uploaded_to_abs($category->category_image_thumb);
+                $item['icon'] = url::convert_uploaded_to_abs($category->category_image_thumb);
+            }
+            array_push($categories, $cat);
+        }
+        $item['categories'] = $categories;
+        array_push($json, $item);
+    }
+?>
+    $(function(){
+        $DATA = <?php echo json_encode($json); ?>;
+    });
+</script>

@@ -1,6 +1,6 @@
 <div id="middle">
     <div id="filters">
-        <ul>
+        <ul style="visibility:hidden">
             <?php echo $category_tree_view; ?>
         </ul>
     </div>
@@ -46,6 +46,7 @@
         function splitParentCategories() {
             var $categoryDiv = $("div#filters");
             var $categoryList = $categoryDiv.find("ul");
+            $categoryList.css("visibility","hidden");
             var $ul;
             $categoryList.children().each(function (item) {
                 if (!($(this).hasClass("report-listing-category-child"))) {
@@ -55,11 +56,13 @@
                 $(this).appendTo($ul);
             });
             $categoryList.remove();
+            $categoryList.css("visibility","visible");
         }
         function splitListView() {
             if ($("#column-left").length == 0 &&
                 $("#column-right").length == 0) {
                 var $listView = $("div#list");
+                $listView.css("visibility", "hidden");
                 var $leftPane = $("<div id='column-left' class='column'>");
                 var $rightPane = $("<div id='column-right' class='column'>");
                 $('.column-left').each(function (item) {
@@ -70,6 +73,7 @@
                 });
                 $leftPane.appendTo($listView);
                 $rightPane.appendTo($listView);
+                $listView.css("visibility", "visible");
             }
         }
         function adjustCategories() {
@@ -162,7 +166,6 @@
                 urlParameters["page"] = $(this).html();
                 fetchReports();
                 return false;
-
             });
             $("td.last li a").click(function(){
                 pageNumber = $(this).attr("id").substr("page_".length);
@@ -200,35 +203,70 @@
             }
             return false;
         }
+        function showIncidentMap() {
+            var layerName = '<?php echo Kohana::lang('ui_main.reports')?>';
+            var currentLayers = map.getLayersByName(layerName);
+            for (var i = 0; i < currentLayers.length; i++) {
+                map.removeLayer(currentLayers[i]);
+            }
+            var reportStyle = new OpenLayers.Style({
+                cursor: "pointer",
+                graphicOpacity: 0.85,
+                graphicWidth: 20,
+                graphicHeight: 20,
+                externalGraphic: "${externalGraphic}"
+            });
+            var reportLayer = new OpenLayers.Layer.Vector(layerName, {
+                projection: map.displayProjection,
+                extractAttributes: true,
+                styleMap: new OpenLayers.StyleMap({'default' : reportStyle})
+            });
+            map.addLayer(reportLayer);
+            addFeatureSelectionEvents(map, reportLayer);
+
+            $.each($DATA, function(i, incident) {
+                var point = new OpenLayers.Geometry.Point(parseFloat(incident.longitude), parseFloat(incident.latitude));
+                point.transform(proj_4326, proj_900913);
+                var externalGraphic = "/themes/facilities/images/report.png";
+                if (incident.icon) {
+                    externalGraphic = incident.icon;
+                }
+                var vector = new OpenLayers.Feature.Vector(point, {
+                    id:incident.id,
+                    link:incident.link,
+                    date:incident.date,
+                    title:incident.title,
+                    description:incident.description,
+                    location:incident.location,
+                    latitude:incident.latitude,
+                    longitude:incident.longitude,
+                    categories:incident.categories,
+                    photos:incident.photos,
+                    externalGraphic:externalGraphic
+                });
+                reportLayer.addFeatures([vector]);
+            });
+        }
         function showCheckins() {
             $(document).ready(function(){
-                var ci_styles = new OpenLayers.StyleMap({
+                var checkinStyles = new OpenLayers.StyleMap({
                     "default": new OpenLayers.Style({
-                        pointRadius: "5",
-                        fillColor: "${fillcolor}",
-                        strokeColor: "${strokecolor}",
-                        fillOpacity: "${fillopacity}",
-                        strokeOpacity: 0.75,
-                        strokeWidth: 1.5
+                        cursor: "pointer",
+                        graphicOpacity: 0.75,
+                        graphicWidth: 32,
+                        graphicHeight: 32,
+                        externalGraphic: "/themes/facilities/images/user.png"
                     })
                 });
 
-                var checkLayer = '<?php echo Kohana::lang('ui_admin.checkins')?>';
-                currentLayers = map.getLayersByName(checkLayer);
+                var checkinLayer = '<?php echo Kohana::lang('ui_admin.checkins')?>';
+                var currentLayers = map.getLayersByName(checkinLayer);
                 for (var i = 0; i < currentLayers.length; i++){
                     map.removeLayer(currentLayers[i]);
                 }
 
-                var checkinLayer = new OpenLayers.Layer.Vector(checkLayer, {styleMap: ci_styles});
+                var checkinLayer = new OpenLayers.Layer.Vector(checkinLayer, {styleMap: checkinStyles});
                 map.addLayers([checkinLayer]);
-
-                var highlightControl = new OpenLayers.Control.SelectFeature(checkinLayer, {
-                    hover: true,
-                    highlightOnly: true,
-                    renderIntent: "temporary"
-                });
-                map.addControl(highlightControl);
-                highlightControl.activate();
 
                 var selectControls = [];
                 $.each(map.layers, function(i, layer) {
@@ -247,42 +285,30 @@
                         });
                     }
                 });
-
-                var selectControl = new OpenLayers.Control.SelectFeature(selectControls);
-                map.addControl(selectControl);
-                selectControl.activate();
+                var selectFeatures = new OpenLayers.Control.SelectFeature(selectControls);
+                map.addControl(selectFeatures);
+                selectFeatures.activate();
 
                 $.getJSON("<?php echo url::site()."api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC"?>", function(data) {
-                    var user_colors = new Array();
-                    $.each(data["payload"]["users"], function(i, payl) {
-                        user_colors[payl.id] = payl.color;
-                    });
-                    $.each(data["payload"]["checkins"], function(key, ci) {
-                        var cipoint = new OpenLayers.Geometry.Point(parseFloat(ci.lon), parseFloat(ci.lat));
-                        cipoint.transform(proj_4326, proj_900913);
+                    $.each(data["payload"]["checkins"], function(key, checkin) {
+                        var checkinPoint = new OpenLayers.Geometry.Point(parseFloat(checkin.lon), parseFloat(checkin.lat));
+                        checkinPoint.transform(proj_4326, proj_900913);
                         var media_link = '';
                         var media_medium = '';
                         var media_thumb = '';
-                        if(ci.media === undefined) {
-                            // No image
+                        if (checkin.media !== undefined) {
+                            media_link = checkin.media[0].link;
+                            media_medium = checkin.media[0].medium;
+                            media_thumb = checkin.media[0].thumb;
                         }
-                        else {
-                            // Image!
-                            media_link = ci.media[0].link;
-                            media_medium = ci.media[0].medium;
-                            media_thumb = ci.media[0].thumb;
-                        }
-                        var checkinPoint = new OpenLayers.Feature.Vector(cipoint, {
-                            fillcolor: "#"+user_colors[ci.user],
-                            strokecolor: "#FFFFFF",
-                            fillopacity: ci.opacity,
-                            ci_id: ci.id,
-                            ci_msg: ci.msg,
+                        var checkinVector = new OpenLayers.Feature.Vector(checkinPoint, {
+                            ci_id: checkin.id,
+                            ci_msg: checkin.msg,
                             ci_media_link: media_link,
                             ci_media_medium: media_medium,
                             ci_media_thumb: media_thumb
                         });
-                        checkinLayer.addFeatures([checkinPoint]);
+                        checkinLayer.addFeatures([checkinVector]);
                     });
                 });
             });
@@ -295,51 +321,42 @@
             if (event.feature.popup != null) {
                 map.removePopup(event.feature.popup);
             }
-            $.get('<?php echo url::site().'api?task=incidents&by=incidentid&id='?>' + event.feature.attributes.id, null, function(json) {
-                    if (json.payload.incidents.length > 0) {
-                        var incidents = json.payload.incidents;
-                        var incident = incidents[0].incident;
-                        var content = "<div id=\"popup\">";
-                        if (incidents[0].media.length > 0) {
-                            var media = incidents[0].media[0];
-                            content += "<div id=\"popup-image\">";
-                            content += "<a title=\"" + incident.incidenttitle + "\" href=\"/reports/view/" + incident.incidentid + "\">";
-                            content += "<img src=\"/media/uploads/" + media.thumb + "\" height=\"59\" width=\"89\" />";
-                            content += "</a></div>";
-                        }
-                        content += "<div id=\"popup-title\">";
-                        content += "<a title=\"" + incident.incidenttitle + "\" href=\"/reports/view/" + incident.incidentid + "\">" + incident.incidenttitle + "</div>";
-                        if (incidents[0].categories.length > 0) {
-                            content += "<div id=\"popup-category\">";
-                            var categories = incidents[0].categories;
-                            for (var i = 0; i < categories.length; i++) {
-                                if (i > 0) {
-                                    content += ", ";
-                                }
-                                var category = categories[i].category;
-                                content += "<a title=\"" + category.title + "\" href=\"/reports/?c=" + category.id + "\">";
-                                content += category.title + "</a>";
-                            }
-                            content += "</div>";
-                        }
-                        if (incident.locationname && incident.locationname!='') {
-                            content += "<div id=\"popup-location\">" + incident.locationname + "</div>";
-                        }
-                        if (incident.incidentdescription && incident.incidentdescription!='') {
-                            content += "<div id=\"popup-description\">" + incident.incidentdescription + "</div>";
-                        }
-                        content += "<div style=\"clear:both;\"></div></div>";
-
-                        popup = new OpenLayers.Popup.FramedCloud("popup",
-                            event.feature.geometry.getBounds().getCenterLonLat(),
-                            new OpenLayers.Size(200,300),
-                            content,
-                            null, true, onPopupClose);
-                        event.feature.popup = popup;
-                        map.addPopup(popup);
+            var content = "<div id=\"popup\">";
+            var incident = event.feature.attributes;
+            if (incident.photos && incident.photos.length > 0) {
+                var photo = incident.photos[0];
+                content += "<div id=\"popup-image\">";
+                content += "<a title=\"" + incident.title + "\" href=\"/reports/view/" + incident.id + "\">";
+                content += "<img src=\"/media/uploads/" + photo.thumb + "\" height=\"59\" width=\"89\" />";
+                content += "</a></div>";
+            }
+            content += "<div id=\"popup-title\">";
+            content += "<a title=\"" + incident.title + "\" href=\"/reports/view/" + incident.id + "\">" + incident.title + "</a></div>";
+            if (incident.categories && incident.categories.length > 0) {
+                content += "<div id=\"popup-category\">";
+                $.each(incident.categories, function(i, category) {
+                    content += "<span>";
+                    if (category.thumb) {
+                        content += "<img src=\"" + category.thumb + "\"/>";
                     }
-                }
-            );
+                    content += category.title + "</span>";
+                });
+                content += "</div>";
+            }
+            if (incident.location && incident.location!='') {
+                content += "<div id=\"popup-location\">" + incident.location + "</div>";
+            }
+            if (incident.description && incident.description!='') {
+                content += "<div id=\"popup-description\">" + incident.description + "</div>";
+            }
+            content += "<div style=\"clear:both;\"></div></div>";
+            var popup = new OpenLayers.Popup.FramedCloud("popup",
+                event.feature.geometry.getBounds().getCenterLonLat(),
+                new OpenLayers.Size(200,300),
+                content,
+                null, true, onPopupClose);
+            event.feature.popup = popup;
+            map.addPopup(popup);
         }
         function showCheckinData(event) {
             selectedFeature = event.feature;
