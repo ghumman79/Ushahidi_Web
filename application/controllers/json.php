@@ -64,7 +64,7 @@ class Json_Controller extends Template_Controller
 		if (Kohana::config('settings.default_map_all_icon_id'))
 		{
 			$icon_object = ORM::factory('media')->find(Kohana::config('settings.default_map_all_icon_id'));
-			$icon = Kohana::config('upload.relative_directory')."/".$icon_object->media_medium;
+			$icon = url::convert_uploaded_to_abs($icon_object->media_medium);
 		}
 
 		$media_type = (isset($_GET['m']) AND intval($_GET['m']) > 0)? intval($_GET['m']) : 0;
@@ -81,7 +81,7 @@ class Json_Controller extends Template_Controller
 			$color = $cat->category_color;
 			if ($cat->category_image)
 			{
-				$icon = Kohana::config('upload.relative_directory') .'/'. $cat->category_image;
+				$icon = url::convert_uploaded_to_abs($cat->category_image);
 			}
 		}
 		
@@ -155,6 +155,8 @@ class Json_Controller extends Template_Controller
 			array_push($json_features, $json_item_first);
 		}
 		
+		Event::run('ushahidi_filter.json_index_features', $json_features);
+		
 		$json = json_encode(array(
 			"type" => "FeatureCollection",
 			"features" => $json_features
@@ -184,7 +186,7 @@ class Json_Controller extends Template_Controller
 		if (Kohana::config('settings.default_map_all_icon_id'))
 		{
 			$icon_object = ORM::factory('media')->find(Kohana::config('settings.default_map_all_icon_id'));
-			$icon = Kohana::config('upload.relative_directory')."/".$icon_object->media_medium;
+			$icon = url::convert_uploaded_to_abs($icon_object->media_medium);
 		}
 
 		// Get Zoom Level
@@ -213,7 +215,7 @@ class Json_Controller extends Template_Controller
 			$color = $cat->category_color;
 			if ($cat->category_image)
 			{
-				$icon = Kohana::config('upload.relative_directory') .'/'. $cat->category_image;
+				$icon = url::convert_uploaded_to_abs($cat->category_image);
 			}
 		}
 
@@ -289,7 +291,7 @@ class Json_Controller extends Template_Controller
 			
 			// Build out the JSON string
 			$link = url::base()."reports/index/?c=".$category_id."&sw=".$southwest."&ne=".$northeast.$time_filter;
-			$item_name = $this->_get_title($cluster_count . " Reports", $link);
+			$item_name = $this->_get_title($cluster_count . Kohana::lang('json.cluster_name_reports'), $link);
 			
 			$json_item = array();
 			$json_item['type'] = 'Feature';
@@ -345,6 +347,8 @@ class Json_Controller extends Template_Controller
 		// {
 		// 	$json = implode(",", $geometry_array).",".$json;
 		// }
+		
+		Event::run('ushahidi_filter.json_cluster_features', $json_features);
 		
 		$json = json_encode(array(
 			"type" => "FeatureCollection",
@@ -444,6 +448,8 @@ class Json_Controller extends Template_Controller
 				}
 			}
 		}
+
+		Event::run('ushahidi_filter.json_single_features', $json_features);
 
 		$json = json_encode(array(
 			"type" => "FeatureCollection",
@@ -723,7 +729,7 @@ class Json_Controller extends Template_Controller
 					$cluster_count = count($cluster);
 					
 					$link = "http://".$sharing_url."reports/index/?c=0&sw=".$southwest."&ne=".$northeast;
-					$item_name = $this->_get_title($cluster_count . " Reports", $link);
+					$item_name = $this->_get_title($cluster_count . Kohana::lang('json.cluster_name_reports'), $link);
 					
 					$json_item = array();
 					$json_item['type'] = 'Feature';
@@ -799,6 +805,8 @@ class Json_Controller extends Template_Controller
 					array_push($json_features, $json_item);
 				}
 			}
+
+			Event::run('ushahidi_filter.json_share_features', $json_features);
 
 			$json = json_encode(array(
 				"type" => "FeatureCollection",

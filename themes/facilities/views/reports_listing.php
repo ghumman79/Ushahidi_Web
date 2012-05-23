@@ -96,7 +96,7 @@
 </div>
 <script type="text/javascript">
 <?php
-    $json = array();
+    $reports = array();
     foreach ($incidents as $incident) {
         $incident = ORM::factory('incident', $incident->incident_id);
         $item = array();
@@ -136,16 +136,34 @@
             $cat['color'] = "#".$category->category_color;
             $cat['description'] = $category->category_description;
             if ($category->category_image_thumb) {
+                $cat['image'] = url::convert_uploaded_to_abs($category->category_image);
                 $cat['thumb'] = url::convert_uploaded_to_abs($category->category_image_thumb);
-                $item['icon'] = url::convert_uploaded_to_abs($category->category_image_thumb);
+                $item['icon'] = url::convert_uploaded_to_abs($category->category_image);
             }
             array_push($categories, $cat);
         }
         $item['categories'] = $categories;
-        array_push($json, $item);
+        array_push($reports, $item);
+    }
+?>
+<?php
+    $layers = array();
+    foreach (ORM::factory('layer')->where('layer_visible', 1)->find_all() as $layer) {
+        $lay = array();
+        $lay['id'] = $layer->id;
+        $lay['name'] = $layer->layer_name;
+        $lay['color'] = $layer->layer_color;
+        if ($layer->layer_url) {
+            $lay['url'] = $layer->layer_url;
+        }
+        else {
+            $lay['url'] = url::convert_uploaded_to_abs($layer->layer_file);
+        }
+        array_push($layers, $lay);
     }
 ?>
     $(function(){
-        $DATA = <?php echo json_encode($json); ?>;
+        $INCIDENTS = <?php echo json_encode($reports); ?>;
+        $LAYERS = <?php echo json_encode($layers); ?>;
     });
 </script>

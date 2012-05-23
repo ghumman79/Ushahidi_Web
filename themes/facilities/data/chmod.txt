@@ -1,0 +1,7 @@
+sudo chmod -R 777 application/config/config.php
+sudo chmod -R 777 application/config/encryption.php
+sudo chmod -R 777 application/config
+sudo chmod -R 777 application/cache
+sudo chmod -R 777 application/logs
+sudo chmod -R 777 media/uploads
+sudo chmod -R 777 .htaccess

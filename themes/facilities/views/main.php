@@ -13,7 +13,7 @@
                 if ($category_title !== 'Trusted Reports') {
                     echo '<ul class="box">';
                     echo '<li class="title"><a title="'. $category_title . '" href="' . url::site() . 'reports/?c=' . $category . '">' . $category_title . '</a></li>';
-                    if(sizeof($category_info[3]) != 0) {
+                    if (sizeof($category_info[3]) != 0) {
                         foreach ($category_info[3] as $child => $child_info) {
                             $child_title = $child_info[0];
                             echo '<li><a title="'. $child_title . '" href="' . url::site() . 'reports/?c=' . $child . '">' . $child_title . '</a></li>';

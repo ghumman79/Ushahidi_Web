@@ -19,6 +19,7 @@
     </div>
 
     <script type="text/javascript">
+        var kmlOverlays = [];
         $(function(){
             $(window).resize(function() {
                 adjustCategories();
@@ -59,20 +60,25 @@
             $categoryList.css("visibility","visible");
         }
         function splitListView() {
-            if ($("#column-left").length == 0 &&
-                $("#column-right").length == 0) {
-                var $listView = $("div#list");
-                $listView.css("visibility", "hidden");
-                var $leftPane = $("<div id='column-left' class='column'>");
-                var $rightPane = $("<div id='column-right' class='column'>");
-                $('.column-left').each(function (item) {
-                    $(this).appendTo($rightPane);
-                });
-                $('.column-right').each(function (item) {
-                    $(this).appendTo($leftPane);
-                });
-                $leftPane.appendTo($listView);
-                $rightPane.appendTo($listView);
+            var $listView = $("div#list");
+            if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+                if ($("#column-left").length == 0 &&
+                    $("#column-right").length == 0) {
+                    $listView.css("visibility", "hidden");
+                    var $leftPane = $("<div id='column-left' class='column'>");
+                    var $rightPane = $("<div id='column-right' class='column'>");
+                    $('.column-left').each(function (item) {
+                        $(this).appendTo($rightPane);
+                    });
+                    $('.column-right').each(function (item) {
+                        $(this).appendTo($leftPane);
+                    });
+                    $leftPane.appendTo($listView);
+                    $rightPane.appendTo($listView);
+                    $listView.css("visibility", "visible");
+                }
+            }
+            else {
                 $listView.css("visibility", "visible");
             }
         }
@@ -204,6 +210,27 @@
             return false;
         }
         function showIncidentMap() {
+            $.each($LAYERS, function(i, layer) {
+                var kmlLayers = map.getLayersByName(layer.name);
+                for (var j = 0; j < kmlLayers.length; j++) {
+                    map.removeLayer(kmlLayers[j]);
+                }
+                var kmlLayer = new OpenLayers.Layer.Vector(layer.name, {
+                    projection: map.displayProjection,
+                    strategies: [new OpenLayers.Strategy.Fixed()],
+                    protocol: new OpenLayers.Protocol.HTTP({
+                        url: layer.url,
+                        format: new OpenLayers.Format.KML({
+                            extractStyles: true,
+                            extractAttributes: true,
+                            maxDepth:2
+                        })
+                    })
+                });
+                map.addLayer(kmlLayer);
+                addFeatureSelectionEvents(map, kmlLayer);
+            });
+
             var layerName = '<?php echo Kohana::lang('ui_main.reports')?>';
             var currentLayers = map.getLayersByName(layerName);
             for (var i = 0; i < currentLayers.length; i++) {
@@ -211,9 +238,9 @@
             }
             var reportStyle = new OpenLayers.Style({
                 cursor: "pointer",
-                graphicOpacity: 0.85,
-                graphicWidth: 20,
-                graphicHeight: 20,
+                graphicOpacity: 0.8,
+                graphicWidth: 30,
+                graphicHeight: 30,
                 externalGraphic: "${externalGraphic}"
             });
             var reportLayer = new OpenLayers.Layer.Vector(layerName, {
@@ -224,7 +251,7 @@
             map.addLayer(reportLayer);
             addFeatureSelectionEvents(map, reportLayer);
 
-            $.each($DATA, function(i, incident) {
+            $.each($INCIDENTS, function(i, incident) {
                 var point = new OpenLayers.Geometry.Point(parseFloat(incident.longitude), parseFloat(incident.latitude));
                 point.transform(proj_4326, proj_900913);
                 var externalGraphic = "/themes/facilities/images/report.png";
@@ -252,9 +279,9 @@
                 var checkinStyles = new OpenLayers.StyleMap({
                     "default": new OpenLayers.Style({
                         cursor: "pointer",
-                        graphicOpacity: 0.75,
-                        graphicWidth: 32,
-                        graphicHeight: 32,
+                        graphicOpacity: 0.8,
+                        graphicWidth: 30,
+                        graphicHeight: 30,
                         externalGraphic: "/themes/facilities/images/user.png"
                     })
                 });
@@ -284,32 +311,45 @@
                             "featureunselected": onFeatureUnselect
                         });
                     }
+                    else  {
+                        $.each($LAYERS, function(i, item) {
+                            if (layer.name == item.name) {
+                                selectControls.push(layer);
+                                layer.events.on({
+                                    "featureselected": onFeatureSelect,
+                                    "featureunselected": onFeatureUnselect
+                                });
+                            }
+                        });
+                    }
                 });
                 var selectFeatures = new OpenLayers.Control.SelectFeature(selectControls);
                 map.addControl(selectFeatures);
                 selectFeatures.activate();
 
                 $.getJSON("<?php echo url::site()."api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC"?>", function(data) {
-                    $.each(data["payload"]["checkins"], function(key, checkin) {
-                        var checkinPoint = new OpenLayers.Geometry.Point(parseFloat(checkin.lon), parseFloat(checkin.lat));
-                        checkinPoint.transform(proj_4326, proj_900913);
-                        var media_link = '';
-                        var media_medium = '';
-                        var media_thumb = '';
-                        if (checkin.media !== undefined) {
-                            media_link = checkin.media[0].link;
-                            media_medium = checkin.media[0].medium;
-                            media_thumb = checkin.media[0].thumb;
-                        }
-                        var checkinVector = new OpenLayers.Feature.Vector(checkinPoint, {
-                            ci_id: checkin.id,
-                            ci_msg: checkin.msg,
-                            ci_media_link: media_link,
-                            ci_media_medium: media_medium,
-                            ci_media_thumb: media_thumb
+                    if (data && data["payload"]["checkins"]) {
+                        $.each(data["payload"]["checkins"], function(key, checkin) {
+                            var checkinPoint = new OpenLayers.Geometry.Point(parseFloat(checkin.lon), parseFloat(checkin.lat));
+                            checkinPoint.transform(proj_4326, proj_900913);
+                            var media_link = '';
+                            var media_medium = '';
+                            var media_thumb = '';
+                            if (checkin.media !== undefined) {
+                                media_link = checkin.media[0].link;
+                                media_medium = checkin.media[0].medium;
+                                media_thumb = checkin.media[0].thumb;
+                            }
+                            var checkinVector = new OpenLayers.Feature.Vector(checkinPoint, {
+                                ci_id: checkin.id,
+                                ci_msg: checkin.msg,
+                                ci_media_link: media_link,
+                                ci_media_medium: media_medium,
+                                ci_media_thumb: media_thumb
+                            });
+                            checkinLayer.addFeatures([checkinVector]);
                         });
-                        checkinLayer.addFeatures([checkinVector]);
-                    });
+                    }
                 });
             });
         }

@@ -409,7 +409,7 @@ div#details {
 }
 
 #main-welcome div {
-    font-size:16px;
+    font-size:14px;
     color:#848484;
     margin-bottom: 20px;
 }
@@ -1209,6 +1209,31 @@ div.olControlDrawFeaturePolygonItemInactive {
     display:none;
 }
 
+ul#map-layers {
+    position:absolute;
+    left:10px;
+    bottom:50px;
+    height:20px;
+}
+ul#map-layers li {
+    list-style:none;
+    display:inline;
+}
+
+ul#map-layers li a {
+    color:#848484;
+    padding:3px 5px 3px 5px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -khtml-border-radius:5px;
+    border: 1px solid #D8D8D8;
+    background: #E6E6E6;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
+    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#E6E6E6));
+    background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
+}
+
 /* ############################### POPUP ############################### */
 
 div#popup {
@@ -1255,6 +1280,7 @@ div#popup #popup-category span {
 
 div#popup #popup-category img {
     margin-right:3px;
+    vertical-align:text-top;
 }
 
 div#popup #popup-description {

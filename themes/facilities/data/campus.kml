@@ -1,0 +1,2789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<kml xmlns="http://earth.google.com/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+<Schema name="RC_Campus_SK_2012_04_20_point" id="RC_Campus_SK_2012_04_20_point">
+<SimpleField type="int" name="Object_ID"/>
+<SimpleField type="int" name="Rec_Num"/>
+<SimpleField type="string" name="RC_Name"/>
+<SimpleField type="string" name="Campus_Type"/>
+<SimpleField type="string" name="Campus_Name"/>
+<SimpleField type="string" name="Campus_Ph_Num"/>
+<SimpleField type="string" name="Mail_Addr"/>
+<SimpleField type="string" name="Mail_Geo_Name"/>
+<SimpleField type="string" name="Mail_P_Code"/>
+<SimpleField type="string" name="Geo_Name"/>
+<SimpleField type="string" name="CEO_Name"/>
+<SimpleField type="string" name="CEO_Ph_Num"/>
+<SimpleField type="string" name="Prov_Name"/>
+<SimpleField type="string" name="Country_Name"/>
+<SimpleField type="string" name="Rec_To_Dte"/>
+<SimpleField type="string" name="Data_Source"/>
+<SimpleField type="string" name="Geocode_Source"/>
+<SimpleField type="string" name="Geocode_Level"/>
+</Schema>
+<name>RC_Campus_SK_2012.04.20</name>
+<visibility>1</visibility>
+<Folder id="kml_ft_RC_Campus_SK_2012_04_20_point">
+<name>RC_Campus_SK_2012_04_20_point</name>
+<Placemark id="kml_1">
+<name>kml_1</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>1</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>1</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Carlton Trail Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Humboldt Campus/Admin Office</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 682-2623</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>17th Street &amp; Centennial Park, Box 720</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Humboldt</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0K 2A0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Humboldt</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. William Cooke, interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 682-6851</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">1</SimpleData>
+<SimpleData name="Rec_Num">1</SimpleData>
+<SimpleData name="RC_Name">Carlton Trail Regional College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Humboldt Campus/Admin Office</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 682-2623</SimpleData>
+<SimpleData name="Mail_Addr">17th Street &amp; Centennial Park, Box 720</SimpleData>
+<SimpleData name="Mail_Geo_Name">Humboldt</SimpleData>
+<SimpleData name="Mail_P_Code">S0K 2A0</SimpleData>
+<SimpleData name="Geo_Name">Humboldt</SimpleData>
+<SimpleData name="CEO_Name">Dr. William Cooke, interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 682-6851</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.123192559725,52.2020822948943,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_2">
+<name>kml_2</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>2</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>2</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Carlton Trail Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Davidson Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 567-2885</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>201 Washington Avenue, Box 820</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Davidson</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0G 1A0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Davidson</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. William Cooke, interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 682-6851</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">2</SimpleData>
+<SimpleData name="Rec_Num">2</SimpleData>
+<SimpleData name="RC_Name">Carlton Trail Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Davidson Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 567-2885</SimpleData>
+<SimpleData name="Mail_Addr">201 Washington Avenue, Box 820</SimpleData>
+<SimpleData name="Mail_Geo_Name">Davidson</SimpleData>
+<SimpleData name="Mail_P_Code">S0G 1A0</SimpleData>
+<SimpleData name="Geo_Name">Davidson</SimpleData>
+<SimpleData name="CEO_Name">Dr. William Cooke, interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 682-6851</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.988784503493,51.2631344777047,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_3">
+<name>kml_3</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>3</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>3</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Carlton Trail Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Southey Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 726-5885</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>280 Burns Avenue, Box 160</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Southey</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0G 4P0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Southey</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. William Cooke, interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 682-6851</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">3</SimpleData>
+<SimpleData name="Rec_Num">3</SimpleData>
+<SimpleData name="RC_Name">Carlton Trail Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Southey Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 726-5885</SimpleData>
+<SimpleData name="Mail_Addr">280 Burns Avenue, Box 160</SimpleData>
+<SimpleData name="Mail_Geo_Name">Southey</SimpleData>
+<SimpleData name="Mail_P_Code">S0G 4P0</SimpleData>
+<SimpleData name="Geo_Name">Southey</SimpleData>
+<SimpleData name="CEO_Name">Dr. William Cooke, interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 682-6851</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-104.498922653269,50.9398975450917,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_4">
+<name>kml_4</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>4</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>4</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Carlton Trail Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Watrous Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 946-2094</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>108-6th Avenue East, Box 459</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Watrous</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0K 4T0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Watrous</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. William Cooke, interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 682-6851</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">4</SimpleData>
+<SimpleData name="Rec_Num">4</SimpleData>
+<SimpleData name="RC_Name">Carlton Trail Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Watrous Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 946-2094</SimpleData>
+<SimpleData name="Mail_Addr">108-6th Avenue East, Box 459</SimpleData>
+<SimpleData name="Mail_Geo_Name">Watrous</SimpleData>
+<SimpleData name="Mail_P_Code">S0K 4T0</SimpleData>
+<SimpleData name="Geo_Name">Watrous</SimpleData>
+<SimpleData name="CEO_Name">Dr. William Cooke, interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 682-6851</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.46142469771,51.6753112711266,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_5">
+<name>kml_5</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>5</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>5</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Carlton Trail Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Wynyard Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 554-3767</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>400 Avenue D West, Box 716</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Wynyard</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0A 4T9</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Wynyard</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. William Cooke, interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 682-6851</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">5</SimpleData>
+<SimpleData name="Rec_Num">5</SimpleData>
+<SimpleData name="RC_Name">Carlton Trail Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Wynyard Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 554-3767</SimpleData>
+<SimpleData name="Mail_Addr">400 Avenue D West, Box 716</SimpleData>
+<SimpleData name="Mail_Geo_Name">Wynyard</SimpleData>
+<SimpleData name="Mail_P_Code">S0A 4T9</SimpleData>
+<SimpleData name="Geo_Name">Wynyard</SimpleData>
+<SimpleData name="CEO_Name">Dr. William Cooke, interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 682-6851</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-104.183228403014,51.7684076782758,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_6">
+<name>kml_6</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>6</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>6</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Cumberland Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Nipawin Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 862-9833</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>501 – 6th Street East, P.O. Box 2225</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Nipawin</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0E 1E0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Nipawin</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Valerie Mushinski, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 862-9845</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">6</SimpleData>
+<SimpleData name="Rec_Num">6</SimpleData>
+<SimpleData name="RC_Name">Cumberland Regional College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Nipawin Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 862-9833</SimpleData>
+<SimpleData name="Mail_Addr">501 – 6th Street East, P.O. Box 2225</SimpleData>
+<SimpleData name="Mail_Geo_Name">Nipawin</SimpleData>
+<SimpleData name="Mail_P_Code">S0E 1E0</SimpleData>
+<SimpleData name="Geo_Name">Nipawin</SimpleData>
+<SimpleData name="CEO_Name">Valerie Mushinski, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 862-9845</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-104.014291133207,53.3571762653764,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_7">
+<name>kml_7</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>7</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>7</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Cumberland Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Hudson Bay Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 865-2175</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>501 Prince Street, P.O. Box 207</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Hudson Bay</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0E 0Y0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Hudson Bay</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Valerie Mushinski, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 862-9846</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">7</SimpleData>
+<SimpleData name="Rec_Num">7</SimpleData>
+<SimpleData name="RC_Name">Cumberland Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Hudson Bay Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 865-2175</SimpleData>
+<SimpleData name="Mail_Addr">501 Prince Street, P.O. Box 207</SimpleData>
+<SimpleData name="Mail_Geo_Name">Hudson Bay</SimpleData>
+<SimpleData name="Mail_P_Code">S0E 0Y0</SimpleData>
+<SimpleData name="Geo_Name">Hudson Bay</SimpleData>
+<SimpleData name="CEO_Name">Valerie Mushinski, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 862-9846</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.38174955488,52.8437410190407,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_8">
+<name>kml_8</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>8</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>8</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Cumberland Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Melofrt Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 752-2786</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>400 Burns Ave. E., P.O. Box 2320</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Melfort</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0E 1A0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Melfort</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Valerie Mushinski, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 862-9847</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">8</SimpleData>
+<SimpleData name="Rec_Num">8</SimpleData>
+<SimpleData name="RC_Name">Cumberland Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Melofrt Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 752-2786</SimpleData>
+<SimpleData name="Mail_Addr">400 Burns Ave. E., P.O. Box 2320</SimpleData>
+<SimpleData name="Mail_Geo_Name">Melfort</SimpleData>
+<SimpleData name="Mail_P_Code">S0E 1A0</SimpleData>
+<SimpleData name="Geo_Name">Melfort</SimpleData>
+<SimpleData name="CEO_Name">Valerie Mushinski, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 862-9847</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-104.604053842855,52.8593939685165,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_9">
+<name>kml_9</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>9</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>9</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Cumberland Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Tisdale Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 873-2525</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>800 - 101 Street, P.O. Box 967</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Tisdale</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0E 1T0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Tisdale</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Valerie Mushinski, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 862-9848</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">9</SimpleData>
+<SimpleData name="Rec_Num">9</SimpleData>
+<SimpleData name="RC_Name">Cumberland Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Tisdale Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 873-2525</SimpleData>
+<SimpleData name="Mail_Addr">800 - 101 Street, P.O. Box 967</SimpleData>
+<SimpleData name="Mail_Geo_Name">Tisdale</SimpleData>
+<SimpleData name="Mail_P_Code">S0E 1T0</SimpleData>
+<SimpleData name="Geo_Name">Tisdale</SimpleData>
+<SimpleData name="CEO_Name">Valerie Mushinski, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 862-9848</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-104.048782325686,52.8519205899063,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_10">
+<name>kml_10</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>10</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>10</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Great Plains College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Swift Current Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 773-1531</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>129 2nd Avenue NE, Box 5000</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Swift Current</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S9H 4G3</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Swift Current</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Bruce Probert, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 778-5462</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">10</SimpleData>
+<SimpleData name="Rec_Num">10</SimpleData>
+<SimpleData name="RC_Name">Great Plains College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Swift Current Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 773-1531</SimpleData>
+<SimpleData name="Mail_Addr">129 2nd Avenue NE, Box 5000</SimpleData>
+<SimpleData name="Mail_Geo_Name">Swift Current</SimpleData>
+<SimpleData name="Mail_P_Code">S9H 4G3</SimpleData>
+<SimpleData name="Geo_Name">Swift Current</SimpleData>
+<SimpleData name="CEO_Name">Bruce Probert, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 778-5462</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-107.798420425948,50.2885501748615,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_11">
+<name>kml_11</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>11</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>11</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Great Plains College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Kindersley Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 463-6431</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>514 Main Street, Box 488</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Kindersley</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0L 1S0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Kindersley</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Bruce Probert, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 778-5462</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">11</SimpleData>
+<SimpleData name="Rec_Num">11</SimpleData>
+<SimpleData name="RC_Name">Great Plains College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Kindersley Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 463-6431</SimpleData>
+<SimpleData name="Mail_Addr">514 Main Street, Box 488</SimpleData>
+<SimpleData name="Mail_Geo_Name">Kindersley</SimpleData>
+<SimpleData name="Mail_P_Code">S0L 1S0</SimpleData>
+<SimpleData name="Geo_Name">Kindersley</SimpleData>
+<SimpleData name="CEO_Name">Bruce Probert, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 778-5462</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-109.158222489132,51.468512449163,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_12">
+<name>kml_12</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>12</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>12</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Great Plains College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Warman Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 242-5377</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>201 Central Street, Box 1001</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Warman</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0K 4S0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Warman</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Bruce Probert, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 778-5462</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">12</SimpleData>
+<SimpleData name="Rec_Num">12</SimpleData>
+<SimpleData name="RC_Name">Great Plains College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Warman Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 242-5377</SimpleData>
+<SimpleData name="Mail_Addr">201 Central Street, Box 1001</SimpleData>
+<SimpleData name="Mail_Geo_Name">Warman</SimpleData>
+<SimpleData name="Mail_P_Code">S0K 4S0</SimpleData>
+<SimpleData name="Geo_Name">Warman</SimpleData>
+<SimpleData name="CEO_Name">Bruce Probert, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 778-5462</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-106.58294556686,52.3183789330317,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_13">
+<name>kml_13</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>13</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>13</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Northlands College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Air Ronge Administration Office</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 425-4480</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>Box 1000</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Air Ronge</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0J 3G0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Air Ronge</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Kelvin (Toby) Greschner, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 425-4273</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">13</SimpleData>
+<SimpleData name="Rec_Num">13</SimpleData>
+<SimpleData name="RC_Name">Northlands College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Air Ronge Administration Office</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 425-4480</SimpleData>
+<SimpleData name="Mail_Addr">Box 1000</SimpleData>
+<SimpleData name="Mail_Geo_Name">Air Ronge</SimpleData>
+<SimpleData name="Mail_P_Code">S0J 3G0</SimpleData>
+<SimpleData name="Geo_Name">Air Ronge</SimpleData>
+<SimpleData name="CEO_Name">Kelvin (Toby) Greschner, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 425-4273</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.322340276578,55.0850267461097,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_14">
+<name>kml_14</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>14</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>14</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Northlands College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Western Region Program Centre</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 235-1765</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>Box 190</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Buffalo Narrows</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0M 0J0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Buffalo Narrows</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Kelvin (Toby) Greschner, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 425-4273</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">14</SimpleData>
+<SimpleData name="Rec_Num">14</SimpleData>
+<SimpleData name="RC_Name">Northlands College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Western Region Program Centre</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 235-1765</SimpleData>
+<SimpleData name="Mail_Addr">Box 190</SimpleData>
+<SimpleData name="Mail_Geo_Name">Buffalo Narrows</SimpleData>
+<SimpleData name="Mail_P_Code">S0M 0J0</SimpleData>
+<SimpleData name="Geo_Name">Buffalo Narrows</SimpleData>
+<SimpleData name="CEO_Name">Kelvin (Toby) Greschner, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 425-4273</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-108.482670164112,55.8654481957143,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_15">
+<name>kml_15</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>15</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>15</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Northlands College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Eastern Region Program Centre</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 688-8838</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>Box 400</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Creighton</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0P 0A0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Creighton</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Kelvin (Toby) Greschner, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 425-4273</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">15</SimpleData>
+<SimpleData name="Rec_Num">15</SimpleData>
+<SimpleData name="RC_Name">Northlands College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Eastern Region Program Centre</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 688-8838</SimpleData>
+<SimpleData name="Mail_Addr">Box 400</SimpleData>
+<SimpleData name="Mail_Geo_Name">Creighton</SimpleData>
+<SimpleData name="Mail_P_Code">S0P 0A0</SimpleData>
+<SimpleData name="Geo_Name">Creighton</SimpleData>
+<SimpleData name="CEO_Name">Kelvin (Toby) Greschner, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 425-4273</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-101.899500118623,54.7568739416296,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_16">
+<name>kml_16</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>16</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>16</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Northlands College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Central/Athabasca Program Centre</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 425-4353</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>Box 509</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>La Ronge</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0J 1L0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>La Ronge</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Kelvin (Toby) Greschner, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 425-4273</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">16</SimpleData>
+<SimpleData name="Rec_Num">16</SimpleData>
+<SimpleData name="RC_Name">Northlands College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Central/Athabasca Program Centre</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 425-4353</SimpleData>
+<SimpleData name="Mail_Addr">Box 509</SimpleData>
+<SimpleData name="Mail_Geo_Name">La Ronge</SimpleData>
+<SimpleData name="Mail_P_Code">S0J 1L0</SimpleData>
+<SimpleData name="Geo_Name">La Ronge</SimpleData>
+<SimpleData name="CEO_Name">Kelvin (Toby) Greschner, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 425-4273</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.290587190987,55.1178840232233,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_17">
+<name>kml_17</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>17</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>17</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>North West Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>North Battleford Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 937-5100</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>10702 Diefenbaker Drive</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>North Battleford</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S9A 4A8</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>North Battleford</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Bryan Nylander, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 937-5120</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">17</SimpleData>
+<SimpleData name="Rec_Num">17</SimpleData>
+<SimpleData name="RC_Name">North West Regional College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">North Battleford Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 937-5100</SimpleData>
+<SimpleData name="Mail_Addr">10702 Diefenbaker Drive</SimpleData>
+<SimpleData name="Mail_Geo_Name">North Battleford</SimpleData>
+<SimpleData name="Mail_P_Code">S9A 4A8</SimpleData>
+<SimpleData name="Geo_Name">North Battleford</SimpleData>
+<SimpleData name="CEO_Name">Bryan Nylander, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 937-5120</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-108.292866032614,52.7797310556565,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_18">
+<name>kml_18</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>18</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>18</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>North West Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Meadow Lake Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 234-5100</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>720 5th Street West</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Meadow Lake</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S9X 1T9</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Meadow Lake</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Bryan Nylander, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 937-5120</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">18</SimpleData>
+<SimpleData name="Rec_Num">18</SimpleData>
+<SimpleData name="RC_Name">North West Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Meadow Lake Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 234-5100</SimpleData>
+<SimpleData name="Mail_Addr">720 5th Street West</SimpleData>
+<SimpleData name="Mail_Geo_Name">Meadow Lake</SimpleData>
+<SimpleData name="Mail_P_Code">S9X 1T9</SimpleData>
+<SimpleData name="Geo_Name">Meadow Lake</SimpleData>
+<SimpleData name="CEO_Name">Bryan Nylander, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 937-5120</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-108.434064156914,54.1260923651433,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_19">
+<name>kml_19</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>19</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>19</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Parkland College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Melville Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 728-4471</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>200 Block – 9th Avenue East</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Melville</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0A 2P0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Melville</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. Fay Myers, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 728-6588</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">19</SimpleData>
+<SimpleData name="Rec_Num">19</SimpleData>
+<SimpleData name="RC_Name">Parkland College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Melville Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 728-4471</SimpleData>
+<SimpleData name="Mail_Addr">200 Block – 9th Avenue East</SimpleData>
+<SimpleData name="Mail_Geo_Name">Melville</SimpleData>
+<SimpleData name="Mail_P_Code">S0A 2P0</SimpleData>
+<SimpleData name="Geo_Name">Melville</SimpleData>
+<SimpleData name="CEO_Name">Dr. Fay Myers, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 728-6588</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.802081666031,50.9307550267025,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_20">
+<name>kml_20</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>20</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>20</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Parkland College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Canora Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 563-6808</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>418 Main Street</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Canora</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0A 0L0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Canora</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. Fay Myers, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 728-6588</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">20</SimpleData>
+<SimpleData name="Rec_Num">20</SimpleData>
+<SimpleData name="RC_Name">Parkland College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Canora Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 563-6808</SimpleData>
+<SimpleData name="Mail_Addr">418 Main Street</SimpleData>
+<SimpleData name="Mail_Geo_Name">Canora</SimpleData>
+<SimpleData name="Mail_P_Code">S0A 0L0</SimpleData>
+<SimpleData name="Geo_Name">Canora</SimpleData>
+<SimpleData name="CEO_Name">Dr. Fay Myers, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 728-6588</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.433581086744,51.6320545749784,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_21">
+<name>kml_21</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>21</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>21</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Parkland College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Esterhazy Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 745-2878</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>501 Kennedy Drive</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Esterhazy</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0A 0X0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Esterhazy</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. Fay Myers, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 728-6588</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">21</SimpleData>
+<SimpleData name="Rec_Num">21</SimpleData>
+<SimpleData name="RC_Name">Parkland College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Esterhazy Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 745-2878</SimpleData>
+<SimpleData name="Mail_Addr">501 Kennedy Drive</SimpleData>
+<SimpleData name="Mail_Geo_Name">Esterhazy</SimpleData>
+<SimpleData name="Mail_P_Code">S0A 0X0</SimpleData>
+<SimpleData name="Geo_Name">Esterhazy</SimpleData>
+<SimpleData name="CEO_Name">Dr. Fay Myers, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 728-6588</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.075725311609,50.6565947812915,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_22">
+<name>kml_22</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>22</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>22</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Parkland College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Fort Qu'Appelle Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 332-5416</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>740 Sioux Avenue</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Fort Qu'Appelle</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0G 1S0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Fort Qu'Appelle</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. Fay Myers, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 728-6588</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">22</SimpleData>
+<SimpleData name="Rec_Num">22</SimpleData>
+<SimpleData name="RC_Name">Parkland College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Fort Qu'Appelle Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 332-5416</SimpleData>
+<SimpleData name="Mail_Addr">740 Sioux Avenue</SimpleData>
+<SimpleData name="Mail_Geo_Name">Fort Qu'Appelle</SimpleData>
+<SimpleData name="Mail_P_Code">S0G 1S0</SimpleData>
+<SimpleData name="Geo_Name">Fort Qu'Appelle</SimpleData>
+<SimpleData name="CEO_Name">Dr. Fay Myers, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 728-6588</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-103.794263297167,50.7673987166281,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_23">
+<name>kml_23</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>23</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>23</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Parkland College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Yorkton Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 783-6566</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>200 Prystai Way</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Yorkton</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S3N 4G4</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Yorkton</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Dr. Fay Myers, CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 728-6588</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">23</SimpleData>
+<SimpleData name="Rec_Num">23</SimpleData>
+<SimpleData name="RC_Name">Parkland College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Yorkton Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 783-6566</SimpleData>
+<SimpleData name="Mail_Addr">200 Prystai Way</SimpleData>
+<SimpleData name="Mail_Geo_Name">Yorkton</SimpleData>
+<SimpleData name="Mail_P_Code">S3N 4G4</SimpleData>
+<SimpleData name="Geo_Name">Yorkton</SimpleData>
+<SimpleData name="CEO_Name">Dr. Fay Myers, CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 728-6588</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.460347164742,51.2119492085932,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_24">
+<name>kml_24</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>24</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>24</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Weyburn Administration Office</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 848-2500</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>#8 – 4th Street, Box 2003</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Weyburn</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S4H 2Z9</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Weyburn</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">24</SimpleData>
+<SimpleData name="Rec_Num">24</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Weyburn Administration Office</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 848-2500</SimpleData>
+<SimpleData name="Mail_Addr">#8 – 4th Street, Box 2003</SimpleData>
+<SimpleData name="Mail_Geo_Name">Weyburn</SimpleData>
+<SimpleData name="Mail_P_Code">S4H 2Z9</SimpleData>
+<SimpleData name="Geo_Name">Weyburn</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-103.845238297473,49.6641188890638,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_25">
+<name>kml_25</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>25</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>25</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Main</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Weyburn Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 848-2500</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>629 King Street, Box 2003</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Weyburn</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S4H 2Z9</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Weyburn</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">25</SimpleData>
+<SimpleData name="Rec_Num">25</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Main</SimpleData>
+<SimpleData name="Campus_Name">Weyburn Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 848-2500</SimpleData>
+<SimpleData name="Mail_Addr">629 King Street, Box 2003</SimpleData>
+<SimpleData name="Mail_Geo_Name">Weyburn</SimpleData>
+<SimpleData name="Mail_P_Code">S4H 2Z9</SimpleData>
+<SimpleData name="Geo_Name">Weyburn</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-103.845238297473,49.6641188890638,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_26">
+<name>kml_26</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>26</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>26</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Assiniboia Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 642-4287</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>201 Third Avenue West, Box 1059 - Prince of Wales</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Assiniboia</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0H 0B0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Assiniboia</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">26</SimpleData>
+<SimpleData name="Rec_Num">26</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Assiniboia Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 642-4287</SimpleData>
+<SimpleData name="Mail_Addr">201 Third Avenue West, Box 1059 - Prince of Wales</SimpleData>
+<SimpleData name="Mail_Geo_Name">Assiniboia</SimpleData>
+<SimpleData name="Mail_P_Code">S0H 0B0</SimpleData>
+<SimpleData name="Geo_Name">Assiniboia</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-105.990846118169,49.6305050269131,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_27">
+<name>kml_27</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>27</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>27</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Saskatchewan Energy Training Institute Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306)  634-4795</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>532 Bourquin Road</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Estevan</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S4A 2A7</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Estevan</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">27</SimpleData>
+<SimpleData name="Rec_Num">27</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Saskatchewan Energy Training Institute Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306)  634-4795</SimpleData>
+<SimpleData name="Mail_Addr">532 Bourquin Road</SimpleData>
+<SimpleData name="Mail_Geo_Name">Estevan</SimpleData>
+<SimpleData name="Mail_P_Code">S4A 2A7</SimpleData>
+<SimpleData name="Geo_Name">Estevan</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.98807289982,49.142755373185,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_28">
+<name>kml_28</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>28</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>28</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Estevan Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 634-4795</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>255 Spruce Drive, Box 5000-130</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Estevan</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S4A 2V6</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Estevan</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">28</SimpleData>
+<SimpleData name="Rec_Num">28</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Estevan Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 634-4795</SimpleData>
+<SimpleData name="Mail_Addr">255 Spruce Drive, Box 5000-130</SimpleData>
+<SimpleData name="Mail_Geo_Name">Estevan</SimpleData>
+<SimpleData name="Mail_P_Code">S4A 2V6</SimpleData>
+<SimpleData name="Geo_Name">Estevan</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.98807289982,49.142755373185,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_29">
+<name>kml_29</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>29</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>29</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Indian Head Basic Education Centre</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 695-2228</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>708 Otterloo Street, Box 248</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Indian Head</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0G 2K0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Indian Head</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">29</SimpleData>
+<SimpleData name="Rec_Num">29</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Indian Head Basic Education Centre</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 695-2228</SimpleData>
+<SimpleData name="Mail_Addr">708 Otterloo Street, Box 248</SimpleData>
+<SimpleData name="Mail_Geo_Name">Indian Head</SimpleData>
+<SimpleData name="Mail_P_Code">S0G 2K0</SimpleData>
+<SimpleData name="Geo_Name">Indian Head</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-103.667057987856,50.534316963043,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_30">
+<name>kml_30</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>30</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>30</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Moosomin Campus</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 435-4631</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>610 Park Avenue, Box 1457</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Moosomin</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0H 3N0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Moosomin</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">30</SimpleData>
+<SimpleData name="Rec_Num">30</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Moosomin Campus</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 435-4631</SimpleData>
+<SimpleData name="Mail_Addr">610 Park Avenue, Box 1457</SimpleData>
+<SimpleData name="Mail_Geo_Name">Moosomin</SimpleData>
+<SimpleData name="Mail_P_Code">S0H 3N0</SimpleData>
+<SimpleData name="Geo_Name">Moosomin</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-101.665829186401,50.1428511747607,0 </coordinates>
+</Point>
+</Placemark>
+<Placemark id="kml_31">
+<name>kml_31</name>
+<Snippet> </Snippet>
+<description><![CDATA[<center><table><tr><th colspan='2' align='center'><em>Attributes</em></th></tr><tr bgcolor="#E3E3F3">
+<th>Object_ID</th>
+<td>31</td>
+</tr><tr bgcolor="">
+<th>Rec_Num</th>
+<td>31</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>RC_Name</th>
+<td>Southeast Regional College</td>
+</tr><tr bgcolor="">
+<th>Campus_Type</th>
+<td>Other</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Campus_Name</th>
+<td>Whitewood Learning Centre</td>
+</tr><tr bgcolor="">
+<th>Campus_Ph_Num</th>
+<td>(306) 735-5263</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_Addr</th>
+<td>708 5th Avenue, Box 250</td>
+</tr><tr bgcolor="">
+<th>Mail_Geo_Name</th>
+<td>Whitewood</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Mail_P_Code</th>
+<td>S0G 5C0</td>
+</tr><tr bgcolor="">
+<th>Geo_Name</th>
+<td>Whitewood</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>CEO_Name</th>
+<td>Jody Holzmiller, Interim CEO</td>
+</tr><tr bgcolor="">
+<th>CEO_Ph_Num</th>
+<td>(306) 848-2512</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Prov_Name</th>
+<td>SK</td>
+</tr><tr bgcolor="">
+<th>Country_Name</th>
+<td>Canada</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Rec_To_Dte</th>
+<td>20120420</td>
+</tr><tr bgcolor="">
+<th>Data_Source</th>
+<td>AEEI_Heather George</td>
+</tr><tr bgcolor="#E3E3F3">
+<th>Geocode_Source</th>
+<td>ED_Geomatics_BA</td>
+</tr><tr bgcolor="">
+<th>Geocode_Level</th>
+<td>UM</td>
+</tr></table></center>]]></description>
+<Style>
+<LineStyle>
+<color>ff00a325</color>
+</LineStyle>
+</Style>
+<ExtendedData>
+<SchemaData schemaUrl="#RC_Campus_SK_2012_04_20_point">
+<SimpleData name="Object_ID">31</SimpleData>
+<SimpleData name="Rec_Num">31</SimpleData>
+<SimpleData name="RC_Name">Southeast Regional College</SimpleData>
+<SimpleData name="Campus_Type">Other</SimpleData>
+<SimpleData name="Campus_Name">Whitewood Learning Centre</SimpleData>
+<SimpleData name="Campus_Ph_Num">(306) 735-5263</SimpleData>
+<SimpleData name="Mail_Addr">708 5th Avenue, Box 250</SimpleData>
+<SimpleData name="Mail_Geo_Name">Whitewood</SimpleData>
+<SimpleData name="Mail_P_Code">S0G 5C0</SimpleData>
+<SimpleData name="Geo_Name">Whitewood</SimpleData>
+<SimpleData name="CEO_Name">Jody Holzmiller, Interim CEO</SimpleData>
+<SimpleData name="CEO_Ph_Num">(306) 848-2512</SimpleData>
+<SimpleData name="Prov_Name">SK</SimpleData>
+<SimpleData name="Country_Name">Canada</SimpleData>
+<SimpleData name="Rec_To_Dte">20120420</SimpleData>
+<SimpleData name="Data_Source">AEEI_Heather George</SimpleData>
+<SimpleData name="Geocode_Source">ED_Geomatics_BA</SimpleData>
+<SimpleData name="Geocode_Level">UM</SimpleData>
+</SchemaData>
+</ExtendedData>
+<Point>
+<coordinates>-102.266622967316,50.3286079827778,0 </coordinates>
+</Point>
+</Placemark>
+</Folder>
+</Document></kml>
