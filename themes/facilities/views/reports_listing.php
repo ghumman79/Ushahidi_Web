@@ -65,7 +65,7 @@
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;
                 $incident_tooltip = $incident_title . '&#13;' . strip_tags(str_replace('<br/>', '&#13;', $incident_description));
-                $incident_thumb = url::site() . "/themes/facilities/images/report-gallery.jpg";
+                $incident_thumb = url::site() . "/themes/facilities/images/placeholder-report.png";
                 if ($incident->media->count()) {
                     foreach ($incident->media as $photo) {
                         if ($photo->media_thumb) {
@@ -146,24 +146,5 @@
         array_push($reports, $item);
     }
 ?>
-<?php
-    $layers = array();
-    foreach (ORM::factory('layer')->where('layer_visible', 1)->find_all() as $layer) {
-        $lay = array();
-        $lay['id'] = $layer->id;
-        $lay['name'] = $layer->layer_name;
-        $lay['color'] = $layer->layer_color;
-        if ($layer->layer_url) {
-            $lay['url'] = $layer->layer_url;
-        }
-        else {
-            $lay['url'] = url::convert_uploaded_to_abs($layer->layer_file);
-        }
-        array_push($layers, $lay);
-    }
-?>
-    $(function(){
-        $INCIDENTS = <?php echo json_encode($reports); ?>;
-        $LAYERS = <?php echo json_encode($layers); ?>;
-    });
+    var $INCIDENTS = <?php echo json_encode($reports); ?>;
 </script>

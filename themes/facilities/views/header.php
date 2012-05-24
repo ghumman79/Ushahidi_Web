@@ -11,6 +11,9 @@
     <?php } ?>
     <link rel="stylesheet" type="text/css" href="/themes/facilities/css/uofs.css">
     <link rel="icon" type="image/png" href="/themes/facilities/images/uofs/favicon.ico">
+
+    <script type="text/javascript" src="/themes/facilities/js/reports.js"></script>
+    <script type="text/javascript" src="/themes/facilities/js/main.js"></script>
 </head>
 <body id="page">
     <div id="header">

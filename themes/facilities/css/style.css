@@ -361,6 +361,11 @@ div#reports {
     border-top: 1px solid #BDBDBD;
 }
 
+div#reports-box {
+    float:none !important;
+    width:100% !important;
+}
+
 div#details {
     position:absolute;
     top:40px;
@@ -501,10 +506,6 @@ div#pagination ul.toggle a.pagination_map {
 
 div#pagination ul.toggle a.pagination_gallery {
     background-image:url("../images/gallery.png");
-}
-
-div#pagination ul.toggle a.pagination_checkin {
-    background-image:url("../images/checkin.png");
 }
 
 div#pagination .pagination {
@@ -980,7 +981,7 @@ div.report-item .report-image {
     margin-left:0;
     margin-right:10px;
     margin-bottom:5px;
-    background-image:url(../images/report-thumb-gallery.jpg);
+    background-image:url(../images/placeholder-report.png);
 }
 
 .report-thumbnail {
@@ -998,7 +999,7 @@ div.report-item .report-image {
 .report-thumbnail img {
     width:200px;
     margin:0;
-    background-image:url(../images/report-thumb-gallery.jpg);
+    background-image:url(../images/placeholder-report.png);
 }
 
 div#list {
@@ -1098,6 +1099,7 @@ li.checkin {
     margin-top:auto;
     margin-bottom:auto;
     vertical-align:middle;
+    background-image:url(../images/placeholder-checkin.png);
 }
 
 .checkin-comment {
