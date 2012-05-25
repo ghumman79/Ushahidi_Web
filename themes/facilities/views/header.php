@@ -6,14 +6,14 @@
     <?php echo $header_block; ?>
     <?php Event::run('ushahidi_action.header_scripts'); ?>
     <?php if (Router::$controller == 'main') { ?>
-    <script type="text/javascript" src="/media/js/picbox.js"></script>
-    <link rel="stylesheet" type="text/css" href="/media/css/picbox/picbox.css">
+    <script type="text/javascript" src="<?php echo url::site(); ?>media/js/picbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>media/css/picbox/picbox.css">
     <?php } ?>
-    <link rel="stylesheet" type="text/css" href="/themes/facilities/css/uofs.css">
-    <link rel="icon" type="image/png" href="/themes/facilities/images/uofs/favicon.ico">
-
-    <script type="text/javascript" src="/themes/facilities/js/reports.js"></script>
-    <script type="text/javascript" src="/themes/facilities/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>themes/facilities/css/uofs.css">
+    <link rel="icon" type="image/png" href="<?php echo url::site(); ?>themes/facilities/images/uofs/favicon.ico">
+    <!--BUG IN HEADER LOGIC, NEED TO RE-INCLUDE THEME JAVASCRIPT TO OVERRIDE APPLICATION JAVASCRIPT-->
+    <script type="text/javascript" src="<?php echo url::site(); ?>themes/facilities/js/reports.js"></script>
+    <script type="text/javascript" src="<?php echo url::site(); ?>themes/facilities/js/main.js"></script>
 </head>
 <body id="page">
     <div id="header">

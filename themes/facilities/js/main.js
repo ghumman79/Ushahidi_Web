@@ -22,7 +22,7 @@ function listCheckins(sqllimit,sqloffset) {
                 }
                 else {
                     var $div = $('<div class="checkin-image">');
-                    var $img = $('<img src="/themes/facilities/images/placeholder-checkin.png">');
+                    var $img = $('<img src="' + $PHRASES.server +'themes/facilities/images/placeholder-checkin.png">');
                     $img.appendTo($div);
                     $div.appendTo($li);
                 }

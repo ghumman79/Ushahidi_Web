@@ -30,11 +30,12 @@
 </div>
 <script type="text/javascript">
     var $PHRASES = <?php echo json_encode(
-        array('reports' => Kohana::lang('ui_main.reports'),
-            'checkins' => Kohana::lang('ui_admin.checkins'),
-            'no_checkins' => Kohana::lang('ui_main.no') . " " .Kohana::lang('ui_admin.checkins'),
-            'previous' => Kohana::lang('ui_main.previous'),
-            'next' => Kohana::lang('ui_main.next'))); ?>;
+        array('server' => url::site(),
+              'reports' => Kohana::lang('ui_main.reports'),
+              'checkins' => Kohana::lang('ui_admin.checkins'),
+              'no_checkins' => Kohana::lang('ui_main.no') . " " .Kohana::lang('ui_admin.checkins'),
+              'previous' => Kohana::lang('ui_main.previous'),
+              'next' => Kohana::lang('ui_main.next'))); ?>;
     $(function(){
         <?php if ( Kohana::config('settings.checkins') ) { ?>
         listCheckins(10,0);

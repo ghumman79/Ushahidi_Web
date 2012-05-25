@@ -20,13 +20,15 @@
 </div>
 <script type="text/javascript">
     var $PHRASES = <?php echo json_encode(
-        array('reports' => Kohana::lang('ui_main.reports'),
-            'checkins' => Kohana::lang('ui_admin.checkins'))); ?>;
+        array('server' => url::site(),
+              'reports' => Kohana::lang('ui_main.reports'),
+              'checkins' => Kohana::lang('ui_admin.checkins'))); ?>;
     $(function(){
         $(window).resize(function() {
             adjustCategories();
         });
         splitParentCategories();
+        markSelectedCategories();
         adjustCategories();
         attachCategorySelected();
         addReportViewOptionsEvents();

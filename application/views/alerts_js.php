@@ -66,7 +66,7 @@
 			TODO - Add Yahoo and Bing Geocoding Services
 			 */
 
-			$('.btn_find').on('click', function () {
+			$('.btn_find').live('click', function () {
 				geoCode();
 			});
 

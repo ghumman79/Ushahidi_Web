@@ -181,24 +181,18 @@ function switchViews(view) {
 }
 function showIncidentMap() {
     $.each($LAYERS, function(i, layer) {
-        var kmlStyle = OpenLayers.Util.extend({}, OpenLayers.Feature.Vector.style['default']);
-        kmlStyle.graphicOpacity = 0.5;
-        kmlStyle.graphicWidth = 10;
-        kmlStyle.graphicHeight = 10;
         var kmlLayers = map.getLayersByName(layer.name);
         for (var j = 0; j < kmlLayers.length; j++) {
             map.removeLayer(kmlLayers[j]);
         }
         var kmlLayer = new OpenLayers.Layer.Vector(layer.name, {
-            style: kmlStyle,
             projection: map.displayProjection,
             strategies: [new OpenLayers.Strategy.Fixed()],
             protocol: new OpenLayers.Protocol.HTTP({
                 url: layer.url,
                 format: new OpenLayers.Format.KML({
                     extractStyles: true,
-                    extractAttributes: true
-                })
+                    extractAttributes: true})
             })
         });
         map.addLayer(kmlLayer);
@@ -386,10 +380,6 @@ function showCheckinData(event) {
     content += "<div class=\"infowindow_meta\">";
     content += "</div>";
 
-    if (content.search("<?php echo '<'; ?>script") != -1) {
-        //content = "Content contained Javascript! Escaped content below.<br />" + content.replace(/<?php echo '<'; ?>/g, "&lt;");
-    }
-
     popup = new OpenLayers.Popup.FramedCloud("chicken",
         event.feature.geometry.getBounds().getCenterLonLat(),
         new OpenLayers.Size(100,100),
@@ -401,4 +391,18 @@ function showCheckinData(event) {
 function createIncidentMap() {
     map = createMap('map', latitude, longitude, defaultZoom);
     map.addControl(new OpenLayers.Control.LoadingPanel({minSize: new OpenLayers.Size(573, 366)}) );
+}
+function markSelectedCategories() {
+    var parameters = getParameter('c');
+    if (parameters) {
+        var items = parameters.split(',');
+        for(var i = 0; i < items.length; i++){
+            var category = $("#filter_link_cat_" + items[i]);
+            category.addClass("selected");
+            category.parent().addClass("selected");
+        }
+    }
+}
+function getParameter(name) {
+   return decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]);
 }

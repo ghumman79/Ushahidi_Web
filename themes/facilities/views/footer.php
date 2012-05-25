@@ -1,11 +1,11 @@
 <div id="footer">
     <div id="footer-credits">
-        <a href="http://www.ushahidi.com" title="Powered by Ushahidi"><img id="ushahidi" src="/themes/facilities/images/footer-logo.png"/></a>
+        <a href="http://www.ushahidi.com" title="Powered by Ushahidi"><img id="ushahidi" src="<?php echo url::site(); ?>themes/facilities/images/footer-logo.png"/></a>
     </div>
     <div id="footer-links">
         <ul>
-            <li class="first"><a title="<?php echo Kohana::lang('ui_main.home'); ?>" href="/main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
-            <li><a title="<?php echo Kohana::lang('ui_main.reports'); ?>" href="/reports"><?php echo Kohana::lang('ui_main.reports'); ?></a></li>
+            <li class="first"><a title="<?php echo Kohana::lang('ui_main.home'); ?>" href="<?php echo url::site(); ?>main"><?php echo Kohana::lang('ui_main.home'); ?></a></li>
+            <li><a title="<?php echo Kohana::lang('ui_main.reports'); ?>" href="<?php echo url::site(); ?>reports"><?php echo Kohana::lang('ui_main.reports'); ?></a></li>
             <?php if(Kohana::config('settings.allow_reports')) { ?>
                 <li><a title="<?php echo Kohana::lang('ui_main.submit'); ?>" href="<?php echo url::site()."reports/submit"; ?>"><?php echo Kohana::lang('ui_main.submit'); ?></a></li>
             <?php } ?>
@@ -19,7 +19,7 @@
                 <li><a title="<?php echo $page->page_tab; ?>" href="<?php echo url::site()."page/index/".$page->id; ?>"><?php echo $page->page_tab; ?></a></li>
             <?php }?>
             <?php if(Kohana::config('settings.allow_feed')) { ?>
-                <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="/feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
+                <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="<?php echo url::site(); ?>feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
             <?php }?>
         </ul>
     </div>
