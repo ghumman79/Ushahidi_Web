@@ -18,6 +18,9 @@
             <?php foreach (ORM::factory('page')->where('page_active', '1')->find_all() as $page) { ?>
                 <li><a title="<?php echo $page->page_tab; ?>" href="<?php echo url::site()."page/index/".$page->id; ?>"><?php echo $page->page_tab; ?></a></li>
             <?php }?>
+            <?php if (ORM::factory('feed_item')->find_all()->count() > 0) { ?>
+                <li><a title="<?php echo Kohana::lang('ui_main.news'); ?>" href="<?php echo url::site(); ?>feeds/"><?php echo Kohana::lang('ui_main.news'); ?></a></li>
+            <?php }?>
             <?php if(Kohana::config('settings.allow_feed')) { ?>
                 <li><a title="<?php echo Kohana::lang('ui_main.rss'); ?>" href="<?php echo url::site(); ?>feed/"><?php echo Kohana::lang('ui_main.rss'); ?></a></li>
             <?php }?>

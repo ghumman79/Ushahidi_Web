@@ -10,13 +10,23 @@
         <div id="main-categories" class="column">
             <?php foreach ($categories as $category => $category_info) {
                 $category_title = $category_info[0];
+                $category_image = ($category_info[2] != NULL) ? url::convert_uploaded_to_abs($category_info[2]) : NULL;
                 if ($category_title !== 'Trusted Reports') {
                     echo '<ul class="box">';
-                    echo '<li class="title"><a title="'. $category_title . '" href="' . url::site() . 'reports/?c=' . $category . '">' . $category_title . '</a></li>';
+                    echo '<li class="title"><a title="'. $category_title . '" href="' . url::site() . 'reports/?c=' . $category . '">';
+                    if ($category_image) {
+                        echo '<img src="' . $category_image . '"/>';
+                    }
+                    echo $category_title . '</a></li>';
                     if (sizeof($category_info[3]) != 0) {
                         foreach ($category_info[3] as $child => $child_info) {
                             $child_title = $child_info[0];
-                            echo '<li><a title="'. $child_title . '" href="' . url::site() . 'reports/?c=' . $child . '">' . $child_title . '</a></li>';
+                            $child_image = ($child_info[2] != NULL) ? url::convert_uploaded_to_abs($child_info[2]) : NULL;
+                            echo '<li><a title="'. $child_title . '" href="' . url::site() . 'reports/?c=' . $child . '">';
+                            if ($child_image) {
+                                echo '<img src="' . $child_image . '"/>';
+                            }
+                            echo $child_title . '</a></li>';
                         }
                     }
                     echo '</ul>';

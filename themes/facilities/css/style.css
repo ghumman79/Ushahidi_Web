@@ -440,6 +440,13 @@ div#details {
     text-transform:uppercase;
 }
 
+#main-categories ul li img {
+    max-width:16px;
+    max-height:16px;
+    margin-right:2px;
+    vertical-align:text-top;
+}
+
 /* ############################### PAGINATION ############################### */
 
 div#pagination .pager {
@@ -1383,6 +1390,9 @@ div.report-additional-reports {
     margin:0;
     padding:0;
 }
-.olLayerGooglePoweredBy.olLayerGoogleV3.gmnoprint {
+div.olLayerGooglePoweredBy,
+div.olLayerGoogleCopyright,
+div.olLayerGoogleV3 {
     visibility:hidden !important;
+    display:none !important;
 }

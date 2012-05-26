@@ -27,7 +27,7 @@
                 </li>
             <?php } ?>
             <li class="more">
-                <a href="<?php echo url::site() . '/reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
+                <a href="<?php echo url::site() . 'reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
             </li>
             </ul>
         <?php } ?>

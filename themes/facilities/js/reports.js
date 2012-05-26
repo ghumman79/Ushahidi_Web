@@ -87,7 +87,7 @@ function fetchReports() {
     }
     $("#pagination").css("display", "none");
     $("#reports").css("bottom", "0");
-    $("#reports").html("<img id=\"loading\" src=\"/themes/facilities/images/loading_large.gif\" border=\"0\"/>");
+    $("#reports").html("<img id=\"loading\" src=\"" + $PHRASES.server + "themes/facilities/images/loading_large.gif\" border=\"0\"/>");
     $.get('/reports/fetch_reports',
         urlParameters,
         function(data) {
