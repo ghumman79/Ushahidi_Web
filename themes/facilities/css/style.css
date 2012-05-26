@@ -1067,6 +1067,11 @@ div.report-comments {
     border-bottom: none;
 }
 
+div.private {
+    color:gray;
+    font-size:70%;
+}
+
 /* ############################### CHECKINS ############################### */
 
 li.checkin {
@@ -1390,6 +1395,7 @@ div.report-additional-reports {
     margin:0;
     padding:0;
 }
+
 div.olLayerGooglePoweredBy,
 div.olLayerGoogleCopyright,
 div.olLayerGoogleV3 {

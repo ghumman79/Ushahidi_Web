@@ -418,7 +418,7 @@
 	 */
 	 function switchViews(view)
 	 {
-         // Hide both divs
+		 // Hide both divs
 		$("#rb_list-view, #rb_map-view").hide();
 		
 		// Show the appropriate div

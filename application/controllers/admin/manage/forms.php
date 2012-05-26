@@ -3,14 +3,14 @@
  * This controller is used to add/ remove Custom Forms
  *
  * PHP version 5
- * LICENSE: This source file is subject to LGPL license 
+ * LICENSE: This source file is subject to LGPL license
  * that is available through the world-wide-web at the following URI:
  * http://www.gnu.org/copyleft/lesser.html
- * @author     Ushahidi Team <team@ushahidi.com> 
+ * @author     Ushahidi Team <team@ushahidi.com>
  * @package    Ushahidi - http://source.ushahididev.com
  * @subpackage Admin
  * @copyright  Ushahidi - http://www.ushahidi.com
- * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL) 
+ * @license    http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License (LGPL)
  */
 
 class Forms_Controller extends Admin_Controller {
@@ -19,22 +19,22 @@ class Forms_Controller extends Admin_Controller {
 	{
 		parent::__construct();
 		$this->template->this_page = 'manage';
-		
+
 		// If user doesn't have access, redirect to dashboard
 		if ( ! admin::permissions($this->user, "manage"))
 		{
 			url::redirect(url::site().'admin/dashboard');
 		}
 	}
-	
-	
+
+
 	/**
 	* Lists the forms.
     */
 	public function index()
 	{
 		$this->template->content = new View('admin/forms');
-		
+
 		// Setup and initialize form field names
 		$form = array
 	    (
@@ -45,21 +45,21 @@ class Forms_Controller extends Admin_Controller {
 	        'form_active' => '',
 			'field_type' => ''
 	    );
-	
+
 		// Copy the form as errors, so the errors will be stored with keys corresponding to the form field names
 	    $errors = $form;
 		$form_error = FALSE;
 		$form_saved = FALSE;
 		$form_action = "";
 		$form_id = "";
-		
-		if( $_POST ) 
+
+		if( $_POST )
 		{
 			$post = Validation::factory( $_POST );
-			
+
 			 //  Add some filters
 	        $post->pre_filter('trim', TRUE);
-	
+
 			if ($post->action == 'a')		// Add Action
 			{
 				// Add some rules, the input field, followed by a list of checks, carried out in order
@@ -69,26 +69,26 @@ class Forms_Controller extends Admin_Controller {
 			elseif ($post->action == 'd')
 			{
 				if ($_POST['form_id'] == 1)
-				{ 
+				{
 					// Default Form Cannot Be Deleted
 					$post->add_error('form_id','default');
 				}
 			}
-			
+
 			if( $post->validate() )
 			{
 				$form_id = $post->form_id;
-				
+
 				$custom_form = new Form_Model($form_id);
 				if ($post->action == 'd')
-				{ 
+				{
 					// Delete Action
 					$custom_form->delete( $form_id );
 					$form_saved = TRUE;
 					$form_action = strtoupper(Kohana::lang('ui_admin.deleted'));
 				}
 				elseif ($post->action == 'h')
-				{ 
+				{
 					// Active/Inactive Action
 					if ($custom_form->loaded)
 					{
@@ -109,10 +109,10 @@ class Forms_Controller extends Admin_Controller {
 					$form_saved = TRUE;
 					$form_action = strtoupper(Kohana::lang('ui_admin.created_edited'));
 				}
-				
+
 				// Empty $form array
 				array_fill_keys($form, '');
-				
+
 			}
 			else
 			{
@@ -124,7 +124,7 @@ class Forms_Controller extends Admin_Controller {
 				$form_error = TRUE;
 			}
 		}
-		
+
         // Pagination
         $pagination = new Pagination(array(
                             'query_string' => 'page',
@@ -135,7 +135,7 @@ class Forms_Controller extends Admin_Controller {
 		$forms = ORM::factory('form')
 				->orderby('id', 'asc')
 				->find_all($this->items_per_page, $pagination->sql_offset);
-				
+
 		// Form Field Types
 		$form_field_types = array
 		(
@@ -150,7 +150,7 @@ class Forms_Controller extends Admin_Controller {
 			9 => Kohana::lang('ui_admin.divider_end_field'),
 			// 4 => 'Add Attachments'
 		);
-		
+
 		$this->template->content->form = $form;
 		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
@@ -167,7 +167,7 @@ class Forms_Controller extends Admin_Controller {
 		$this->template->form_error = $form_error;
 	}
 
-	
+
 	/**
 	* Generates Form Field Entry Form (Add/Edit) via Ajax Request
     */
@@ -175,18 +175,18 @@ class Forms_Controller extends Admin_Controller {
 	{
 		$this->template = "";
 		$this->auto_render = FALSE;
-		
+
 		// Seelctor ID
 		$selector_id = (isset($_POST['selector_id']))? intval($_POST['selector_id']) : -1;
-		
+
 		// Form ID
 		$form_id = (isset($_POST['form_id']))? intval($_POST['form_id']) : 0;
-		
+
 		// Field ID
 		$field_id = (isset($_POST['field_id']))? intval($_POST['field_id']) : 0;
-		
+
 		$selector_content = "";
-		
+
 		if ($selector_id >= 0 AND $form_id > 0)
 		{
 			switch ($selector_id) {
@@ -224,8 +224,8 @@ class Forms_Controller extends Admin_Controller {
 		}
 		echo json_encode(array("status"=>"success", "message"=>$selector_content));
 	}
-	
-	
+
+
 	/**
 	 * Create/Edit & Save New Form Field
 	 */
@@ -233,7 +233,7 @@ class Forms_Controller extends Admin_Controller {
 	{
 		$this->template = "";
 		$this->auto_render = FALSE;
-		
+
 		// setup and initialize form field names
 		$form = array
 	    (
@@ -246,50 +246,50 @@ class Forms_Controller extends Admin_Controller {
 	    );
 		//  copy the form as errors, so the errors will be stored with keys corresponding to the form field names
 	    $errors = $form;
-		
+
 		$field_add_status = "";
 		$field_add_response = "";
-		
-		if ($_POST) 
+
+		if ($_POST)
 		{
 			// @todo Manually extract the data to be validated
-			$form_field_data = arr::extract($_POST, 'form_id', 'field_type', 'field_name', 'field_default', 'field_required', 
+			$form_field_data = arr::extract($_POST, 'form_id', 'field_type', 'field_name', 'field_default', 'field_required',
 				'field_width', 'field_height', 'field_isdate', 'field_ispublic_visible', 'field_ispublic_submit');
-			
+
 			// Sanitize the default value (if provided)
 			$form_field_data['field_default'] = $this->input->xss_clean($form_field_data['field_default']);
-			
+
 			// Form_Field_Model instance
 			$form_field = Form_Field_Model::is_valid_form_field($_POST['field_id'])
 				? ORM::factory('form_field', $_POST['field_id'])
 				: new Form_Field_Model();
 
-			
+
 			// Validate the form field data
 			if ($form_field->validate($form_field_data))
 			{
 				// Validation succeeded, proceed...
-				
+
 				// Check for new form field entry
 				$new_field = $form_field->loaded;
-				
+
 				// Save the new/modified form field entry
 				$form_field->save();
-				
+
 				// Get the form field id
 				$field_id = $form_field->id;
-				
+
 				// Save optional values
 				if (isset($_POST['field_options']))
 				{
 					foreach ($_POST['field_options'] as $name => $value)
 					{
 						$option_exists = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name',$name)->find();
-						
+
 						$option_entry = ($option_exists->loaded == TRUE)
 							? ORM::factory('form_field_option', $option_exists->id)
 							: new Form_Field_Option_Model();
-						
+
 						$option_entry->form_field_id = $field_id;
 						$option_entry->option_name = $name;
 						$option_entry->option_value = $value;
@@ -304,14 +304,14 @@ class Forms_Controller extends Admin_Controller {
 					$field_position = ORM::factory('form_field')
 										->where(array('form_id' => $form_field->form_id, 'id != ' => $field_id))
 										->count_all() + 1;
-					
+
 					$form_field->field_position = $field_position;
 					$form_field->save();
 				}
 
 				$field_add_status = "success";
 				$field_add_response = rawurlencode(customforms::get_current_fields($form_field->form_id, $this->user));
-				
+
 			}
 			else
 			{
@@ -320,12 +320,12 @@ class Forms_Controller extends Admin_Controller {
 
                // Populate the error fields, if any
                 $errors = arr::overwrite($errors, $form_field_data->errors('form'));
-                
+
 				// populate the response to this post request
 				$field_add_status = "error";
 				$field_add_response  = "";
 				$field_add_response .= "<ul>";
-				
+
 				foreach ($errors as $error_item => $error_description)
 				{
 					$field_add_response .= (!$error_description) ? '' : "<li>" . $error_description . "</li>";
@@ -333,11 +333,11 @@ class Forms_Controller extends Admin_Controller {
 				$field_add_response .= "</ul>";
 			}
 		}
-		
+
 		echo json_encode(array("status"=>$field_add_status, "response"=>$field_add_response));
 	}
-	
-	
+
+
 	/**
 	* Delete Form Field
     */
@@ -345,16 +345,16 @@ class Forms_Controller extends Admin_Controller {
 	{
 		$this->template = "";
 		$this->auto_render = FALSE;
-		
+
 		// Get the form id
 		$form_id = (isset($_POST['form_id']))? intval($_POST['form_id']) : 0;
-		
+
 		// Get the field id
 		$field_id = (isset($_POST['field_id']))? intval($_POST['field_id']) : 0;
-		
+
 		// To hold the return content
 		$return_content = "";
-		
+
 		if ($field_id > 0 AND $form_id > 0)
 		{
 			$form_field = ORM::factory('form_field', $field_id);
@@ -364,11 +364,11 @@ class Forms_Controller extends Admin_Controller {
 			}
 			$return_content = customforms::get_current_fields($form_id,$this->user);
 		}
-		
+
 		echo json_encode(array("status"=>"success", "response"=>$return_content));
 	}
-	
-	
+
+
 	/**
 	* Move Form Field Up or Down
 	* Positioning in layout
@@ -377,25 +377,25 @@ class Forms_Controller extends Admin_Controller {
 	{
 		$this->template = "";
 		$this->auto_render = FALSE;
-		
+
 		// Get the form id
 		$form_id = (isset($_POST['form_id']) AND intval($_POST['form_id']) > 0)
 			? intval($_POST['form_id'])
 			: 0;
-		
+
 		// Get the field id
 		$field_id = (isset($_POST['field_id']) AND intval($_POST['field_id']) > 0)
 			? intval($_POST['field_id'])
 			: 0;
-		
+
 		// Field position
 		$field_position = (isset($_POST['field_position']))? $_POST['field_position'] : "";
-		
+
 		$return_content = "";
-		
+
 		if ($field_position == 'u' OR $field_position == 'd')
 		{
-			
+
 			// Load This Field
 			$field = ORM::factory('form_field', $field_id);
 			if ($field->loaded == TRUE)
@@ -405,11 +405,11 @@ class Forms_Controller extends Admin_Controller {
 
 				// Get current position
 				$current_position = $field->field_position;
-				
+
 				if ($field_position == 'u' AND $current_position > 1)
 				{
 					// Move down the fields whose position value is greater
-					// than that of the selected field 
+					// than that of the selected field
 					$sql = "UPDATE %sform_field SET field_position = %d WHERE field_position = %d";
 					$this->db->query(sprintf($sql, $this->table_prefix, $current_position, $current_position-1));
 
@@ -418,19 +418,19 @@ class Forms_Controller extends Admin_Controller {
 					$field->save();
 				}
 				elseif ($field_position == 'd' AND $current_position != $total_fields)
-				{ 
+				{
 					// Move all other form fields upwards
 					$sql = "UPDATE %sform_field SET field_position = %d WHERE field_position = %d";
 					$this->db->query(sprintf($sql, $this->table_prefix,  $current_position, $current_position + 1));
-					
+
 					// Move the selected field downwards - increase its field position in the database
 					$field->field_position = $current_position + 1;
 					$field->save();
 				}
 			}
-			
+
 		}
-		
+
 		$return_content = customforms::get_current_fields($form_id,$this->user);
 		echo json_encode(array("status"=>"success", "response"=>$return_content));
 	}
@@ -443,14 +443,14 @@ class Forms_Controller extends Admin_Controller {
 	private function _get_public_state($field_ispublic_submit, $field_ispublic_visible)
 	{
 		$visibility_selection = array('0' => Kohana::lang('ui_admin.anyone_role'));
-		
-		$roles = ORM::factory('role')->where('id != 1')->orderby('access_level','asc')->find_all();
+
+		$roles = ORM::factory('role')->orderby('access_level','asc')->find_all();
 		foreach($roles as $role)
 		{
 			$visibility_selection[$role->id] = ucfirst($role->name);
 		}
 
-		$html ="<div class=\"forms_item\">"; 
+		$html ="<div class=\"forms_item\">";
 		$html .="	<strong>".Kohana::lang('ui_admin.ispublic_submit').":</strong><br />";
 		if (isset($field_ispublic_submit))
 			$html .=  form::dropdown('field_ispublic_submit',$visibility_selection,$field_ispublic_submit);
@@ -458,8 +458,8 @@ class Forms_Controller extends Admin_Controller {
 			$html .=  form::dropdown('field_ispublic_submit',$visibility_selection,'0');
 
 		$html .="</div>";
-		
-		$html .="<div class=\"forms_item\">"; 
+
+		$html .="<div class=\"forms_item\">";
 		$html .="	<strong>".Kohana::lang('ui_admin.ispublic_visible').":</strong><br />";
 		if (isset($field_ispublic_visible))
 			$html .=  form::dropdown('field_ispublic_visible',$visibility_selection,$field_ispublic_visible);
@@ -507,28 +507,28 @@ class Forms_Controller extends Admin_Controller {
 			$field_ispublic_visible = "0";
 			$field_ispublic_submit = "0";
 		}
-		
+
 		$html = "";
 		$html .="<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">";
 		$html .="<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">";
 		$html .="<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>";
 		if($type == "start")
 		{
-			$html .="<div class=\"forms_item\">"; 
-			$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"; 
+			$html .="<div class=\"forms_item\">";
+			$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />";
 			$html .= 	form::input('field_name', $field_name, ' class="text"');
-			$html .="</div>"; 
-			$html .="<div class=\"forms_item\">"; 
-			$html .="	<strong>".Kohana::lang('ui_admin.divider_class').":</strong><br />"; 
+			$html .="</div>";
+			$html .="<div class=\"forms_item\">";
+			$html .="	<strong>".Kohana::lang('ui_admin.divider_class').":</strong><br />";
 			$html .= 	form::input('field_default', $field_default, ' class="text"');
-			$html .="</div>"; 
+			$html .="</div>";
 		}else{
 			$html .="<input type=\"hidden\" name=\"field_name\" id=\"field_name\" value=\"BLANKDIV\">";
 			$html .="<input type=\"hidden\" name=\"field_default\" id=\"field_default\" value=\"BLANKDIV\">";
 		}
 		$html .="<input type=\"hidden\" name=\"field_required\" id=\"field_required\" value=\"FALSE\">";
 		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
-	
+
 		// toggle options
 		$toggle_default = '0';
 		$toggle_check = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_toggle')->find();
@@ -540,7 +540,7 @@ class Forms_Controller extends Admin_Controller {
 			'1' => Kohana::lang('ui_admin.field_toggle_yes_open'),
 			'2' => Kohana::lang('ui_admin.field_toggle_yes_close')
 		);
-		$html .="<div class=\"forms_item\">"; 
+		$html .="<div class=\"forms_item\">";
 		$html .="<strong>" . Kohana::lang('ui_admin.field_toggle') . ":</strong><br />";
 		$html .= form::dropdown('field_options[field_toggle]',$toggle_options,$toggle_default);
 		$html .="</div>";
@@ -552,7 +552,7 @@ class Forms_Controller extends Admin_Controller {
 		$html .="</div>";
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .=$this->_get_selector_js($form_id);
-		
+
 		return $html;
 	}
 
@@ -592,20 +592,20 @@ class Forms_Controller extends Admin_Controller {
 			$field_ispublic_visible = "0";
 			$field_ispublic_submit = "0";
 		}
-		
+
 		$html = "";
 		$html .="<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">";
 		$html .="<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">";
 		$html .="<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>";
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"; 
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />";
 		$html .= 	form::input('field_name', $field_name, ' class="text"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />";
 		$html .= 	form::input('field_default', $field_default, ' class="text"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
 		$html .="	<strong>".Kohana::lang('ui_admin.required').":</strong><br />";
 		if ($field_required != 1)
 		{
@@ -618,14 +618,14 @@ class Forms_Controller extends Admin_Controller {
 			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
 		}
 		$html .="</div>";
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_maxlength').":</strong><br />"; 
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_maxlength').":</strong><br />";
 		$html .= 	form::input('field_maxlength', $field_maxlength, ' class="text short"');
 		$html .="</div>";
-		
+
 		// is_public additions by george
 		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
-		
+
 		//datatype options
 		$datatype_default = '0';
 		$datatype_check = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_datatype')->find();
@@ -636,12 +636,12 @@ class Forms_Controller extends Admin_Controller {
 			'text' => Kohana::lang('ui_admin.field_datatype_text'),
 			'numeric' => Kohana::lang('ui_admin.field_datatype_numeric'),
 			'email' => Kohana::lang('ui_admin.header_email'),
-			'phonenumber' => Kohana::lang('ui_admin.phone') . " #" 
+			'phonenumber' => Kohana::lang('ui_admin.phone') . " #"
 		);
-		$html .="<div class=\"forms_item\">"; 
+		$html .="<div class=\"forms_item\">";
 		$html .="<strong>" . Kohana::lang('ui_admin.field_datatype') . ":</strong><br />";
 		$html .= form::dropdown('field_options[field_datatype]',$datatype_options, $datatype_default);
-		$html .="</div>";	
+		$html .="</div>";
 		//hidden options
 		$hidden_default = '0';
 		$hidden_check = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_hidden')->find();
@@ -652,7 +652,7 @@ class Forms_Controller extends Admin_Controller {
 			'0' => Kohana::lang('ui_main.no'),
 			'1' => Kohana::lang('ui_main.yes')
 		);
-		$html .="<div class=\"forms_item\">"; 
+		$html .="<div class=\"forms_item\">";
 		$html .="<strong>" . Kohana::lang('ui_admin.field_hidden') . ":</strong><br />";
 		$html .= form::dropdown('field_options[field_hidden]',$hidden_options, $hidden_default);
 		$html .="</div>";
@@ -664,11 +664,11 @@ class Forms_Controller extends Admin_Controller {
 		$html .="</div>";
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .=$this->_get_selector_js($form_id);
-		
+
 		return $html;
 	}
-	
-	
+
+
 	/**
 	* Generate TextArea Field Entry Form
     * @param int $form_id The id no. of the form
@@ -705,7 +705,7 @@ class Forms_Controller extends Admin_Controller {
 			$field_ispublic_visible = "0";
 			$field_ispublic_submit = "0";
 		}
-		
+
 		$html = "";
 		$html .="<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">";
 		$html .="<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">";
@@ -713,16 +713,16 @@ class Forms_Controller extends Admin_Controller {
 		$html .="<input type=\"hidden\" name=\"field_ispublic_visible\" id=\"field_id\" value=\"0\">";
 		$html .="<input type=\"hidden\" name=\"field_ispublic_submit\" id=\"field_id\" value=\"0\">";
 		$html .="<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>";
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"; 
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />";
 		$html .= 	form::input('field_name', $field_name, ' class="text"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />";
 		$html .= 	form::textarea('field_default', $field_default, ' class="text" style="width:438px;"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.required').":</strong><br />"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.required').":</strong><br />";
 		if ($field_required != 1)
 		{
 			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', FALSE) . "&nbsp;&nbsp;";
@@ -734,14 +734,14 @@ class Forms_Controller extends Admin_Controller {
 			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
 		}
 		$html .="</div>";
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_height').":</strong><br />"; 
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_height').":</strong><br />";
 		$html .= 	form::input('field_height', $field_height, ' class="text short"');
 		$html .="</div>";
-		
+
 		// is_public additions by george
 		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
-		
+
 		//datatype options
 		$datatype_default = '0';
 		$datatype_check = ORM::factory('form_field_option')->where('form_field_id',$field_id)->where('option_name','field_datatype')->find();
@@ -753,7 +753,7 @@ class Forms_Controller extends Admin_Controller {
 			'markup' => Kohana::lang('ui_admin.field_datatype_markup'),
 			// 'javascript' => Kohana::lang('ui_admin.field_datatype_javascript')
 		);
-		$html .="<div class=\"forms_item\">"; 
+		$html .="<div class=\"forms_item\">";
 		$html .="<strong>" . Kohana::lang('ui_admin.field_datatype') . ":</strong><br />";
 		$html .= form::dropdown('field_options[field_datatype]',$datatype_options, $datatype_default);
 		$html .="</div>";
@@ -769,7 +769,7 @@ class Forms_Controller extends Admin_Controller {
 			'0' => Kohana::lang('ui_main.no'),
 			'1' => Kohana::lang('ui_main.yes')
 		);
-		$html .="<div class=\"forms_item\">"; 
+		$html .="<div class=\"forms_item\">";
 		$html .="<strong>" . Kohana::lang('ui_admin.field_hidden') . ":</strong><br />";
 		$html .= form::dropdown('field_options[field_hidden]',$hidden_options, $hidden_default);
 		$html .="</div>";
@@ -781,10 +781,10 @@ class Forms_Controller extends Admin_Controller {
 		$html .="</div>";
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .=$this->_get_selector_js($form_id);
-		
+
 		return $html;
 	}
-		
+
 	/**
 	* Generate Date Field Entry Form
     * @param int $form_id The id no. of the form
@@ -821,20 +821,20 @@ class Forms_Controller extends Admin_Controller {
 			$field_ispublic_visible = "0";
 			$field_ispublic_submit = "0";
 		}
-		
+
 		$html = "";
 		$html .="<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">";
 		$html .="<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">";
 		$html .="<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>";
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"; 
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />";
 		$html .= 	form::input('field_name', $field_name, ' class="text"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
-		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
+		$html .="	<strong>".Kohana::lang('ui_admin.field_default').":</strong><br />";
 		$html .= 	form::input('field_default', $field_default, ' class="text"');
-		$html .="</div>"; 
-		$html .="<div class=\"forms_item\">"; 
+		$html .="</div>";
+		$html .="<div class=\"forms_item\">";
 		$html .="	<strong>".Kohana::lang('ui_admin.required').":</strong><br />";
 		if ($field_required != 1)
 		{
@@ -847,10 +847,10 @@ class Forms_Controller extends Admin_Controller {
 			$html .= 	Kohana::lang('ui_admin.no')." " . form::radio('field_required', '0', FALSE);
 		}
 		$html .="</div>";
-		
+
 		// is_public additions by george
 		$html .= $this->_get_public_state($field_ispublic_submit, $field_ispublic_visible);
-		
+
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .="<div class=\"forms_item\">";
 		$html .="	<div id=\"form_loading_".$form_id."\" class=\"forms_fields_loading\"></div>";
@@ -858,8 +858,8 @@ class Forms_Controller extends Admin_Controller {
 		$html .="</div>";
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .=$this->_get_selector_js($form_id);
-		
-		return $html;	
+
+		return $html;
 	}
 
 	/**
@@ -891,30 +891,30 @@ class Forms_Controller extends Admin_Controller {
 			$field_ispublic_visible = "0";
 			$field_ispublic_submit = "0";
 		}
-		
+
 		// Prompt/label for the values
 		$values_prompt = (intval($type) == 7)? Kohana::lang('ui_admin.dropdown_choices') : Kohana::lang('ui_admin.field_choices');
-		
+
 		// Tooltip display value
-		$tooltip = (intval($type) == 7) ? Kohana::lang('tooltips.dropdown_choices'): (intval($type) == 5)? Kohana::lang('tooltips.radio_choices'): Kohana::lang('tooltips.default_value');
-		
+		$tooltip = (intval($type) == 7)? Kohana::lang('tooltips.dropdown_choices') : Kohana::lang('tooltips.default_value');
+
 		$html = "<input type=\"hidden\" name=\"form_id\" id=\"form_id\" value=\"".$form_id."\">"
 			. "<input type=\"hidden\" name=\"field_id\" id=\"field_id\" value=\"".$field_id."\">"
 			. "<input type=\"hidden\" name=\"field_ispublic_visible\" id=\"field_id\" value=\"0\">"
 			. "<input type=\"hidden\" name=\"field_ispublic_submit\" id=\"field_id\" value=\"0\">"
 			. "<div id=\"form_result_".$form_id."\" class=\"forms_fields_result\"></div>"
 			. "<div class=\"forms_item\">"
-			. "		<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />" 
+			. "		<strong>".Kohana::lang('ui_admin.field_name').":</strong><br />"
 			.		form::input('field_name', $field_name, ' class="text"')
-			. "</div>" 
-			. "<div class=\"forms_item\">" 
+			. "</div>"
+			. "<div class=\"forms_item\">"
 			. "		<strong>".$values_prompt.":<a href=\"#\" class=\"tooltip\""
-			. "		title=\"".$tooltip."\"></a><br />" 
+			. "		title=\"".$tooltip."\"></a><br />"
 			.		form::textarea('field_default', $field_default, ' class="text"')
-			. "</div>" 
-			. "<div class=\"forms_item\">" 
-			. "		<strong>".Kohana::lang('ui_admin.required').":</strong><br />"; 
-		
+			. "</div>"
+			. "<div class=\"forms_item\">"
+			. "		<strong>".Kohana::lang('ui_admin.required').":</strong><br />";
+
 		if ($field_required != 1)
 		{
 			$html .= 	Kohana::lang('ui_admin.yes')." " . form::radio('field_required', '1', FALSE) . "&nbsp;&nbsp;";
@@ -934,11 +934,11 @@ class Forms_Controller extends Admin_Controller {
 		$html .="</div>";
 		$html .="<div style=\"clear:both;\"></div>";
 		$html .=$this->_get_selector_js($form_id);
-		
+
 		return $html;
 	}
 
-	/** 
+	/**
 	* Custom callback for testing the field_options array
 	*
 	* @param  Validation  $array   Validation object
@@ -986,10 +986,10 @@ class Forms_Controller extends Admin_Controller {
 		$html .="$(\"#form_field_".$form_id."\").ajaxForm(options);";
 		$html .="$(\"#form_field_".$form_id."\").submit(function() {";
 		$html .="return false;";
-		$html .="});";		
+		$html .="});";
 		$html .="});";
 		$html .="</script>";
-		
+
 		return $html;
 	}
 }

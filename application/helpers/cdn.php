@@ -93,11 +93,6 @@ class cdn_Core {
 	 */
 	public static function gradual_upgrade()
 	{
-		if (Kohana::config('cdn.cdn_store_dynamic_content') == FALSE)
-		{
-			return FALSE;
-		}
-
 		try
 		{
 			self::connection();

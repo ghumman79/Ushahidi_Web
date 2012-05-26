@@ -14,7 +14,7 @@ foreach ($disp_custom_fields as $field_id => $field_property)
 
     // Private field
     $isprivate = ($field_property['field_ispublic_visible'])
-        ? '<font style="color:gray;font-size:70%">(' . Kohana::lang('ui_main.private') . ')</font>'
+        ? '<div class="private">(' . Kohana::lang('ui_main.private') . ')</div>'
         : '';
 
     // Workaround for situations where admin can view, but doesn't have sufficient perms to edit.
@@ -38,7 +38,6 @@ foreach ($disp_custom_fields as $field_id => $field_property)
                 echo Kohana::lang('ui_main.no_data');;
             }
             echo '<br/><br/>';
-            //echo "</div>";
             continue;
         }
     }
@@ -72,7 +71,6 @@ foreach ($disp_custom_fields as $field_id => $field_property)
             echo "<label>" . $field_property['field_name'] . $isrequired . " " . $isprivate . "</label>";
             echo "<span>" . form::input('custom_field['.$field_id.']', $field_value, $id_name .' class="text" placeholder="' . strtolower($field_property['field_name']) . '" ') . "</span>";
         }
-        //echo "</div>";
     }
     elseif ($field_property['field_type'] == 2)
     {

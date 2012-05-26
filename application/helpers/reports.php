@@ -94,7 +94,7 @@ class reports_Core {
 		}
 		
 		// If deployment is a single country deployment, check that the location mapped is in the default country
-		if ( ! Kohana::config('settings.multi_country') AND isset($post->country_name))
+		if ( ! Kohana::config('settings.multi_country'))
 		{
 			$country = Country_Model::get_country_by_name($post->country_name);
 			if ($country AND $country->id != Kohana::config('settings.default_country'))
@@ -104,7 +104,7 @@ class reports_Core {
 		}
 		
 		// Validate photo uploads
-		$post->add_rules('incident_photo', 'upload::valid', 'upload::type[gif,jpg,png,jpeg]', 'upload::size[2M]');
+		$post->add_rules('incident_photo', 'upload::valid', 'upload::type[gif,jpg,png]', 'upload::size[2M]');
 
 
 		// Validate Personal Information
@@ -146,7 +146,7 @@ class reports_Core {
 		}
 
 		//> END custom form fields validation
-
+		
 		// Return
 		return $post->validate();
 	}
@@ -223,9 +223,8 @@ class reports_Core {
 			$incident->form_id = $post->form_id;
 		}
 		
-
 		// Check if the user id has been specified
-		if ( ! $incident->loaded AND isset($_SESSION['auth_user']))
+		if (isset($_SESSION['auth_user']))
 		{
 			$incident->user_id = $_SESSION['auth_user']->id;
 		}
@@ -250,7 +249,7 @@ class reports_Core {
 				$incident->incident_mode = 2;
 			}
 			// Email
-			elseif ($post->service_id == 2)
+			elseif($post->service_id == 2)
 			{
 				$incident->incident_mode = 3;
 			}
@@ -418,104 +417,94 @@ class reports_Core {
 		// Delete Previous Entries
 		ORM::factory('media')->where('incident_id',$incident->id)->where('media_type <> 1')->delete_all();
 		
-
 		// a. News
-		if (isset($post->incident_news))
+		foreach ($post->incident_news as $item)
 		{
-			foreach ($post->incident_news as $item)
+			if ( ! empty($item))
 			{
-				if ( ! empty($item))
-				{
-					$news = new Media_Model();
-					$news->location_id = $incident->location_id;
-					$news->incident_id = $incident->id;
-					$news->media_type = 4;		// News
-					$news->media_link = $item;
-					$news->media_date = date("Y-m-d H:i:s",time());
-					$news->save();
-				}
+				$news = new Media_Model();
+				$news->location_id = $incident->location_id;
+				$news->incident_id = $incident->id;
+				$news->media_type = 4;		// News
+				$news->media_link = $item;
+				$news->media_date = date("Y-m-d H:i:s",time());
+				$news->save();
 			}
 		}
 
 		// b. Video
-		if (isset($post->incident_video))
+		foreach ($post->incident_video as $item)
 		{
-			foreach ($post->incident_video as $item)
+			if ( ! empty($item))
 			{
-				if ( ! empty($item))
-				{
-					$video = new Media_Model();
-					$video->location_id = $incident->location_id;
-					$video->incident_id = $incident->id;
-					$video->media_type = 2;		// Video
-					$video->media_link = $item;
-					$video->media_date = date("Y-m-d H:i:s",time());
-					$video->save();
-				}
+				$video = new Media_Model();
+				$video->location_id = $incident->location_id;
+				$video->incident_id = $incident->id;
+				$video->media_type = 2;		// Video
+				$video->media_link = $item;
+				$video->media_date = date("Y-m-d H:i:s",time());
+				$video->save();
 			}
 		}
 
 		// c. Photos
-		if ( ! empty($post->incident_photo))
+		$filenames = upload::save('incident_photo');
+		$i = 1;
+		foreach ($filenames as $filename)
 		{
-			$filenames = upload::save('incident_photo');
-			$i = 1;
-			foreach ($filenames as $filename)
-			{
-				$new_filename = $incident->id.'_'.$i.'_'.time();
+			$new_filename = $incident->id.'_'.$i.'_'.time();
 
-				$file_type = strrev(substr(strrev($filename),0,4));
-						
-				// IMAGE SIZES: 800X600, 400X300, 89X59
-						
-				// Large size
-				Image::factory($filename)->resize(800,600,Image::AUTO)
-					->save(Kohana::config('upload.directory', TRUE).$new_filename.$file_type);
+			$file_type = strrev(substr(strrev($filename),0,4));
+					
+			// IMAGE SIZES: 800X600, 400X300, 89X59
+					
+			// Large size
+			Image::factory($filename)->resize(800,600,Image::AUTO)
+				->save(Kohana::config('upload.directory', TRUE).$new_filename.$file_type);
 
-				// Medium size
-				Image::factory($filename)->resize(400,300,Image::HEIGHT)
-					->save(Kohana::config('upload.directory', TRUE).$new_filename.'_m'.$file_type);
-						
-				// Thumbnail
-				Image::factory($filename)->resize(89,59,Image::HEIGHT)
-					->save(Kohana::config('upload.directory', TRUE).$new_filename.'_t'.$file_type);
+			// Medium size
+			Image::factory($filename)->resize(400,300,Image::HEIGHT)
+				->save(Kohana::config('upload.directory', TRUE).$new_filename.'_m'.$file_type);
 					
-				// Name the files for the DB
-				$media_link = $new_filename.$file_type;
-				$media_medium = $new_filename.'_m'.$file_type;
-				$media_thumb = $new_filename.'_t'.$file_type;
-					
-				// Okay, now we have these three different files on the server, now check to see
-				//   if we should be dropping them on the CDN
+			// Thumbnail
+			Image::factory($filename)->resize(89,59,Image::HEIGHT)
+				->save(Kohana::config('upload.directory', TRUE).$new_filename.'_t'.$file_type);
 				
-				if (Kohana::config("cdn.cdn_store_dynamic_content"))
-				{
-					$media_link = cdn::upload($media_link);
-					$media_medium = cdn::upload($media_medium);
-					$media_thumb = cdn::upload($media_thumb);
-					
-					// We no longer need the files we created on the server. Remove them.
-					$local_directory = rtrim(Kohana::config('upload.directory', TRUE), '/').'/';
-					unlink($local_directory.$new_filename.$file_type);
-					unlink($local_directory.$new_filename.'_m'.$file_type);
-					unlink($local_directory.$new_filename.'_t'.$file_type);
-				}
-
-				// Remove the temporary file
-				unlink($filename);
-
-				// Save to DB
-				$photo = new Media_Model();
-				$photo->location_id = $incident->location_id;
-				$photo->incident_id = $incident->id;
-				$photo->media_type = 1; // Images
-				$photo->media_link = $media_link;
-				$photo->media_medium = $media_medium;
-				$photo->media_thumb = $media_thumb;
-				$photo->media_date = date("Y-m-d H:i:s",time());
-				$photo->save();
-				$i++;
+			// Name the files for the DB
+			$media_link = $new_filename.$file_type;
+			$media_medium = $new_filename.'_m'.$file_type;
+			$media_thumb = $new_filename.'_t'.$file_type;
+				
+			// Okay, now we have these three different files on the server, now check to see
+			//   if we should be dropping them on the CDN
+			
+			if (Kohana::config("cdn.cdn_store_dynamic_content"))
+			{
+				$media_link = cdn::upload($media_link);
+				$media_medium = cdn::upload($media_medium);
+				$media_thumb = cdn::upload($media_thumb);
+				
+				// We no longer need the files we created on the server. Remove them.
+				$local_directory = rtrim(Kohana::config('upload.directory', TRUE), '/').'/';
+				unlink($local_directory.$new_filename.$file_type);
+				unlink($local_directory.$new_filename.'_m'.$file_type);
+				unlink($local_directory.$new_filename.'_t'.$file_type);
 			}
+
+			// Remove the temporary file
+			unlink($filename);
+
+			// Save to DB
+			$photo = new Media_Model();
+			$photo->location_id = $incident->location_id;
+			$photo->incident_id = $incident->id;
+			$photo->media_type = 1; // Images
+			$photo->media_link = $media_link;
+			$photo->media_medium = $media_medium;
+			$photo->media_thumb = $media_thumb;
+			$photo->media_date = date("Y-m-d H:i:s",time());
+			$photo->save();
+			$i++;
 		}
 	}
 	
@@ -603,22 +592,36 @@ class reports_Core {
 		// Fetch the URL data into a local variable
 		$url_data = array_merge($_GET);
 		
-		// Split selected parameters on ","
-		// For simplicity, always turn them into arrays even theres just one value
-		$exclude_params = array('c', 'v', 'm', 'mode', 'sw', 'ne', 'start_loc');
+		// Check if some parameter values are separated by "," except the location bounds
+		$exclude_params = array('c' => '', 'v' => '', 'm' => '', 'mode' => '', 'sw'=> '', 'ne'=> '');
 		foreach ($url_data as $key => $value)
 		{
-			if (in_array($key, $exclude_params) AND !is_array($value))
+			if (array_key_exists($key, $exclude_params) AND !is_array($value))
 			{
-				$url_data[$key] = explode(",", $value);
+				if (is_array(explode(",", $value)))
+				{
+					$url_data[$key] = explode(",", $value);
+				}
 			}
 		}
 		
 		//> BEGIN PARAMETER FETCH
+		
 		// 
 		// Check for the category parameter
 		// 
-		if (isset($url_data['c']) AND is_array($url_data['c']))
+		if (isset($url_data['c']) AND ! is_array($url_data['c']) AND intval($url_data['c']) > 0)
+		{
+			// Get the category ID
+			$category_id = intval($_GET['c']);
+			
+			// Add category parameter to the parameter list
+			array_push(self::$params,
+				'(c.id = '.$category_id.' OR c.parent_id = '.$category_id.')',
+				'c.category_visible = 1'
+			);
+		}
+		elseif (isset($url_data['c']) AND is_array($url_data['c']))
 		{
 			// Sanitize each of the category ids
 			$category_ids = array();
@@ -698,6 +701,10 @@ class reports_Core {
 		if (isset($url_data['radius']) AND isset($url_data['start_loc']))
 		{
 			//if $url_data['start_loc'] is just comma delimited strings, then make it into an array
+			if(!is_array($url_data['start_loc']))
+			{
+				$url_data['start_loc'] = explode(",", $url_data['start_loc']);
+			}
 			if (intval($url_data['radius']) > 0 AND is_array($url_data['start_loc']))
 			{
 				$bounds = $url_data['start_loc'];			
@@ -771,6 +778,20 @@ class reports_Core {
 			}
 			
 		}
+		elseif (isset($url_data['m']) AND !is_array($url_data['m']))
+		{
+			// A single media filter has been specified
+			$media_type = $url_data['m'];
+			
+			// Sanitization
+			if (intval($media_type) > 0)
+			{
+				array_push(self::$params, 
+					'i.id IN (SELECT DISTINCT incident_id FROM '
+						.$table_prefix.'media WHERE media_type = '.$media_type.')'
+				);
+			}
+		}
 		
 		// 
 		// Check if the verification status has been specified
@@ -792,6 +813,12 @@ class reports_Core {
 					'i.incident_verified IN ('.implode(",", $verified_status).')'
 				);
 			}
+		}
+		elseif (isset($url_data['v']) AND !is_array($url_data['v']) AND intval($url_data) >= 0)
+		{
+			array_push(self::$param, 
+				'i.incident_verified = '.intval($url_data['v'])
+			);
 		}
 		
 		//

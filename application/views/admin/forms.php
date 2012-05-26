@@ -25,10 +25,8 @@
 					<h3><?php echo Kohana::lang('ui_main.error');?></h3>
 					<ul>
 					<?php
-					foreach ($errors as $error_item => $error_description)
-					{
-						// print "<li>" . $error_description . "</li>";
-						print (!$error_description) ? '' : "<li>" . $error_description . "</li>";
+					foreach ($errors as $error_item => $error_description) {
+						print "<li>" . $error_description . "</li>";
 					}
 					?>
 					</ul>
