@@ -5,8 +5,9 @@
             $incidentIndex = 0;
             foreach ($incidents as $incident) {
                 $incidentIndex += 1;
-                $incidentPane = ($incidentIndex % 2 == 0) ? "column-right" : "column-left";
+                $incidentPane = ($incidentIndex % 2 == 0) ? "column-left" : "column-right";
                 $incident = ORM::factory('incident', $incident->incident_id);
+
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;

@@ -365,7 +365,8 @@ class Incident_Model extends ORM {
 			. 'INNER JOIN '.$table_prefix.'location l ON (i.location_id = l.id) '
 			. 'INNER JOIN '.$table_prefix.'incident_category ic ON (ic.incident_id = i.id) '
 			. 'INNER JOIN '.$table_prefix.'category c ON (ic.category_id = c.id) ';
-		
+
+
 		// Check if the all reports flag has been specified
 		if (array_key_exists('all_reports', $where) AND $where['all_reports'] == TRUE)
 		{
@@ -386,17 +387,36 @@ class Incident_Model extends ORM {
 			}
 		}
 
-		// Add the having clause
-		$sql .= $having_clause;
+        if (isset($_GET['c'])) {
+            $cats = preg_replace('/[^0-9,]/', '', $_GET['c']);
+            if (strlen($cats) > 0) {
+                $sql .= " GROUP BY i.id ";
+                if ($having_clause && $having_clause !== '') {
+                    $sql .= $having_clause;
+                    $sql .= " AND ";
+                }
+                else {
+                    $sql .= " HAVING ";
+                }
+                $sql .= " count(DISTINCT ic.category_id) = (SELECT COUNT(*) FROM ";
+                $sql .= " (SELECT COUNT(*) FROM category cx WHERE cx.id IN (" . $cats .") GROUP BY cx.parent_id) AS mx) ";
+            }
+            else {
+                $sql .= $having_clause;
+            }
+        }
+        else {
+            $sql .= $having_clause;
+        }
 
-		// Check for the order field and sort parameters
+//		// Check for the order field and sort parameters
 		if ( ! empty($order_field) AND ! empty($sort) AND (strtoupper($sort) == 'ASC' OR strtoupper($sort) == 'DESC'))
 		{
 			$sql .= 'ORDER BY '.$order_field.' '.$sort.' ';
 		}
 		else
 		{
-			$sql .= 'ORDER BY i.incident_date DESC ';
+			$sql .= 'ORDER BY i.incident_title ASC ';
 		}
 
 		// Check if the record limit has been specified
@@ -409,9 +429,11 @@ class Incident_Model extends ORM {
 			$sql .= 'LIMIT '.$limit->sql_offset.', '.$limit->items_per_page;
 		}
 
-		// Kohana::log('debug', $sql);
+        // Kohana::log('debug', $sql);
 		// Database instance for the query
 		$db = new Database();
+
+        //die($sql);
 
 		// Return
 		return $db->query($sql);

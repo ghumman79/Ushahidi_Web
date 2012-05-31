@@ -179,20 +179,54 @@ class Reports_Controller extends Main_Controller {
 		// Reports
 		$incidents = Incident_Model::get_incidents(reports::$params, $pagination);
 
+        $url_data = array_merge($_GET);
+        $exclude_params = array('c' => '', 'v' => '', 'm' => '', 'mode' => '', 'sw'=> '', 'ne'=> '');
+        foreach ($url_data as $key => $value)
+        {
+            if (array_key_exists($key, $exclude_params) AND !is_array($value))
+            {
+                if (is_array(explode(",", $value)))
+                {
+                    $url_data[$key] = explode(",", $value);
+                }
+            }
+        }
+
+        if (isset($url_data['c']) AND is_array($url_data['c']))
+        {
+            // Sanitize each of the category ids
+            $category_ids = array();
+            foreach ($url_data['c'] as $c_id)
+            {
+                if (intval($c_id) > 0)
+                {
+                    $category_ids[] = intval($c_id);
+                }
+            }
+        }
+
+        //die(var_dump($incidents));
+
 		// Swap out category titles with their proper localizations using an array (cleaner way to do this?)
 		$localized_categories = array();
-		foreach ($incidents as $incident)
+        foreach ($incidents as $incident)
 		{
-			$incident = ORM::factory('incident', $incident->incident_id);
-			foreach ($incident->category AS $category)
+            $incident = ORM::factory('incident', $incident->incident_id);
+            foreach ($incident->category AS $category)
 			{
-				$ct = (string)$category->category_title;
+                if (isset($category_ids) && !in_array($category->id, $category_ids)) {
+
+                    //unset($incident);
+                    //break;
+                }
+                $ct = (string)$category->category_title;
 				if ( ! isset($localized_categories[$ct]))
 				{
 					$localized_categories[$ct] = Category_Lang_Model::category_title($category->id, $locale);
 				}
 			}
 		}
+
 		// Set the view content
 		$report_listing->incidents = $incidents;
 		$report_listing->localized_categories = $localized_categories;

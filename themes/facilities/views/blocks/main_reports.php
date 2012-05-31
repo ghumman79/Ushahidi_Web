@@ -4,7 +4,7 @@
             <h3><?php echo Kohana::lang('ui_admin.checkins'); ?></h3>
             <ul></ul>
         <?php } else { ?>
-            <h3><?php echo Kohana::lang('ui_admin.reports'); ?></h3>
+            <h3><?php echo Kohana::lang('ui_main.reports'); ?></h3>
             <ul>
             <?php
             if ($total_items == 0) {

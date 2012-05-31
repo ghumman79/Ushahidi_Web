@@ -1398,7 +1398,8 @@ div.report-additional-reports {
 
 div.olLayerGooglePoweredBy,
 div.olLayerGoogleCopyright,
-div.olLayerGoogleV3 {
+div.olLayerGoogleV3,
+.olLayerGooglePoweredBy.olLayerGoogleV3.gmnoprint {
     visibility:hidden !important;
     display:none !important;
 }

@@ -1,0 +1,59 @@
+
+mysql> select * from category;
++----+-----------+--------+-------------------+-------------------------------------+-------------------------------------+----------------+----------------------------+----------------------------------+------------------+------------------+
+| id | parent_id | locale | category_position | category_title                      | category_description                | category_color | category_image             | category_image_thumb             | category_visible | category_trusted |
++----+-----------+--------+-------------------+-------------------------------------+-------------------------------------+----------------+----------------------------+----------------------------------+------------------+------------------+
+|  7 |        38 | en_US  |                29 | Primary Health Centre               | Primary Health Centre               | 000000         | category_7_1338059121.png  | category_7_1338059121_16x16.png  |                1 |                0 |
+|  6 |        36 | en_US  |                14 | Kelsey Trail                        | Kelsey Trail                        | 000000         | NULL                       | NULL                             |                1 |                0 |
+|  4 |         0 | en_US  |                33 | Trusted Reports                     | Reports from trusted reporters      | 339900         | NULL                       | NULL                             |                0 |                1 |
+|  5 |         0 | en_US  |                32 | NONE                                | Holds uncategorized reports         | 009887         | NULL                       | NULL                             |                1 |                1 |
+| 36 |         0 | en_US  |                 9 | All Regions                         | All Regions                         | 000000         | NULL                       | NULL                             |                1 |                0 |
+|  9 |        36 | en_US  |                10 | Athabasca                           | Athabasca Health Authority          | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 10 |        38 | en_US  |                24 | Hospital                            | Hospital                            | 000000         | category_10_1338058972.png | category_10_1338058972_16x16.png |                1 |                0 |
+| 11 |        37 | en_US  |                 4 | Northern                            | Northern Hospital                   | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 12 |        36 | en_US  |                20 | Sunrise                             | Sunrise                             | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 13 |        37 | en_US  |                 3 | Regional                            | Regional Hospital                   | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 14 |        38 | en_US  |                28 | Personal Care Home                  | Personal Care Home                  | 000000         | category_14_1338059110.png | category_14_1338059110_16x16.png |                1 |                0 |
+| 15 |        38 | en_US  |                31 | Special Care Home                   | Special Care Home                   | 000000         | category_15_1338059135.png | category_15_1338059135_16x16.png |                1 |                0 |
+| 16 |        36 | en_US  |                21 | Saskatoon                           | Saskatoon                           | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 17 |        38 | en_US  |                25 | Hospital w/ Special Care            | Hospital w/ Special Care Home       | 000000         | category_17_1338059001.png | category_17_1338059001_16x16.png |                1 |                0 |
+| 18 |        37 | en_US  |                 1 | Community                           | Community Hospital                  | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 19 |        36 | en_US  |                17 | Regina                              | Regina Qu'Appelle                   | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 20 |        36 | en_US  |                22 | Sun Country                         | Sun Country                         | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 21 |        36 | en_US  |                12 | Five Hills                          | Five Hills                          | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 22 |        38 | en_US  |                26 | Health Centre                       | Health Centre                       | 000000         | category_22_1338059019.png | category_22_1338059019_16x16.png |                1 |                0 |
+| 23 |        36 | en_US  |                13 | Heartland                           | Heartland                           | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 24 |        38 | en_US  |                27 | Health Centre w/ Special Care       | Health Centre w/ Special Care Home  | 000000         | category_24_1338059028.png | category_24_1338059028_16x16.png |                1 |                0 |
+| 25 |        37 | en_US  |                 6 | ER Health Centre                    | ER Health Centre Site               | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 26 |        36 | en_US  |                19 | Prince Albert                       | Prince Albert Parkland              | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 27 |        37 | en_US  |                 2 | District                            | District Hospital                   | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 28 |        36 | en_US  |                11 | Cypress                             | Cypress                             | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 29 |        37 | en_US  |                 8 | Hospital operating as Health Centre | Hospital operating as Health Centre | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 30 |        38 | en_US  |                30 | Rehabilitation Centre               | Rehabilitation Centre               | 000000         | category_30_1338059128.png | category_30_1338059128_16x16.png |                1 |                0 |
+| 31 |        36 | en_US  |                18 | Prairie North                       | Prairie North                       | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 32 |        37 | en_US  |                 7 | 24/7 ER Health Centre               | 24/7 ER Health Centre Site          | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 33 |        37 | en_US  |                 5 | Provincial                          | Provincial Hospital                 | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 34 |        36 | en_US  |                15 | Keewatin Yattht                     | Keewatin Yattht                     | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 35 |        36 | en_US  |                16 | Mamawetan                           | Mamawetan Churchill River           | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 37 |         0 | en_US  |                 0 | All Designations                    | All Designations                    | 000000         | NULL                       | NULL                             |                1 |                0 |
+| 38 |         0 | en_US  |                23 | All Types                           | All Types                           | 000000         | NULL                       | NULL                             |                1 |                0 |
++----+-----------+--------+-------------------+-------------------------------------+-------------------------------------+----------------+----------------------------+----------------------------------+------------------+------------------+
+34 rows in set (0.00 sec)
+
+
+mysql> select id, parent_id, category_title from category where id = 10 OR id = 16;
++----+-----------+----------------+
+| id | parent_id | category_title |
++----+-----------+----------------+
+| 10 |        38 | Hospital       |
+| 16 |        36 | Saskatoon      |
++----+-----------+----------------+
+2 rows in set (0.00 sec)
+
+SELECT i.incident_title FROM incident i
+INNER JOIN location l ON (i.location_id = l.id) 
+INNER JOIN incident_category ic ON (ic.incident_id = i.id and ic.category_id = 10);
+  
+RIGHT JOIN incident_category c1 on c1.id = ic.category_id and c1.id = 10
+RIGHT JOIN incident_category c2 on c2.id = ic.category_id and c2.id = 16;
+WHERE (c1.id IS NOT NULL);

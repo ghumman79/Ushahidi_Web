@@ -88,7 +88,7 @@ function fetchReports() {
     $("#pagination").css("display", "none");
     $("#reports").css("bottom", "0");
     $("#reports").html("<img id=\"loading\" src=\"" + $PHRASES.server + "themes/facilities/images/loading_large.gif\" border=\"0\"/>");
-    $.get('/reports/fetch_reports',
+    $.get($PHRASES.server + '/reports/fetch_reports',
         urlParameters,
         function(data) {
             if (data != null && data != "" && data.length > 0) {
@@ -171,7 +171,7 @@ function switchViews(view) {
     else if ($(view).attr("href") == "#list") {
         $("#reports").addClass("scroll");
         $("#reports").css("overflow-y","auto");
-        splitListView();
+		splitListView();
     }
     else if ($(view).attr("href") == "#gallery") {
         $("#reports").addClass("scroll");
@@ -221,7 +221,7 @@ function showIncidentMap() {
     $.each($INCIDENTS, function(i, incident) {
         var point = new OpenLayers.Geometry.Point(parseFloat(incident.longitude), parseFloat(incident.latitude));
         point.transform(proj_4326, proj_900913);
-        var externalGraphic = "/themes/facilities/images/report.png";
+        var externalGraphic = $PHRASES.server + "/themes/facilities/images/report.png";
         if (incident.icon) {
             externalGraphic = incident.icon;
         }
@@ -249,7 +249,7 @@ function showCheckins() {
                 graphicOpacity: 0.8,
                 graphicWidth: 30,
                 graphicHeight: 30,
-                externalGraphic: "/themes/facilities/images/checkin.png"
+                externalGraphic: $PHRASES.server + "/themes/facilities/images/checkin.png"
             })
         });
 
@@ -293,8 +293,8 @@ function showCheckins() {
         map.addControl(selectFeatures);
         selectFeatures.activate();
 
-        $.getJSON("/api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC", function(data) {
-            if (data && data["payload"]["checkins"]) {
+        $.getJSON($PHRASES.server + "/api/?task=checkin&action=get_ci&mapdata=1&sqllimit=1000&orderby=checkin.checkin_date&sort=ASC", function(data) {
+            if (data && data["payload"] && data["payload"]["checkins"]) {
                 $.each(data["payload"]["checkins"], function(key, checkin) {
                     var checkinPoint = new OpenLayers.Geometry.Point(parseFloat(checkin.lon), parseFloat(checkin.lat));
                     checkinPoint.transform(proj_4326, proj_900913);
@@ -332,12 +332,12 @@ function showReportData(event) {
     if (incident.photos && incident.photos.length > 0) {
         var photo = incident.photos[0];
         content += "<div id=\"popup-image\">";
-        content += "<a title=\"" + incident.title + "\" href=\"/reports/view/" + incident.id + "\">";
+        content += "<a title=\"" + incident.title + "\" href=\"" + $PHRASES.server + "/reports/view/" + incident.id + "\">";
         content += "<img src=\"/media/uploads/" + photo.thumb + "\" height=\"59\" width=\"89\" />";
         content += "</a></div>";
     }
     content += "<div id=\"popup-title\">";
-    content += "<a title=\"" + incident.title + "\" href=\"/reports/view/" + incident.id + "\">" + incident.title + "</a></div>";
+    content += "<a title=\"" + incident.title + "\" href=\""  + $PHRASES.server + "/reports/view/" + incident.id + "\">" + incident.title + "</a></div>";
     if (incident.categories && incident.categories.length > 0) {
         content += "<div id=\"popup-category\">";
         $.each(incident.categories, function(i, category) {
