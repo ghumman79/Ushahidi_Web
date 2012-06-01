@@ -228,5 +228,112 @@ GROUP BY i.id HAVING count(DISTINCT ic.category_id) =
 ORDER BY i.incident_title ASC
 
 
+SELECT DISTINCT i.id incident_id,
+                i.incident_title,
+                i.incident_description,
+                i.incident_date,
+                i.incident_mode,
+                i.incident_active,
+                i.incident_verified,
+                i.location_id,
+                l.country_id,
+                l.location_name,
+                l.latitude,
+                l.longitude
+FROM incident i
+INNER JOIN LOCATION l ON (i.location_id = l.id)
+INNER JOIN incident_category ic ON (ic.incident_id = i.id)
+INNER JOIN category c ON (ic.category_id = c.id)
+WHERE i.incident_active = 1
+  AND (c.id IN (38)
+       OR c.parent_id IN (38))
+  AND c.category_visible = 1
+GROUP BY i.id HAVING count(DISTINCT ic.category_id) =
+  (SELECT COUNT(*)
+   FROM
+     (SELECT COUNT(*)
+      FROM category cx
+      WHERE cx.id IN (38)
+      GROUP BY cx.parent_id) AS mx)
+ORDER BY i.incident_title ASC
+
+
+SELECT DISTINCT i.id incident_id,
+                i.incident_title,
+                i.incident_description,
+                i.incident_date,
+                i.incident_mode,
+                i.incident_active,
+                i.incident_verified,
+                i.location_id,
+                l.country_id,
+                l.location_name,
+                l.latitude,
+                l.longitude
+FROM incident i
+INNER JOIN LOCATION l ON (i.location_id = l.id)
+INNER JOIN incident_category ic ON (ic.incident_id = i.id)
+INNER JOIN category c ON (ic.category_id = c.id)
+WHERE i.incident_active = 1
+  AND (c.id IN (19,
+                16,
+                38,
+                10,
+                17,
+                22,
+                24,
+                14,
+                7,
+                30,
+                15)
+       OR c.parent_id IN (19,
+                          16,
+                          38,
+                          10,
+                          17,
+                          22,
+                          24,
+                          14,
+                          7,
+                          30,
+                          15))
+  AND c.category_visible = 1
+GROUP BY i.id HAVING count(DISTINCT ic.category_id) =
+  (SELECT COUNT(*)
+   FROM
+     (SELECT COUNT(*)
+      FROM category cx
+      WHERE cx.id IN (19,
+                      16,
+                      38,
+                      10,
+                      17,
+                      22,
+                      24,
+                      14,
+                      7,
+                      30,
+                      15)
+      GROUP BY cx.parent_id) AS mx)
+ORDER BY i.incident_title ASC
+
+
+SELECT cx.parent_id, COUNT(*)
+  FROM category cx
+  WHERE cx.id IN (19,
+                  16,
+                  38,
+                  10,
+                  17,
+                  22,
+                  24,
+                  14,
+                  7,
+                  30,
+                  15)
+  AND cx.parent_id <> 0
+  GROUP BY cx.parent_id;
+
+
 
 

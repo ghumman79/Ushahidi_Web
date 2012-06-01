@@ -399,7 +399,7 @@ class Incident_Model extends ORM {
                     $sql .= " HAVING ";
                 }
                 $sql .= " count(DISTINCT ic.category_id) = (SELECT COUNT(*) FROM ";
-                $sql .= " (SELECT COUNT(*) FROM category cx WHERE cx.id IN (" . $cats .") GROUP BY cx.parent_id) AS mx) ";
+                $sql .= " (SELECT COUNT(*) FROM category cx WHERE cx.id IN (" . $cats .") AND cx.parent_id <> 0 GROUP BY cx.parent_id) AS mx) ";
             }
             else {
                 $sql .= $having_clause;

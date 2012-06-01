@@ -703,6 +703,9 @@ span.category img {
 #titlebar .titlebar-categories {
     text-align:center;
 }
+#titlebar .titlebar-categories .category {
+    padding:4px 5px 4px 5px;
+}
 
 #titlebar .titlebar-next {
     text-align:right;
