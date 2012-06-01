@@ -551,20 +551,36 @@ div#filters {
     border-bottom: 1px solid #BDBDBD;
 }
 
-div#filters ul li,
-div#filters ul li.report-listing-category-child {
+/* ############################### CATEGORIES ############################### */
+
+ul.categories {
+    margin-left:10px;
+    margin-top:5px;
+    float:left;
+}
+
+ul.categories li,
+span.category {
     border-radius:5px;
     -moz-border-radius:5px;
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
     -khtml-border-radius:5px;
-    display: inline-block;
-    list-style-type: none;
     text-align:center;
-    padding:4px 5px 4px 5px;
+    padding:3px 5px 3px 5px;
+    margin-right:5px;
 }
 
-div#filters ul li {
+ul.categories li {
+    padding:4px 5px 4px 5px;
+    display: inline-block;
+    list-style-type: none;
+}
+
+ul.categories li.parent {
+    margin-right:8px;
+    margin-bottom:5px;
+    text-transform: uppercase;
     border: 1px solid #BDBDBD;
     background: #E6E6E6;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#D8D8D8');
@@ -572,7 +588,9 @@ div#filters ul li {
     background: -moz-linear-gradient(top, #E6E6E6, #D8D8D8);
 }
 
-div#filters ul li.report-listing-category-child {
+ul.categories li,
+span.category {
+    text-transform:none;
     border: 1px solid #D8D8D8;
     background: #E6E6E6;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
@@ -580,7 +598,7 @@ div#filters ul li.report-listing-category-child {
     background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
 }
 
-div#filters ul li.selected {
+ul.categories li.parent.selected {
     border: 1px solid #A4A4A4;
     background: #BDBDBD;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#BDBDBD');
@@ -588,7 +606,7 @@ div#filters ul li.selected {
     background: -moz-linear-gradient(top, #E6E6E6, #BDBDBD);
 }
 
-div#filters ul li.report-listing-category-child.selected {
+ul.categories li.selected {
     border: 1px solid #A4A4A4;
     background: #BDBDBD;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#BDBDBD');
@@ -596,47 +614,24 @@ div#filters ul li.report-listing-category-child.selected {
     background: -moz-linear-gradient(top, #E6E6E6, #BDBDBD);
 }
 
-div#filters ul li a {
+ul.categories li.parent a {
     font-weight:bold;
-}
-
-div#filters ul li.report-listing-category-child a {
-    font-weight:normal;
-}
-
-div#filters ul {
-    margin-left:10px;
-    margin-top:5px;
-    float:left;
-}
-
-div#filters ul li {
-    margin-right:8px;
-    margin-bottom:5px;
-    text-transform: uppercase;
-}
-
-div#filters ul li.report-listing-category-child {
-    text-transform:none;
-}
-
-div#filters ul li a {
     color:#848484;
 }
 
-div#filters .item-count {
-    display:none;
+ul.categories li a,
+span.category a{
+    font-weight:normal;
+    color:#848484;
 }
 
-div#filters .item-swatch {
-    background-color: transparent !important;
-}
-
-div#filters .item-swatch img {
+ul.categories li img,
+span.category img {
     max-width:16px !important;
     max-height:16px !important;
     vertical-align: middle;
     margin-top:-2px;
+    margin-right:3px;
 }
 
 /* ############################### TITLE BAR ############################### */
@@ -675,8 +670,7 @@ div#filters .item-swatch img {
 }
 
 #titlebar .titlebar-previous span,
-#titlebar .titlebar-next span,
-#titlebar .report-categories span {
+#titlebar .titlebar-next span {
     margin-right:10px;
     padding:3px 5px 3px 5px;
     border-radius:5px;
@@ -691,12 +685,6 @@ div#filters .item-swatch img {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
     background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#E6E6E6));
     background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
-}
-
-#titlebar .report-categories img {
-    max-width:16px !important;
-    max-height:16px !important;
-    vertical-align: middle;
 }
 
 #titlebar .titlebar-previous {
@@ -938,31 +926,6 @@ div.report-item .report-categories {
     font-weight:normal;
     font-size:13px;
     margin-top:4px;
-}
-
-div.report-item .report-categories a {
-    color:#848484;
-}
-
-div.report-item .report-categories .report-category {
-    border-radius:5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    -khtml-border-radius:5px;
-    padding:2px 2px 2px 2px;
-    margin-right:6px;
-    border: 1px solid #D8D8D8;
-    background: #E6E6E6;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2', endColorstr='#E6E6E6');
-    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#E6E6E6));
-    background: -moz-linear-gradient(top, #F2F2F2, #E6E6E6);
-}
-
-div.report-item .report-categories img {
-    max-width:16px !important;
-    max-height:16px !important;
-    vertical-align: middle;
-    margin-top:-2px;
 }
 
 div.report-item .report-description {

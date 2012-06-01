@@ -1,8 +1,29 @@
 <div id="middle">
     <div id="filters">
-        <ul style="visibility:hidden">
-            <?php echo $category_tree_view; ?>
-        </ul>
+        <?php
+            $categories = ORM::factory('category')->where('category_visible', '1')
+                                                ->where('parent_id', '0')
+                                                ->where('category_trusted != 1')
+                                                ->orderby('category_position', 'ASC')
+                                                ->orderby('category_title', 'ASC')
+                                                ->find_all();
+            foreach ($categories as $category) {
+                echo '<ul class="categories">';
+                echo '<li class="parent"><a id="category_' . $category->id . '" title="'. $category->category_title . '">';
+                if ($category->category_image_thumb != NULL) {
+                    echo '<img src="' . url::convert_uploaded_to_abs($category->category_image_thumb) . '"/>';
+                }
+                echo $category->category_title . '</a></li>';
+                foreach ($category->children as $child) {
+                    echo '<li><a id="category_' . $child->id . '" title="'. $child->category_title . '">';
+                    if ($child->category_image_thumb != NULL) {
+                        echo '<img src="' . url::convert_uploaded_to_abs($child->category_image_thumb) . '"/>';
+                    }
+                    echo $child->category_title . '</a></li>';
+                }
+                echo '</ul>';
+            }
+            ?>
     </div>
 
     <div id="reports-box">
@@ -27,7 +48,6 @@
         $(window).resize(function() {
             adjustCategories();
         });
-        splitParentCategories();
         markSelectedCategories();
         adjustCategories();
         attachCategorySelected();

@@ -37,7 +37,7 @@
                 <div class="report-categories">
                     <?php foreach ($incident->category as $category): ?>
                         <?php if($category->category_visible == 0) continue; ?>
-                        <span class="report-category">
+                        <span class="category">
                             <a title="<?php echo $category->category_description;?>" href="<?php echo url::site(); ?>reports/?c=<?php echo $category->id; ?>">
                                 <?php if ($category->category_image_thumb): ?>
                                     <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category_image_thumb; ?>" />

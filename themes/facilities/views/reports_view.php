@@ -25,20 +25,20 @@
                             continue;
                         }
                         if ($category->category->category_image_thumb) { ?>
-                            <span>
-                    <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
-                        <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
-                        <?php echo $category->category->category_title; ?>
-                    </a>
+                    <span class="category">
+                        <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <img src="<?php echo url::base().Kohana::config('upload.relative_directory')."/".$category->category->category_image_thumb; ?>"/>
+                            <?php echo $category->category->category_title; ?>
+                        </a>
                     </span>
                             <?php
                         }
                         else {
                             ?>
-                            <span>
-                    <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
-                        <?php echo $category->category->category_title; ?>
-                    </a>
+                    <span class="category">
+                        <a title="<?php echo $category->category->category_description; ?>" href="<?php echo url::site()."reports/?c=".$category->category->id; ?>">
+                            <?php echo $category->category->category_title; ?>
+                        </a>
                     </span>
                             <?php
                         }

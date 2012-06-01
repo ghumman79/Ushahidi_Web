@@ -9,8 +9,8 @@
     <script type="text/javascript" src="<?php echo url::site(); ?>media/js/picbox.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>media/css/picbox/picbox.css">
     <?php } ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>themes/facilities/css/uofs.css">
-    <link rel="icon" type="image/png" href="<?php echo url::site(); ?>themes/facilities/images/uofs/favicon.ico">
+    <!--STYLESHEET FOR THE UNIVERSITY OF SASKATCHEWAN-->
+    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>themes/facilities/uofs/uofs.css">
     <!--BUG IN HEADER LOGIC, NEED TO RE-INCLUDE THEME JAVASCRIPT TO OVERRIDE APPLICATION JAVASCRIPT-->
     <script type="text/javascript" src="<?php echo url::site(); ?>themes/facilities/js/reports.js"></script>
     <script type="text/javascript" src="<?php echo url::site(); ?>themes/facilities/js/main.js"></script>

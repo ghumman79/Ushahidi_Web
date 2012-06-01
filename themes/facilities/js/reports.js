@@ -12,21 +12,6 @@ function loadSelectedViewFromHashTag() {
         splitListView();
     }
 }
-function splitParentCategories() {
-    var $categoryDiv = $("div#filters");
-    var $categoryList = $categoryDiv.find("ul");
-    $categoryList.css("visibility","hidden");
-    var $ul;
-    $categoryList.children().each(function (item) {
-        if (!($(this).hasClass("report-listing-category-child"))) {
-            $ul = $("<ul>");
-            $ul.appendTo($categoryDiv);
-        }
-        $(this).appendTo($ul);
-    });
-    $categoryList.remove();
-    $categoryList.css("visibility","visible");
-}
 function splitListView() {
     var $listView = $("div#list");
     if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
@@ -73,7 +58,7 @@ function fetchReports() {
     });
     var categoryIDs = [];
     $.each($("#filters li a.selected"), function(i, item){
-        var itemId = item.id.substring("filter_link_cat_".length);
+        var itemId = item.id.substring("category_".length);
         categoryIDs.push(itemId);
     });
     if (categoryIDs.length > 0) {
@@ -115,7 +100,7 @@ function attachCategorySelected() {
         if ($(this).hasClass("selected")) {
             $(this).removeClass("selected");
             $(this).parent().removeClass("selected");
-            if(! ($(this).parent().hasClass('report-listing-category-child'))){
+            if($(this).parent().hasClass('parent')){
                 $(this).parent().parent().children().each(function(){
                     $(this).removeClass("selected");
                     $(this).find("a").removeClass("selected");
@@ -125,8 +110,9 @@ function attachCategorySelected() {
         else {
             $(this).addClass("selected");
             $(this).parent().addClass("selected");
-            if(! ($(this).parent().hasClass('report-listing-category-child'))){
+            if($(this).parent().hasClass('parent')){
                 $(this).parent().parent().children().each(function(){
+                    debugger;
                     $(this).addClass("selected");
                     $(this).find("a").addClass("selected");
                 });
@@ -397,9 +383,17 @@ function markSelectedCategories() {
     if (parameters) {
         var items = parameters.split(',');
         for(var i = 0; i < items.length; i++){
-            var category = $("#filter_link_cat_" + items[i]);
-            category.addClass("selected");
-            category.parent().addClass("selected");
+            var category = $("#category_" + items[i]);
+            if (category) {
+                category.addClass("selected");
+                category.parent().addClass("selected");
+            }
+            if(category.parent().hasClass('parent')){
+                category.parent().parent().children().each(function(){
+                    $(this).addClass("selected");
+                    $(this).find("a").addClass("selected");
+                });
+            }
         }
     }
 }
