@@ -348,7 +348,7 @@
 		// Creates the map
 		map = createMap('rb_map-view', latitude, longitude, defaultZoom);
 		map.addControl( new OpenLayers.Control.LoadingPanel({minSize: new OpenLayers.Size(573, 366)}) );
-		
+
 		mapLoaded = 1;
 	}
 	

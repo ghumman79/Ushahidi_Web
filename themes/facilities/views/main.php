@@ -8,29 +8,22 @@
             <?php } ?>
         </div>
         <div id="main-categories" class="column">
-            <?php foreach ($categories as $category => $category_info) {
-                $category_title = $category_info[0];
-                $category_image = ($category_info[2] != NULL) ? url::convert_uploaded_to_abs($category_info[2]) : NULL;
-                if ($category_title !== 'Trusted Reports') {
+            <?php
+                foreach (Kohana::config('settings.categories') as $category) {
                     echo '<ul class="box">';
-                    echo '<li class="title"><a title="'. $category_title . '" href="' . url::site() . 'reports/?c=' . $category . '">';
-                    if ($category_image) {
-                        echo '<img src="' . $category_image . '"/>';
+                    echo '<li class="title"><a title="'. $category->category_description . '" href="' . url::site() . 'reports/?c=' . $category->id . '">';
+                    if ($category->category_image_thumb != NULL) {
+                        echo '<img src="' . url::convert_uploaded_to_abs($category->category_image_thumb) . '"/>';
                     }
-                    echo $category_title . '</a></li>';
-                    if (sizeof($category_info[3]) != 0) {
-                        foreach ($category_info[3] as $child => $child_info) {
-                            $child_title = $child_info[0];
-                            $child_image = ($child_info[2] != NULL) ? url::convert_uploaded_to_abs($child_info[2]) : NULL;
-                            echo '<li><a title="'. $child_title . '" href="' . url::site() . 'reports/?c=' . $child . '">';
-                            if ($child_image) {
-                                echo '<img src="' . $child_image . '"/>';
-                            }
-                            echo $child_title . '</a></li>';
+                    echo $category->category_title . '</a></li>';
+                    foreach ($category->children as $child) {
+                        echo '<li><a title="'. $child->category_description . '" href="' . url::site() . 'reports/?c=' . $child->id . '">';
+                        if ($child->category_image_thumb != NULL) {
+                            echo '<img src="' . url::convert_uploaded_to_abs($child->category_image_thumb) . '"/>';
                         }
+                        echo $child->category_title . '</a></li>';
                     }
                     echo '</ul>';
-                }
             } ?>
         </div>
         <div class="clear"></div>

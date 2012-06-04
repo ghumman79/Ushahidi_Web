@@ -36,15 +36,6 @@ div#header {
     background: transparent url("header.jpg") no-repeat right top;
 }
 
-ul.categories li.parent.selected {
-    color:white;
-    border: 1px solid #65AD18;
-    background: #90D04D;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#90D04D', endColorstr='#65AD18');
-    background: -webkit-gradient(linear, left top, left bottom, from(#90D04D), to(#65AD18));
-    background: -moz-linear-gradient(top, #90D04D, #65AD18);
-}
-
 ul.categories li.selected {
     color:white;
     border: 1px solid #8FBD35;
@@ -52,6 +43,15 @@ ul.categories li.selected {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#BDE15F', endColorstr='#8FBD35');
     background: -webkit-gradient(linear, left top, left bottom, from(#BDE15F), to(#8FBD35));
     background: -moz-linear-gradient(top, #BDE15F, #8FBD35);
+}
+
+ul.categories li.parent.selected {
+    color:white;
+    border: 1px solid #65AD18;
+    background: #90D04D;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#90D04D', endColorstr='#65AD18');
+    background: -webkit-gradient(linear, left top, left bottom, from(#90D04D), to(#65AD18));
+    background: -moz-linear-gradient(top, #90D04D, #65AD18);
 }
 
 ul.categories li.selected a,
