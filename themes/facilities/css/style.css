@@ -249,8 +249,8 @@ div#header-logo span{
 
 div#header-language {
     position:absolute;
-    top:20px;
-    right:225px;
+    top:25px;
+    right:200px;
     text-align: right;
 }
 
@@ -259,9 +259,13 @@ div#header-language .language-box {
     padding:0;
 }
 
+div#header-language .language-box select {
+    width:140px;
+}
+
 div#header-search {
     position:absolute;
-    top:20px;
+    top:25px;
     right:20px;
     text-align: right;
 }
@@ -276,14 +280,27 @@ div#header-search .search-form input {
     background-color:#FAFAFA;
 }
 
+div#header-search .search-form input.text {
+    width:140px;
+}
+
 div#header-submit {
     position:absolute;
     top:20px;
     right:10px;
 }
 
-div#header-submit #submit-incident {
+div#header-login {
+    position:absolute;
+    top:27px;
+    right:360px;
+    text-align: right;
+}
 
+div#header-login a {
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size:13px;
 }
 
 /* ############################### FOOTER ############################### */

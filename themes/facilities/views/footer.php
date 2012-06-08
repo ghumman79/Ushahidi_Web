@@ -9,6 +9,10 @@
             <?php if(Kohana::config('settings.allow_reports')) { ?>
                 <li><a title="<?php echo Kohana::lang('ui_main.submit'); ?>" href="<?php echo url::site()."reports/submit"; ?>"><?php echo Kohana::lang('ui_main.submit'); ?></a></li>
             <?php } ?>
+            <?php if (Kohana::config('settings.user_id') != NULL) { ?>
+                <li><a title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>">
+                <?php echo Kohana::lang('ui_main.public_profile'); ?></a></li>
+            <?php } ?>
             <?php if(Kohana::config('settings.allow_alerts')) { ?>
                 <li><a title="<?php echo Kohana::lang('ui_main.alerts'); ?>" href="<?php echo url::site()."alerts"; ?>"><?php echo Kohana::lang('ui_main.alerts'); ?></a></li>
             <?php } ?>

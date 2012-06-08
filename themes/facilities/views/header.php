@@ -23,9 +23,20 @@
         <div id="header-search">
            <?php echo $search; ?>
         </div>
+        <div id="header-login">
+            <?php if (Kohana::config('settings.user_id') != NULL) { ?>
+                <?php if (Kohana::config('settings.user_username') != NULL) { ?>
+                     <a title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>"><?php echo Kohana::config('settings.user_username'); ?></a>
+                <?php } ?>
+                &nbsp;
+                <a title="<?php echo Kohana::lang('ui_admin.logout');?>" href="<?php echo url::site()."logout/front";?>"><?php echo Kohana::lang('ui_admin.logout');?></a>
+            <?php } else { ?>
+                <a title="<?php echo Kohana::lang('ui_main.login'); ?>" href="<?php echo url::site()."login";?>"><?php echo Kohana::lang('ui_main.login'); ?></a>
+            <?php } ?>
+        </div>
         <?php if(Kohana::config('settings.allow_reports')) { ?>
         <div id="header-submit">
-            <?php echo $submit_btn; ?>
+
         </div>
         <? } ?>
         <div id="header-logo">
@@ -39,4 +50,3 @@
             <?php } ?>
         </div>
     </div>
-    <?php Event::run('ushahidi_action.header_item'); ?>

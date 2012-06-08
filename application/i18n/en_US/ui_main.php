@@ -360,7 +360,7 @@
 	'please_note' => 'Please Note',
 	'plugins' => 'Plugins',
 	'plugin_url' => 'Plugin Website',
-	'public_profile' => 'Public Profile',
+	'public_profile' => 'Profile',
 	'public_profile_url' => 'Public Profile URL',
 	'preview' => 'Preview',
 	'preview_item' => 'Preview Item',

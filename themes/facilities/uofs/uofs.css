@@ -71,3 +71,8 @@ div#pagination {
 #pagination ul li a {
     color:#848484;
 }
+
+div#header-login a {
+    color:#FFFFFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}

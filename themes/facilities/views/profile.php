@@ -1,6 +1,7 @@
-<div id="middle">
+<div id="middle" class="scroll">
     <div id="content">
         <div class="profile-picture">
+            <h2><?php echo $user->name; ?></h2>
             <div><img src="<?php echo members::gravatar($user->email,160); ?>" width="160" height="160" /></div>
             <div style="width:160px;height:20px;background-color:#<?php echo $user->color; ?>"></div>
             <?php if($logged_in_user){ ?>
@@ -17,9 +18,8 @@
         </div>
 
         <div class="profile-details">
-            <h2><?php echo $user->name; ?></h2>
             <div>
-                <h3><?php echo Kohana::lang('ui_main.reports_by_this_user');?></h3>
+                <h3><?php echo Kohana::lang('ui_main.reports');?></h3>
                 <?php if(count($reports) > 0) { ?>
                     <?php foreach($reports as $report) { ?>
                         <div class="rb_report">
@@ -29,24 +29,25 @@
                         </div>
                     <?php } ?>
                 <?php } else { ?>
-                     <b><?php echo Kohana::lang('ui_main.no_reports');?><b>
+                     <strong><?php echo Kohana::lang('ui_main.no_reports');?></strong>
                 <?php } ?>
             </div>
         </div>
 
-        <?php if(count($badges) > 0) { ?>
         <div class="profile-badges">
-            <h3><?php echo Kohana::lang('ui_main.badges');?></h3>
+        <h3><?php echo Kohana::lang('ui_main.badges');?></h3>
+        <?php if(count($badges) > 0) { ?>
             <?php foreach($badges as $badge) { ?>
             <div class="badge r-5">
                 <img src="<?php echo $badge['img_m']; ?>" alt="<?php echo Kohana::lang('ui_main.badge').' '.$badge['id'];?>" width="80" height="80" style="margin:5px;" />
                 <br/><strong><?php echo $badge['name']; ?></strong>
             </div>
             <?php } ?>
+        <?php } else { ?>
+            <strong><?php echo Kohana::lang('ui_main.sorry_no_badges');?></strong>
+        <?php } ?>
             <div style="clear:both;"></div>
         </div>
-        <?php } ?>
-
         <div style="clear:both;"></div>
     </div>
 </div>
