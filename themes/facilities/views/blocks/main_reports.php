@@ -26,9 +26,11 @@
                     <span>(<?php echo $location_name; ?>)</span>
                 </li>
             <?php } ?>
+            <?php if ($total_items > 0) { ?>
             <li class="more">
                 <a href="<?php echo url::site() . 'reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
             </li>
+            <?php } ?>
             </ul>
         <?php } ?>
         <div class="clear"></div>
