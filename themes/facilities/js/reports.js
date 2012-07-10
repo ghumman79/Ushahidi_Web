@@ -13,27 +13,55 @@ function loadSelectedViewFromHashTag() {
     }
 }
 function splitListView() {
-    var $listView = $("div#list");
-    if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-        if ($("#column-left").length == 0 &&
-            $("#column-right").length == 0) {
-            $listView.css("visibility", "hidden");
-            var $leftPane = $("<div id='column-left' class='column'>");
-            var $rightPane = $("<div id='column-right' class='column'>");
-            $('.column-left').each(function (item) {
-                $(this).appendTo($rightPane);
-            });
-            $('.column-right').each(function (item) {
-                $(this).appendTo($leftPane);
-            });
-            $leftPane.appendTo($listView);
-            $rightPane.appendTo($listView);
-            $listView.css("visibility", "visible");
+    var width = $(window).width();
+    if (width > 2000) {
+        addColumns("div#list", ".report-item", 6);
+    }
+    else if (width > 1600) {
+        addColumns("div#list", ".report-item", 5);
+    }
+    else if (width > 1280) {
+        addColumns("div#list", ".report-item", 4);
+    }
+    else if (width > 820) {
+        addColumns("div#list", ".report-item", 3);
+    }
+    else if (width > 640) {
+        addColumns("div#list", ".report-item", 2);
+    }
+    else if (width < 640){
+        addColumns("div#list", ".report-item", 1);
+    }
+}
+function addColumns(target, item, count) {
+    var $target = $(target);
+    if ($(".column").size() != count) {
+        $target.hide();
+        $('.column > ' + item).unwrap();
+        $('.column').remove();
+        var width = (100 - (count*2)) / count;
+        for (var i = 1 ; i < count + 1 ; i++){
+            var $column = $("<div id='column-" + i + "' class='column' style='width:" + width + "%'>");
+            $column.appendTo($target);
         }
+        var index = 1;
+        var $items = $(item);
+        $items.sort(function(a, b) {
+            var ordinalA = parseInt($(a).attr('title'));
+            var ordinalB = parseInt($(b).attr('title'));
+            return (ordinalA < ordinalB) ? -1 : (ordinalA > ordinalB) ? 1 : 0;
+        });
+        $.each($items, function() {
+            $(this).appendTo($("#column-" + index));
+            if (index < count) {
+                index = index + 1;
+            }
+            else {
+                index = 1;
+            }
+        });
     }
-    else {
-        $listView.css("visibility", "visible");
-    }
+    $target.show();
 }
 function adjustCategories() {
     var $top = $("#filters").css('height');

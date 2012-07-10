@@ -1,14 +1,13 @@
 <div id="reports" class="scroll">
-    <div id="list" style="visibility:hidden;">
+    <div id="list" style="display:none;">
         <?php
             $incidentsCount = count($incidents);
             $incidentIndex = 0;
             foreach ($incidents as $incident) {
                 $incidentIndex += 1;
-                $incidentPane = ($incidentIndex % 2 == 0) ? "column-left" : "column-right";
                 $incident = ORM::factory('incident', $incident->incident_id);
-
                 $incident_id = $incident->id;
+                $incident_sort = "" . $incidentIndex;
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;
                 $incident_tooltip = $incident_title . '&#13;' . strip_tags(str_replace('<br/>', '&#13;', $incident_description));
@@ -23,7 +22,7 @@
                     }
                 }
             ?>
-            <div class="report-item box <?php echo $incidentPane ?>">
+            <div class="report-item box" title="<?php echo $incident_sort; ?>">
                 <?php if (!empty($incident_thumb)) { ?>
                     <a title="<?php echo $incident_tooltip; ?>" href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
                         <img class="report-image" src="<?php echo $incident_thumb; ?>" />
@@ -52,7 +51,6 @@
                 </div>
                 <div class="report-description"><?php echo $incident_description; ?></div>
                 <div class="clear"></div>
-
             </div>
         <?php } ?>
     </div>

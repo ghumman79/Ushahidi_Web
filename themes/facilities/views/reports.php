@@ -33,6 +33,7 @@
     $(function(){
         $(window).resize(function() {
             adjustCategories();
+            splitListView();
         });
         markSelectedCategories();
         adjustCategories();
