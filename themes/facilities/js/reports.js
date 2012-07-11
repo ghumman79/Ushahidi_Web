@@ -29,7 +29,7 @@ function splitListView() {
     else if (width > 640) {
         addColumns("div#list", ".report-item", 2);
     }
-    else if (width < 640){
+    else {
         addColumns("div#list", ".report-item", 1);
     }
 }
