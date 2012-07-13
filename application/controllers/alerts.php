@@ -30,10 +30,10 @@ class Alerts_Controller extends Main_Controller {
 		}
 
 		$this->template->header->this_page = $this->themes->this_page = 'alerts';
-		$this->template->content = new View('alerts');
+		$this->template->content = new View('alerts/main');
 
 		// Load the alert radius map view
-		$alert_radius_view = new View('alert_radius_view');
+		$alert_radius_view = new View('alerts/radius');
 		$alert_radius_view->show_usage_info = TRUE;
 		$alert_radius_view->enable_find_location = TRUE;
 
@@ -57,7 +57,7 @@ class Alerts_Controller extends Main_Controller {
 		$this->template->content->cities = $this->_get_cities($default_country);
 
 		// Get all active top level categories
-		$this->template->content->categories = $this->get_categories('foo');
+		$this->template->content->categories = Category_Model::get_categories(0, FALSE, TRUE);
 
 		// Setup and initialize form field names
 		$form = array (
@@ -89,9 +89,6 @@ class Alerts_Controller extends Main_Controller {
 			}
 			$countries[$country->id] = $this_country;
 		}
-
-		// Initialize Default Value for Hidden Field Country Name, just incase Reverse Geo coding yields no result
-		$form['alert_country'] = $countries[$default_country];
 
 		//Initialize default value for Alert confirmed hidden value
 
@@ -134,6 +131,12 @@ class Alerts_Controller extends Main_Controller {
 
 				// populate the error fields, if any
 				$errors = arr::overwrite($errors, $post->errors('alerts'));
+				
+				if (array_key_exists('alert_recipient', $post->errors('alerts')))
+				{
+					$errors = array_merge($errors, $post->errors('alerts'));
+				}
+				
 				$form_error = TRUE;
             }
         }
@@ -145,17 +148,18 @@ class Alerts_Controller extends Main_Controller {
 			$form['alert_category'] = array();
         }
 
+		$this->template->content->form_error = $form_error;
+		// Initialize Default Value for Hidden Field Country Name, just incase Reverse Geo coding yields no result
+		$form['alert_country'] = $countries[$default_country];
 		$this->template->content->form = $form;
 		$this->template->content->errors = $errors;
-		$this->template->content->form_error = $form_error;
 		$this->template->content->form_saved = $form_saved;
+
 
 		// Javascript Header
 		$this->themes->map_enabled = TRUE;
-		$this->themes->js = new View('alerts_js');
+		$this->themes->js = new View('alerts/alerts_js');
 		$this->themes->treeview_enabled = TRUE;
-		$this->themes->js->default_map = Kohana::config('settings.default_map');
-		$this->themes->js->default_zoom = Kohana::config('settings.default_zoom');
 		$this->themes->js->latitude = $form['alert_lat'];
 		$this->themes->js->longitude = $form['alert_lon'];
 
@@ -168,10 +172,10 @@ class Alerts_Controller extends Main_Controller {
 	/**
 	 * Alerts Confirmation Page
 	 */
-	function confirm()
+	public function confirm()
 	{
 		$this->template->header->this_page = 'alerts';
-		$this->template->content = new View('alerts_confirm');
+		$this->template->content = new View('alerts/confirm');
 
 		$this->template->content->alert_mobile = (isset($_SESSION['alert_mobile']) AND ! empty($_SESSION['alert_mobile']))
 			? $_SESSION['alert_mobile']
@@ -185,8 +189,7 @@ class Alerts_Controller extends Main_Controller {
 		$this->template->content->show_mobile = TRUE;
 		$settings = ORM::factory('settings', 1);
 
-		//if ( ! Kohana::config("settings.sms_provider"))
-		if ( empty($_SESSION['alert_mobile']))
+		if (empty($_SESSION['alert_mobile']))
 		{
 			// Hide Mobile
 			$this->template->content->show_mobile = FALSE;
@@ -213,7 +216,7 @@ class Alerts_Controller extends Main_Controller {
 		$email = (isset($_GET['e']) AND !empty($_GET['e'])) ? $_GET['e'] : "";
 
 		// INITIALIZE the content's section of the view
-		$this->template->content = new View('alerts_verify');
+		$this->template->content = new View('alerts/verify');
 		$this->template->header->this_page = 'alerts';
 
 		$filter = " ";
@@ -223,7 +226,7 @@ class Alerts_Controller extends Main_Controller {
 		{
 			if (isset($_POST['alert_mobile']) AND ! empty($_POST['alert_mobile']))
 			{
-				$filter = "alert.alert_type=1 AND alert_code='".strtoupper($_POST['alert_code'])."' AND alert_recipient='".$_POST['alert_mobile']."' ";
+				$filter = "alert.alert_type=1 AND alert_code='".utf8::strtoupper($_POST['alert_code'])."' AND alert_recipient='".$_POST['alert_mobile']."' ";
 			}
 			elseif (isset($_POST['alert_email']) AND ! empty($_POST['alert_email']))
 			{
@@ -286,7 +289,7 @@ class Alerts_Controller extends Main_Controller {
 	 */
 	public function unsubscribe($code = NULL)
 	{
-		$this->template->content = new View('alerts_unsubscribe');
+		$this->template->content = new View('alerts/unsubscribe');
 		$this->template->header->this_page = 'alerts';
 		$this->template->content->unsubscribed = FALSE;
 
@@ -301,11 +304,6 @@ class Alerts_Controller extends Main_Controller {
 		$this->template->header->header_block = $this->themes->header_block();
 		$this->template->footer->footer_block = $this->themes->footer_block();
     }
-
-
-
-
-
 
 	/**
 	 * Retrieves Previously Cached Geonames Cities

@@ -1494,11 +1494,3 @@ ul.pager li a.active {background:#f2f7fa;}
 	font:14px/17px Arial, Helvetica, sans-serif;
 	text-decoration :none;
 }
-
-div.olLayerGooglePoweredBy,
-div.olLayerGoogleCopyright,
-div.olLayerGoogleV3,
-.olLayerGooglePoweredBy.olLayerGoogleV3.gmnoprint {
-    visibility:hidden !important;
-    display:none !important;
-}

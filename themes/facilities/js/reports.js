@@ -13,24 +13,27 @@ function loadSelectedViewFromHashTag() {
     }
 }
 function splitListView() {
-    var width = $(window).width();
-    if (width > 2000) {
-        addColumns("div#list", ".report-item", 6);
-    }
-    else if (width > 1600) {
-        addColumns("div#list", ".report-item", 5);
-    }
-    else if (width > 1280) {
-        addColumns("div#list", ".report-item", 4);
-    }
-    else if (width > 820) {
-        addColumns("div#list", ".report-item", 3);
-    }
-    else if (width > 640) {
-        addColumns("div#list", ".report-item", 2);
-    }
-    else {
-        addColumns("div#list", ".report-item", 1);
+    if ($('#map').css("display") == "none" &&
+        $('#gallery').css("display") == "none") {
+        var width = $(window).width();
+        if (width > 2000) {
+            addColumns("#list", ".report-item", 6);
+        }
+        else if (width > 1600) {
+            addColumns("#list", ".report-item", 5);
+        }
+        else if (width > 1280) {
+            addColumns("#list", ".report-item", 4);
+        }
+        else if (width > 820) {
+            addColumns("#list", ".report-item", 3);
+        }
+        else if (width > 640) {
+            addColumns("#list", ".report-item", 2);
+        }
+        else {
+            addColumns("#list", ".report-item", 1);
+        }
     }
 }
 function addColumns(target, item, count) {

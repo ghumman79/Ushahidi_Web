@@ -31,6 +31,7 @@ The follwing is a list of PHP extensions that must be installed on your server i
 * cURL (http://php.net/curl) which is used to access remote sites.
 * MySQL (http://php.net/mysql) is required for database access.
 * IMAP (http://php.net/imap) is required for email functionality.
+* GD (http://php.net/gd) is required for image processing
 
 __NOTE: Need to figure out what extensions you already have installed on your server? Here are instructions to do just that: http://jontangerine.com/silo/php/phpinfo/__
 
@@ -87,7 +88,6 @@ Installation
     into a directory within your webserver's document root or your public HTML directory.
 
 * ####Ensure the following directories are writable (i.e. have their permission values set to 777)
-    - application/config/config.php
     - application/config
     - application/cache
     - application/logs

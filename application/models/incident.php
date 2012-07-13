@@ -19,21 +19,31 @@ class Incident_Model extends ORM {
 	 * One-to-may relationship definition
 	 * @var array
 	 */
-	protected $has_many = array('category' => 'incident_category', 'media', 'verify', 'comment',
-		'rating', 'alert' => 'alert_sent', 'incident_lang', 'form_response','cluster' => 'cluster_incident',
-		'geometry');
+	protected $has_many = array(
+		'category' => 'incident_category',
+		'media',
+		'verify',
+		'comment',
+		'rating',
+		'alert' => 'alert_sent',
+		'incident_lang',
+		'form_response',
+		'cluster' => 'cluster_incident',
+		'geometry'
+	);
 
 	/**
 	 * One-to-one relationship definition
 	 * @var array
 	 */
-	protected $has_one = array('location','incident_person','user','message','twitter','form');
-
-	/**
-	 * Many-to-one relationship definition
-	 * @var array
-	 */
-	protected $belongs_to = array('sharing');
+	protected $has_one = array(
+		'location',
+		'incident_person',
+		'user',
+		'message',
+		'twitter',
+		'form'
+	);
 
 	/**
 	 * Database table name
@@ -56,12 +66,17 @@ class Incident_Model extends ORM {
 	{
 		// Get all active categories
 		$categories = array();
-		foreach (ORM::factory('category')
-			->where('category_visible', '1')
-			->find_all() as $category)
+		foreach
+		(
+			ORM::factory('category')
+			    ->where('category_visible', '1')
+			    ->find_all() as $category)
 		{
 			// Create a list of all categories
-			$categories[$category->id] = array($category->category_title, $category->category_color);
+			$categories[$category->id] = array(
+				$category->category_title, 
+				$category->category_color
+			);
 		}
 		return $categories;
 	}
@@ -326,7 +341,7 @@ class Incident_Model extends ORM {
 	 * @param string $sort How to order the records - only ASC or DESC are allowed
 	 * @return Database_Result
 	 */
-	public static function get_incidents($where = array(), $limit = NULL, $order_field = NULL, $sort = NULL)
+	public static function get_incidents($where = array(), $limit = NULL, $order_field = NULL, $sort = NULL, $count = FALSE)
 	{
 		// Get the table prefix
 		$table_prefix = Kohana::config('database.default.table_prefix');
@@ -344,9 +359,18 @@ class Incident_Model extends ORM {
 		}
 
 		// Query
-		$sql = 'SELECT DISTINCT i.id incident_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
-			. 'i.incident_verified, i.location_id, l.country_id, l.location_name, l.latitude, l.longitude ';
-
+		// Normal query
+		if (! $count)
+		{
+			$sql = 'SELECT DISTINCT i.id incident_id, i.incident_title, i.incident_description, i.incident_date, i.incident_mode, i.incident_active, '
+				. 'i.incident_verified, i.location_id, l.country_id, l.location_name, l.latitude, l.longitude ';
+		}
+		// Count query
+		else
+		{
+			$sql = 'SELECT COUNT(DISTINCT i.id) as report_count ';
+		}
+		
 		// Check if all the parameters exist
 		if (count($radius) > 0 AND array_key_exists('latitude', $radius) AND array_key_exists('longitude', $radius)
 			AND array_key_exists('distance', $radius))
@@ -362,11 +386,10 @@ class Incident_Model extends ORM {
 		}
 
 		$sql .=  'FROM '.$table_prefix.'incident i '
-			. 'INNER JOIN '.$table_prefix.'location l ON (i.location_id = l.id) '
-			. 'INNER JOIN '.$table_prefix.'incident_category ic ON (ic.incident_id = i.id) '
-			. 'INNER JOIN '.$table_prefix.'category c ON (ic.category_id = c.id) ';
-
-
+			. 'LEFT JOIN '.$table_prefix.'location l ON (i.location_id = l.id) '
+			. 'LEFT JOIN '.$table_prefix.'incident_category ic ON (ic.incident_id = i.id) '
+			. 'LEFT JOIN '.$table_prefix.'category c ON (ic.category_id = c.id) ';
+		
 		// Check if the all reports flag has been specified
 		if (array_key_exists('all_reports', $where) AND $where['all_reports'] == TRUE)
 		{
@@ -387,6 +410,10 @@ class Incident_Model extends ORM {
 			}
 		}
 
+		// Might need "GROUP BY i.id" do avoid dupes
+		
+		// Add the having clause
+        // ################## FACILITIES THEME ##################
         if (isset($_GET['c'])) {
             $cats = preg_replace('/[^0-9,]/', '', $_GET['c']);
             if (strlen($cats) > 0) {
@@ -408,15 +435,16 @@ class Incident_Model extends ORM {
         else {
             $sql .= $having_clause;
         }
+        // ################## FACILITIES THEME ##################
 
-//		// Check for the order field and sort parameters
+		// Check for the order field and sort parameters
 		if ( ! empty($order_field) AND ! empty($sort) AND (strtoupper($sort) == 'ASC' OR strtoupper($sort) == 'DESC'))
 		{
 			$sql .= 'ORDER BY '.$order_field.' '.$sort.' ';
 		}
 		else
 		{
-			$sql .= 'ORDER BY i.incident_title ASC ';
+			$sql .= 'ORDER BY i.incident_date DESC ';
 		}
 
 		// Check if the record limit has been specified
@@ -429,14 +457,8 @@ class Incident_Model extends ORM {
 			$sql .= 'LIMIT '.$limit->sql_offset.', '.$limit->items_per_page;
 		}
 
-        // Kohana::log('debug', $sql);
-		// Database instance for the query
-		$db = new Database();
-
-        //die($sql);
-
-		// Return
-		return $db->query($sql);
+		// Kohana::log('debug', $sql);
+		return Database::instance()->query($sql);
 	}
 
 	/**
@@ -497,8 +519,6 @@ class Incident_Model extends ORM {
 				. "	COS(l.`latitude` * PI() / 180) * COS(( ? - l.`longitude`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance "
 				. "FROM `".$table_prefix."incident` AS i "
 				. "INNER JOIN `".$table_prefix."location` AS l ON (l.`id` = i.`location_id`) "
-				. "INNER JOIN `".$table_prefix."incident_category` AS ic ON (i.`id` = ic.`incident_id`) "
-				. "INNER JOIN `".$table_prefix."category` AS c ON (ic.`category_id` = c.`id`) "
 				. "WHERE i.incident_active = 1 "
 				. "AND i.id <> ? ";
 
@@ -558,4 +578,77 @@ class Incident_Model extends ORM {
 		$incident->incident_verified = $val;
 		return $incident->save();
 	}
+
+	/**
+	 * Overrides the default delete method for the ORM.
+	 * Deletes all other content related to the incident - performs
+	 * an SQL destroy
+	 */
+	public function delete()
+	{
+		// Delete Location
+		ORM::factory('location')
+			->where('id', $this->location_id)
+			->delete_all();
+
+		// Delete Categories
+		ORM::factory('incident_category')
+		    ->where('incident_id', $this->id)
+		    ->delete_all();
+
+		// Delete Translations
+		ORM::factory('incident_lang')
+		    ->where('incident_id', $this->id)
+		    ->delete_all();
+
+		// Delete Photos From Directory
+		$photos = ORM::factory('media')
+				      ->where('incident_id', $this->id)
+				      ->where('media_type', 1)
+				      ->find_all();
+		
+		foreach ($photos as $photo)
+		{
+			Media_Model::delete_photo($photo->id);
+		}
+
+		// Delete Media
+		ORM::factory('media')
+		    ->where('incident_id', $this->id)
+		    ->delete_all();
+
+		// Delete Sender
+		ORM::factory('incident_person')
+		    ->where('incident_id', $this->id)
+		    ->delete_all();
+
+		// Delete relationship to SMS message
+		$updatemessage = ORM::factory('message')
+						     ->where('incident_id', $this->id)
+						     ->find();
+
+		if ($updatemessage->loaded)
+		{
+			$updatemessage->incident_id = 0;
+			$updatemessage->save();
+		}
+
+		// Delete Comments
+		ORM::factory('comment')
+			->where('incident_id', $this->id)
+			->delete_all();
+			
+		// Delete ratings
+		ORM::factory('rating')
+			->where('incident_id', $this->id)
+			->delete_all();
+
+		$incident_id = $this->id;
+
+		// Action::report_delete - Deleted a Report
+		Event::run('ushahidi_action.report_delete', $incident_id);
+
+		parent::delete();
+	}
+
 }

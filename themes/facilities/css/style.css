@@ -556,6 +556,7 @@ ul.categories {
 
 ul.categories li,
 span.category {
+    display: inline-block;
     border-radius:5px;
     -moz-border-radius:5px;
     -moz-border-radius:5px;
@@ -564,6 +565,7 @@ span.category {
     text-align:center;
     padding:3px 5px 3px 5px;
     margin-right:5px;
+    margin-bottom:3px;
 }
 
 ul.categories li {
@@ -655,7 +657,7 @@ div#filters ul.categories li {
     white-space:normal;
     list-style-type:none;
     margin-top:5px;
-    margin-bottom:5px;
+    margin-bottom:3px;
 }
 div#filters ul.categories li a {
     /*display:inline-block;*/
@@ -856,12 +858,15 @@ form span {
     overflow: hidden;
     padding: 0 0 0 0;
 }​
+form span.captcha {
+    font-size:16px;
+}
 
 form #captcha,
- form span.captcha input[type=text] {
+form span.captcha input[type=text] {
      width:70%;
      float:left;
- }
+}
 
 form span.captcha img {
     width:25%;
@@ -1004,6 +1009,7 @@ div.report-item .report-image {
 }
 
 .report-thumbnail {
+    position: relative;
     float:left;
     max-width:200px;
     min-width:200px;
@@ -1013,12 +1019,22 @@ div.report-item .report-image {
     overflow: hidden;
     margin-right:10px;
     margin-bottom:10px;
+    background-image:url(../images/placeholder-report.png);
+    text-align:center;
 }
 
 .report-thumbnail img {
     width:200px;
     margin:0;
-    background-image:url(../images/placeholder-report.png);
+}
+.report-thumbnail .report-title {
+    position: absolute;
+    top:0;
+    left:0;
+    width:190px;
+    font-size:16px;
+    font-weight:bold;
+    padding:5px;
 }
 
 /* ############################### REPORT DETAILS ############################### */

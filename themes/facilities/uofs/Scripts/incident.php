@@ -59,6 +59,7 @@ public static function get_incidents($where = array(), $limit = NULL, $order_fie
 			}
 		}
 
+		// ################## FACILITIES THEME ##################
         if (isset($_GET['c'])) {
             $cats = preg_replace('/[^0-9,]/', '', $_GET['c']);
             if (strlen($cats) > 0) {
@@ -80,6 +81,7 @@ public static function get_incidents($where = array(), $limit = NULL, $order_fie
         else {
             $sql .= $having_clause;
         }
+		// ################## FACILITIES THEME ##################
 
 //		// Check for the order field and sort parameters
 		if ( ! empty($order_field) AND ! empty($sort) AND (strtoupper($sort) == 'ASC' OR strtoupper($sort) == 'DESC'))
