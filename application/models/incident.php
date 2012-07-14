@@ -444,7 +444,7 @@ class Incident_Model extends ORM {
 		}
 		else
 		{
-			$sql .= 'ORDER BY i.incident_date DESC ';
+			$sql .= 'ORDER BY i.incident_title ASC ';
 		}
 
 		// Check if the record limit has been specified

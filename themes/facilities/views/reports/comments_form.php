@@ -27,8 +27,8 @@ if (!$user) { ?>
 }
 else {
     ?>
-        <label><?php echo Kohana::lang('ui_main.user');?>:</label>
-        <strong><?php echo $user->name; ?></strong>
+        <label><?php echo Kohana::lang('ui_main.user');?></label>
+        <span class="comment_user"><?php echo $user->name; ?></span>
     <br/>
 <?php } ?>
 

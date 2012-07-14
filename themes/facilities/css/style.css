@@ -435,9 +435,10 @@ div#details {
 
 #main-categories ul li {
     list-style: none;
-    display:inline;
+    display: inline-block;
     font-size:14px;
     margin-right:10px;
+    margin-bottom:3px;
 }
 
 #main-categories ul li.title {
@@ -858,14 +859,22 @@ form span {
     overflow: hidden;
     padding: 0 0 0 0;
 }​
+
+form span.comment_user {
+    margin-top:3px;
+    font-size:14px;
+    font-weight:bold;
+}
+
 form span.captcha {
     font-size:16px;
 }
 
 form #captcha,
 form span.captcha input[type=text] {
-     width:70%;
-     float:left;
+    width:70%;
+    float:left;
+    font-size:14px;
 }
 
 form span.captcha img {
