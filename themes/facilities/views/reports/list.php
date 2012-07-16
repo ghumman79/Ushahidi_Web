@@ -58,33 +58,37 @@
     <div id="gallery" style="display:none;">
         <div id="content">
             <?php
+            $thumbnails = 0;
             foreach ($incidents as $incident) {
                 $incident = ORM::factory('incident', $incident->incident_id);
                 $incident_id = $incident->id;
                 $incident_title = $incident->incident_title;
                 $incident_description = $incident->incident_description;
-                $location_name = $incident->location->location_name;
                 $incident_tooltip = $incident_title . '&#13;' . strip_tags(str_replace('<br/>', '&#13;', $incident_description));
-                $incident_thumb = url::site() . "/themes/facilities/images/placeholder-report.png";
                 if ($incident->media->count()) {
                     foreach ($incident->media as $photo) {
                         if ($photo->media_thumb) {
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_medium);
-                            break;
+                            $thumbnails++;
+                        ?>
+                            <div class="report-thumbnail">
+                                <a title="<?php echo $incident_tooltip; ?>"
+                                   href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
+                                    <?php if ($incident_thumb != null) { ?>
+                                    <img src="<?php echo $incident_thumb; ?>" />
+                                    <?php } ?>
+                                    <div class="report-title"><?php echo $incident_title; ?></div>
+                                </a>
+                            </div>
+                        <?php
                         }
                     }
                 }
-                ?>
-                <div class="report-thumbnail">
-                    <a title="<?php echo $incident_tooltip; ?>"
-                       href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                        <?php if ($incident_thumb != null) { ?>
-                            <img src="<?php echo $incident_thumb; ?>" />
-                        <?php } ?>
-                        <div class="report-title"><?php echo $incident_title; ?></div>
-                    </a>
-                </div>
-            <?php } ?>
+            }
+            if ($thumbnails == 0) {
+                echo "<div class='report-no-thumbnails'>No photos in gallery</div>";
+            }
+            ?>
         </div>
     </div>
 </div>
