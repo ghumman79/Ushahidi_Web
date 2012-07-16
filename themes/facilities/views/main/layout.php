@@ -38,7 +38,6 @@
         <div class="clear"></div>
         <?php blocks::render(); ?>
     </div>
-    <div id="mapProjection" style="display:none;"></div>
 </div>
 <script type="text/javascript">
     var $PHRASES = <?php echo json_encode(
@@ -53,6 +52,4 @@
         listCheckins(10,0);
         <?php } ?>
     });
-    function showCheckins() {}
-    function smartColumns() {}
 </script>

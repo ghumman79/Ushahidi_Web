@@ -70,13 +70,6 @@ function adjustCategories() {
     var $top = $("#filters").css('height');
     $("#reports").css('top', $top);
 }
-function removeListStrFromBreadcrumb() {
-    var $divBreadcrumb = $("div.breadcrumb");
-    var strBreadcrumb = $divBreadcrumb.html();
-    if (strBreadcrumb) {
-        $("div.breadcrumb").html(strBreadcrumb.replace(" List", ""));
-    }
-}
 function addReportViewOptionsEvents() {
     $("#pagination .report-list-toggle a").click(function(){
         return switchViews($(this));
@@ -113,14 +106,16 @@ function fetchReports() {
                     adjustCategories();
                     attachPagingEvents();
                     addReportViewOptionsEvents();
-                    if (activeView.search('#list') > 0) {
-                        switchViews($("#pagination .pagination_list"));
-                    }
-                    else if (activeView.search('#map') > 0) {
-                        switchViews($("#pagination .pagination_map"));
-                    }
-                    else if (activeView.search('#gallery') > 0) {
-                        switchViews($("#pagination .pagination_gallery"));
+                    if (activeView) {
+                        if (activeView.search('#list') > 0) {
+                            switchViews($("#pagination .pagination_list"));
+                        }
+                        else if (activeView.search('#map') > 0) {
+                            switchViews($("#pagination .pagination_map"));
+                        }
+                        else if (activeView.search('#gallery') > 0) {
+                            switchViews($("#pagination .pagination_gallery"));
+                        }
                     }
                 }, 400);
             }
@@ -154,7 +149,14 @@ function attachCategorySelected() {
     });
 }
 function attachPagingEvents() {
-    $("ul.pager a").attr("href", "#");
+    $("ul.pager a").each(function() {
+        if ($PHRASES.server) {
+            $(this).attr("href", $PHRASES.server + "reports?page=" + $(this).html());
+        }
+        else {
+            $(this).attr("href", "#");
+        }
+    });
     $("ul.pager a").click(function() {
         urlParameters["page"] = $(this).html();
         fetchReports();
@@ -234,9 +236,9 @@ function populateMapWithReports() {
         styleMap: new OpenLayers.StyleMap({
             'default' : new OpenLayers.Style({
                 cursor: "pointer",
-                graphicOpacity: 0.8,
-                graphicWidth: 30,
-                graphicHeight: 30,
+                graphicOpacity: 0.9,
+                graphicWidth: 40,
+                graphicHeight: 40,
                 externalGraphic: "${externalGraphic}"
             })})
     });
@@ -246,7 +248,7 @@ function populateMapWithReports() {
     $.each($INCIDENTS, function(i, incident) {
         var point = new OpenLayers.Geometry.Point(parseFloat(incident.longitude), parseFloat(incident.latitude));
         point.transform(proj_4326, proj_900913);
-        var externalGraphic = $PHRASES.server + "/themes/facilities/images/report.png";
+        var externalGraphic = $PHRASES.server + "/themes/facilities/images/report_red.png";
         if (incident.icon) {
             externalGraphic = incident.icon;
         }
@@ -270,10 +272,10 @@ function populateMapWithCheckins() {
     var checkinStyles = new OpenLayers.StyleMap({
         "default": new OpenLayers.Style({
             cursor: "pointer",
-            graphicOpacity: 0.8,
-            graphicWidth: 30,
-            graphicHeight: 30,
-            externalGraphic: $PHRASES.server + "/themes/facilities/images/checkin.png"
+            graphicOpacity: 0.9,
+            graphicWidth: 40,
+            graphicHeight: 40,
+            externalGraphic: $PHRASES.server + "/themes/facilities/images/checkin_red.png"
         })
     });
 
@@ -332,7 +334,7 @@ function populateMapWithControls() {
                 if (layer.name === item.name) {
                     selectControls.push(layer);
                     layer.events.on({
-                        "featureselected": onFeatureSelect,
+                        "featureselected": showKmlData,
                         "featureunselected": onFeatureUnselect
                     });
                 }
@@ -342,6 +344,36 @@ function populateMapWithControls() {
     var selectFeatures = new OpenLayers.Control.SelectFeature(selectControls);
     map.addControl(selectFeatures);
     selectFeatures.activate();
+}
+function showKmlData(event) {
+    selectedFeature = event.feature;
+    zoom_point = event.feature.geometry.getBounds().getCenterLonLat();
+    lon = zoom_point.lon;
+    lat = zoom_point.lat;
+    if (event.feature.popup != null) {
+        map.removePopup(event.feature.popup);
+    }
+    var content = "<div id=\"popup\">";
+    var name = event.feature.attributes.name;
+    if (name != null) {
+        content += "<div id=\"popup-title\">";
+        content += name;
+        content += "</div>";
+    }
+    var description = event.feature.attributes.description;
+    if (description != null) {
+        content += "<div id=\"popup-description\">";
+        content += description;
+        content += "</div>";
+    }
+    content += "<div style=\"clear:both;\"></div></div>";
+    var popup = new OpenLayers.Popup.FramedCloud("popup",
+        event.feature.geometry.getBounds().getCenterLonLat(),
+        new OpenLayers.Size(200,300),
+        content,
+        null, true, onPopupClose);
+    event.feature.popup = popup;
+    map.addPopup(popup);
 }
 function showReportData(event) {
     selectedFeature = event.feature;

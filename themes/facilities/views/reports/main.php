@@ -35,12 +35,14 @@
             adjustCategories();
             splitListView();
         });
-        markSelectedCategories();
-        adjustCategories();
-        attachCategorySelected();
-        addReportViewOptionsEvents();
-        removeListStrFromBreadcrumb();
-        loadSelectedViewFromHashTag();
+        $(document).ready(function() {
+            attachPagingEvents();
+            markSelectedCategories();
+            adjustCategories();
+            attachCategorySelected();
+            addReportViewOptionsEvents();
+            loadSelectedViewFromHashTag();
+        });
     });
 <?php
     $layers = array();

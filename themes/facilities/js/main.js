@@ -1,5 +1,5 @@
 function listCheckins(sqllimit,sqloffset) {
-    $.getJSON("/api/?task=checkin&action=get_ci&sqllimit=" + sqllimit + "&sqloffset=" + sqloffset + "&orderby=checkin.checkin_date&sort=DESC", function(data) {
+    $.getJSON($PHRASES.server + "/api/?task=checkin&action=get_ci&sqllimit=" + sqllimit + "&sqloffset=" + sqloffset + "&orderby=checkin.checkin_date&sort=DESC", function(data) {
         if(data.payload.checkins == undefined) {
             $('#main-reports ul').html("<li>" + $PHRASES.no_checkins + "</li>");
         }
