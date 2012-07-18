@@ -71,12 +71,10 @@
                             $incident_thumb = url::convert_uploaded_to_abs($photo->media_medium);
                             $thumbnails++;
                         ?>
-                            <div class="report-thumbnail">
+                            <div class="report-thumbnail shadow">
                                 <a title="<?php echo $incident_tooltip; ?>"
                                    href="<?php echo url::site(); ?>reports/view/<?php echo $incident_id; ?>">
-                                    <?php if ($incident_thumb != null) { ?>
                                     <img src="<?php echo $incident_thumb; ?>" />
-                                    <?php } ?>
                                     <div class="report-title"><?php echo $incident_title; ?></div>
                                 </a>
                             </div>

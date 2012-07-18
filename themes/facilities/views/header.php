@@ -9,8 +9,31 @@
     <script type="text/javascript" src="<?php echo url::site(); ?>media/js/picbox.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>media/css/picbox/picbox.css">
     <?php } ?>
-    <!--STYLESHEET FOR THE UNIVERSITY OF SASKATCHEWAN-->
-    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>themes/facilities/uofs/uofs.css">
+    <?php
+        //Optionally change the theme color by passing 'theme' parameter with values {green, blue, yellow, red}
+        $param = isset($_GET['theme']) ? $_GET['theme'] : null;
+        $cookie = !isset($param) && isset($_COOKIE['theme']) ? $_COOKIE['theme'] : null;
+        $expire = time() + (20 * 365 * 24 * 60 * 60);
+        if ($param == "green" || $cookie == "green") {
+            setcookie('theme', "green", $expire);
+            echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/green.css">';
+        }
+        else if ($param == "blue" || $cookie == "blue") {
+            setcookie('theme', "blue", $expire);
+            echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/blue.css">';
+        }
+        else if ($param == "yellow" || $cookie == "yellow") {
+            setcookie('theme', "yellow", $expire);
+            echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/yellow.css">';
+        }
+        else if ($param == "red" || $cookie == "red") {
+            setcookie('theme', "red", $expire);
+            echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/red.css">';
+        }
+        else {
+            setcookie('theme', "", $expire);
+        }
+    ?>
 </head>
 <body id="page">
     <div id="header">

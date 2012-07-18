@@ -139,7 +139,6 @@ function attachCategorySelected() {
             $(this).parent().addClass("selected");
             if($(this).parent().hasClass('parent')){
                 $(this).parent().parent().children().each(function(){
-                    debugger;
                     $(this).addClass("selected");
                     $(this).find("a").addClass("selected");
                 });

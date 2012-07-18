@@ -48,13 +48,13 @@ fieldset,img {
 }
 
 a {
-    color: #000;
+    color: #585858;
     text-decoration: none;
 }
 
 a:hover {
     cursor:pointer;
-    color: #000;
+    color: #585858;
     text-decoration: underline;
 }
 
@@ -179,6 +179,13 @@ div.red-box h3 {
     color:#FA5858;
 }
 
+.shadow {
+    box-shadow: 3px 3px 4px #A4A4A4;
+    -moz-box-shadow: 3px 3px 4px #A4A4A4;
+    -webkit-box-shadow: 3px 3px 4px #A4A4A4;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#A4A4A4')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#A4A4A4');
+}
 /* ############################### BUTTONS ############################### */
 
 .button {
@@ -212,10 +219,7 @@ div#header {
     height:120px;
     width:100%;
     overflow:hidden;
-    background-color:#E6E6E6;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E6E6E6', endColorstr='#FFFFFF');
-    background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E6), to(#FFFFFF));
-    background: -moz-linear-gradient(top, #E6E6E6, #FFFFFF);
+    background: transparent url("../images/header.png") no-repeat right top;
 }
 
 div#header-logo {
@@ -301,6 +305,8 @@ div#header-login a {
     font-weight:bold;
     text-transform:uppercase;
     font-size:13px;
+    color:#FFFFFF;
+    text-shadow: 1px 1px 1px rgba(1, 1, 1, 0.5);
 }
 
 /* ############################### FOOTER ############################### */
@@ -491,7 +497,6 @@ div#pagination {
 
 div#pagination ul.toggle {
     float:right;
-    height:40px;
     margin-top:8px;
     margin-right:0px;
 }
@@ -948,9 +953,10 @@ form span.dynamic a.dynamic-remove {
 
 div.report-item {
      padding:1%;
-     margin-bottom:10px;
+     margin-bottom:20px;
      margin-left:0;
      margin-right:0;
+     margin-top:10px;
 }
 
 #column,
@@ -1036,7 +1042,10 @@ div.report-item .report-image {
     width:200px;
     margin:0;
 }
+
 .report-thumbnail .report-title {
+    color:white ! important;
+    text-shadow: 1px 1px 1px #000;
     position: absolute;
     top:0;
     left:0;
@@ -1047,15 +1056,15 @@ div.report-item .report-image {
 }
 
 .report-no-thumbnails {
-    width:300px;
-    height:300px;
+    width:320px;
+    height:320px;
     text-align:center;
     margin-top:30px;
     margin-left:auto;
     margin-right:auto;
     font-size:18px;
     font-style: italic;
-    color:gray;
+    color:#A4A4A4;
     background:url(../images/no-photos.png) no-repeat center 50px;
 }
 

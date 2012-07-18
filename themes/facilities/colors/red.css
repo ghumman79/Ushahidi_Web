@@ -1,0 +1,37 @@
+a,
+#pagination a,
+#titlebar a{
+    color:#b11016;
+}
+
+div#header {
+    background: transparent url("red.png") no-repeat right top;
+}
+
+ul.categories li.selected {
+    color:white;
+    border: 1px solid #c55840;
+    background: #dd9b84;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dd9b84', endColorstr='#c55840');
+    background: -webkit-gradient(linear, left top, left bottom, from(#dd9b84), to(#c55840));
+    background: -moz-linear-gradient(top, #dd9b84, #c55840);
+}
+
+ul.categories li.parent.selected {
+    color:white;
+    border: 1px solid #b11016;
+    background: #c96148;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c96148', endColorstr='#b11016');
+    background: -webkit-gradient(linear, left top, left bottom, from(#c96148), to(#b11016));
+    background: -moz-linear-gradient(top, #c96148, #b11016);
+}
+
+ul.categories li.selected a,
+ul.categories li.parent.selected a {
+    color:#FFFFFF;
+}
+
+#titlebar a,
+#pagination ul li a {
+    color:#b11016;
+}

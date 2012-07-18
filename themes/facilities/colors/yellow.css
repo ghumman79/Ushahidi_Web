@@ -1,0 +1,37 @@
+a,
+#pagination a,
+#titlebar a{
+    color:#bfb300;
+}
+
+div#header {
+    background: transparent url("yellow.png") no-repeat right top;
+}
+
+ul.categories li.selected {
+    color:white;
+    border: 1px solid #cec13e;
+    background: #e8e0a2;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e0a2', endColorstr='#cec13e');
+    background: -webkit-gradient(linear, left top, left bottom, from(#e8e0a2), to(#cec13e));
+    background: -moz-linear-gradient(top, #e8e0a2, #cec13e);
+}
+
+ul.categories li.parent.selected {
+    color:white;
+    border: 1px solid #bfb300;
+    background: #dfd47f;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfd47f', endColorstr='#bfb300');
+    background: -webkit-gradient(linear, left top, left bottom, from(#dfd47f), to(#bfb300));
+    background: -moz-linear-gradient(top, #dfd47f, #bfb300);
+}
+
+ul.categories li.selected a,
+ul.categories li.parent.selected a {
+    color:#FFFFFF;
+}
+
+#titlebar a,
+#pagination ul li a {
+    color:#bfb300;
+}
