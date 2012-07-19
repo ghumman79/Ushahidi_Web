@@ -14,23 +14,33 @@
         $param = isset($_GET['theme']) ? $_GET['theme'] : null;
         $cookie = !isset($param) && isset($_COOKIE['theme']) ? $_COOKIE['theme'] : null;
         $expire = time() + (20 * 365 * 24 * 60 * 60);
+        $green = "";
+        $blue = "";
+        $yellow = "";
+        $red = "";
+        $grey = "";
         if ($param == "green" || $cookie == "green") {
             setcookie('theme', "green", $expire);
+            $green = "selected";
             echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/green.css">';
         }
         else if ($param == "blue" || $cookie == "blue") {
+            $blue = "selected";
             setcookie('theme', "blue", $expire);
             echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/blue.css">';
         }
         else if ($param == "yellow" || $cookie == "yellow") {
+            $yellow = "selected";
             setcookie('theme', "yellow", $expire);
             echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/yellow.css">';
         }
         else if ($param == "red" || $cookie == "red") {
+            $red = "selected";
             setcookie('theme', "red", $expire);
             echo '<link rel="stylesheet" type="text/css" href="'.url::site().'themes/facilities/colors/red.css">';
         }
         else {
+            $grey = "selected";
             setcookie('theme', "", $expire);
         }
     ?>
@@ -39,6 +49,25 @@
     <div id="header">
         <div id="header-language">
            <?php echo $languages;?>
+        </div>
+        <div id="header-color">
+            <form onSubmit="submitFunction(); return false">
+                <select id="theme" name="theme">
+                    <option value="" <?php echo $grey; ?>>Grey</option>
+                    <option value="green" <?php echo $green; ?>>Green</option>
+                    <option value="blue" <?php echo $blue; ?>>Blue</option>
+                    <option value="yellow" <?php echo $yellow; ?>>Yellow</option>
+                    <option value="red" <?php echo $red; ?>>Red</option>
+                </select>
+            </form>
+            <SCRIPT TYPE="text/javascript">
+                $(document).ready(function() {
+                    $("#theme").change(function() {
+                        var theme = $("#theme option:selected").val();
+                        location.href = "<?php echo url::site(); ?>?theme=" + theme;
+                    });
+                });
+            </SCRIPT>
         </div>
         <div id="header-search">
            <?php echo $search; ?>

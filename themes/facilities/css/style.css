@@ -251,10 +251,27 @@ div#header-logo span{
     color:#848484;
 }
 
+div#header-color {
+    position:absolute;
+    top:24px;
+    right:370px;
+    text-align: right;
+}
+
+div#header-color form {
+    margin:0;
+    display:inline;
+}
+
+div#header-color select  {
+    width:70px;
+    font-size: 12px;
+}
+
 div#header-language {
     position:absolute;
     top:25px;
-    right:200px;
+    right:205px;
     text-align: right;
 }
 
@@ -265,6 +282,7 @@ div#header-language .language-box {
 
 div#header-language .language-box select {
     width:140px;
+    font-size: 12px;
 }
 
 div#header-search {
@@ -297,7 +315,7 @@ div#header-submit {
 div#header-login {
     position:absolute;
     top:27px;
-    right:360px;
+    right:465px;
     text-align: right;
 }
 
