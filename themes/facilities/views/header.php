@@ -51,7 +51,7 @@
            <?php echo $languages;?>
         </div>
         <div id="header-color">
-            <form onSubmit="submitFunction(); return false">
+            <form onSubmit="return false">
                 <select id="theme" name="theme">
                     <option value="" <?php echo $grey; ?>>Grey</option>
                     <option value="green" <?php echo $green; ?>>Green</option>
@@ -73,6 +73,9 @@
            <?php echo $search; ?>
         </div>
         <div id="header-login">
+            <?php if(Kohana::config('settings.allow_reports')) { ?>
+                <a class="submit-report" title="<?php echo Kohana::lang('ui_main.submit'); ?>" href="<?php echo url::site()."reports/submit"; ?>"><?php echo Kohana::lang('ui_main.submit'); ?></a>
+            <? } ?>
             <?php if (Kohana::config('settings.user_id') != NULL) { ?>
                 <?php if (Kohana::config('settings.user_username') != NULL) { ?>
                      <a title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>"><?php echo Kohana::config('settings.user_username'); ?></a>
@@ -83,11 +86,6 @@
                 <a title="<?php echo Kohana::lang('ui_main.login'); ?>" href="<?php echo url::site()."login";?>"><?php echo Kohana::lang('ui_main.login'); ?></a>
             <?php } ?>
         </div>
-        <?php if(Kohana::config('settings.allow_reports')) { ?>
-        <div id="header-submit">
-
-        </div>
-        <? } ?>
         <div id="header-logo">
             <?php if($banner == NULL){ ?>
                 <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>

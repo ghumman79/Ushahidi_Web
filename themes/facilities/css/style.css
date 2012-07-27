@@ -306,12 +306,6 @@ div#header-search .search-form input.text {
     width:140px;
 }
 
-div#header-submit {
-    position:absolute;
-    top:20px;
-    right:10px;
-}
-
 div#header-login {
     position:absolute;
     top:27px;
@@ -325,6 +319,10 @@ div#header-login a {
     font-size:13px;
     color:#FFFFFF;
     text-shadow: 1px 1px 1px rgba(1, 1, 1, 0.5);
+}
+
+div#header-login .submit-report {
+    margin-right:20px;
 }
 
 /* ############################### FOOTER ############################### */
