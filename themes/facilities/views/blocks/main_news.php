@@ -13,12 +13,12 @@
                     $feed_description = $feed->item_description;
                     ?>
                 <li>
-                    <a title="<?php echo $feed_description; ?>" href="<?php echo $feed_link; ?>" target="_blank"><?php echo $feed_title ?></a>
+                    <a title="<?php echo $feed_description; ?>" href="<?php echo $feed_link; ?>" target="_blank"><?php echo $feed_title; ?></a>
                     <span class="main-news-source">(<?php echo $feed_source; ?>)</span>
                 </li>
                 <?php } ?>
                 <li class="more">
-                    <a title="<?php echo Kohana::lang('ui_main.view_more'); ?>" href="<?php echo url::site() . 'feeds' ?>">
+                    <a title="<?php echo Kohana::lang('ui_main.view_more'); ?>" href="<?php echo url::site() . 'feeds'; ?>">
                         <?php echo Kohana::lang('ui_main.view_more'); ?>
                     </a>
                 </li>

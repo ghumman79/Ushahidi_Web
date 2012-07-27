@@ -1,6 +1,6 @@
 <div class="map-holder" id="divMap"></div>
 <div class="alert-slider">
-    <select name="alert-radius" id="alert_radius" style="visibility:hidden;">
+    <select name="alert_radius" id="alert_radius" style="visibility:hidden;">
         <option value="1">1 KM</option>
         <option value="5">5 KM</option>
         <option value="10">10 KM</option>

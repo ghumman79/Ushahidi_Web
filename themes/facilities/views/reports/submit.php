@@ -85,9 +85,6 @@
                     print '<b> : </b>';
                     print form::dropdown('incident_ampm',$ampm_array,$form['incident_ampm']);
                     ?>
-                    <?php if ($site_timezone != NULL): ?>
-                    <small>(<?php echo $site_timezone; ?>)</small>
-                    <?php endif; ?>
                 </span>
             </div>
 

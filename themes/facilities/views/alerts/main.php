@@ -3,19 +3,19 @@
         <h1><?php echo Kohana::lang('ui_main.alerts_get'); ?></h1>
         <?php print form::open() ?>
         <div class="column">
+            <?php if ($form_error): ?>
+            <div class="box red-box">
+                <h3><?php echo Kohana::lang('ui_main.error'); ?></h3>
+                <ul>
+                    <?php
+                    foreach ($errors as $error_item => $error_description) {
+                        print (!$error_description) ? '' : "<li>" . $error_description . "</li>";
+                    }
+                    ?>
+                </ul>
+            </div>
+            <?php endif; ?>
             <div class="alerts-step box">
-                <?php if ($form_error): ?>
-                    <div class="red-box">
-                        <h3><?php echo Kohana::lang('ui_main.error'); ?></h3>
-                        <ul>
-                            <?php
-                            foreach ($errors as $error_item => $error_description) {
-                                print (!$error_description) ? '' : "<li>" . $error_description . "</li>";
-                            }
-                            ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
                 <div>
                     <h3><?php echo Kohana::lang('ui_main.alerts_step1_select_city'); ?></h3>
                     <?php echo $alert_radius_view; ?>

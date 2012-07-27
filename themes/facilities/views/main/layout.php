@@ -47,9 +47,9 @@
               'no_checkins' => Kohana::lang('ui_main.no') . " " . Kohana::lang('ui_admin.checkins'),
               'previous' => Kohana::lang('ui_main.previous'),
               'next' => Kohana::lang('ui_main.next'))); ?>;
-    $(function(){
-        <?php if ( Kohana::config('settings.checkins') ) { ?>
-        listCheckins(10,0);
-        <?php } ?>
-    });
+    <?php if (Kohana::config('settings.checkins')) { ?>
+        $(function(){
+            listCheckins(10,0);
+        });
+    <?php } ?>
 </script>

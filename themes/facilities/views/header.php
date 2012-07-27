@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>media/css/picbox/picbox.css">
     <?php } ?>
     <?php
-        //Optionally change the theme color by passing 'theme' parameter with values {green, blue, yellow, red}
         $param = isset($_GET['theme']) ? $_GET['theme'] : null;
         $cookie = !isset($param) && isset($_COOKIE['theme']) ? $_COOKIE['theme'] : null;
         $expire = time() + (20 * 365 * 24 * 60 * 60);
@@ -48,10 +47,10 @@
 <body id="page">
     <div id="header">
         <div id="header-language">
-           <?php echo $languages;?>
+           <?php echo $languages; ?>
         </div>
         <div id="header-color">
-            <form onSubmit="return false">
+            <form onSubmit="return false;">
                 <select id="theme" name="theme">
                     <option value="" <?php echo $grey; ?>>Grey</option>
                     <option value="green" <?php echo $green; ?>>Green</option>
@@ -78,9 +77,8 @@
             <? } ?>
             <?php if (Kohana::config('settings.user_id') != NULL) { ?>
                 <?php if (Kohana::config('settings.user_username') != NULL) { ?>
-                     <a title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>"><?php echo Kohana::config('settings.user_username'); ?></a>
+                     <a class="login-user" title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>"><?php echo Kohana::config('settings.user_username'); ?></a>
                 <?php } ?>
-                &nbsp;
                 <a title="<?php echo Kohana::lang('ui_admin.logout');?>" href="<?php echo url::site()."logout/front";?>"><?php echo Kohana::lang('ui_admin.logout');?></a>
             <?php } else { ?>
                 <a title="<?php echo Kohana::lang('ui_main.login'); ?>" href="<?php echo url::site()."login";?>"><?php echo Kohana::lang('ui_main.login'); ?></a>
@@ -91,7 +89,7 @@
                 <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
                 <span><?php echo $site_tagline; ?></span>
             <?php } else { ?>
-                <a title="<?php echo $site_name; ?>" href="<?php echo url::site();?>">
+                <a title="<?php echo $site_name; ?>" href="<?php echo url::site(); ?>">
                     <img src="<?php echo $banner; ?>" alt="<?php echo $site_name; ?>" />
                 </a>
             <?php } ?>

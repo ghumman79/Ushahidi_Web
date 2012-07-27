@@ -1,6 +1,6 @@
 <div id="main-reports" class="column">
     <div class="box">
-        <?php if ( Kohana::config('settings.checkins') ) { ?>
+        <?php if (Kohana::config('settings.checkins')) { ?>
             <h3><?php echo Kohana::lang('ui_admin.checkins'); ?></h3>
             <ul></ul>
         <?php } else { ?>
@@ -21,14 +21,14 @@
                 ?>
                 <li>
                     <a title="<?php echo $incident_description; ?>" href="<?php echo url::site() . 'reports/view/' . $incident_id; ?>">
-                        <?php echo $incident_title ?>
+                        <?php echo $incident_title; ?>
                     </a>
                     <span>(<?php echo $location_name; ?>)</span>
                 </li>
             <?php } ?>
             <?php if ($total_items > 0) { ?>
             <li class="more">
-                <a href="<?php echo url::site() . 'reports/' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
+                <a href="<?php echo url::site() . 'reports/'; ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
             </li>
             <?php } ?>
             </ul>

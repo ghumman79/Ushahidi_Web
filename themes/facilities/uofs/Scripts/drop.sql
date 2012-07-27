@@ -50,3 +50,4 @@ drop table user_devices;
 drop table user_tokens;
 drop table users;
 drop table verified;
+drop table permissions_roles;
