@@ -1,11 +1,13 @@
 <div id="middle" class="scroll">
     <div id="content">
        <div id="main-welcome" class="column">
-             <?php if($site_message != '') { ?>
             <div class="box">
+             <?php if($site_message != '') { ?>
                 <?php echo $site_message; ?>
-            </div>
+            <?php } else { ?>
+                <?php echo Kohana::lang('ui_main.no') . " " . Kohana::lang('ui_main.description'); ?>
             <?php } ?>
+            </div>
         </div>
         <div id="main-categories" class="column">
             <?php
