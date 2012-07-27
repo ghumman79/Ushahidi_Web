@@ -5,10 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <?php echo $header_block; ?>
     <?php Event::run('ushahidi_action.header_scripts'); ?>
-    <?php if (Router::$controller == 'main') { ?>
-    <script type="text/javascript" src="<?php echo url::site(); ?>media/js/picbox.js"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo url::site(); ?>media/css/picbox/picbox.css">
-    <?php } ?>
     <?php
         $param = isset($_GET['theme']) ? $_GET['theme'] : null;
         $cookie = !isset($param) && isset($_COOKIE['theme']) ? $_COOKIE['theme'] : null;
@@ -69,12 +65,12 @@
             </SCRIPT>
         </div>
         <div id="header-search">
-           <?php echo $search; ?>
+            <?php echo $search; ?>
         </div>
         <div id="header-login">
             <?php if(Kohana::config('settings.allow_reports')) { ?>
                 <a class="submit-report" title="<?php echo Kohana::lang('ui_main.submit'); ?>" href="<?php echo url::site()."reports/submit"; ?>"><?php echo Kohana::lang('ui_main.submit'); ?></a>
-            <? } ?>
+            <?php } ?>
             <?php if (Kohana::config('settings.user_id') != NULL) { ?>
                 <?php if (Kohana::config('settings.user_username') != NULL) { ?>
                      <a class="login-user" title="<?php echo Kohana::lang('ui_main.public_profile'); ?>" href="<?php echo url::site() . "profile/user/" . Kohana::config('settings.user_username') ;?>"><?php echo Kohana::config('settings.user_username'); ?></a>
@@ -85,7 +81,7 @@
             <?php } ?>
         </div>
         <div id="header-logo">
-            <?php if($banner == NULL){ ?>
+            <?php if($banner == NULL) { ?>
                 <h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
                 <span><?php echo $site_tagline; ?></span>
             <?php } else { ?>
